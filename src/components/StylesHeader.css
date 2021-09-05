@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 10vh;
+    background: gray;
+    color: white;
+}
+.pages{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    align-items: center;
+    font-size: 18px;
+}
