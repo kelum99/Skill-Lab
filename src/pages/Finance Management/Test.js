@@ -24,6 +24,7 @@ function Test() {
     }
   };
 
+   //on submit - console log
   const onFinish = values => {
     console.log(values);
   };
@@ -36,6 +37,7 @@ function Test() {
 
         <h1>Payment</h1>
 
+{/* Form start */}
       <Form
           name="nest-messages"
           onFinish={onFinish}
@@ -94,6 +96,7 @@ function Test() {
             </Form.Item>
 
       </Form>
+      {/* Form end */}
     </div>
     </div>
     </>
