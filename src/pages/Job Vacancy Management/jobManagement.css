@@ -1,0 +1,151 @@
+.positionIMG{
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
+.h2{
+    color: navy;
+}
+
+
+
+.row{
+    margin-right:25px; 
+}
+
+.applyimage{
+    width: 650px;
+    height: 355px;
+    margin-top: 20px;
+    margin-right: 25px;
+    border-radius: 15px;
+
+}
+
+.formPosition{
+    margin-top: 25px;
+}
+
+.head{
+
+    margin-top: 15px;
+    width: 80px;
+    height: 80px;
+}
+
+.searchBox{
+    
+    width: 285px;
+    border-radius: 8px;
+}
+
+#searchBox{
+    margin-left: 1100px;
+    margin-top: 15px;
+    height: 32px;
+    
+}
+
+.example{
+    margin-left: 1100px;
+}
+
+
+
+.f{
+    font-family: verdana;
+}
+
+
+
+#vacancyHead{
+    margin-top: -15px;
+    margin-left: 15px;
+}
+
+#jobCards{
+    margin-top: 10px;
+}
+
+.services{
+    max-width: 23rem;
+}
+
+#details{
+    margin-top: 25px;
+    margin-left: 100px;
+    border-style: none;
+}
+
+#detail1{
+     margin-right: 100px;
+}
+
+#detail2{
+    margin-right: 100px;
+}
+
+.vacancies{
+    margin-top: 25px;
+    margin-left: 25px;
+}
+
+.ulList{
+    margin-left:20px;
+    font-size: 20px;
+}
+
+.card{
+    width: 650px;
+    margin-top: 25px;
+}
+
+#cardBody{
+    width: 550px;
+}
+
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Style the search field */
+  form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+  
+    width: 80%;
+    background: #f1f1f1;
+  }
+  
+  /* Style the submit button */
+  form.example button {
+    
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
+  
+  form.example button:hover {
+    background: #0b7dda;
+  }
+  
+  /* Clear floats */
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+
+  .searchPosition{
+    margin-top: 20px;
+     margin-right: 20px; 
+  }
