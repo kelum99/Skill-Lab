@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, InputNumber, Button,  DatePicker, Checkbox} from "antd";
+import { Form, Input, InputNumber, Button, DatePicker, Checkbox } from "antd";
 import 'antd/dist/antd.css';
 import './stylesFinance.css';
 
@@ -24,81 +24,81 @@ function Test() {
     }
   };
 
-   //on submit - console log
+  //on submit - console log
   const onFinish = values => {
     console.log(values);
   };
 
   return (
     <>
-    <div className="main-container-payment">
+      <div className="main-container-payment">
 
-    <div className="form">
+        <div className="form">
 
-        <h1>Payment</h1>
+          <h1>Payment</h1>
 
-{/* Form start */}
-      <Form
-          name="nest-messages"
-          onFinish={onFinish}
-          validateMessages={validateMessages}
-          layout="vertical"
-      > 
+          {/* Form start */}
+          <Form
+            name="nest-messages"
+            onFinish={onFinish}
+            validateMessages={validateMessages}
+            layout="vertical"
+          >
             <Form.Item
-                name= {["name"]}
-                label= "Cardholder's Name"
-                rules= {[{ required: true}]}
+              name={["name"]}
+              label="Cardholder's Name"
+              rules={[{ required: true }]}
             >
-                 <Input autocomplete="off"/>
+              <Input autocomplete="off" />
             </Form.Item>
 
             <Form.Item
-                name={["cardNumber"]}
-                label="Card Number"
-                rules={[{ required: true}]}
-                
+              name={["cardNumber"]}
+              label="Card Number"
+              rules={[{ required: true }]}
+
             >
-                <Input maxLength={16}/>
+              <Input maxLength={16} />
             </Form.Item>
 
             <Form.Item
-                name={["expireDate"]}
-                label="Expire Month/Year"
-                rules={[{ required: true }]}
+              name={["expireDate"]}
+              label="Expire Month/Year"
+              rules={[{ required: true }]}
             >
-                <DatePicker picker="month"/>
+              <DatePicker picker="month" />
             </Form.Item>
 
-            <Form.Item 
-                name={["cvv"]} 
-                label="CVV"
-                rules={[
-                    {
-                        type: "number",
-                        required: true
-                    }
-                ]}
-            >
-                <InputNumber maxLength={3}/>
-            </Form.Item>  
-            
             <Form.Item
-                name="save"
-                valuePropName="checked" 
+              name={["cvv"]}
+              label="CVV"
+              rules={[
+                {
+                  type: "number",
+                  required: true
+                }
+              ]}
             >
-                  <Checkbox>Save this card to wallet</Checkbox>
+              <InputNumber maxLength={3} />
             </Form.Item>
 
-            <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-            <Button type="primary" htmlType="submit">
+            <Form.Item
+              name="save"
+              valuePropName="checked"
+            >
+              <Checkbox>Save this card to wallet</Checkbox>
+            </Form.Item>
+
+            <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
+              <Button type="primary" htmlType="submit">
                 Pay
-            </Button>
+              </Button>
             </Form.Item>
 
-      </Form>
-      {/* Form end */}
-    </div>
-    </div>
+          </Form>
+          {/* Form end */}
+        </div>
+      </div>
     </>
   );
 }
