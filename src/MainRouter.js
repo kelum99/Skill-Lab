@@ -1,6 +1,10 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import Test from "../src/pages/Finance Management/Test";
+
+import courseMain from  "../src/pages/course/courseMain.js";
+import courseCreate from "./pages/course/courseCreate";
+
 import askQuestion from './pages/Lecturer Management/askQuestion';
 import editQuestion from "./pages/Lecturer Management/editQuestion";
 import noticeCreate from "./pages/Lecturer Management/noticeCreate";
@@ -34,8 +38,10 @@ import StdManagement from "./pages/Authentication Management/StdManagement";
 function MainRouter() {
   return (
     <>
-
-      
+        <Route path="/test" exact component={Test} />
+        <Route path="/courseMain" exact component={courseMain} />
+        <Route path="/courseCreate" exact component={courseCreate} />
+       
         <Route path="/test" exact component={Test} />
         <Route path="/askQ" exact component={askQuestion} />
         <Route path="/EditQ" exact component={editQuestion} />
@@ -45,9 +51,6 @@ function MainRouter() {
         <Route path="/allN" exact component={noticesAll} />
         <Route path="/viewN" exact component={noticeView} />
 
-
-     
-      
         <Route path="/careere" exact component={Careere} />
         <Route path="/deleteRequest" exact component={DeleteRequest} />
         <Route path="/application" exact component={Application} />
@@ -58,8 +61,6 @@ function MainRouter() {
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
         
-
-      
         <Route path="/test" exact component={Test} />
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
