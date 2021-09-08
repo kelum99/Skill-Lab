@@ -6,6 +6,7 @@ import pay from '../../image/p1.jpg'
 import quick from '../../image/q1.jpg'
 import {Link} from 'react-router-dom';
 
+
 export default function Careere(){
 
     return(
@@ -16,20 +17,21 @@ export default function Careere(){
 <div className="searchPosition">
 <form className="example"  action="action_page.php">
   <input type="text" placeholder="Search.." name="search"/>
-  <button type="submit"><i className="fa fa-search"></i></button>
+  <button type="submit" className="searchbtn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
 </form>
 </div>
+
   <div className="row">
     <div className="col-sm">
       <h2 className="card-title " id="vacancyHead">CAREERS AT SKILL-LAB</h2>
-    <img src={job} className="img-fluid" alt="Responsive image"/>
+    <img src={job} className="img-fluid" alt="Looking for job?"/>
 
     <div className="vacancies">
   <h4 className="text-secondary">Available Vacancies</h4>
  
  <ul className="ulList" type="none">
 
-  <li className="far fa-hand-point-right"> Intern Ship.</li>
+ <li className="" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i> Intern Ship.</li>
   </ul>
   
 </div>
@@ -52,7 +54,8 @@ export default function Careere(){
     <p className="card-text">Candidates who have completed the BSc (Special) Honors Degree in IT (Field of specialization: Information 
 Technology / Software Engineering / Interactive Media / Information Systems Engineering ) could apply.
 (The GPA at the end of the 4th year should be 2.5 or higher)</p>
-<Link to="/apply"className="btn btn-primary">Apply</Link>
+<p>Salary </p>
+<Link to="/application"className="btn btn-primary" id="apply">Apply</Link>
   </div>
 </div>
 
@@ -61,7 +64,7 @@ Technology / Software Engineering / Interactive Media / Information Systems Engi
   <div className="card-body" id="cardBody">
     <h5 className="card-title">INTERN SHIPS</h5>
     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" className="btn btn-primary">Apply</a>
+    <a href="#" className="btn btn-primary" id="apply">Apply</a>
   </div>
 </div>
 </div>
