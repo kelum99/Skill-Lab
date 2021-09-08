@@ -4,15 +4,15 @@ import Header from '../src/components/Header'
 import { Route, BrowserRouter as Router , Switch } from 'react-router-dom';
 
 
+
 function App() {
 
   return (
-    <Router>
     
+  <Router>
     <Header/>
     <MainRouter/>
-
-    </Router>
+  </Router>
 
   );
 }
