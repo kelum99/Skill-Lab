@@ -1,7 +1,8 @@
 import React from "react";
 import { Form, Input, InputNumber, Button,  DatePicker, Checkbox, } from "antd";
 import 'antd/dist/antd.css';
-import './stylesFinance.css';
+
+
 
 
 function Test() {
