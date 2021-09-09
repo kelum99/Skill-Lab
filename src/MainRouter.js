@@ -10,10 +10,10 @@ import viewStore from "../src/pages/store Management/viewStore";
 function MainRouter() {
   return (
       <>
-        <Route path="/test" exact component={Test} />
         <Route path="/AddItem" exact component={AddItem} />
         <Route path="/DisplayItem" exact component={DisplayItem}/>
         <Route path="/EditItem" exact component={EditItem} />
+        <Route path="/viewStore" exact component={viewStore}/>
         <Route path="/viewStore" exact component={viewStore}/>
     </>
   );
