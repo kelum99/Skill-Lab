@@ -1,8 +1,9 @@
-import "./App.css";
-import MainRouter from "./MainRouter";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import Header from "../src/components/Header";
 
+import './App.css';
+import './pages/Job Vacancy Management/jobManagement.css';
+import MainRouter from './MainRouter';
+import Header from '../src/components/Header'
+import { Route, BrowserRouter as Router , Switch } from 'react-router-dom';
 
 function App() {
   return (

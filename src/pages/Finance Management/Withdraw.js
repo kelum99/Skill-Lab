@@ -26,6 +26,7 @@ function Withdraw() {
   };
 
    //on submit - console log
+
   const onFinish = values => {
     console.log(values);
   };
@@ -38,7 +39,6 @@ function Withdraw() {
 
         <h1>Withdraw</h1>
 
-{/* Form start */}
       <Form
           name="withdraw-form"
           onFinish={onFinish}
