@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-
 import editReview from "../src/pages/Feedback Management/editReview";
 import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
 
-import Test from "./pages/Finance Management/Test";
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -50,11 +48,17 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 
-import Test from "../src/pages/Finance Management/Test";
+
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
 import EditItem from "../src/pages/store Management/EditItem";
 import viewStore from "../src/pages/store Management/viewStore";
+
+import Payment from "../src/pages/Finance Management/Payment";
+import Withdraw from "../src/pages/Finance Management/Withdraw"
+import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
+import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
+
 
 
 function MainRouter() {
@@ -62,7 +66,7 @@ function MainRouter() {
 
   <>
 
-       <Route path="/test" exact component={Test}/>
+    
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
@@ -115,6 +119,12 @@ function MainRouter() {
         <Route path="/EditItem" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
         <Route path="/viewStore" exact component={viewStore}/>
+
+        <Route path="/payment" exact component={Payment} />
+        <Route path="/withdraw" exact component={Withdraw} />
+        <Route path="/paymentHistory" exact component={PaymentHistory} />
+        <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
+
     </>
   );
 }
