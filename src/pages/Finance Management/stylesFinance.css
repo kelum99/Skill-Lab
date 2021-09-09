@@ -1,8 +1,8 @@
 .form{
     background: lightgrey;
-    margin: 5%;
+    margin: 10%;
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 10px;
     width: 40%;
 }
 .form h1{
@@ -14,7 +14,8 @@
 }
 .form .ant-input{
     border-radius: 5px;
-    width: 50%;
+    width: 75%;
+    
 }
 .form .ant-form-item-required {
     font-weight: 500;

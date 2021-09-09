@@ -1,5 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+
+import editReview from "../src/pages/Feedback Management/editReview";
+import review from './pages/Feedback Management/review';
+import contactUs from "./pages/Feedback Management/contactUs";
+import myReview from "./pages/Feedback Management/myReview";
+import reviewList from "./pages/Feedback Management/reviewList";
+
 import Test from "./pages/Finance Management/Test";
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
@@ -56,11 +63,17 @@ function MainRouter() {
         <Route path="/UpdateMarks" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
 
-        <Route path="/test" exact component={Test} />
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
        
-        <Route path="/test" exact component={Test} />
+
+        <Route path="/editR" exact component={editReview}/>
+        <Route path="/review" exact component={review}/>
+        <Route path="/contactUs" exact component={contactUs}/>
+        <Route path="/myReview" exact component={myReview} />
+        <Route path="/reviewList" exact component={reviewList}/>
+
+
         <Route path="/askQ" exact component={askQuestion} />
         <Route path="/EditQ" exact component={editQuestion} />
         <Route path="/createN" exact component={noticeCreate} />
@@ -79,7 +92,6 @@ function MainRouter() {
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
         
-        <Route path="/test" exact component={Test} />
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
         <Route path="/signin" exact component={Signin} />
