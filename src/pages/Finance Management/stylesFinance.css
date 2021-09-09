@@ -1,9 +1,12 @@
 .form{
     background: lightgrey;
     margin: 5%;
-    padding: 50px;
     border-radius: 20px;
+    display:flex;
+    justify-content: flex-start;
+    flex-direction: column;
     width: 40%;
+    padding: 20px 5%;
 }
 .form h1{
     text-align: center;
@@ -14,7 +17,7 @@
 }
 .form .ant-input{
     border-radius: 5px;
-    width: 50%;
+    width: 80%;
 }
 .form .ant-form-item-required {
     font-weight: 500;
@@ -32,9 +35,37 @@
     font-size: 15px;
     font-weight: 500;
 }
+.form .ant-form-item .ant-select{
+    width: 80%;
+}
 
 .main-container-payment{
     display: flex;
     justify-content: center;
     align-items: center;
+    background: #185B8C;
+    min-height: 100vh;
+}
+
+.withdrawHistory-table{  
+    margin: 3%; 
+}
+.main-container-withdrawHistory h1{
+    text-align: center;
+    margin: 50px;
+}
+
+.ant-table-content{
+    background: #185B8C;
+}
+.ant-table-thead .ant-table-cell{
+    background: grey;
+}
+
+.paymentHistory-table{  
+    margin: 3%; 
+}
+.main-container-paymentHistory h1{
+    text-align: center;
+    margin: 50px;
 }
