@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
+
 import editReview from "../src/pages/Feedback Management/editReview";
 import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
@@ -49,10 +50,17 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 
+import Test from "../src/pages/Finance Management/Test";
+import AddItem from "../src/pages/store Management/addItem";
+import DisplayItem from "../src/pages/store Management/displayItem";
+import EditItem from "../src/pages/store Management/EditItem";
+import viewStore from "../src/pages/store Management/viewStore";
+
 
 function MainRouter() {
   return (
-    <>
+
+  <>
 
        <Route path="/test" exact component={Test}/>
         <Route path="/enroll" exact component={Enroll}/>
@@ -102,6 +110,11 @@ function MainRouter() {
         <Route path="/stdmanagement" exact component={StdManagement} />
 
       
+        <Route path="/AddItem" exact component={AddItem} />
+        <Route path="/DisplayItem" exact component={DisplayItem}/>
+        <Route path="/EditItem" exact component={EditItem} />
+        <Route path="/viewStore" exact component={viewStore}/>
+        <Route path="/viewStore" exact component={viewStore}/>
     </>
   );
 }

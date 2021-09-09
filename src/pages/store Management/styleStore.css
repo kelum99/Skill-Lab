@@ -1,15 +1,13 @@
 .form{
     background: lightgrey;
-<<<<<<< HEAD
-    margin: 10%;
-    padding: 50px;
-    border-radius: 10px;
-=======
     margin: 5%;
-    padding: 50px;
+    padding: 20px 5%;
     border-radius: 20px;
->>>>>>> manushi
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+
 }
 .form h1{
     text-align: center;
@@ -20,12 +18,7 @@
 }
 .form .ant-input{
     border-radius: 5px;
-<<<<<<< HEAD
-    width: 75%;
-    
-=======
-    width: 50%;
->>>>>>> manushi
+    width: 80%;
 }
 .form .ant-form-item-required {
     font-weight: 500;
@@ -35,25 +28,43 @@
 }
 .form .ant-btn-primary{
     border-radius: 5px;
-<<<<<<< HEAD
-    background: #698c18;
-=======
     background: #185B8C;
->>>>>>> manushi
     outline: none;
     border: none;
+    margin: 5%;
+    
+    
 }
 .form .ant-checkbox-wrapper{
     font-size: 15px;
     font-weight: 500;
 }
+.form .ant-form-item .ant-select{
+    width: 80%;
+}
 
-.main-container-payment{
+
+.MainContainer-Item{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
 }
-=======
+.button{
+    border-radius: 5px;
+    padding: 50px 0px 30px 90%;
 }
->>>>>>> manushi
+.month{
+    border-radius: 100px;
+    padding: 50px 40px 30px 90%;
+}
+.ant-table-content{
+    background: rgb(106, 194, 194)
+}
+.ant-table-thead .ant-table-cell{
+    background: grey 
+}
+
+
+    
+    
