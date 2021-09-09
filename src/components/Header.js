@@ -1,7 +1,7 @@
 import React from "react";
 import "./StylesHeader.css";
 import Slider from "./Slider";
-import logo from '../images/logo.png';
+import logo from '../Images/logo.png';
 
 
 function Header() {
