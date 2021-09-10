@@ -9,7 +9,7 @@ import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
-
+import Home from "./pages/Authentication Management/Home";
 
 function MainRouter() {
   return (
@@ -24,6 +24,7 @@ function MainRouter() {
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
         <Route path="/stdmanagement" exact component={StdManagement} />
+        <Route path="/" exact component={Home} />
       
     </>
   );

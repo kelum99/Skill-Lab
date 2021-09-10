@@ -1,11 +1,7 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio,} from "antd";
-
-
 import './stylesCommon.css'
 import 'antd/dist/antd.css';
-
-
 
 function SignupLec() {
 
@@ -26,166 +22,142 @@ function SignupLec() {
     required: "${label} is required!",
 
     types: {
-      number: "${label} is not a valid number!"
+    number: "${label} is not a valid number!"
     }
   };
 
-   //on submit - console log
+  //on submit - console log
   const onFinish = values => {
     console.log(values);
   };
 
-  const [value, setValue] = React.useState(1);
+  const [value, ] = React.useState(1);
 
- 
+return (
 
-  
-  return (
-
-    
-    <>
+  <>
     <div className="main-container-signuplec">
 
-    <div className="form">
+    <div className="form-common" id="signupForm">
 
         <h1>Sign Up</h1>
         <h3>As a Lecturer</h3>
 
-{/* Form start */}
+<Form {...layout} name="signupLec" onFinish={onFinish} validateMessages={validateMessages}>
 
-<Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
-
-
-
-
-      <Form.Item
+  <Form.Item
         name={['name']}
         label="First Name"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
+        ]}>
         <Input />
-      </Form.Item>
+  </Form.Item>
 
-
-      <Form.Item
+  <Form.Item
         name={['name1']}
         label="Last Name"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        ]}>
+      <Input />
+  </Form.Item>
 
+  <Form.Item
+        name={["birthday"]}
+        label="Date of Birth"
+        rules={[{ required: true }]}>
+        <DatePicker />
+  </Form.Item>
 
-      <Form.Item
-                name={["birthday"]}
-                label="Date of Birth"
-                rules={[{ required: true }]}>
-                <DatePicker />
-      </Form.Item>
-
-
-      <Form.Item
+  <Form.Item
         name={[ 'gender']}
         label="Gender"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
+        ]}>
+      
       <Radio.Group value={value}>
       <Radio value={1}>Male</Radio>
       <Radio value={2}>Female</Radio>
       
     </Radio.Group>
-    </Form.Item> 
+  </Form.Item> 
 
-
-
-      <Form.Item
+  <Form.Item
         name={['user', 'nic']}
         label="NIC"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
+        ]}>
         <Input />
-      </Form.Item> 
+  </Form.Item> 
 
-
-      <Form.Item
+  <Form.Item
         name={['user', 'email']}
         label="Email"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
+        ]}>
         <Input />
-      </Form.Item>
+  </Form.Item>
 
-
-      <Form.Item
+  <Form.Item
         name={['user', 'number']}
         label="Mobile Number"
         rules={[
           {
             required: true,
           },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        ]} >
+      <Input />
+  </Form.Item>
 
-     
-    <Form.Item name={['user', 'qualification']} label="Qualifications"  rules={[
+  <Form.Item name={['user', 'qualification']} label="Qualifications"  rules={[
           {
             required: true,
           },
         ]}>
         <Input.TextArea />
-      </Form.Item>
+  </Form.Item>
 
-    <Form.Item name={['user', 'inputpw']} label="Input Password"
+  <Form.Item name={['user', 'inputpw']} label="Input Password"
           rules={[
           {
             required: true,
           },
         ]}>
-    <Input.Password placeholder="input password" />
-      </Form.Item>
+        <Input.Password placeholder="input password" />
+  </Form.Item>
 
-    <Form.Item name={['user', 'reenterpw']} label="Re-enter Password"
+  <Form.Item name={['user', 'reenterpw']} label="Re-enter Password"
           rules={[
           {
             required: true,
           },
         ]}>
-    <Input.Password placeholder="Re-enter password" />
-    </Form.Item>
+        <Input.Password placeholder="Re-enter password" />
+  </Form.Item>
 
 
  <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-      </Form.Item>
+  </Form.Item>
 
-      
-  
   </Form>
-      {/* Form end */}
+      
     </div>
     </div>
     </>

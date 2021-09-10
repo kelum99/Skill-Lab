@@ -3,8 +3,8 @@
     justify-content: space-between;
     align-items: center;
     min-height: 10vh;
-    background: gray;
-    color: white;
+    background: #C8FFF1;
+    color: black;
 }
 .pages{
     list-style: none;

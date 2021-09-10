@@ -1,38 +1,59 @@
-.form{
-    background: lightgrey;
+.form-areYou{
+    background: #C8FFF1;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
 
+#signupForm{
+    background: #C8FFF1;
+    margin: 5%;
+    padding: 50px;
+    border-radius: 20px;
+    width: 40%;
+}
 
-
-.form h1{
+#signupForm h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 40px;
+    font-size: 50px;
 }
-.form h3{
+#signupForm h3{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
+    margin-top:-30px;
 }
 
+.form-signStd h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 50px;
+}
+.form-signStd h3{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    margin-top:-30px;
+}
 
-
-
-
-
-.form .ant-btn-primary{
+.form-common .ant-btn-primary{
     border-radius: 5px;
-    background: #07bbb1;
+    background: #00C8CD;
     outline: none;
     border: none;
+
 }
 
-
+.form-areYou h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 50px;
+}
 
 .main-container-areyou{
     display: flex;
@@ -46,16 +67,42 @@
     align-items: center;
 }
 
-
-
 .main-container-signuplec{
     display: flex;
     justify-content: center;
     align-items: center;
+    background:#EDFFFA;
 }
 
 .main-container-signupstd{
     display: flex;
     justify-content: center;
     align-items: center;
+    background:#EDFFFA;
+}
+
+.form-container{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+}
+
+.form-common .ant-input-affix-wrapper {
+    width:100%;
+}
+
+.form-common .ant-input-suffix{
+    margin-left: 130px;
+
+}
+
+.areYou{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+
+}
+
+.main-container-areyou{
+    background:#EDFFFA;
 }
