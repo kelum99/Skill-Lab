@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import 'antd/dist/antd.css';
 import { Select, Button ,Avatar } from "antd";
 import './courseCreate.css';
-
-
+import Resizer from "react-image-file-resizer";
+import axios from "axios";
 
 //destructure
 const { Option } = Select;
@@ -23,15 +23,35 @@ const CourseCreate = () => {
     imagePreview: "",
 
   });
-
+  const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    
   };
 
   const handleImage = (e) => {
-    setPreview(window.URL.createObjectURL(e.target.files[0]));
+    let file = e.target.files[0];
+    setPreview(window.URL.createObjectURL(file)); //preview the image in a side 
+
+
+    //image resizer before uploading to S3
+    Resizer.imageFileResizer(file,720,500,"JPEG",100,0, async(uri) =>{
+      try{
+        let { data } = await axios.post("/api/course/upload-image",
+         {image: uri, });
+         console.log("IMAGE UPLOADED", data);
+        // set image in the state
+        setValues({ ...values, loading: false });
+      }catch(error){
+        console.log(error);   
+        setValues({...values,loading:false})
+       
+      }
+    } )
+
+
   };
 
 
@@ -79,7 +99,7 @@ const CourseCreate = () => {
               <Select
 
                 value={values.paid}
-                onChange={(v) => setValues({ ...values, paid: !values.paid })}
+                onChange={(v) => setValues({ ...values, paid: v })}
               >
                 <Option value={true}>Paid</Option>
                 <Option value={false}>Free</Option>
@@ -90,7 +110,7 @@ const CourseCreate = () => {
             <div className="selct1">
              <b> Select the course price :</b>
               <Select
-                defaultValue="$9.99"
+                defaultValue="$0.00"
                 style={{ widht: "100%" }}
                 onChange={(v) => setValues({ ...values, price: v })}
                 tokenSeparators={[,]}
