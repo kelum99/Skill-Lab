@@ -1,7 +1,8 @@
 import React from "react";
 import './stylesFeedback.css'
 import 'antd/dist/antd.css';
-import { Table, Input } from 'antd';
+import { Table, Input, Space } from 'antd';
+import { AudioOutlined} from '@ant-design/icons';
 
 
 
@@ -34,67 +35,67 @@ const columns = [
   const data = [
     {
       key: '1',
-      courseName:'HTML/CSS',
-      stId:'2099',
-      stName:'Nemanthi Edirisooriya',
-      Comment:'comment',
+      courseName:'course name',
+      stId:'0000',
+      stName:'student name',
+      comment:'comment',
     },
     
     {
         key: '2',
-        courseName:'course 1',
-        stId:'2069',
-        stName:'Wasundara Herath',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     {
         key: '3',
-        courseName:'course 11',
-        stId:'2099',
-        stName:'Kalana Damsara',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     {
         key: '4',
-        courseName:'course 4',
-        stId:'1839',
-        stName:'Oshadi Samarakoon',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     {
         key: '5',
-        courseName:'course 6',
-        stId:'2001',
-        stName:'Hasitha Hewawithana',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
       
     },
 
     {
         key: '6',
-        courseName:'course 5',
-        stId:'2011',
-        stName:'Terani Themindi',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     {
         key: '7',
-        courseName:'course 1',
-        stId:'2099',
-        stName:'Nemanthi Edirisooriya',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     {
         key: '8',
-        courseName:'course 1',
-        stId:'2099',
-        stName:'Nemanthi Edirisooriya',
-        Comment:'comment',
+        courseName:'course name',
+        stId:'0000',
+        stName:'student name',
+        comment:'comment',
     },
 
     ];
@@ -102,17 +103,30 @@ const columns = [
     //search box
     const { Search } = Input;
     const onSearch = value => console.log(value);
-    
+    const suffix = (
+      <AudioOutlined
+        style={{
+          fontSize: 18,
+          color: '#49c1d1',
+        }}
+      />
+    );
   
     
     return( 
         <div className="reviewList">
-          
         
+
+        <div>
+          <br/><br/> 
+          <h1><center>My Review List</center></h1>
+          
+        </div>
+          
+        <div>
         <Search placeholder="Search Course " onSearch={onSearch} enterButton className="searchbar" />
-    
         <Table columns={columns} dataSource={data} size="middle" pagination={false} className="reviewTable" />
-    
+        </div>
     </div>
     );
 
