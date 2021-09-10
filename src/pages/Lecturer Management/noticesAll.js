@@ -1,10 +1,17 @@
 import React from "react";
 import './stylesLecturer.css';
 import 'antd/dist/antd.css';
-import { Table, Button } from 'antd';
+import { Table, Button,message,Popconfirm } from 'antd';
 import {DeleteOutlined,PlusCircleOutlined} from '@ant-design/icons';
 
 function noticesAll() {
+  //Alert mg
+  const text = 'Are you sure you want to delete ?';
+
+  function confirm() {
+      message.info('Result Deleted Successfully !');
+  }
+
 
 //table
 const columns = [
@@ -33,7 +40,10 @@ const columns = [
        date: 'Date1',
        notice: 'Notice1',
       
-       action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+       action:<>
+       <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+       <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
+       </Popconfirm></>
     },
     {
         key: '2',
@@ -41,7 +51,10 @@ const columns = [
         date: 'Date2',
         notice: 'Notice2',
         
-        action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+        action:<>
+        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
+        </Popconfirm></>
       },
       {
         key: '3',
@@ -49,7 +62,10 @@ const columns = [
         date: 'Date3',
         notice: 'Notice3',
         
-        action:<><Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/></>
+        action:<>
+        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/>
+        </Popconfirm></>
       },
   ];
 

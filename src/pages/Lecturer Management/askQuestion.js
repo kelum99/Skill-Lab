@@ -1,18 +1,23 @@
 import React from "react";
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select,message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
 import askQue2 from '../../image/askQue2.png';
 
     function askQuestion() {
-        const layout = {
-            labelCol: {
-               span: 8,
-            },
-            wrapperCol: {
-               span: 16,
-            },
-        };
+      const layout = {
+        labelCol: {
+           span: 8,
+        },
+        wrapperCol: {
+           span: 16,
+        },
+    };
+    
+    //alert mg
+    const success = () => {
+      message.success('Your data Submitted Successfully !');
+    };
 
     //drop down   
     const { Option } = Select;
@@ -39,7 +44,7 @@ import askQue2 from '../../image/askQue2.png';
     
             <h1>Ask New Question!!</h1>
         
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Form {...layout} name="lecturer management" onFinish={onFinish} validateMessages={validateMessages}>
  
           <Form.Item
             name={['studentName']}
@@ -107,7 +112,7 @@ import askQue2 from '../../image/askQue2.png';
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" onClick={success}>
               ASK
             </Button>
           </Form.Item>

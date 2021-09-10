@@ -1,11 +1,17 @@
 import React from "react";
 import './stylesLecturer.css';
 import 'antd/dist/antd.css';
-import { Table, Button,Input } from 'antd';
+import { Table, Button,Input,message,Popconfirm } from 'antd';
 import {DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import allList from '../../image/allList.png';
 
 function allQuestionList() {
+   //Alert mg
+   const text = 'Are you sure you want to delete ?';
+
+   function confirm() {
+       message.info('Result Deleted Successfully !');
+   }
 
 //table
 const columns = [
@@ -47,7 +53,10 @@ const columns = [
        courseName:'course1',
        topic: 'topic1',
        description:'Question1',
-       action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+       action:<>
+       <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+       <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
+       </Popconfirm></>
     },
     {
         key: '2',
@@ -57,7 +66,10 @@ const columns = [
         courseName:'course2',
         topic: 'topic2',
         description:'Question2',
-        action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+        action:<>
+        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
+        </Popconfirm></>
       },
       {
         key: '3',
@@ -67,7 +79,10 @@ const columns = [
         courseName:'course3',
         topic: 'topic3',
         description:'Question3',
-        action:<><Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/></>
+        action:<>
+        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/>
+        </Popconfirm></>
       },
   ];
 

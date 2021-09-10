@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input,Button,DatePicker} from "antd";
+import { Form, Input,Button,DatePicker,message} from "antd";
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
 import addNote1 from '../../image/addNote1.png';
@@ -14,6 +14,10 @@ function noticeCreate() {
       wrapperCol: {
         span: 14
       }
+    };
+     //alert mg
+    const success = () => {
+    message.success('Your data Save Successfully !');
     };
   
     //Form Vilidation 
@@ -35,7 +39,7 @@ function noticeCreate() {
                <h1>Add Notice</h1>
   
   {/* Form start */}
-        <Form name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} layout="vertical">
+        <Form name="lecturer management" onFinish={onFinish} validateMessages={validateMessages} layout="vertical">
          
               <Form.Item  name={["Date"]} label="Date" rules={[{ required: true }]}>
                     <DatePicker />
@@ -46,7 +50,7 @@ function noticeCreate() {
               </Form.Item>
   
               <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-              <Button type="primary"icon={<SaveOutlined />} htmlType="submit">
+              <Button type="primary"icon={<SaveOutlined />} htmlType="submit"onClick={success}>
                   Save
               </Button>
               </Form.Item>

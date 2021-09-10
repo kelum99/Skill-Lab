@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input,Button ,Select} from 'antd';
+import { Form, Input,Button ,Select,message} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
 import {EditOutlined} from '@ant-design/icons';
@@ -15,6 +15,10 @@ import editQ1 from '../../image/editQ1.jpg';
                span: 16,
             },
         };
+    //alert mg
+    const success = () => {
+    message.success('Your data Updated Successfully !');
+    };    
 
     //drop down
     const { Option } = Select;
@@ -41,7 +45,7 @@ import editQ1 from '../../image/editQ1.jpg';
             <h1>Edit Question!!</h1>
           
         
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Form {...layout} name="lecturer management" onFinish={onFinish} validateMessages={validateMessages}>
  
           <Form.Item
             name={['studentName']}
@@ -109,7 +113,7 @@ import editQ1 from '../../image/editQ1.jpg';
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button type="primary"icon={<EditOutlined />} htmlType="submit">
+            <Button type="primary"icon={<EditOutlined />} htmlType="submit"onClick={success}>
               UPDATE
             </Button>
           </Form.Item>
