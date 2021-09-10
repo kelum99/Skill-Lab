@@ -11,7 +11,7 @@ import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
 import New from "./pages/Job Vacancy Management/New";
-
+import AdminSideBar from "./components/AdminSideBar";
 
 
 
@@ -29,7 +29,7 @@ function MainRouter() {
         <Route path="/addcareere" exact component={AddJob} />
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
-       
+        <Route path="/admin" exact component={AdminSideBar} />
         <Route path="/new" exact component={New} />
 
         

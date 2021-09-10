@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { Table, Button,Input } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
+import './jobManagement.css';
 
 function UpdateJob() {
 
