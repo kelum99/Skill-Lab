@@ -35,8 +35,8 @@ import editQ1 from '../../image/editQ1.jpg';
       return (
         <>
         <div className="main-container-editQuestion">
-        <div> <img className="questionimg" src={editQ1} height ={500} width ={500}/> </div>
-        <div className="form">
+        <div> <img className="questionimg" src={editQ1} alt="editQuestion" height ={500} width ={500}/> </div>
+        <div className="lecform">
     
             <h1>Edit Question!!</h1>
           

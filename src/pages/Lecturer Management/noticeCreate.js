@@ -30,8 +30,8 @@ function noticeCreate() {
       <>
       
       <div className="main-container-createNotice"> 
-      <div> <img className="addnoteimg" src={addNote1} height ={500} width ={600}/> </div>
-      <div className="form">
+      <div> <img className="addnoteimg" src={addNote1} alt="createNotice" height ={500} width ={600}/> </div>
+      <div className="lecform">
                <h1>Add Notice</h1>
   
   {/* Form start */}

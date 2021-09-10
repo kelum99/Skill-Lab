@@ -49,7 +49,7 @@ const columns = [
             
             <br /><br /><center><h1 className="Heading">News and Announcements</h1></center>
             <center><h2 className="subHeading">For the attention of all students!!</h2></center>
-            <div> <center><img className="questionimg" src={viewNote1} height ={200} width ={250}/></center> </div>
+            <div> <center><img className="questionimg" src={viewNote1} alt="viewNotice" height ={200} width ={250}/></center> </div>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable1" />
             
         </div>

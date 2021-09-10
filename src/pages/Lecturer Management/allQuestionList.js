@@ -90,7 +90,7 @@ const columns = [
             
             <br /><br /><center><h1 className="Heading">All Questions List</h1></center>
 
-            <div> <center><img className="questionimg" src={allList} height ={200} width ={250}/></center> </div>
+            <div> <center><img className="questionimg" src={allList} alt="allQList" height ={200} width ={250}/></center> </div>
             
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable2" />
             

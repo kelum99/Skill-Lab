@@ -1,38 +1,41 @@
-.form{
+/*askQuestion,editQuestion,noticeCreate forms */
+.lecform{
     background: rgb(202, 220, 245);
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
-.form h1{
+/*form heading*/
+.lecform h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 36px;
-    
+    font-size: 36px;   
 }
-.form .ant-input{
+/*form inputs*/
+.lecform .ant-input{
     border-radius: 5px;
     width: 85%;
 }
-
+/*change width of dropdown*/
 .ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
     width:85%;
 }
-
+/*change border of dropdown*/
 .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius:5px;
 }
-
+/*change hight of textarea*/
 textarea.ant-input{
     min-height: 90px;
 }
-.form .ant-form-item-required {
+/*change form font weight*/
+.lecform .ant-form-item-required {
     font-weight: 500;
 }
-
-.form .ant-btn-primary{
+/*form buttons*/
+.lecform .ant-btn-primary{
     border-radius: 10px;
     background: #185B8C;
     outline: none;
@@ -43,7 +46,7 @@ textarea.ant-input{
 cursor: pointer;
 width: 100px;
 }
-
+/*containers of forms*/
 .main-container-askQuestion{
     display: flex;
     justify-content: right;
@@ -62,13 +65,33 @@ width: 100px;
     align-items: center;
 }
 
+/*allQuestionList,allQuestions,noticesAll,noticeView tables*/
+/*allQuestions table*/
 .allQTable{
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    
-    
 }
+/*noticeView table*/
+.allQTable1{
+    margin-top: 0%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+/*allQuestionList table*/
+.allQTable2{
+    margin-top: 0%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+/*noticeAll table*/
+.allQTable3{
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+/*edit and delete buttons*/
 .edit-dlt{
     width:50px;
     margin: 5%;
@@ -81,6 +104,7 @@ width: 100px;
 .edit-dlt:hover{
     opacity: 0.5;
 }
+/*search bar in allQuestionList & allQuestions*/
 .searchbar{
     margin-top:2%;
     margin-bottom: 0.2%;
@@ -88,28 +112,29 @@ width: 100px;
     margin-left: 75%;
     width:20%;
 }
-
+/*change background color*/
 .ant-table-content{
     background-color: rgb(202, 220, 245);
 }
+/*ask new question button*/
 .allQuestions .ant-btn-primary{
     background-color: #185B8C;
     border-color: #185B8C;
 }
-
+/*table description heading*/
 .Heading{
     font-size: 40px;
     font-weight: 550;
     font-family: Georgia, serif;
 }
-
+/*table description subheading*/
 .subHeading{
     font-size: 15px;
     font-weight: 550;
     font-family: Georgia, serif;
     margin-top: 0%;
 }
-
+/*ask new question button*/
 .btnAll{
     width:180px;
     margin: 5%;
@@ -123,13 +148,7 @@ width: 100px;
 .btnAll:hover{
     opacity: 0.5;
 }
-
-.allQTable1{
-    margin-top: 0%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
+/*add notice button*/
 .btnAllN{
     width:150px;
     margin: 5%;
@@ -145,28 +164,16 @@ width: 100px;
 .btnAllN:hover{
     opacity: 0.5;
 }
-
-.allQTable2{
-    margin-top: 0%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.allQTable3{
-    margin-top: 5%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
+/*change table width*/
 .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
     padding: 10px;
     width:15px;
 }
-
+/*align text center*/
 .ant-table-row{
     text-align:center;
 }
-
+/*change table heading color & text*/
 .ant-table-thead > tr > th{
     background: lightslategray;
     text-align: center;
