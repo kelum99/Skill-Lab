@@ -1,13 +1,13 @@
 .form{
     background: lightgrey;
-    border-radius: 10px;
     margin: 5%;
-    border-radius: 20px;
-    display:flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 40%;
     padding: 20px 5%;
+    border-radius: 20px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+
 }
 .form h1{
     text-align: center;
@@ -19,7 +19,6 @@
 .form .ant-input{
     border-radius: 5px;
     width: 80%;
-
 }
 .form .ant-form-item-required {
     font-weight: 500;
@@ -30,7 +29,11 @@
 .form .ant-btn-primary{
     border-radius: 5px;
     background: #185B8C;
-
+    outline: none;
+    border: none;
+    margin: 5%;
+    
+    
 }
 .form .ant-checkbox-wrapper{
     font-size: 15px;
@@ -40,33 +43,28 @@
     width: 80%;
 }
 
-.main-container-payment{
+
+.MainContainer-Item{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
-
-.withdrawHistory-table{  
-    margin: 3%; 
+.button{
+    border-radius: 5px;
+    padding: 50px 0px 30px 90%;
 }
-.main-container-withdrawHistory h1{
-    text-align: center;
-    margin: 50px;
+.month{
+    border-radius: 100px;
+    padding: 50px 40px 30px 90%;
 }
-
 .ant-table-content{
-    background: #185B8C;
+    background: rgb(106, 194, 194)
 }
 .ant-table-thead .ant-table-cell{
-    background: grey;
+    background: grey 
 }
 
-.paymentHistory-table{  
-    margin: 3%; 
-}
-.main-container-paymentHistory h1{
-    text-align: center;
-    margin: 50px;
-}
 
+    
+    

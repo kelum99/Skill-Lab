@@ -100,7 +100,7 @@ li{
 }
 .admin-bar-content{
   margin-top: 50px;
-  margin-left: 0px;
+  margin-left: 15px;
 }
 
 .AdminTopic{
@@ -111,4 +111,8 @@ li{
 
 .listItems{
   margin-left: 35px;
+}
+
+.Adminul{
+    margin-left: 55px;
 }

@@ -1,0 +1,36 @@
+.eduimg {
+ border-radius: 5px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.desp1{
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+text-align: center;
+font-style: italic
+}
+
+
+.imageslider  {
+  width: 100%;
+  height: auto;
+}
+
+.ant-space-item{
+  width:150%;
+}
+
+.searchbar{
+  margin-left: 50%  ;
+  margin-top:10px ;
+  margin-bottom:10px ;
+
+  
+  
+}
+
+.description{
+  text-align: center;
+}
