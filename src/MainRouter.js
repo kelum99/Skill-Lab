@@ -10,6 +10,8 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
+import New from "./pages/Job Vacancy Management/New";
+
 
 
 
@@ -17,7 +19,7 @@ function MainRouter() {
   return (
     <>
      
-      
+        
         <Route path="/careere" exact component={Careere} />
         <Route path="/deleteRequest" exact component={DeleteRequest} />
         <Route path="/application" exact component={Application} />
@@ -27,6 +29,9 @@ function MainRouter() {
         <Route path="/addcareere" exact component={AddJob} />
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
+       
+        <Route path="/new" exact component={New} />
+
         
       
     </>
