@@ -1,11 +1,12 @@
 import React from "react";
-import { Form, Input, InputNumber, Button,  DatePicker, Checkbox} from "antd";
-import 'antd/dist/antd.css';
+import { Form, Input, Button, Select, Checkbox} from "antd";
 import './stylesFinance.css';
+import 'antd/dist/antd.css'
 
+function Withdraw() {
 
-function Test() {
-
+  const { Option } = Select;
+  
   const layout = {
     labelCol: {
       span: 8
@@ -25,6 +26,7 @@ function Test() {
   };
 
    //on submit - console log
+
   const onFinish = values => {
     console.log(values);
   };
@@ -35,63 +37,64 @@ function Test() {
 
     <div className="form">
 
-        <h1>Payment</h1>
+        <h1>Withdraw</h1>
 
-{/* Form start */}
       <Form
-          name="nest-messages"
+          name="withdraw-form"
           onFinish={onFinish}
           validateMessages={validateMessages}
           layout="vertical"
       > 
             <Form.Item
                 name= {["name"]}
-                label= "Cardholder's Name"
+                label= "AccountHolder's Name"
                 rules= {[{ required: true}]}
             >
                  <Input autocomplete="off"/>
             </Form.Item>
 
             <Form.Item
-                name={["cardNumber"]}
-                label="Card Number"
+                name={["accountNumber"]}
+                label="Account Number"
                 rules={[{ required: true}]}
                 
             >
-                <Input maxLength={16}/>
+                <Input maxLength={10}  autocomplete="off"/>
             </Form.Item>
 
             <Form.Item
-                name={["expireDate"]}
-                label="Expire Month/Year"
-                rules={[{ required: true }]}
+                name={["bankName"]}
+                label="Bank Name"
+                rules={[{ required: true}]}
             >
-                <DatePicker picker="month"/>
+            
+                <Select 
+                  placeholder="Select Your Bank">
+                    <Option value="Bank of Ceylone">Bank of Ceylone</Option>
+                    <Option value="Peoples Bank">Peoples Bank</Option>
+                    <Option value="Sampath Bank">Sampath Bank</Option>
+                    <Option value="Commercial Bank">Commercial Bank</Option>
+                </Select>
             </Form.Item>
 
-            <Form.Item 
-                name={["cvv"]} 
-                label="CVV"
-                rules={[
-                    {
-                        type: "number",
-                        required: true
-                    }
-                ]}
+            <Form.Item
+                name= {["branch"]}
+                label= "Branch"
+                rules= {[{ required: true}]}
             >
-                <InputNumber maxLength={3}/>
-            </Form.Item>  
+                 <Input autocomplete="off"/>
+            </Form.Item>
             
             <Form.Item
                 name="save"
                 valuePropName="checked" 
             >
-                  <Checkbox>Save this card to wallet</Checkbox>
+                  <Checkbox>Save my bank details</Checkbox>
             </Form.Item>
 
             <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
             <Button type="primary" htmlType="submit">
-                Pay
+               Withdraw
             </Button>
             </Form.Item>
 
@@ -103,4 +106,4 @@ function Test() {
   );
 }
 
-export default Test;
+export default Withdraw;
