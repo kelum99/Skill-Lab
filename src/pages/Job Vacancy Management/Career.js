@@ -5,6 +5,7 @@ import mailalert from '../../image/m1.jpg'
 import pay from '../../image/p1.jpg'
 import quick from '../../image/q1.jpg'
 import {Link} from 'react-router-dom';
+import './jobManagement.css';
 
 
 export default function Careere(){

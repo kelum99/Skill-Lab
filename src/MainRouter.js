@@ -36,6 +36,8 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
+import AdminBar from "./pages/Job Vacancy Management/AdminBar";
+
 
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
@@ -103,6 +105,8 @@ function MainRouter() {
         <Route path="/addcareere" exact component={AddJob} />
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
+        <Route path="/admin" exact component={AdminBar} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />

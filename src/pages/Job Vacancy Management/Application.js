@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import axios from "axios";
 import im from '../../image/im.jpeg';
+import './jobManagement.css';
 
 export default function JobApply(){
 
