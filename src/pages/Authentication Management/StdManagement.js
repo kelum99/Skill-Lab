@@ -113,7 +113,7 @@ const columns = [
 
 return (
         <div className="manage">
-              <Search placeholder="Search Student" onSearch={onSearch} enterButton className="searchbar" />
+              <Search placeholder="Search Student" onSearch={onSearch} enterButton className="searchbar1" />
             <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
             <center><h2 className="Heading2">Student Management</h2></center>
            

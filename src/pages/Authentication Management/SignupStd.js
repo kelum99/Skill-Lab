@@ -28,10 +28,13 @@ function SignupStd() {
 
   //on submit - console log
   const onFinish = values => {
-    console.log(values);
+    const data={...values, role:"Student"};
+    console.log("value",data);
   };
 
   const [value] = React.useState(1);
+
+  
 
  return (
 
@@ -94,7 +97,7 @@ function SignupStd() {
   </Form.Item> 
 
   <Form.Item
-        name={['user', 'nic']}
+        name={[ 'nic']}
         label="NIC"
         rules={[
           {
@@ -106,7 +109,7 @@ function SignupStd() {
   </Form.Item> 
 
   <Form.Item
-        name={['user', 'email']}
+        name={[ 'email']}
         label="Email"
         rules={[
           {
@@ -118,7 +121,7 @@ function SignupStd() {
   </Form.Item>
 
   <Form.Item
-        name={['user', 'number']}
+        name={['number']}
         label="Mobile Number"
         rules={[
           {
@@ -129,7 +132,7 @@ function SignupStd() {
         <Input />
   </Form.Item>
 
-  <Form.Item name={['user', 'inputpw']} label="Input Password"
+  <Form.Item name={[ 'inputpw']} label="Input Password"
           rules={[
           {
             required: true,
@@ -138,7 +141,7 @@ function SignupStd() {
     <Input.Password placeholder="input password" />
   </Form.Item>
 
-  <Form.Item name={['user', 'reenterpw']} label="Re-enter Password"
+  <Form.Item name={['reenterpw']} label="Re-enter Password"
           rules={[
           {
             required: true,

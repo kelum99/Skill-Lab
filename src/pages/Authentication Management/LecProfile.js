@@ -104,7 +104,7 @@ function Lecprofile() {
               okText="Yes"
               cancelText="No"
             >
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="btnDelete">
           Delete my Account
         </Button>
             </Popconfirm>

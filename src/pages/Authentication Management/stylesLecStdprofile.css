@@ -11,7 +11,7 @@
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
-    margin-top:-30px;
+    margin-top:-20px;
 }
 #profile h3{
     text-align: right;
@@ -35,5 +35,6 @@
 
 .btnCancel{
     margin:0 15px;
+    
 
 }

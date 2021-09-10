@@ -1,5 +1,5 @@
 import React from "react";
-import { Form,Popover,Button} from 'antd';
+import { Form,Button} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesCommon.css'
 import lec from '../../Images/lec.png';
@@ -7,18 +7,7 @@ import student from '../../Images/student.png';
 
 function AreYou() {
 
-const content = (
-  <div>
-    <p>Skill Lab Lecturer</p>
-    
-  </div>
-)
-const content2 = (
-  <div>
-    <p>Skill Lab Student</p>
-    
-  </div>
-)
+
 
 
 return (
@@ -32,17 +21,17 @@ return (
         
       <div className="areYou">
 
-      <Popover content={content}>
+      
       <img id="test"
             width={350}
             src={lec}  />
-      </Popover>
+      
 
-      <Popover content2={content2}>
+      
       <img
             width={350}
             src={student} />
-      </Popover>
+      
       </div>
 
     

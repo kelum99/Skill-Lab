@@ -28,7 +28,10 @@ function SignupLec() {
 
   //on submit - console log
   const onFinish = values => {
-    console.log(values);
+    
+    const data={...values, role:"Lecturer"};
+    console.log("value",data);
+
   };
 
   const [value, ] = React.useState(1);
@@ -91,7 +94,7 @@ return (
   </Form.Item> 
 
   <Form.Item
-        name={['user', 'nic']}
+        name={[ 'nic']}
         label="NIC"
         rules={[
           {
@@ -102,7 +105,7 @@ return (
   </Form.Item> 
 
   <Form.Item
-        name={['user', 'email']}
+        name={[ 'email']}
         label="Email"
         rules={[
           {
@@ -113,7 +116,7 @@ return (
   </Form.Item>
 
   <Form.Item
-        name={['user', 'number']}
+        name={[ 'number']}
         label="Mobile Number"
         rules={[
           {
@@ -123,7 +126,7 @@ return (
       <Input />
   </Form.Item>
 
-  <Form.Item name={['user', 'qualification']} label="Qualifications"  rules={[
+  <Form.Item name={['qualification']} label="Qualifications"  rules={[
           {
             required: true,
           },
@@ -131,7 +134,7 @@ return (
         <Input.TextArea />
   </Form.Item>
 
-  <Form.Item name={['user', 'inputpw']} label="Input Password"
+  <Form.Item name={['inputpw']} label="Input Password"
           rules={[
           {
             required: true,
@@ -140,7 +143,7 @@ return (
         <Input.Password placeholder="input password" />
   </Form.Item>
 
-  <Form.Item name={['user', 'reenterpw']} label="Re-enter Password"
+  <Form.Item name={[ 'reenterpw']} label="Re-enter Password"
           rules={[
           {
             required: true,
