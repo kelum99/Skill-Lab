@@ -1,26 +1,7 @@
-/*Enroll Page*/
-.stdEnroll{
-    background: #a6f2e1;
-    margin-top: 1%;
-    margin-left: 6%;
-    padding: 40px;
-    border-radius: 20px;
-    width: 40%;
-    float: left;
-}
-.crsEnroll{
-    background: #a6f2e1;
-    margin-top: 1%;
-    margin-left: 8%;
-    margin-right: 1%;
-    padding: 40px;
-    padding-bottom: 5px;
-    border-radius: 20px;
-    width: 40%;
-    
-    float: left;
-}
-.ant-input{
+
+
+
+.form-common.ant-input{
     border-radius: 6px;
 }
 
@@ -36,21 +17,16 @@
     width: 100px;
     height: 35px;
 }
-.crsEnroll .ant-btn-primary:hover{
+.form-common .ant-btn-primary:hover{
     opacity: 0.5;
 }
-
-
-
-
 
 .tbl{
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    
-    
 }
+
 .dlt{
     width:50px;
     margin: 5%;
@@ -60,10 +36,12 @@
     background-color: #07bbb1;
     border-color: #07bbb1;
 }
+
 .dlt:hover{
     opacity: 0.5;
 }
-.searchbar{
+
+.searchbar1{
     margin-top:2%;
     margin-bottom: 0.2%;
     margin-right: 5%;
@@ -75,8 +53,8 @@
     background-color:#a6f2e1;
 }
 .manage .ant-btn-primary{
-    background-color: #07bbb1;
-    border-color: #07bbb1;
+    background-color: #00C8CD;
+    
 }
 
 .Heading1{
@@ -89,8 +67,12 @@
     font-size: 30px;
     font-weight: 550;
     font-family: Georgia, serif;
+    margin-top:-30px;
 }
 
+.manage{
+    background:#EDFFFA;
+}
 
 
 
