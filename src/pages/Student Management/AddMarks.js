@@ -1,5 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Select,message } from 'antd';
+import './stylesStudent.css';
 
 
 function AddMarks(){
@@ -37,6 +38,7 @@ function AddMarks(){
 
     return(
         <div class="markbackgrnd">
+           
         
         <div className="addMarks">
               <center><h2 className="Heading">Add Students' Marks</h2></center>

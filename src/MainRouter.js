@@ -10,6 +10,7 @@ import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
 
 
+
 function MainRouter() {
   return (
     <>
@@ -21,6 +22,7 @@ function MainRouter() {
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
+      
       </>
   );
 }
