@@ -1,8 +1,10 @@
 import React from "react";
-import { Table, Button, Input,Popconfirm, message } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Table, Button, Input, Popconfirm, message } from 'antd';
+import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
+import './stylesStudent.css';
 
 function ViewMarks() {
+   
 
     //confirm alert
     const text = 'Are you sure you want to delete ?';
@@ -50,12 +52,12 @@ function ViewMarks() {
         {
             key: '1',
             index: '1',
-            studentID:'Student ID',
+            studentID: 'Student ID',
             subject: 'Subject',
             course: 'Course',
             module: 'Module',
             code: 'Code',
-            result:'result',
+            result: 'result',
             action: <><Button type="primary" icon={<EditOutlined />} className="edit-dlt" />
                 <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
                     <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
@@ -64,12 +66,12 @@ function ViewMarks() {
         {
             key: '2',
             index: '1',
-            studentID:'Student ID',
+            studentID: 'Student ID',
             subject: 'Subject',
             course: 'Course',
             module: 'Module',
             code: 'Code',
-            result:'result',
+            result: 'result',
             action: <><Button type="primary" icon={<EditOutlined />} className="edit-dlt" />
                 <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
                     <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
@@ -78,12 +80,12 @@ function ViewMarks() {
         {
             key: '3',
             index: '1',
-            studentID:'Student ID',
+            studentID: 'Student ID',
             subject: 'Subject',
             course: 'Course',
             module: 'Module',
             code: 'Code',
-            result:'result',
+            result: 'result',
             action: <><Button type="primary" icon={<EditOutlined />} className="edit-dlt" />
                 <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
                     <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
@@ -91,17 +93,19 @@ function ViewMarks() {
         },
     ];
 
-    
+
 
     //search box
     const { Search } = Input;
     const onSearch = value => console.log(value);
- 
+
     return (
         <div className="myCrs">
             <Search placeholder="Search Mark" onSearch={onSearch} enterButton className="searchbar" />
             <br /><br /><center><h1 className="Heading">Student Performance</h1></center>
-            
+            <a href="./AddMarks"><Button type="primary" icon={<PlusOutlined />}  className="AddButton">
+                Add New Mark
+            </Button></a>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
         </div>
     );

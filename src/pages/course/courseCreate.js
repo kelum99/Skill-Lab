@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import 'antd/dist/antd.css';
 import { Select, Button ,Avatar } from "antd";
-import './courseCreate.css';
-
-
+import './courseStyles.css';
+import Resizer from "react-image-file-resizer";
+import axios from "axios";
+import create_course from '../../image/create_course.jpg';
+import {toast} from 'react-toastify';
 
 //destructure
 const { Option } = Select;
@@ -23,15 +25,36 @@ const CourseCreate = () => {
     imagePreview: "",
 
   });
-
+  const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    
   };
 
   const handleImage = (e) => {
-    setPreview(window.URL.createObjectURL(e.target.files[0]));
+    let file = e.target.files[0];
+    setPreview(window.URL.createObjectURL(file)); //preview the image in a side 
+
+
+    //image resizer before uploading to S3
+    Resizer.imageFileResizer(file,720,500,"JPEG",100,0, async(uri) =>{
+      try{
+        let { data } = await axios.post("/api/course/upload-image",
+         {image: uri, });
+         console.log("IMAGE UPLOADED", data);
+        // set image in the state
+        setValues({ ...values, loading: false });
+      }catch(error){
+        console.log(error);   
+        setValues({...values,loading:false});
+        toast("Image Upload Failed  ,Try Again Later.")
+       
+      }
+    } )
+
+
   };
 
 
@@ -52,10 +75,9 @@ const CourseCreate = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <div>
-          <input
+          <input className ="course_select"
             type="text"
             name="name"
-            className="tx1"
             placeholder="Name of the course "
             value={values.name}
             onChange={handleChange}
@@ -63,7 +85,7 @@ const CourseCreate = () => {
         </div>
 
         <div >
-          <textarea
+          <textarea className ="course_select"
             name="description"
             placeholder="Course Description"
             cols="7"
@@ -75,11 +97,11 @@ const CourseCreate = () => {
 
         <div >
        
-            <div className="selct1" >
-              <Select
+            <div >
+              <Select className ="course_selector"
 
                 value={values.paid}
-                onChange={(v) => setValues({ ...values, paid: !values.paid })}
+                onChange={(v) => setValues({ ...values, paid: v })}
               >
                 <Option value={true}>Paid</Option>
                 <Option value={false}>Free</Option>
@@ -87,10 +109,10 @@ const CourseCreate = () => {
             </div>
               
           {values.paid && (
-            <div className="selct1">
+            <div className="course_select">
              <b> Select the course price :</b>
-              <Select
-                defaultValue="$9.99"
+              <Select className ="course_select"
+                defaultValue="$0.00"
                 style={{ widht: "100%" }}
                 onChange={(v) => setValues({ ...values, price: v })}
                 tokenSeparators={[,]}
@@ -104,7 +126,7 @@ const CourseCreate = () => {
 
 
         <div>
-          <input
+          <input className ="course_select"
             type="text"
             name="category"
             placeholder="Course category"
@@ -117,7 +139,7 @@ const CourseCreate = () => {
             <div className="imagehandling" >
               <label >
                 {values.loading ? "Uploading" : " Upload the relevant course image here "}
-                <input
+                <input className ="course_select"
                   type="file"
                   name="image"
                   onChange={handleImage}
@@ -129,11 +151,10 @@ const CourseCreate = () => {
               </label>
             </div>
         </div>
-          <div >
-            <Button
+          <div  >
+            <Button 
               onClick={handleSubmit}
               disabled={values.loading || values.uploading}
-              className="btn btn-primary"
               loading={values.loading}
               type="primary"
               size="large"
@@ -150,9 +171,11 @@ const CourseCreate = () => {
   return (
     <div >
       
-      <h1 >Create Course</h1>
-      <div className="form"> {courseCreateForm()} </div>
-      <pre>{JSON.stringify(values, null, 4)}</pre>
+      <h1 className ="course_h1" >Create  Courses</h1>
+      <img  src={create_course} alt="image 1" className="create_course_image" />
+      <div className="course_form"> {courseCreateForm()} </div>
+    
+     
 
     </div>
   );

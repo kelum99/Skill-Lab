@@ -20,7 +20,10 @@
     
     float: left;
 }
-.ant-input{
+.enroll .ant-input{
+    border-radius: 6px;
+}
+.markbackgrnd .ant-input{
     border-radius: 6px;
 }
 
@@ -56,7 +59,11 @@
     margin-right: 10%;
   
 }
-.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+.enroll .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+    border-radius: 6px;
+}
+
+.markbackgrnd .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius: 6px;
 }
 
@@ -69,7 +76,7 @@
 }
 
 .crsTable{
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 5%;
     margin-right: 5%;
     
@@ -94,26 +101,37 @@
     margin-left: 75%;
     width:20%;
 }
-.ant-btn-primary:hover,.ant-btn-primary:focus{
+.enroll .ant-btn-primary:hover,.ant-btn-primary:focus{
     background:#07bbb1 ;
     
 }
 
-
-.ant-btn-primary{
+.enroll .ant-btn-primary{
     background-color: #07bbb1;
     border-color: #07bbb1;
     background: #07bbb1;
     
 }
 
-.ant-table{
-    background-color:#f2dea6;
+.myCrs .ant-btn-primary:hover,.ant-btn-primary:focus{
+    background:#07bbb1 ;
+    
 }
-.ant-table-row {
+
+.myCrs .ant-btn-primary{
+    background-color: #07bbb1;
+    border-color: #07bbb1;
+    background: #07bbb1;
+    
+}
+
+.myCrs .ant-table{
+    background-color:#a6f2e1;
+}
+.myCrs .ant-table-row {
     text-align: center;
 }
-.ant-table-row:hover{
+.myCrs .ant-table-row:hover{
     opacity: 0.7;
     
 }
@@ -123,7 +141,7 @@
     font-family: Georgia, serif;
 }
 
-.ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
+.myCrs .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
     padding: 12px ;
     width: 20px;
        
@@ -156,7 +174,7 @@
     
     
 }
-.ant-table-thead .ant-table-cell{
+.myCrs .ant-table-thead .ant-table-cell{
     background: lightgray;
     text-align: center;
     
@@ -175,6 +193,16 @@
 }
 .addMarks .ant-btn-primary:hover{
     opacity: 0.5;
+}
+
+/*Add New Button*/
+.AddButton{
+    margin-top: 5px;
+    margin-left: 80px;
+   
+}
+.AddButton:hover{
+    opacity: 0.6;
 }
 
 

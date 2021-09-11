@@ -1,6 +1,8 @@
 
-.ant-input {
-  border-radius: 6px;
+
+
+.form-common.ant-input{
+    border-radius: 6px;
 }
 
 .ant-btn-primary {
@@ -15,41 +17,44 @@
   width: 100px;
   height: 35px;
 }
-.ant-btn-primary:hover {
-  opacity: 0.5;
+.form-common .ant-btn-primary:hover{
+    opacity: 0.5;
 }
 
-.tbl {
-  margin-top: 5%;
-  margin-left: 5%;
-  margin-right: 5%;
+.tbl{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
-.dlt {
-  width: 50px;
-  margin: 5%;
-  border-radius: 5px;
-  font-size: 15px;
-  font-weight: 500;
-  background-color: #07bbb1;
-  border-color: #07bbb1;
+
+.dlt{
+    width:50px;
+    margin: 5%;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 500;
+    background-color: #07bbb1;
+    border-color: #07bbb1;
 }
-.dlt:hover {
-  opacity: 0.5;
+
+.dlt:hover{
+    opacity: 0.5;
 }
-.searchbar {
-  margin-top: 2%;
-  margin-bottom: 0.2%;
-  margin-right: 5%;
-  margin-left: 75%;
-  width: 20%;
+
+.searchbar1{
+    margin-top:2%;
+    margin-bottom: 0.2%;
+    margin-right: 5%;
+    margin-left: 75%;
+    width:20%;
 }
 
 .tbl .ant-table-content {
   background-color: #d3a015;
 }
-.manage .ant-btn-primary {
-  background-color: #07bbb1;
-  border-color: #07bbb1;
+.manage .ant-btn-primary{
+    background-color: #00C8CD;
+    
 }
 
 .Heading1 {
@@ -58,8 +63,18 @@
   font-family: Georgia, serif;
 }
 
-.Heading2 {
-  font-size: 30px;
-  font-weight: 550;
-  font-family: Georgia, serif;
+.Heading2{
+    font-size: 30px;
+    font-weight: 550;
+    font-family: Georgia, serif;
+    margin-top:-30px;
 }
+
+.manage{
+    background:#EDFFFA;
+}
+
+
+
+
+

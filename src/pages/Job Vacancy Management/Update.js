@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 
 import { Table, Button,Input } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
+import './jobManagement.css';
 
 function UpdateJob() {
 
@@ -68,7 +69,7 @@ const columns = [
 
     return (
         <div className="myCourses">
-             
+            
             <br /><br /><center><h1 className="Heading">Job Vacancies</h1></center>
             
 

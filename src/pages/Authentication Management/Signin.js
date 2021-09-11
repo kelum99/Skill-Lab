@@ -1,8 +1,8 @@
 import React from "react";
-import { Form, Input, Button, Checkbox, Image } from 'antd';
+import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import './stylesCommon.css'
+import './stylesSignin.css'
 import logo from '../../Images/logo.png';
 
 
@@ -21,38 +21,31 @@ function Signin() {
   };
  
     const onFinish = (values) => {
-      console.log('Received values of form: ', values);
-    };
+    console.log('Received values of form: ', values);
+  };
 
-  
+    const [setValue] = React.useState(1);
 
-  const [value, setValue] = React.useState(1);
-
-  const onChange = e => {
+    const onChange = e => {
     console.log('radio checked', e.target.value);
     setValue(e.target.value);
   };
 
-
-  
-  return (
+return (
     <>
     <div className="main-container-signin">
 
-    <div className="form">
+    <div className="form-common"id="signinForm">
 
-        <h1>login</h1>
+        <h1>Login</h1>
         
-        
-{/* Form start */}
-
-<img
-      width={200}
-      src={logo} className="img-fluid" alt="Logo"
-    />
+    <div className="form-container">
+      <img
+        width={400}
+        src={logo} alt="Logo"
+      />
 
 <Form
-
 
       name="normal_login"
       className="login-form"
@@ -70,7 +63,7 @@ function Signin() {
           },
         ]}
       >
-        <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -86,14 +79,15 @@ function Signin() {
           type="password"
           placeholder="Password"
         />
+
+        
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me |</Checkbox>
-        </Form.Item>
+      <Form.Item name="remember" valuePropName="checked" noStyle>
+          <Checkbox>Remember me  |</Checkbox>
+      </Form.Item>
 
-        <a className="login-form-forgot" href="">
-        Forgot password ? </a> | <a href="">Sign up</a>
+        <a href="">Sign up</a>
         
       </Form.Item>
 
@@ -103,9 +97,9 @@ function Signin() {
         </Button>
        
       </Form.Item>
-    </Form>
-
-      {/* Form end */}
+      </Form>
+  </div>
+      
     </div>
     </div>
     </>
