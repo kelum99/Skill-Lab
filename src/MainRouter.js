@@ -18,6 +18,9 @@ import ViewMarks from "./pages/Student Management/ViewMarks";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
+import courseforlecturer from  "./pages/course/courseforlecturer";
+import coursesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
 import editQuestion from "./pages/Lecturer Management/editQuestion";
@@ -79,6 +82,8 @@ function MainRouter() {
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
+        <Route path="/courseforlecturer" exact component={courseforlecturer} />
+        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
        
 
         <Route path="/editR" exact component={editReview}/>
