@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio,Popconfirm, message } from "antd";
-import './stylesLecStdprofile.css'
+import './stylesProfile.css'
 import 'antd/dist/antd.css';
 
 function Lecprofile() {
@@ -47,14 +47,14 @@ function cancel(e) {
   return (
 
   <>
-    <div className="main-container-lecprofile">
+    <div className="main-container-profile">
 
-    <div className="form-common"id="profile">
+    <div className="form-profile">
 
         <h3>Skill Lab</h3>
         <h1>Student</h1>
 
-<Form {...layout} name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}
@@ -89,7 +89,7 @@ function cancel(e) {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-        <Button type="primary" htmlType="submit" className="btnCancel">
+        <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
           <Popconfirm

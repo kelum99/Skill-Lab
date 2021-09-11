@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio,} from "antd";
-import './stylesCommon.css'
+import './stylesSignup.css'
 import 'antd/dist/antd.css';
 
 function SignupLec() {
@@ -39,14 +39,17 @@ function SignupLec() {
 return (
 
   <>
-    <div className="main-container-signuplec">
+    <div className="main-container-signup">
 
-    <div className="form-common" id="signupForm">
+    <div className="form-common" >
 
-        <h1>Sign Up</h1>
-        <h3>As a Lecturer</h3>
+    <h1>Sign Up</h1>
+    <h2>As Lecturer</h2>
+       
+       
+        <br></br>
 
-<Form {...layout} name="signupLec" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="signupLec" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}
@@ -140,7 +143,7 @@ return (
             required: true,
           },
         ]}>
-        <Input.Password placeholder="input password" />
+        <Input.Password placeholder="Input password" />
   </Form.Item>
 
   <Form.Item name={[ 'reenterpw']} label="Re-enter Password"

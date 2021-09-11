@@ -1,0 +1,30 @@
+.form-areYou{
+    background: #1282A2;
+    margin: 5%;
+    padding: 50px;
+    border-radius: 20px;
+    width: 40%;
+}
+
+.form-areYou h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+}
+
+.main-container-areyou{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.areYou{
+    display:flex;
+    justify-content:space-around;
+    flex-direction:row;
+}
+
+
+

@@ -88,7 +88,7 @@ const columns = [
         number:'Mobile number3',
         dob:'DOB3',
         action:<><Popconfirm
-                  title="Are you sure to delete this task?"
+                  title=" Are you sure to delete this task?"
                   onConfirm={confirm}
                   onCancel={cancel}
                   okText="Yes"
@@ -112,10 +112,11 @@ const columns = [
   );
 
 return (
-        <div className="manage">
+        <div className="Au-manage">
               <Search placeholder="Search Student" onSearch={onSearch} enterButton className="searchbar1" />
-            <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
-            <center><h2 className="Heading2">Student Management</h2></center>
+
+            <br /><br /><h1>Authentication Administrator</h1>
+            <h2>Student Management</h2>
            
         
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />

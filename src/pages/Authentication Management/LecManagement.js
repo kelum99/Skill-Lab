@@ -18,6 +18,7 @@ function cancel(e) {
 
 
 //table
+
 const columns = [
    
     {
@@ -46,7 +47,7 @@ const columns = [
     },
       
   ];
-
+  
   const data = [
     {
       key: '1',
@@ -116,8 +117,9 @@ const columns = [
   );
 
   return (
-        <div className="manage">
+        <div className="Au-manage">
             <Search placeholder="Search Lecturer" onSearch={onSearch} enterButton className="searchbar" />
+
               <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
               <center><h2 className="Heading2">Lecturer Management</h2></center>
            

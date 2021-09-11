@@ -50,6 +50,7 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import AboutUs from "./pages/Authentication Management/AboutUs";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -70,6 +71,9 @@ function MainRouter() {
   return (
 
   <>
+        <Route path="/" exact component={Home}/>
+        <Route path="/aboutus" exact component={AboutUs}/>
+
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>

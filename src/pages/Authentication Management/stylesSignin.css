@@ -1,21 +1,22 @@
-#signinForm{
-    background: #C8FFF1;
+.form-signin{
+    background: #1282A2;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
 
-#signinForm h1{
+.form-signin h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
+    color: white;
 }
 
-.form-common .ant-btn-primary{
+.form-signin .ant-btn-primary{
     border-radius: 5px;
-    background: #00C8CD;
+    background: #ff0000;
     outline: none;
     border: none;
 }
@@ -24,7 +25,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background:#EDFFFA;
+    background:white;
 }
 
+.form-signin.ant-input-affix-wrapper{
+    width: 50%;
+}
 
+.form-signin .ant-form{
+    width: 50%;
+}
+
+ .ant-form{
+     color: wheat;
+ }

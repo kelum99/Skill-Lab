@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio} from "antd";
-import './stylesCommon.css'
+import './stylesSignup.css'
 import 'antd/dist/antd.css';
 
 function SignupStd() {
@@ -39,14 +39,15 @@ function SignupStd() {
  return (
 
   <>
-    <div className="main-container-signupstd">
+    <div className="main-container-signup">
 
-    <div className="form-common"id="signupForm">
+    <div className="form-common">
 
         <h1>Sign Up</h1>
-        <h3>As a Student</h3>
+        <h2>As a Student</h2>
+        
 
-<Form {...layout} name="signupStd" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="signupStd" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}

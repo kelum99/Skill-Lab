@@ -1,7 +1,7 @@
 import React from "react";
 import { Form,Button} from 'antd';
 import 'antd/dist/antd.css';
-import './stylesCommon.css'
+import './stylesAreyou.css'
 import lec from '../../Images/lec.png';
 import student from '../../Images/student.png';
 
