@@ -49,12 +49,13 @@ import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
-
-import Test from "../src/pages/Finance Management/Test";
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
 import EditItem from "../src/pages/store Management/EditItem";
 import viewStore from "../src/pages/store Management/viewStore";
+import UserView from "../src/pages/store Management/UserView";
+import AddCart from "../src/pages/store Management/AddCart";
+import Cart from "../src/pages/store Management/Cart";
 
 
 function MainRouter() {
@@ -114,7 +115,9 @@ function MainRouter() {
         <Route path="/DisplayItem" exact component={DisplayItem}/>
         <Route path="/EditItem" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
-        <Route path="/viewStore" exact component={viewStore}/>
+        <Route path="/UserView" exact component={UserView}/>
+        <Route path="/AddCart" exact component={AddCart}/>
+        <Route path="/Cart" exact component={Cart}/>
     </>
   );
 }
