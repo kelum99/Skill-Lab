@@ -1,0 +1,216 @@
+/*Edit Review Form*/
+.editRform{
+    background: #bae2f0;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    padding: 50px;
+    border-radius: 30px;
+    width: 30%;
+    height: 50%;
+   
+    margin-left: 30px;
+    margin-right: 300px;
+}
+h1{
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 30px;
+    
+}
+.editRform.ant-input{
+    border-radius: 5px;
+    width: 100%;
+    font-size: 30px;
+    
+}
+.editRform .ant-form-item-required {
+    font-weight: S00;
+   
+}
+
+.editRform .ant-btn-primary{
+    border-radius: 5px;
+    background: #07bbd1;
+    border-radius: 10px;
+    width: 50%;
+    outline: none;
+    border: #000000;
+    
+}
+.editRform.ant-rate{
+    align-items: center;
+}
+
+.main-container-editReview{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box{
+    width:800px;
+    height: 800px;
+    margin-left: -22%;
+}
+
+
+
+
+/* Contact Us page */
+.main-container-contactUs{
+    display: flex;
+    justify-content:right;
+    align-items: center;
+}
+.contactform{
+    background: #bae2f0;
+    margin-left: 0%;
+    padding: 50px;
+    border-radius: 20px;
+    width: 35%;
+    height: 50%;
+    align-content: center;
+    align-self: flex-start;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+
+h1{
+    text-align: left;
+    margin-left: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:normal;
+    font-size: 40px;
+    
+}
+.contactform.ant-input{
+    border-radius: 5px;
+    width: 250%;
+}
+.contactform .ant-form-item-required {
+    font-weight: 500;
+}
+
+
+.contactform .ant-btn-primary{
+    border-radius: 5px;
+    background: #07bbd1;
+    border-radius: 10px;
+    width: 50%;
+    outline: none;
+    border: #000000;
+    
+}
+.form .ant-checkbox-wrapper{
+    font-size: 15px;
+    font-weight: 500;
+}
+
+h4{
+    text-align: center;
+}
+
+.contactimg{
+    margin-top: 5%;
+    margin-bottom: 10%;
+    margin-left:0%;
+    margin-right:0% ;
+    height: 600px;
+    width: 600px;
+}
+
+
+
+
+/* My Review Page */
+.rTable{
+    margin-top: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    width: 1100px;
+    align-content: center;
+}
+.edit-dlt{
+    width:50px;
+    margin: 0%;
+    border-radius: 8px;
+    font-size: 30px;
+    font-weight: 500;
+    
+    background-color:#498dd1;
+    border-color: #498dd1;
+}
+.edit-dlt:hover{
+    opacity: 0.5;
+}
+
+
+
+
+
+
+/*Review List Page*/
+
+
+.reviewTable{
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+    
+}
+
+.searchbar{
+    margin-top:2%;
+    margin-bottom: 0.2%;
+    margin-right: 5%;
+    margin-left: 75%;
+    width:20%;
+   
+}
+
+.ant-table-content{
+    background-color:#c0ecfa;
+    align-content: center;
+}
+
+
+
+
+/*Review Page*/
+
+.review.cusRate.Rate{
+   color: cadetblue;
+
+
+}
+
+.review.ant-input{
+    border-radius: 5px;
+    box-sizing: content-box;
+    margin-block-start: 400%;
+}
+.sec1{
+    margin-block-start: 300px;
+}
+
+.main-container-Review{
+    display: flex;
+    justify-content: initial;
+    align-items: initial;
+}
+.main-container-Review.ant-input{
+    width: 300px;
+    margin-left: 100%;
+    margin-right: 0%;
+}
+
+.main-container-Review .ant-btn-primary{
+    border-radius: 5px;
+    background: #07bbd1;
+    border-radius: 10px;
+    width: 50%;
+    outline: none;
+    border: #000000;
+    
+}

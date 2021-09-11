@@ -1,0 +1,61 @@
+.form{
+    background: lightgrey;
+    margin: 5%;
+    padding: 50px;
+    border-radius: 20px;
+    width: 40%;
+}
+
+
+
+.form h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 40px;
+}
+.form h3{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
+
+
+
+
+.form .ant-btn-primary{
+    border-radius: 5px;
+    background: #07bbb1;
+    outline: none;
+    border: none;
+}
+
+
+
+.main-container-areyou{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-signin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.main-container-signuplec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container-signupstd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
