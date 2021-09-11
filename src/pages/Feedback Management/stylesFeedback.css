@@ -57,6 +57,14 @@ h1{
 
 
 /* Contact Us page */
+
+.issueType{
+    align-content: center;
+    
+
+}
+
+
 .main-container-contactUs{
     display: flex;
     justify-content:right;
@@ -124,10 +132,10 @@ h4{
 
 /* My Review Page */
 .rTable{
-    margin-top: 10%;
-    margin-left: 10%;
+    margin-top: 5%;
+    margin-left: 15%;
     margin-right: 10%;
-    width: 1100px;
+    width: 1000px;
     align-content: center;
 }
 .edit-dlt{
@@ -136,9 +144,10 @@ h4{
     border-radius: 8px;
     font-size: 30px;
     font-weight: 500;
+
+    background-color:#49c1d1;
     
-    background-color:#498dd1;
-    border-color: #498dd1;
+    border-color: #49c1d1;
 }
 .edit-dlt:hover{
     opacity: 0.5;
@@ -154,24 +163,42 @@ h4{
 
 .reviewTable{
     margin-top: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-left: 12%;
+    margin-right: 20%;
+    align-self: center;
+    width: 1300px;
     
     
 }
 
 .searchbar{
-    margin-top:2%;
+    margin-top: 0%;
     margin-bottom: 0.2%;
-    margin-right: 5%;
-    margin-left: 75%;
+    margin-right: 10%;
+    margin-left: 68%;
     width:20%;
+    
    
 }
 
 .ant-table-content{
     background-color:#c0ecfa;
     align-content: center;
+    margin-top: -2%;
+}
+
+.ant-table-thead.ant-table-cell{
+    background: aqua;
+    text-align: center;
+}
+
+.ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
+    padding: 12px;
+    width: 200px;
+
+}
+.ant.table-row{
+    text-align: center;
 }
 
 
@@ -214,3 +241,15 @@ h4{
     border: #000000;
     
 }
+
+.writeC.ant-input{
+    width: 200px;
+}
+
+.comntform{
+    margin-left: 20%;
+    margin-right: 50%;
+    width: 500px;
+}
+
+

@@ -146,6 +146,7 @@ function review() {
         <div>
             <br/>
             <h1>Reviews</h1>
+            </div>
 
             <div> <Space direction="horizontal">
             <div class="cusRate"><left>
@@ -177,17 +178,22 @@ function review() {
   </Space>
 
   </div>   
-        </div>
+       
         <br/><br/>
         
     
     <>
-    <div className="writeC"> <Space direction="horizontal">
+
+    <div className="reviewFro"> 
+    <Form>  
+    <Space direction="horizontal">
 
     <Form.Item  shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:20}}>
+      <div className='writeC'>
       <Comment >
       <TextArea  rows={4} placeholder="Write your review here...." size="large"  />
       </Comment>
+      </div>
     </Form.Item>
 
     <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:20}}>
@@ -198,6 +204,7 @@ function review() {
     </Button>
     </Form.Item>
     </Space>
+    </Form>
     </div>
     </>
     <> 

@@ -15,7 +15,6 @@ import UpdateEnroll from "./pages/Student Management/UpdateEnroll";
 import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
 
-
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
 import courseforlecturer from  "./pages/course/courseforlecturer";
@@ -41,8 +40,6 @@ import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 
-
-
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
 import Signin from "../src/pages/Authentication Management/Signin";
@@ -51,8 +48,8 @@ import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
-import Home from "./pages/Authentication Management/Home";
 
+import Home from "./pages/Authentication Management/Home";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -70,8 +67,6 @@ function MainRouter() {
   return (
 
   <>
-
-    
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
@@ -85,13 +80,11 @@ function MainRouter() {
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
         <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
        
-
         <Route path="/editR" exact component={editReview}/>
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
-
 
         <Route path="/askQ" exact component={askQuestion} />
         <Route path="/EditQ" exact component={editQuestion} />
@@ -128,15 +121,13 @@ function MainRouter() {
         <Route path="/DisplayItem" exact component={DisplayItem}/>
         <Route path="/EditItem" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
-        <Route path="/viewStore" exact component={viewStore}/>
 
         <Route path="/payment" exact component={Payment} />
         <Route path="/withdraw" exact component={Withdraw} />
         <Route path="/paymentHistory" exact component={PaymentHistory} />
         <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
-
+        
     </>
   );
 }
-
 export default MainRouter;
