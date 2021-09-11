@@ -9,6 +9,7 @@ import {
 } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
+import useRequest from "../../services/RequestContext";
 
 function Payment() {
   const layout = {
@@ -20,7 +21,6 @@ function Payment() {
     }
   };
 
-  //Form Vilidation
   const validateMessages = {
     required: "${label} is required!",
 
@@ -29,13 +29,17 @@ function Payment() {
     }
   };
 
-  //on submit - console log
+const {request} = useRequest();
 
-  const onFinish = values => {
-    const data = {...values, role:"Student"};
-    values.role = "student"
+  const onFinish = async (values) => {
     console.log("value",values);
-    console.log("Role",data);
+      try{
+          const result = await request.post('finance/wallet', values);
+          console.log("api call wallet result ", result);
+    } catch(e){
+      console.log("post wallet error ",e);
+    }
+  
   };
 
   return (
