@@ -1,13 +1,16 @@
 import React from "react";
+import {
+  Form,
+  Input,
+  InputNumber,
+  Button,
+  DatePicker,
+  Checkbox,
+} from "antd";
+import "./stylesFinance.css";
+import "antd/dist/antd.css";
 
-import { Form, Input, InputNumber, Button,  DatePicker, Checkbox, } from "antd";
-import 'antd/dist/antd.css';
-
-
-
-
-function Test() {
-
+function Payment() {
   const layout = {
     labelCol: {
       span: 8
@@ -17,7 +20,7 @@ function Test() {
     }
   };
 
-  //Form Vilidation 
+  //Form Vilidation
   const validateMessages = {
     required: "${label} is required!",
 
@@ -32,16 +35,14 @@ function Test() {
   };
 
   return (
-    <>
+
       <div className="main-container-payment">
-
         <div className="form">
-
           <h1>Payment</h1>
-
+          
           {/* Form start */}
           <Form
-            name="nest-messages"
+            name="payment-form"
             onFinish={onFinish}
             validateMessages={validateMessages}
             layout="vertical"
@@ -58,7 +59,6 @@ function Test() {
               name={["cardNumber"]}
               label="Card Number"
               rules={[{ required: true }]}
-
             >
               <Input maxLength={16} />
             </Form.Item>
@@ -84,25 +84,23 @@ function Test() {
               <InputNumber maxLength={3} />
             </Form.Item>
 
-            <Form.Item
-              name="save"
-              valuePropName="checked"
-            >
+            <Form.Item name="save" valuePropName="checked">
               <Checkbox>Save this card to wallet</Checkbox>
             </Form.Item>
 
-            <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset: 10 }}>
+            <Form.Item
+              shouldUpdate
+              wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
+            >
               <Button type="primary" htmlType="submit">
                 Pay
               </Button>
             </Form.Item>
-
           </Form>
           {/* Form end */}
         </div>
       </div>
-    </>
   );
 }
 
-export default Test;
+export default Payment;

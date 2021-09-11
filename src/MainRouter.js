@@ -1,14 +1,12 @@
 import React from "react";
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 
-
 import editReview from "../src/pages/Feedback Management/editReview";
 import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
 
-import Test from "./pages/Finance Management/Test";
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -17,9 +15,11 @@ import UpdateEnroll from "./pages/Student Management/UpdateEnroll";
 import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
 
-
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
+import courseforlecturer from  "./pages/course/courseforlecturer";
+import coursesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
 import editQuestion from "./pages/Lecturer Management/editQuestion";
@@ -38,7 +38,7 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
-
+import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
@@ -49,6 +49,8 @@ import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
+import Home from "./pages/Authentication Management/Home";
+
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
 import EditItem from "../src/pages/store Management/EditItem";
@@ -57,13 +59,17 @@ import UserView from "../src/pages/store Management/UserView";
 import AddCart from "../src/pages/store Management/AddCart";
 import Cart from "../src/pages/store Management/Cart";
 
+import Payment from "../src/pages/Finance Management/Payment";
+import Withdraw from "../src/pages/Finance Management/Withdraw"
+import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
+import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
+
+
 
 function MainRouter() {
   return (
 
   <>
-
-       <Route path="/test" exact component={Test}/>
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
@@ -74,14 +80,14 @@ function MainRouter() {
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
+        <Route path="/courseforlecturer" exact component={courseforlecturer} />
+        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
        
-
         <Route path="/editR" exact component={editReview}/>
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
-
 
         <Route path="/askQ" exact component={askQuestion} />
         <Route path="/EditQ" exact component={editQuestion} />
@@ -100,6 +106,8 @@ function MainRouter() {
         <Route path="/addcareere" exact component={AddJob} />
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
+        <Route path="/admin" exact component={AdminBar} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
@@ -110,16 +118,19 @@ function MainRouter() {
         <Route path="/lecmanagement" exact component={LecManagement} />
         <Route path="/stdmanagement" exact component={StdManagement} />
 
+
       
         <Route path="/AddItem" exact component={AddItem} />
         <Route path="/DisplayItem" exact component={DisplayItem}/>
         <Route path="/EditItem" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
-        <Route path="/UserView" exact component={UserView}/>
-        <Route path="/AddCart" exact component={AddCart}/>
-        <Route path="/Cart" exact component={Cart}/>
+
+        <Route path="/payment" exact component={Payment} />
+        <Route path="/withdraw" exact component={Withdraw} />
+        <Route path="/paymentHistory" exact component={PaymentHistory} />
+        <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
+        
     </>
   );
 }
-
 export default MainRouter;

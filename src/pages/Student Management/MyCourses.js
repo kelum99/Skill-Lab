@@ -1,7 +1,8 @@
 import React from "react";
 import image from "../../image/MyCourses.jpg";
 import { Table, Button, Input,Popconfirm, message } from 'antd';
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, DeleteOutlined,PlusOutlined } from '@ant-design/icons';
+import './stylesStudent.css';
 
 function MyCourses() {
 
@@ -90,6 +91,9 @@ function MyCourses() {
             <Search placeholder="Search Course" onSearch={onSearch} enterButton className="searchbar" />
             <br /><br /><center><h1 className="Heading">My Courses</h1></center>
             <center><img class="MyCourseImg" src={image} /></center>
+            <a href="./Enroll"><Button type="primary" icon={<PlusOutlined />}  className="AddButton">
+               Enroll to a New Course
+            </Button></a>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
         </div>
     );

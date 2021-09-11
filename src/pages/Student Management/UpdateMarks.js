@@ -1,6 +1,6 @@
 import React from "react";
 import { Form, Input, Button, Select,message } from 'antd';
-
+import './stylesStudent.css';
 
 function UpdateMarks(){
 
