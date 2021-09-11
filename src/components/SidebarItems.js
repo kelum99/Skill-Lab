@@ -1,30 +1,29 @@
 import React from 'react'
 import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 
-export const SidebarItemsStudent = [
+export const SidebarItemsLecturer = [
     {
         title: "My Courses",
-        path: "/mycourses",
+        path: "/myCoursesLec",
         icon: <FaIcons.FaBook />,
         className: "nav-text"
     },
     {
         title: "Q & A",
-        path: "/qanda",
+        path: "/allQL",
         icon: <FaIcons.FaEdit />,
         className: "nav-text"
     },
     {
         title: "Notices",
-        path: "/mynotices",
+        path: "/allN",
         icon: <IoIcons.IoMdNotifications />,
         className: "nav-text"
     },
     {
         title: "Performance",
-        path: "/performance",
+        path: "/ViewMarks",
         icon: <FaIcons.FaArrowCircleUp />,
         className: "nav-text"
     },
@@ -36,13 +35,13 @@ export const SidebarItemsStudent = [
     },
     {
         title: "Reviews",
-        path: "/myreviews",
+        path: "/reviewList",
         icon: <FaIcons.FaStarHalfAlt />,
         className: "nav-text"
     },
     {
         title: "My Products",
-        path: "/myproducts",
+        path: "/DisplayItem",
         icon: <FaIcons.FaListAlt />,
         className: "nav-text"
     },
@@ -56,3 +55,42 @@ export const SidebarItemsStudent = [
 ];
 
 
+export const SidebarItemsStudent = [
+    {
+        title: "My Courses",
+        path: "/MyCourses",
+        icon: <FaIcons.FaBook />,
+        className: "nav-text"
+    },
+    {
+        title: "Q & A",
+        path: "/allQ",
+        icon: <FaIcons.FaEdit />,
+        className: "nav-text"
+    },
+    {
+        title: "Performance",
+        path: "/MyPerformance",
+        icon: <FaIcons.FaArrowCircleUp />,
+        className: "nav-text"
+    },
+    {
+        title: "Notices",
+        path: "/viewN",
+        icon: <IoIcons.IoMdNotifications />,
+        className: "nav-text"
+    },
+    {
+        title: "Reviews",
+        path: "/myReview",
+        icon: <FaIcons.FaStarHalfAlt />,
+        className: "nav-text"
+    },
+    {
+        title: "Payment History",
+        path: "/paymentHistory",
+        icon: <FaIcons.FaMoneyCheckAlt />,
+        className: "nav-text"
+    }
+    
+];

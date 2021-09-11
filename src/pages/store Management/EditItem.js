@@ -37,7 +37,7 @@ function EditItem(){
         
         <div className = "MainContainer-Item">
 
-        <div className="form">
+        <div className="form-item">
 
             <h1>Edit Product Details</h1>
 
@@ -92,7 +92,7 @@ function EditItem(){
       </Form.Item>
 
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>
-        <Button type="primary" htmlType="update">
+        <Button type="primary" htmlType="submit">
           UPDATE
         </Button>
       </Form.Item>

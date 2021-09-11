@@ -1,45 +1,45 @@
-.form{
+.form-questions{
     background: rgb(202, 220, 245);
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
-.form h1{
+.form-questions h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 36px;
     
 }
-.form .ant-input{
+.form-questions .ant-input{
     border-radius: 5px;
     width: 85%;
 }
 
-.ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
+.form-questions .ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
     width:85%;
 }
 
-.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+.form-questions .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius:5px;
 }
 
-textarea.ant-input{
+.form-questions textarea.ant-input{
     min-height: 90px;
 }
-.form .ant-form-item-required {
+.form-questions .ant-form-item-required {
     font-weight: 500;
 }
 
-.form .ant-btn-primary{
+.form-questions .ant-btn-primary{
     border-radius: 10px;
     background: #185B8C;
     outline: none;
     border: none;  
 }
 
-.ant-btn{
+.form-questions .ant-btn{
 cursor: pointer;
 width: 100px;
 }

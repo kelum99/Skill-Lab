@@ -1,4 +1,4 @@
-.form{
+.form-item{
     background: lightgrey;
     margin: 5%;
     padding: 20px 5%;
@@ -9,37 +9,33 @@
     justify-content:flex-start;
 
 }
-.form h1{
+.form-item h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 36px;
     
 }
-.form .ant-input{
+.form-item .ant-input{
     border-radius: 5px;
     width: 80%;
 }
-.form .ant-form-item-required {
+.form-item .ant-form-item-required {
     font-weight: 500;
 }
-.form .ant-picker {
+.form-item .ant-picker {
     border-radius: 5px;
 }
-.form .ant-btn-primary{
+.form-item .ant-btn-primary{
     border-radius: 5px;
     background: #185B8C;
     outline: none;
     border: none;
     margin: 5%;
-    
-    
+      
 }
-.form .ant-checkbox-wrapper{
-    font-size: 15px;
-    font-weight: 500;
-}
-.form .ant-form-item .ant-select{
+
+.form-item .ant-form-item .ant-select{
     width: 80%;
 }
 
@@ -58,10 +54,10 @@
     border-radius: 100px;
     padding: 50px 40px 30px 90%;
 }
-.ant-table-content{
-    background: rgb(106, 194, 194)
+.addItem-table .ant-table-content{
+    background: rgb(94, 139, 35)
 }
-.ant-table-thead .ant-table-cell{
+.addItem-table .ant-table-thead .ant-table-cell{
     background: grey 
 }
 

@@ -35,7 +35,7 @@ import askQue2 from '../../image/askQue2.png';
         
         <div className="main-container-askQuestion">
         <div> <img className="questionimg" src={askQue2} height ={500} width ={600}/> </div>
-        <div className="form">
+        <div className="form-questions">
     
             <h1>Ask New Question!!</h1>
         
