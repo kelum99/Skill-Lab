@@ -184,8 +184,8 @@ function review() {
     
     <>
 
-    <div className="ccomntform"> 
-     
+    <div className="reviewFro"> 
+    <Form>  
     <Space direction="horizontal">
 
     <Form.Item  shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:20}}>
@@ -204,7 +204,7 @@ function review() {
     </Button>
     </Form.Item>
     </Space>
-  
+    </Form>
     </div>
     </>
     <> 
