@@ -19,7 +19,7 @@
     top: 100px;
     transition: 350ms;
     position: absolute;
-    background-color: #84c4b6;;
+    background-color: #C8FFF1;;
     z-index: 10;
     width: 300px;
     height: 70%;
@@ -35,7 +35,7 @@
     height: 60px;
 }
 .nav-text a{
-    color: aliceblue;
+    color: black;
     font-size: 18px;
     text-decoration: none;
     width: 90%;
@@ -45,10 +45,11 @@
     display: flex;
     justify-content: start;
     align-items: center;
+    font-weight: 500;
 }
 
 .nav-text a:hover{
-    background: darkblue;
+    background: #00c8cd;
 }
 
 .nav-menu-items{

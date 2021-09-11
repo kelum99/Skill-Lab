@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
-import { SidebarItemsStudent} from "./SidebarItems";
+import { SidebarItemsStudent } from "./SidebarItems";
 import "./styleSidebar.css";
 import { IconContext } from "react-icons";
 
@@ -24,7 +24,7 @@ function Slider() {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#fff" }}>
+      <IconContext.Provider value={{ color: "black" }}>
         <div className="slider" ref={ref}>
           <Link to="#" className="menu-bars">
             {sidebar ? (

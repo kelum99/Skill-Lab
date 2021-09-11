@@ -37,7 +37,7 @@ function AddItem(){
         
         <div className = "MainContainer-Item">
 
-        <div className="form">
+        <div className="form-item">
 
             <h1>Add Item</h1>
 
@@ -92,7 +92,7 @@ function AddItem(){
       </Form.Item>
 
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>
-        <Button type="primary" htmlType="add">
+        <Button type="primary" htmlType="submit">
           ADD
         </Button>
       </Form.Item>

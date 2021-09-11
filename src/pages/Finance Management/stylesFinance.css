@@ -1,72 +1,128 @@
-.form{
-    background: lightgrey;
-    border-radius: 10px;
-    margin: 5%;
-    border-radius: 20px;
-    display:flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    width: 40%;
-    padding: 20px 5%;
+.form {
+  background: #1282A2;
+  border-radius: 10px;
+  margin: 5%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 40%;
+  padding: 20px 5%;
 }
-.form h1{
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-weight: bold;
-    font-size: 36px;
-    
+.form h1 {
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
+  font-size: 36px;
+  color: #fff;
 }
-.form .ant-input{
-    border-radius: 5px;
-    width: 80%;
-
+.form .ant-input {
+  border-radius: 5px;
+  width: 80%;
 }
 .form .ant-form-item-required {
-    font-weight: 500;
+  font-weight: 500;
 }
 .form .ant-picker {
-    border-radius: 5px;
+  border-radius: 5px;
 }
-.form .ant-btn-primary{
-    border-radius: 5px;
-    background: #185B8C;
-
+.form .ant-btn-primary {
+  border-radius: 5px;
+  background: #185b8c;
 }
-.form .ant-checkbox-wrapper{
-    font-size: 15px;
-    font-weight: 500;
+.form .ant-checkbox-wrapper {
+  font-size: 15px;
+  font-weight: 500;
 }
-.form .ant-form-item .ant-select{
-    width: 80%;
+.form .ant-form-item .ant-select {
+  width: 80%;
 }
-
-.main-container-payment{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.ant-form-item-label > label{
+  color: #fff;
 }
 
-.withdrawHistory-table{  
-    margin: 3%; 
-}
-.main-container-withdrawHistory h1{
-    text-align: center;
-    margin: 50px;
-}
-
-.ant-table-content{
-    background: #185B8C;
-}
-.ant-table-thead .ant-table-cell{
-    background: grey;
+.main-container-payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  min-height: 100vh;
 }
 
-.paymentHistory-table{  
-    margin: 3%; 
+.withdrawHistory-table {
+  margin: 3%;
 }
-.main-container-paymentHistory h1{
-    text-align: center;
-    margin: 50px;
+.main-container-withdrawHistory h1 {
+  text-align: center;
+  margin: 50px;
+}
+
+.withdrawHistory-table .ant-table-content {
+  background: #185b8c;
+}
+.ant-table-thead .ant-table-cell {
+  background: grey;
+}
+
+.paymentHistory-table {
+  margin: 3%;
+}
+.main-container-paymentHistory h1 {
+  text-align: center;
+  margin: 50px;
+}
+.savedCards {
+  width: 30%;
+  height: 70vh;
+  background: lightgrey;
+  border-radius: 6px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+.updateForm {
+  width: 50%;
+  background: lightgray;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 5%;
+}
+.main-container-updateWallet {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px;
+}
+.save-card {
+  background: #185b8c;
+  width: 80%;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+.updateForm .ant-input {
+  border-radius: 5px;
+  width: 80%;
+}
+.updateForm .ant-form-item-required {
+  font-weight: 500;
+}
+.updateForm .ant-picker {
+  border-radius: 5px;
+}
+.updateForm .ant-btn-primary {
+  border-radius: 5px;
+  background: #185b8c;
+  border: none;
+  outline: none;
+}
+.walletUpdate-btn Button{
+ margin-right: 20%;
 }
 
