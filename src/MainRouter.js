@@ -17,6 +17,9 @@ import ViewMarks from "./pages/Student Management/ViewMarks";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
+import courseforlecturer from  "./pages/course/courseforlecturer";
+import coursesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
 import editQuestion from "./pages/Lecturer Management/editQuestion";
@@ -35,6 +38,7 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Delete from "./pages/Job Vacancy Management/Delete";
 import update from "./pages/Job Vacancy Management/Update";
+import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
@@ -44,6 +48,8 @@ import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
+
+import Home from "./pages/Authentication Management/Home";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -71,6 +77,8 @@ function MainRouter() {
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
+        <Route path="/courseforlecturer" exact component={courseforlecturer} />
+        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
        
         <Route path="/editR" exact component={editReview}/>
         <Route path="/review" exact component={review}/>
@@ -95,6 +103,8 @@ function MainRouter() {
         <Route path="/addcareere" exact component={AddJob} />
         <Route path="/deletecareere" exact component={Delete} />
         <Route path="/updatecareere" exact component={update} />
+        <Route path="/admin" exact component={AdminBar} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
@@ -104,6 +114,7 @@ function MainRouter() {
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
         <Route path="/stdmanagement" exact component={StdManagement} />
+
 
       
         <Route path="/AddItem" exact component={AddItem} />

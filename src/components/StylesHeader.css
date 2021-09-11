@@ -3,9 +3,14 @@
     justify-content: space-between;
     align-items: center;
     min-height: 10vh;
+
+    background: #C8FFF1;
+    color: black;
+
     background: #84c4b6;
     color: white;
  
+
 }
 .pages{
     list-style: none;

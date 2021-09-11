@@ -1,4 +1,4 @@
-#profile{
+#signinForm{
     background: #C8FFF1;
     margin: 5%;
     padding: 50px;
@@ -6,35 +6,25 @@
     width: 40%;
 }
 
-#profile h1{
-    text-align: right;
+#signinForm h1{
+    text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
-    margin-top:-20px;
-}
-#profile h3{
-    text-align: right;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
 }
 
-.lecprofileform .ant-btn-primary{
+.form-common .ant-btn-primary{
     border-radius: 5px;
     background: #00C8CD;
     outline: none;
     border: none;
 }
 
-.main-container-lecprofile{
-    background:#EDFFFA;
+.main-container-signin{
     display: flex;
     justify-content: center;
     align-items: center;
+    background:#EDFFFA;
 }
 
-.btnCancel{
-    margin:0 15px;
-    
 
-}

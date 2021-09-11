@@ -1,37 +1,48 @@
 import React from "react";
 import './stylesManagement.css'
-import { Table, Button,Input } from 'antd';
+import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 
 function stdManagement() {
+
+
+ function confirm(e) {
+  console.log(e);
+  message.success('Click on Yes');
+}
+
+function cancel(e) {
+  console.log(e);
+  message.error('Click on No');
+}
 
 //table
 const columns = [
    
     {
-      title: 'NIC',
+      title: <b>NIC</b>,
       dataIndex: 'nic',
     },
     {
-      title: 'Full Name',
+      title: <b>Full Name</b>,
       dataIndex: 'name',
     },
     {
-      title: 'Email',
+      title: <b>Email</b>,
       dataIndex: 'email',
     },
     {
-        title: 'Mobile Number',
-        dataIndex: 'number',
-      },
-      {
-        title: 'Date of Birth',
-        dataIndex: 'dob',
-      },
-      {
-        title: 'Action',
-        dataIndex: 'action',
-      },
+      title: <b>Mobile Number</b>,
+      dataIndex: 'number',
+    },
+    {
+      title: <b>Date of Birth</b>,
+      dataIndex: 'dob',
+    },
+    {
+      title: <b>Action</b>,
+      dataIndex: 'action',
+    },
       
   ];
   const data = [
@@ -42,7 +53,15 @@ const columns = [
       email: 'Email1',
       number:'Mobile number1',
       dob:'DOB1',
-      action:<><Button type="primary"icon={<DeleteOutlined />} className="dlt"/></>
+      action:<><Popconfirm
+                  title="Are you sure to delete this task?"
+                  onConfirm={confirm}
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
+                </Popconfirm></>
     },
     {
         key: '2',
@@ -51,23 +70,39 @@ const columns = [
         email: 'Email2',
         number:'Mobile number2',
         dob:'DOB2',
-        action:<><Button type="primary"icon={<DeleteOutlined />} className="dlt"/></>
-      },
-      {
+        action:<><Popconfirm
+                  title="Are you sure to delete this task?"
+                  onConfirm={confirm}
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
+                </Popconfirm></>
+    },
+    {
         key: '3',
         nic: 'NIC3',
         name: 'Name3',
         email: 'Email3',
         number:'Mobile number3',
         dob:'DOB3',
-        action:<><Button type="primary"icon={<DeleteOutlined/>}  className="dlt"/></>
-      },
+        action:<><Popconfirm
+                  title="Are you sure to delete this task?"
+                  onConfirm={confirm}
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
+                </Popconfirm></>
+    },
   ];
 
   //search box
   const { Search } = Input;
   const onSearch = value => console.log(value);
-  const suffix = (
+  (
     <AudioOutlined
       style={{
         fontSize: 16,
@@ -76,17 +111,15 @@ const columns = [
     />
   );
 
-    return (
+return (
         <div className="manage">
-              <Search placeholder="Search Lecturer" onSearch={onSearch} enterButton className="searchbar" />
+              <Search placeholder="Search Student" onSearch={onSearch} enterButton className="searchbar1" />
             <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
             <center><h2 className="Heading2">Student Management</h2></center>
            
         
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />
          
-      
-        
         </div>
     );
 }
