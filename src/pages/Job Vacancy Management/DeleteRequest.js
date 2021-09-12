@@ -1,89 +1,101 @@
-import React from "react";
-import { Form, Input, InputNumber, Button} from "antd";
-import 'antd/dist/antd.css';
+import React, { Component } from "react";
+
+import { Table, Button,Input } from 'antd';
+import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
-
-
-
 
 function DeleteRequest() {
 
-  const layout = {
-    labelCol: {
-      span: 8,
+//table
+const columns = [
+    {
+        title: 'Position',
+        dataIndex: 'position',
+      },
+    {
+      title: 'First Name',
+      dataIndex: 'firstname',
     },
-    wrapperCol: {
-      span: 16,
+    {
+      title: 'Last Name',
+      dataIndex: 'lastname',
     },
-  };
-  /* eslint-disable no-template-curly-in-string */
-  
-  const validateMessages = {
-    required: '${label} is required!',
-    types: {
-      email: '${label} is not a valid email!',
-      number: '${label} is not a valid number!',
+    {
+      title: 'E-mail',
+      dataIndex: 'email',
     },
-    number: {
-      range: '${label} must be between ${min} and ${max}',
+    {
+        title: 'Phone',
+        dataIndex: 'phone',
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+      },
+      {
+        title: 'NIC',
+        dataIndex: 'nic',
+      },
+      {
+        title: 'Birth Date',
+        dataIndex: 'bdate',
+      },
+      {
+        title: 'Employyment Status',
+        dataIndex: 'status',
+      },
+      {
+        title: 'Action',
+        dataIndex: 'action',
+      },
+  ];
+  const data = [
+    {
+      
+      jobID: '1',
+      index:'1',
+      jobID:'1',
+      title: 'Instructor',
+      salary: '25,000',
+      description: 'Lectuer',
+      action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
     },
-  };
-  
-    const onFinish = (values) => {
-      console.log(values);
-    };
+    {
+      
+      jobID: '1',
+      index:'1',
+      jobID:'1',
+      title: 'Instructor',
+      salary: '25,000',
+      description: 'Lectuer',
+      action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+    },
+    {
+      
+      jobID: '1',
+      index:'1',
+      jobID:'1',
+      title: 'Instructor',
+      salary: '25,000',
+      description: 'Lectuer',
+      action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
+    },
+  ];
 
-  return (
-    <Form {...layout} name="deleteRequ" onFinish={onFinish} validateMessages={validateMessages}>
-    <Form.Item
-      name={['name']}
-      label="Name"
-      rules={[
-        {
-          required: true,
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={['user', 'email']}
-      label="Email"
-      rules={[
-        {
-          type: 'email',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={['user', 'age']}
-      label="Age"
-      rules={[
-        {
-          type: 'number',
-          min: 0,
-          max: 99,
-        },
-      ]}
-    >
-      <InputNumber />
-    </Form.Item>
-    <Form.Item name={[ 'website']} label="Website">
-      <Input />
-    </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="Introduction">
-      <Input.TextArea />
-    </Form.Item>
-    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
-  );
-    };
-  
+
+    return (
+        <div className="myCourses">
+            
+            <br /><br /><center><h1 className="Heading">Job Vacancies</h1></center>
+            
+
+        
+            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+         
+      
+        
+        </div>
+    );
+}
 
 export default DeleteRequest;
