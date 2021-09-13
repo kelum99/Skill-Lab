@@ -7,7 +7,6 @@ import num3 from '../../image/num3.jpg';
 import num4 from '../../image/num4.jpg';
 import num5 from '../../image/num5.jpg';
 import num6 from '../../image/num6.jpg';
-
 import './courseStyles.css'
 import { Input, Space } from 'antd';
 
@@ -18,13 +17,13 @@ function courseMain() {
 
   const { Search } = Input;
 
- 
+
 
   const onSearch = value => console.log(value);
 
 
-  return ( <div>
-  <div >
+  return (<div>
+    <div >
       <Space direction="vertical" >
 
         <Search
@@ -39,7 +38,7 @@ function courseMain() {
       </Space>
 
     </div>
-    
+
     <div>
       <Carousel autoplay>
         <div>
@@ -62,10 +61,11 @@ function courseMain() {
         </div>
       </Carousel>
     </div>
-     <div className ="description">
-       <h2>Every </h2>
-     </div>
-     </div>
+    <div className="description">
+      <br/>
+      <h2 className ="cquote">Every expert was once a beginner .Start your first step  with  SKILL Lab  </h2>
+    </div>
+  </div>
 
   );
 }

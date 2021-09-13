@@ -1,5 +1,11 @@
 /*CourseMain.js*/
 
+.cquote{
+
+color: rgb(101, 109, 101);
+
+}
+
 .eduimg {
   border-radius: 5px;
   border-top: 10px;
@@ -108,7 +114,7 @@
     
 }
 
-.course ant-btn-primary{
+.course_ant-btn-primary{
   background-color: black;
   width:20%;
 }
@@ -139,4 +145,12 @@
   height: 75%;
 }
 
-/**/
+/* coursesesCreatedbyLecturer*/
+
+.primary .ant-btn-primary{ 
+  padding: 5px;
+  color: #3e14a1;
+}
+
+
+
