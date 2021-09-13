@@ -13,6 +13,7 @@ function UpdateMarks() {
     const [loading, setLoading] = useState(true);
     const { request } = useRequest();
     const { id } = useParams();
+    const [markList,setMarkList] = useState([]);
 
 
 
@@ -26,7 +27,7 @@ function UpdateMarks() {
             const result = await request.get(`student/performance/${id}`);
 
             if (result.status === 200) {
-                setData(result.data);
+                setMarkList(result.data);
                 console.log(result.data.subject)
 
             }
@@ -40,6 +41,14 @@ function UpdateMarks() {
     useEffect(() => {
         fetchMark();
     }, []);
+
+    const onSelect = value => {
+        if(value && value._id){
+            const mark = markList.find(val => val._id === value._id);
+            console.log("marks ", mark);
+            setData({...mark});
+        }
+    };
 
 
    
@@ -82,9 +91,12 @@ function UpdateMarks() {
 
     return (
         <div class="markbackgrnd">
-         
-            <div className="addMarks">
+          
+            <div className="addMarks" >
+                
                 <center><h2 className="enrolllHeading">Update Marks</h2></center>
+
+               
 
                 <Form {...layout} form={form} name="updatemarks" onFinish={onFinish}>
                     <Form.Item
@@ -187,10 +199,11 @@ function UpdateMarks() {
 
                     </Form.Item>
                 </Form>
-                        
+                   
+               
                     
             </div>
-         
+          
         </div>
 
 

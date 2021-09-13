@@ -1,7 +1,7 @@
 import React from "react";
 import image from "../../image/enrollment5.jpg";
 import image2 from "../../image/mycourse4.jpg";
-import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message } from 'antd';
+import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message,Row } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
@@ -180,7 +180,7 @@ function Enroll() {
                 {/*Course Details Form */}
 
                 <div className="crsEnroll">
-                    <center><h2>Course Details</h2></center>
+                    <center><h2 className="enrolllHeading">Course Details</h2></center>
                     <Form {...layout} form={form} name="courseEnroll" onFinish={onFinish}>
                         <Form.Item
                             name="subject"
@@ -254,6 +254,7 @@ function Enroll() {
 
 
                         <Form.Item {...tailLayout}>
+                            <Row>
                             <Button type="primary" htmlType="submit" onClick={success}>
                                 Submit
                             </Button>
@@ -261,6 +262,7 @@ function Enroll() {
                             <Button htmlType="button" onClick={onReset} className="resetBtn" >
                                 Reset
                             </Button>
+                            </Row>
 
                         </Form.Item>
                     </Form>

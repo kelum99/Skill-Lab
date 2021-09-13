@@ -75,10 +75,10 @@ function MyCourses() {
             dataIndex: 'action',
             key: 'action',
             render: () => (
-                <><a href=""><Button type="primary" icon={<EditOutlined />} className="edit-dlt" /></a>
+                <><div className="popupdlt"><a href=""><Button type="primary" icon={<EditOutlined />} className="edit-dlt" /></a>
                     <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
                         <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
-                    </Popconfirm></>
+                    </Popconfirm></div></>
         ),
         },
     ];

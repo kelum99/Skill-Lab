@@ -15,14 +15,19 @@
     margin-left: 25%;
     margin-right: 50%;
     padding: 40px;
+    padding-left: 10px;
+    padding-right: 120px;
     padding-bottom: 5px;
     border-radius: 20px;
     width: 50%;
     height:750px;
     float: left;
+    
 }
 .enroll .ant-input{
     border-radius: 6px;
+    padding-left: 25px;
+  
     
 }
 .markbackgrnd .ant-input{
@@ -37,7 +42,8 @@
     border: none;
     font-size: 15px;
     font-weight: 500;
-    margin: 5%;
+    margin-top: 10%;
+    margin-left: 5%;
     width: 100px;
     height: 35px;
    
@@ -52,19 +58,21 @@
     border: none;
     font-size: 15px;
     font-weight: 500;
-    margin: 5%;
+    margin-top: 10%;
+    margin-left: 8%;
     width: 100px;
     height: 35px;
 }
 
 .enrollImage{
     width:70%;
-    margin-left: 15%;
+    margin-left: 25%;
     margin-right: 10%;
   
 }
 .enroll .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius: 6px;
+    
    
 }
 
@@ -145,6 +153,7 @@
     font-size: 30px;
     font-weight: 550;
     font-family: Georgia, serif;
+    margin-left: 100px;
 }
 
 .myCrs .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
@@ -209,6 +218,10 @@
 }
 .AddButton:hover{
     opacity: 0.6;
+}
+
+.popupdlt .ant-popover-inner-content{
+    width: 500px;
 }
 
 

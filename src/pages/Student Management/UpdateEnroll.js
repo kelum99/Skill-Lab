@@ -56,7 +56,7 @@ function UpdateEnroll() {
     return (
         <div className="enroll">
 
-            <br /><center><h1 className="enrolllHeading">Update Enrollment</h1></center>
+            
             <div>
 
                 {/*Student Details Form */}
@@ -171,7 +171,7 @@ function UpdateEnroll() {
                 {/*Course Details Form */}
 
                 <div className="crsEnroll">
-                    <center><h2>Course Details</h2></center>
+                    <center><h2 className="enrolllHeading">Update Enrollment</h2></center>
                     <Form {...layout} form={form} name="courseEnroll" onFinish={onFinish}>
                         <Form.Item
                             name="subject"

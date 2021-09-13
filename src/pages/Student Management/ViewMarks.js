@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Input, Popconfirm, message, Card } from 'antd';
+import { Table, Button, Input, Popconfirm, message, Card, Row } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
@@ -115,10 +115,11 @@ function ViewMarks(props) {
             render: (text, record, index) => (
                 <> {markList.map(mark => (
                     <div  key={mark._id}>
-                    <Button type="primary" icon={<EditOutlined />} className="edit-dlt" />
+                    <Button type="primary" icon={<EditOutlined />} className="edit-dlt"/>
                     <Popconfirm placement="right" title={text} onConfirm={()=>onDelete(data)} okText="Yes" cancelText="No">
                             <Button danger type="primary" icon={<DeleteOutlined />} className="edit-dlt"/>
                             </Popconfirm>
+                            
                             </div>
                 ))};
                    
