@@ -23,6 +23,7 @@ import coursesesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLectur
 import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
+import editc from "./pages/course/editc";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -92,9 +93,9 @@ function MainRouter() {
         <Route path="/courseContentCreate" exact component={courseContentCreate} />
         <Route path="/courseLessons" exact component={courseLessons} />
         <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
-      
+        <Route path="/editc" exact component={editc} />
         
-       
+        
         <Route path="/editR" exact component={editReview}/>
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>

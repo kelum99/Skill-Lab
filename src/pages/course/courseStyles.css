@@ -152,5 +152,18 @@ color: rgb(101, 109, 101);
   color: #3e14a1;
 }
 
+/*coursesCreatedbyLecturer */
 
+.coursetable{
 
+  background: #88BDBC;
+  margin-top: 5%;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  width: 75%;
+  
+
+}
