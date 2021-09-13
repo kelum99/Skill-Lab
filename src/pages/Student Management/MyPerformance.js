@@ -69,7 +69,7 @@ function MyPerformance(){
     return(
         <div className="myCrs">
             <Search placeholder="Search Result" onSearch={onSearch} enterButton className="searchbar" />
-            <center><h1 className="Heading">My Performance</h1></center>
+            <center><h1 className="enrolllHeading">My Performance</h1></center>
             <p className="perLabels1">Student Id:</p><p></p>
             <p className="perLabels2"> Student Name:</p><p></p>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
