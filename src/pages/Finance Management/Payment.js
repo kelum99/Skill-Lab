@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import {
   Form,
   Input,
@@ -32,14 +33,14 @@ function Payment() {
 const {request} = useRequest();
 
   const onFinish = async (values) => {
+    values.expireDate = moment(values.expireDate).format("YYYY-MM");
     console.log("value",values);
       try{
           const result = await request.post('finance/wallet', values);
           console.log("api call wallet result ", result);
     } catch(e){
       console.log("post wallet error ",e);
-    }
-  
+    } 
   };
 
   return (
@@ -47,8 +48,7 @@ const {request} = useRequest();
       <div className="main-container-payment">
         <div className="form">
           <h1>Payment</h1>
-          
-          {/* Form start */}
+        
           <Form
             name="payment-form"
             onFinish={onFinish}
@@ -105,7 +105,7 @@ const {request} = useRequest();
               </Button>
             </Form.Item>
           </Form>
-          {/* Form end */}
+
         </div>
       </div>
   );

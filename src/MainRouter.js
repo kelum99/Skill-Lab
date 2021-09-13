@@ -64,6 +64,8 @@ import Withdraw from "../src/pages/Finance Management/Withdraw"
 import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
 import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
 import UpdateWallet from "../src/pages/Finance Management/UpdateWallet"
+import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
+
 
 
 function MainRouter() {
@@ -130,6 +132,7 @@ function MainRouter() {
         <Route path="/paymentHistory" exact component={PaymentHistory} />
         <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
         <Route path="/updateWallet" exact component={UpdateWallet} />
+        <Route path="/updateBank" exact component={UpdateBankt} />
     </>
   );
 }
