@@ -24,11 +24,11 @@ function Header() {
             <Link to="/courses">
               <li>Courses</li>
             </Link>
-            <Link to="/store">
+            <Link to="/viewStore">
               <li>Store</li>
             </Link>
-            <Link to="/jobs">
-              <li>Jobs</li>
+            <Link to="/careere">
+              <li>Career</li>
             </Link>
             <Link to="/contactUs">
               <li>Contact Us</li>
