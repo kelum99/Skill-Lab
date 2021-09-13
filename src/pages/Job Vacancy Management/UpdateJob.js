@@ -2,7 +2,6 @@ import React from "react";
 import { Form, Input, InputNumber, Button} from "antd";
 import 'antd/dist/antd.css';
 import './jobManagement.css';
-import useRequest from "../../services/RequestContext";
 
 
 
@@ -17,21 +16,6 @@ function AddJob() {
       span: 16,
     },
   };
-
-
-  const {request} = useRequest();
-
-  const onFinish = async (values) => {
-    console.log("value",values);
-      try{
-          const result = await request.post('job/job', values);
-          console.log("api call job add result ", result);
-    } catch(e){
-      console.log("post job add error ",e);
-    }
-  
-  };
-
   /* eslint-disable no-template-curly-in-string */
   
   const validateMessages = {
@@ -45,18 +29,20 @@ function AddJob() {
     },
   };
   
- 
+    const onFinish = (values) => {
+      console.log(values);
+    };
 
   return (
 <div>
-<h2 className="add-header">Add a new career opportunity</h2>
+<h2 className="add-header">Update career opportunity</h2>
     <div className="AddForm">
      
     <Form {...layout} name="deleteRequ" className="job-add-form" onFinish={onFinish} validateMessages={validateMessages}>
 
       <div className="add-form-items">
     <Form.Item
-      name={['jobId']}
+      name={['jobID']}
       label="Job ID"
       rules={[
         {
@@ -78,7 +64,7 @@ function AddJob() {
     <Input />
       
     </Form.Item>
-    <Form.Item name={['salary']} 
+    <Form.Item name={[ 'salary']} 
             label="Salary"
             rules={[
                 {
@@ -88,7 +74,7 @@ function AddJob() {
             >
       <Input />
     </Form.Item>
-    <Form.Item name={['description']}
+    <Form.Item name={['Description']}
      label="Description"
      rules={[
         {
@@ -100,7 +86,7 @@ function AddJob() {
     </Form.Item>
     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
       <Button type="primary" htmlType="submit">
-        Submit
+        Update
       </Button>
     </Form.Item>
     </div>

@@ -94,7 +94,7 @@ return(
 
     
 
-<Table columns={columns} dataSource={dataSource} />
+<Table columns={columns} dataSource={dataSource} className="addItem-table" />
     
     </div>
     

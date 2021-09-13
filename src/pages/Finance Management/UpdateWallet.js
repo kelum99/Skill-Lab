@@ -1,55 +1,52 @@
 import React from "react";
 import {
-  Form,
-  Input,
-  InputNumber,
-  Button,
-  DatePicker,
-  Checkbox,
-} from "antd";
+    Form,
+    Input,
+    InputNumber,
+    Button,
+    DatePicker,
+    Checkbox,
+  } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
-import useRequest from "../../services/RequestContext";
 
-function Payment() {
-  const layout = {
-    labelCol: {
-      span: 8
-    },
-    wrapperCol: {
-      span: 14
-    }
-  };
+function UpdateWallet() {
 
-  const validateMessages = {
-    required: "${label} is required!",
+    const layout = {
+        labelCol: {
+          span: 8
+        },
+        wrapperCol: {
+          span: 14
+        }
+      };
 
-    types: {
-      number: "${label} is not a valid number!"
-    }
-  };
-
-const {request} = useRequest();
-
-  const onFinish = async (values) => {
-    console.log("value",values);
-      try{
-          const result = await request.post('finance/wallet', values);
-          console.log("api call wallet result ", result);
-    } catch(e){
-      console.log("post wallet error ",e);
-    }
-  
-  };
+    const validateMessages = {
+        required: "${label} is required!",
+    
+        types: {
+          number: "${label} is not a valid number!"
+        }
+      };
+    
+      //on submit - console log
+      const onFinish = values => {
+        console.log(values);
+      };
 
   return (
-
-      <div className="main-container-payment">
-        <div className="form">
-          <h1>Payment</h1>
-          
-          {/* Form start */}
-          <Form
+    <div className="main-container-updateWallet">
+      <div className="savedCards">
+        <div className="save-card">
+            <h3>Card Number</h3>
+        </div>
+        <div className="save-card">
+            <h3>Card Number2</h3>
+        </div>
+      </div>
+      <div className="updateForm">
+        <h3>Update Form</h3>
+        <Form
             name="payment-form"
             onFinish={onFinish}
             validateMessages={validateMessages}
@@ -92,23 +89,21 @@ const {request} = useRequest();
               <InputNumber maxLength={3} />
             </Form.Item>
 
-            <Form.Item name="save" valuePropName="checked">
-              <Checkbox style={{color:"#fff"}}>Save this card to wallet</Checkbox>
-            </Form.Item>
-
             <Form.Item
               shouldUpdate
-              wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
+              wrapperCol={{ ...layout.wrapperCol, offset: 6 }}
+              className="walletUpdate-btn"
             >
               <Button type="primary" htmlType="submit">
-                Pay
+                Update
+              </Button>
+              <Button type="primary" htmlType="submit">
+                Delete
               </Button>
             </Form.Item>
           </Form>
-          {/* Form end */}
-        </div>
       </div>
+    </div>
   );
 }
-
-export default Payment;
+export default UpdateWallet;

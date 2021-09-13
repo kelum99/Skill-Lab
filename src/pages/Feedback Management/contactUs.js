@@ -74,26 +74,22 @@ function contactUs(){
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        
-        name="type"
-        valuePropName="value" 
-        
-    >   
-        <div>
-        <h4>Issue Type :</h4>
-        </div>
-            
-      <Radio.Group >
-      <Space direction="horizontal">
-         
-      <Radio value={1}>Technical </Radio>
-      <Radio value={2}>Financial </Radio>
-      </Space>
-     
       
-    </Radio.Group>        
-        </Form.Item >
+      <Form.Item 
+         name="radio-group" 
+         label="Issue Type"
+         rules={[
+           {
+             required:true,message :'Pleace select type !!'
+           }
+         ]}>
+
+        <Radio.Group>
+          <Radio value="tecnical">Technical</Radio>
+          <Radio value="financial">Financial</Radio>
+          
+        </Radio.Group>
+      </Form.Item>
 
 
         <Form.Item

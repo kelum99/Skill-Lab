@@ -1,6 +1,6 @@
 import React from "react";
 import { Table, Input } from 'antd';
-
+import './stylesStudent.css';
 
 function MyPerformance(){
 
@@ -67,7 +67,7 @@ function MyPerformance(){
 
 
     return(
-        <div>
+        <div className="myCrs">
             <Search placeholder="Search Result" onSearch={onSearch} enterButton className="searchbar" />
             <center><h1 className="Heading">My Performance</h1></center>
             <p className="perLabels1">Student Id:</p><p></p>

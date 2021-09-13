@@ -4,18 +4,19 @@ import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
 
-function DeleteRequest() {
+function UpdateJob() {
 
 //retrieve
 const [data, setData] = useState([]);
+const [jobList, setJobList] = useState([]);
 const [loading, setLoading] = useState(true);
 const { request } = useRequest();
 
 //fetchMarks
-const fetchCareere = async () => {
+const fetchJobs = async () => {
     setLoading(true);
     try {
-        const result = await request.get("job/applicationview");
+        const result = await request.get("job/jobview");
         if (result.status === 200) {
             setData(result.data);
         }
@@ -26,82 +27,75 @@ const fetchCareere = async () => {
     }
 };
 
-useEffect(() => {
-  fetchCareere();
-}, []);
 
+
+
+
+useEffect(() => {
+  fetchJobs();
+}, []);
 
 
 //table
 const columns = [
     {
-        title: 'Position',
-        dataIndex: 'position',
-        key : 'position'
+        title: '#',
+        key: 'index',
+        dataIndex: 'index',
+        render: (text,record,index) => index + 1,
       },
     {
-      title: 'First Name',
-      dataIndex: 'firstName',
-      key : 'firstName'
+      title: 'Job ID',
+      dataIndex: 'jobId',
+      key: 'jobId'
     },
     {
-      title: 'Last Name',
-      dataIndex: 'lastName',
-      key : 'lastName'
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title'
     },
     {
-      title: 'E-mail',
-      dataIndex: 'email',
-      key : 'email'
+      title: 'Salary',
+      dataIndex: 'salary',
+      key: 'salary'
     },
     {
-        title: 'Phone',
-        dataIndex: 'phone',
-        key : 'phone'
-      },
-      {
-        title: 'Address',
-        dataIndex: 'address',
-        key : 'address'
-      },
-      {
-        title: 'NIC',
-        dataIndex: 'nic',
-        key : 'nic'
-      },
-      {
-        title: 'Birth Date',
-        dataIndex: 'birthDate',
-        key : 'birthDate'
-      },
-      {
-        title: 'Employyment Status',
-        dataIndex: 'status',
-        key : 'status'
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description'
       },
       {
         title: 'Action',
         dataIndex: 'action',
-        key : 'action',
+        key: 'action',
 
-        render: () => (
-          <>
+
+
+        render: (text,record,index) => (
+          <><a href={`./update/${data[index]._id}`}>
+
+              <Button type="primary" icon={<EditOutlined />} className="edit-dlt" /></a>
+
               <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+
                   <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
               </Popconfirm></>
   ),
       },
   ];
- 
+
   const text = 'Are you sure you want to delete ?';
 
   function confirm() {
       message.info('Result Deleted Successfully !');
   }
+
     return (
+
+
         <div className="myCourses">
             
-            <br /><br /><h2 className="add-header">Delete Applicant requests</h2>
+            <br /><br /><h2 className="add-header">Update and Delete vacancies</h2>
             
 
         
@@ -113,4 +107,4 @@ const columns = [
     );
 }
 
-export default DeleteRequest;
+export default UpdateJob;
