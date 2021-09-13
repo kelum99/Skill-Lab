@@ -236,5 +236,9 @@
 }
 
 .deleteCard{
-    margin-left: 700px;
+    margin-left: 100px;
+}
+
+.ulList li{
+    color: black;
 }

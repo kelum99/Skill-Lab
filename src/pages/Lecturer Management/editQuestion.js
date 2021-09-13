@@ -15,14 +15,18 @@ import editQ1 from '../../image/editQ1.jpg';
                span: 16,
             },
         };
+
+
     //alert mg
     const success = () => {
     message.success('Your data Updated Successfully !');
     };    
+        
 
     //drop down
     const { Option } = Select;
     
+
     //form validation
     const validateMessages = {
         required: '${label} is required!',
@@ -30,11 +34,12 @@ import editQ1 from '../../image/editQ1.jpg';
           email: '${label} is not a valid email!',
         },
       };
+     
 
-      //on submit - console log
-      const onFinish = (values) => {
-        console.log(values);
-      };
+    //on submit - console log
+    const onFinish = (values) => {
+      console.log(values);
+    };
 
       return (
         <>
@@ -82,9 +87,9 @@ import editQ1 from '../../image/editQ1.jpg';
             ]}
           >
           <Select placeholder="Please select course">
-            <Option value="course1">Course 1</Option>
-            <Option value="course2">Course 2</Option>
-            <Option value="course3">Course 3</Option>
+            <Option value="Java">Java</Option>
+            <Option value="Machine lerning">Machine lerning</Option>
+            <Option value="Data science">Data science</Option>
             <Option value="other">Other</Option>
           </Select>
           </Form.Item>
@@ -113,7 +118,7 @@ import editQ1 from '../../image/editQ1.jpg';
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button type="primary"icon={<EditOutlined />} htmlType="submit"onClick={success}>
+            <Button className = "btnQuestion" type="primary"icon={<EditOutlined />} htmlType="submit"onClick={success}>
               UPDATE
             </Button>
           </Form.Item>
@@ -122,7 +127,5 @@ import editQ1 from '../../image/editQ1.jpg';
     </div>
     </>
       );
-
-   
-    }
+  }
     export default editQuestion;

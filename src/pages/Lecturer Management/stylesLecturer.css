@@ -14,16 +14,16 @@
     font-size: 36px;   
 }
 /*form inputs*/
-.lecform .ant-input{
+.lecform.ant-input{
     border-radius: 5px;
     width: 85%;
 }
 /*change width of dropdown*/
-.ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
+.lecform.ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
     width:85%;
 }
 /*change border of dropdown*/
-.ant-select:not(.ant-select-customize-input) .ant-select-selector{
+.lecform.ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius:5px;
 }
 /*change hight of textarea*/
@@ -35,17 +35,14 @@ textarea.ant-input{
     font-weight: 500;
 }
 /*form buttons*/
-.lecform .ant-btn-primary{
+.btnQuestion.ant-btn-primary{
     border-radius: 10px;
     background: #185B8C;
     outline: none;
     border: none;  
+    width: 100px;
 }
 
-.lecform.ant-btn{
-cursor: pointer;
-width: 100px;
-}
 /*containers of forms*/
 .main-container-askQuestion{
     display: flex;
@@ -87,12 +84,12 @@ width: 100px;
 /*noticeAll table*/
 .allQTable3{
     margin-top: 5%;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 
 /*edit and delete buttons*/
-.edit-dlt{
+.edit-dlt-table{
     width:50px;
     margin: 5%;
     border-radius: 5px;
@@ -101,38 +98,43 @@ width: 100px;
     background-color: #185B8C;
     border-color: #185B8C;
 }
-.edit-dlt:hover{
+.edit-dlt-table:hover{
     opacity: 0.5;
 }
 /*search bar in allQuestionList & allQuestions*/
-.searchbar{
+.searchQ{
     margin-top:2%;
     margin-bottom: 0.2%;
     margin-right: 5%;
     margin-left: 75%;
     width:20%;
 }
-/*change background color*/
-.ant-table-content{
-    background-color: rgb(202, 220, 245);
-}
+
 /*ask new question button*/
-.allQuestions .ant-btn-primary{
+.allT .ant-btn-primary{
     background-color: #185B8C;
     border-color: #185B8C;
 }
 /*table description heading*/
-.Heading{
+.question_h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
     font-size: 40px;
-    font-weight: 550;
-    font-family: Georgia, serif;
+    margin-top: 5px;    
+}
+.notice_h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 55px;
+    margin-top: 40px;    
 }
 /*table description subheading*/
 .subHeading{
-    font-size: 15px;
-    font-weight: 550;
-    font-family: Georgia, serif;
-    margin-top: 0%;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
 }
 /*ask new question button*/
 .btnAll{
@@ -177,4 +179,8 @@ width: 100px;
 .ant-table-thead > tr > th{
     background: lightslategray;
     text-align: center;
+}
+/*change table background*/
+.allT.ant-table-content{
+    background-color: rgb(202, 220, 245);
 }

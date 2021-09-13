@@ -1,6 +1,7 @@
 import React from "react";
 import "./StylesHeader.css";
-import Slider from "./Slider";
+import SliderLecturer from "./SliderLecturer";
+import SliderStudent from './SliderStudent'
 import logo from '../Images/logo.png';
 
 
@@ -10,7 +11,8 @@ function Header() {
     <>
       <div className="conatiner">
         <div className="header">
-          <Slider />
+          <SliderLecturer />
+          <SliderStudent />
           <img src={ logo } alt="logo" className="logo" />
  
           <ul className="pages">

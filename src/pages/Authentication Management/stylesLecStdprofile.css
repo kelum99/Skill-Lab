@@ -1,18 +1,19 @@
-.lecprofileform{
-    background: lightgrey;
+#profile{
+    background: #C8FFF1;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
 
-.lecprofileform h1{
+#profile h1{
     text-align: right;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 40px;
+    margin-top:-20px;
 }
-.lecprofileform h3{
+#profile h3{
     text-align: right;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -20,14 +21,20 @@
 
 .lecprofileform .ant-btn-primary{
     border-radius: 5px;
-    background: #07bbb1;
+    background: #00C8CD;
     outline: none;
     border: none;
 }
 
 .main-container-lecprofile{
+    background:#EDFFFA;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.btnCancel{
+    margin:0 15px;
+    
+
+}

@@ -1,10 +1,6 @@
 import React,{useState} from "react";
-import axios from "axios";
-import job from '../../image/job.jpeg';
-import mailalert from '../../image/m1.jpg'
-import pay from '../../image/p1.jpg'
-import quick from '../../image/q1.jpg'
 import {Link} from 'react-router-dom';
+import './jobManagement.css';
 
 export default function Delete(){
   return(

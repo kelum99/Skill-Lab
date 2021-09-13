@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Input, InputNumber, Button} from "antd";
 import 'antd/dist/antd.css';
+import './jobManagement.css';
 
 
 

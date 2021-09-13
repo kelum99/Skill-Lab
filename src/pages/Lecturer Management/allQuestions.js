@@ -1,10 +1,40 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import './stylesLecturer.css';
 import 'antd/dist/antd.css';
 import { Table, Button,Input,message,Popconfirm} from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined,PlusCircleOutlined} from '@ant-design/icons';
+import useRequest from "../../services/RequestContext";
+import { useHistory } from 'react-router-dom';
 
-function allQuestions() {
+function AllQuestions() {
+
+  //navigate to page
+  const history = useHistory();
+
+  // retrive
+  const[data,setData] = useState([]);
+  const[loading,setLoading] = useState(true);
+  const{request} = useRequest();
+
+  const fetchQuestion = async () => {
+    setLoading(true);
+    try {
+      const result = await request.get("lecturer/question/findAll");
+      if (result.status === 200) {
+        setData(result.data);
+      }
+      console.log(" question list get ", result);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestion();
+  }, []);
+  
+
   //Alert mg
   const text = 'Are you sure you want to delete ?';
 
@@ -16,75 +46,52 @@ function allQuestions() {
 //table
 const columns = [
     {
-        title: '#',
-        dataIndex: 'index',
+    title: '#',
+    dataIndex: 'index',
+    key:'index',
+    render:(text,record,index) => index +1,
     },
     {
       title: 'Student Name',
       dataIndex: 'studentName',
+      key:'studentName'
     },
     {
       title: 'Email',
       dataIndex: 'email',
+      key: 'email',
     },
     {
         title: 'Course Name',
         dataIndex: 'courseName',
+        key: 'courseName',
     },
     {
       title: 'Topic',
       dataIndex: 'topic',
+      key: 'topic',
     },
     {
         title: 'Question',
-        dataIndex: 'description',
+        dataIndex: 'question',
+        key: 'question',
     },
     {
-        title: 'Action',
-        dataIndex: 'action',
+      title: 'Action',
+      dataIndex: 'action',
+      key:'action',
+      render: () =>(
+        <span>
+        <><Button type="primary"icon={<EditOutlined />} onClick={() => history.push('./editQ')} className="edit-dlt-table"/>
+        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+          <Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt-table"/>
+        </Popconfirm></>
+        </span>
+      ),
     },
   ];
-  const data = [
-    {
-       key: '1',
-       index:'1',
-       studentName: 'name1',
-       email: 'email1',
-       courseName:'course1',
-       topic: 'topic1',
-       description:'Question1',
-       action:<><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/>
-       <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
-       <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
-       </Popconfirm></>
-    },
-    {
-        key: '2',
-        index:'2',
-        studentName: 'name2',
-        email: 'email2',
-        courseName:'course2',
-        topic: 'topic2',
-        description:'Question2',
-        action:<><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/>
-        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
-        <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/>
-        </Popconfirm></>
-      },
-      {
-        key: '3',
-        index:'3',
-        studentName: 'name3',
-        email: 'email3',
-        courseName:'course3',
-        topic: 'topic3',
-        description:'Question3',
-        action:<><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/>
-        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
-        <Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/>
-        </Popconfirm></>
-      },
-  ];
+
+  
 
   //search box
   const { Search } = Input;
@@ -98,17 +105,16 @@ const columns = [
     />
   );
 
-    return (
-        
-        <div className="allQuestions">
-            <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchbar" />
-            <br /><br /><center><h1 className="Heading">All Questions</h1></center>
-            <center><h2 className="subHeading">Any Questions? Feel free to ask!!</h2></center>
+  
+    return (    
+        <div className="allT">
+            <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ" />
+            <h1 className="question_h1">Frequently Asked Questions</h1>
+            <h2 className="subHeading">Any Questions? Feel free to ask!!</h2>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable" />
-            <div> <Button type="primary" icon={<PlusCircleOutlined />} className="btnAll">Ask New Question</Button></div>
+            <Button type="primary" icon={<PlusCircleOutlined />} className="btnAll"onClick={() => history.push('./askQ')}>Ask New Question</Button>
         </div>
-    
     );
-}
+}  
 
-export default allQuestions;
+export default AllQuestions;

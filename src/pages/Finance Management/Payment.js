@@ -9,6 +9,7 @@ import {
 } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
+import useRequest from "../../services/RequestContext";
 
 function Payment() {
   const layout = {
@@ -20,7 +21,6 @@ function Payment() {
     }
   };
 
-  //Form Vilidation
   const validateMessages = {
     required: "${label} is required!",
 
@@ -29,9 +29,17 @@ function Payment() {
     }
   };
 
-  //on submit - console log
-  const onFinish = values => {
-    console.log(values);
+const {request} = useRequest();
+
+  const onFinish = async (values) => {
+    console.log("value",values);
+      try{
+          const result = await request.post('finance/wallet', values);
+          console.log("api call wallet result ", result);
+    } catch(e){
+      console.log("post wallet error ",e);
+    }
+  
   };
 
   return (
@@ -85,7 +93,7 @@ function Payment() {
             </Form.Item>
 
             <Form.Item name="save" valuePropName="checked">
-              <Checkbox>Save this card to wallet</Checkbox>
+              <Checkbox style={{color:"#fff"}}>Save this card to wallet</Checkbox>
             </Form.Item>
 
             <Form.Item

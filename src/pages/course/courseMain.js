@@ -7,7 +7,8 @@ import num3 from '../../image/num3.jpg';
 import num4 from '../../image/num4.jpg';
 import num5 from '../../image/num5.jpg';
 import num6 from '../../image/num6.jpg';
-import coursemain from './courseMain.css';
+
+import './courseStyles.css'
 import { Input, Space } from 'antd';
 
 
@@ -23,11 +24,12 @@ function courseMain() {
 
 
   return ( <div>
-  <div className="searchbar">
+  <div >
       <Space direction="vertical" >
 
         <Search
-          placeholder="input search text"
+          className="course_search"
+          placeholder="Search your course here "
           allowClear
           enterButton="Search"
           size="large"
