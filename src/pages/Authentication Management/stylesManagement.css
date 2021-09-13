@@ -1,11 +1,11 @@
 
 
 
-.form-common.ant-input{
+.form-common .ant-input{
     border-radius: 6px;
 }
 
-.ant-btn-primary {
+.form-common .ant-btn-primary {
   border-radius: 5px;
   background-color: #07bbb1;
   border-color: #07bbb1;

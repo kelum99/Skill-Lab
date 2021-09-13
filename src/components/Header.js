@@ -1,29 +1,39 @@
 import React from "react";
 import "./StylesHeader.css";
 import SliderLecturer from "./SliderLecturer";
-import SliderStudent from './SliderStudent'
-import logo from '../Images/logo.png';
-
+import SliderStudent from "./SliderStudent";
+import logo from "../Images/logo.png";
+import { Link } from "react-router-dom";
 
 function Header() {
-
   return (
     <>
       <div className="conatiner">
         <div className="header">
           <SliderLecturer />
           <SliderStudent />
-          <img src={ logo } alt="logo" className="logo" />
- 
-          <ul className="pages">
-            <li>Home</li>
-            <li>About</li>
-            <li>Courses</li>
-            <li>Store</li>
-            <li>Jobs</li>
-            <li>Contact Us</li>
-          </ul>
+          <img src={logo} alt="logo" className="logo" />
 
+          <ul className="pages">
+            <Link to="/">
+              <li>Home</li>
+            </Link>
+            <Link to="/about">
+              <li>About</li>
+            </Link>
+            <Link to="/courses">
+              <li>Courses</li>
+            </Link>
+            <Link to="/viewStore">
+              <li>Store</li>
+            </Link>
+            <Link to="/careere">
+              <li>Career</li>
+            </Link>
+            <Link to="/contactUs">
+              <li>Contact Us</li>
+            </Link>
+          </ul>
         </div>
       </div>
     </>
