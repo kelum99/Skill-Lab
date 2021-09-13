@@ -82,7 +82,7 @@ function editReview(){
           </Form.Item>
 
           <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-            <Button type="primary" htmlType="submit">
+            <Button className="btneditR" type="primary" htmlType="submit">
                 Submit
             </Button>
             </Form.Item>
