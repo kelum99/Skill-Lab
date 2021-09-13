@@ -3,7 +3,7 @@ import './stylesLecturer.css';
 import 'antd/dist/antd.css';
 import { Table, Button,Input,message,Popconfirm } from 'antd';
 import {DeleteOutlined,AudioOutlined} from '@ant-design/icons';
-import allList from '../../image/allList.png';
+import allList1 from '../../image/allList1.jpg';
 import useRequest from "../../services/RequestContext";
 
 function AllQuestionList() {
@@ -109,7 +109,7 @@ function AllQuestionList() {
         <div className="allT">
             <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ" />
             <h1 className="question_h1">All Questions List</h1>
-            <center><img className="questionimg" src={allList} alt="allQList" height ={200} width ={250}/></center>
+            <center><img className="questionimg" src={allList1} alt="allQList" height ={400} width ={900}/></center>
            <div> <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable2" /> </div> 
         </div>
       

@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Button, Select,message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
-import askQue2 from '../../image/askQue2.png';
+import askQ from '../../image/askQ.jpg';
 import useRequest from "../../services/RequestContext";
 
     function AskQuestion() {
@@ -50,7 +50,7 @@ import useRequest from "../../services/RequestContext";
       return (
         <>  
         <div className="main-container-askQuestion">
-        <div> <img className="questionimg" src={askQue2} alt="askQuestion" height ={500} width ={600}/> </div>
+        <div> <img className="questionimg" src={askQ} alt="askQuestion" height ={500} width ={700}/> </div>
         <div className="lecform">
     
             <h1>Ask New Question!!</h1>

@@ -1,21 +1,54 @@
-import React from "react";
+import React ,{ useState, useEffect } from "react";
 import { Form, Input,Button ,Select,message} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
 import {EditOutlined} from '@ant-design/icons';
 import editQ1 from '../../image/editQ1.jpg';
+import useRequest from "../../services/RequestContext";
+import { useParams } from "react-router-dom";
 
+function EditQuestion() {
+  
+  const layout = {
+    labelCol: {
+       span: 8,
+    },
+    wrapperCol: {
+       span: 16,
+    },
+};
 
-    function editQuestion() {
-        const layout = {
-            labelCol: {
-               span: 8,
-            },
-            wrapperCol: {
-               span: 16,
-            },
-        };
+ //retrieve
+ const [data, setData] = useState();
+ const [loading, setLoading] = useState(false);
+ const { request } = useRequest();
+ const { id } = useParams();
 
+ //fetchMarks
+ const fetchQuestion = async val => {
+   setLoading(true);
+   try {
+     const result = await request.get(`lecturer/question/${val}`);
+
+     if (result.status === 200) {
+         const temp ={...result.data};
+       setData(temp);
+       console.log("test ", temp);
+     }
+
+     setLoading(false);
+   } catch (e) {
+     setLoading(false);
+   }
+ };
+
+ useEffect(() => {
+   if (id) {
+     fetchQuestion(id);
+   }
+ }, [id]);
+
+    
 
     //alert mg
     const success = () => {
@@ -37,8 +70,14 @@ import editQ1 from '../../image/editQ1.jpg';
      
 
     //on submit - console log
-    const onFinish = (values) => {
-      console.log(values);
+    const onFinish = async values => {
+      try {
+        const result = await request.put(`lecturer/question/${data._id}`,values);
+        console.log("api call question updated", result);
+        window.location.reload(true);
+      } catch (e) {
+        console.log("update error ", e);
+      }
     };
 
       return (
@@ -50,7 +89,7 @@ import editQ1 from '../../image/editQ1.jpg';
             <h1>Edit Question!!</h1>
           
         
-        <Form {...layout} name="lecturer management" onFinish={onFinish} validateMessages={validateMessages}>
+       {data&&<Form {...layout} name="lecturer management" onFinish={onFinish} initialValues={data}  key={data._id} validateMessages={validateMessages}>
  
           <Form.Item
             name={['studentName']}
@@ -122,10 +161,10 @@ import editQ1 from '../../image/editQ1.jpg';
               UPDATE
             </Button>
           </Form.Item>
-        </Form>
+        </Form>}
         </div>
     </div>
     </>
       );
   }
-    export default editQuestion;
+    export default EditQuestion;
