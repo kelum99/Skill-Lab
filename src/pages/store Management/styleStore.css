@@ -56,10 +56,11 @@
     padding: 50px 40px 30px 90%;
 }
 .addItem-table .ant-table-content{
-    background: rgb(94, 139, 35)
+    background: #bae2f0;
+    font-size: 16px;
 }
 .addItem-table .ant-table-thead .ant-table-cell{
-    background: grey 
+    background: #07bbd1 
 }
 .txt{
     text-align: left;
@@ -82,8 +83,8 @@
 
 .one-item{
     background: lightgrey;
-    width: 380px;
-    height: 30vh;
+    width: 400px;
+    height: 40vh;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -107,6 +108,13 @@
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+}
+.addItem-table{
+    margin: 40px;
+}
+.product-img{
+    height:100px;
+    width: 130px;
 }
     
     

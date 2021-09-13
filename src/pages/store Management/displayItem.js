@@ -1,21 +1,23 @@
-import React, {useEffect,useState} from 'react';
-import { Table, Button, Menu, Dropdown, Space } from 'antd';
-import 'antd/dist/antd.css';
-import UseRequest from '../../services/RequestContext'; 
-import { isMoment } from 'moment';
+import React, { useEffect, useState } from "react";
+import { Table, Button, Popconfirm, message } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import "antd/dist/antd.css";
+import UseRequest from "../../services/RequestContext";
+import { useHistory, Link } from "react-router-dom";
 
-function DisplayItem(){
+function DisplayItem() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState([]);
+  const [itemList, setItemList] = useState([]);
+  const history = useHistory();
+  const { request } = UseRequest();
 
-  const[data, setData] = useState([]);
-  const[loading, setLoading] = useState([]);
-  const[bankList, setBankList] = useState([]);
-    
   const fetchProductDetails = async () => {
     setLoading(true);
     try {
       const result = await request.get("store/productDetails");
       if (result.status === 200) {
-        setData(result.data);
+        setItemList(result.data);
       }
       console.log(" Product Deatils list get ", result);
       setLoading(false);
@@ -28,69 +30,87 @@ function DisplayItem(){
     fetchProductDetails();
   }, []);
 
-  const {request} = UseRequest();
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`store/product/${value._id}`);
+      if (result.status === 200) {
+        await fetchProductDetails();
+        setData(undefined);
+      }
+      console.log("api call item deleted", result);
+    } catch (e) {
+      console.log("delete item error", e);
+    }
+  };
 
-
-    const columns = [
-        {
-          title: 'Product ID',
-          dataIndex: 'productId',
-          key: 'productId',
-        },
-
-        {
-          title: 'Product Name',
-          dataIndex: 'productName',
-          key: 'productName',
-        },
-
-        {
-          title: 'Category',
-          dataIndex: 'category',
-          key: 'category',
-        },
-
-        {
-            title: 'Price',
-            dataIndex: 'price',
-            key: 'price',
-          },
-
-        {
-            title: 'Action',
-            key: 'action',
-            render: (text, record) => (
-              <Space size="middle">
-                <a>Edit</a>
-                <a>Delete</a>
-              </Space>
-            ),
-          },
-      ];
-
-      
-
-
-
-      
-return(
-
-    <div className = "MainContaner-Diaplay">
-
-    
-  <div class = "button">
-   <Button>Add Product</Button>
-    
-  </div>
   
 
-    
+  const columns = [
+    {
+      title: "Product ID",
+      dataIndex: "productId",
+      key: "productId"
+    },
 
-<Table columns={columns} dataSource={data} className="addItem-table" />
-    
+    {
+      title: "Product Name",
+      dataIndex: "productName",
+      key: "productName"
+    },
+
+    {
+      title: "Category",
+      dataIndex: "category",
+      key: "category"
+    },
+
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price"
+    },
+    {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      render: (text, record, index) => (
+        <React.Fragment key={index}>
+          <Button type="primary" onClick={() => history.push(`/EditItem/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+          <Popconfirm
+            placement="right"
+            title={text}
+            onConfirm={() => onDelete(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button
+              danger
+              type="primary"
+              icon={<DeleteOutlined />}
+              className="edit-dlt"
+            />
+          </Popconfirm>
+        </React.Fragment>
+      )
+    }
+  ];
+
+  return (
+    <div className="MainContaner-Diaplay">
+      <div class="button">
+      <Link to="/AddItem" >
+        <Button>Add Product</Button>
+        </Link>
+      </div>
+
+      <Table
+        columns={columns}
+        dataSource={itemList}
+        className="addItem-table"
+        pagination= {false}
+      />
     </div>
-    
-); 
+  );
 }
 
- export default DisplayItem;
+export default DisplayItem;

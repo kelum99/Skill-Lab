@@ -3,6 +3,8 @@ import { Form, Input, Select, Button } from "antd";
 import "antd/dist/antd.css";
 import "./styleStore.css";
 import UseRequest from "../../services/RequestContext";
+import productImg from '../../Images/logo.png';
+import {  Link } from "react-router-dom";
 
 function UserView() {
   const { Option } = Select;
@@ -56,9 +58,10 @@ function UserView() {
     <div className="item-container">
       {itemList.map(item => (
         <div className="one-item" key={item._Id} onClick={() => onSelect(item)}>
-          <h2>{item.productName}</h2>
+          <h2><Link to={`/AddCart/${item._id}`} >{item.productName} </Link> </h2>
           <h4>{item.category}</h4>
           <h4>Price: {item.price}$</h4>
+          <img src={productImg} className="product-img"/>
         </div>
       ))}
       </div>
