@@ -1,9 +1,10 @@
 import React from "react";
 import image from "../../image/enrollment5.jpg";
 import image2 from "../../image/mycourse4.jpg";
-import { Form, Input, Button, DatePicker, Select, Radio, InputNumber,message } from 'antd';
+import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
+import useRequest from "../../services/RequestContext";
 
 
 function Enroll() {
@@ -11,7 +12,7 @@ function Enroll() {
     //alert msg
     const success = () => {
         message.success('You Enrolled Successfully to the Course !');
-      };
+    };
 
     //textarea
     const { TextArea } = Input;
@@ -19,8 +20,19 @@ function Enroll() {
     //form
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-        console.log(values);
+    //on finish method
+    const { request } = useRequest();
+
+    const onFinish = async (values) => {
+        console.log("values", values);
+        try {
+            const result = await request.post('student/enroll', values);
+            console.log("api call enroll result ", result);
+        }
+        catch (e) {
+            console.log("post enroll error ", e);
+        }
+        form.resetFields();
     };
 
     const onReset = () => {
@@ -56,9 +68,9 @@ function Enroll() {
             <center><img src={image} ></img></center>
             <div>
 
-                 {/*Student Details Form */}
+                {/*Student Details Form */}
 
-                <div className="stdEnroll">
+                {/* <div className="stdEnroll">
                     <center><h2>Student Details</h2></center>
                     <Form {...layout} form={form} name="studentEnroll" >
                         <Form.Item
@@ -163,7 +175,7 @@ function Enroll() {
                         </Form.Item>
 
                     </Form>
-                </div>
+                </div> */}
 
                 {/*Course Details Form */}
 
@@ -180,9 +192,12 @@ function Enroll() {
                             ]}
                         >
                             <Select placeholder="Select Subject" >
-                                <Select.Option value="Subject1">Subject1</Select.Option>
-                                <Select.Option value="Subject2">Subject2</Select.Option>
-                                <Select.Option value="Subject3">Subject3</Select.Option>
+                                <Select.Option value="Software Engineering">Software Engineering</Select.Option>
+                                <Select.Option value="E-Commerce">E-Commerce</Select.Option>
+                                <Select.Option value="Object Oriented Programming">Object Oriented Programming</Select.Option>
+                                <Select.Option value="Information Systems">Information Systems</Select.Option>
+                                <Select.Option value="Computer Science">Computer Science</Select.Option>
+                                <Select.Option value="Network and Security<">Network and Security</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -195,9 +210,15 @@ function Enroll() {
                             ]}
                         >
                             <Select placeholder="Select Course">
-                                <Select.Option value="Course1">Course1</Select.Option>
-                                <Select.Option value="Course2">Course2</Select.Option>
-                                <Select.Option value="Course3">Course3</Select.Option>
+                                <Select.Option value="Database Systems">Database Systems</Select.Option>
+                                <Select.Option value="Numerical Analysis">Numerical Analysis</Select.Option>
+                                <Select.Option value="Programming Languages">Programming Languages</Select.Option>
+                                <Select.Option value="Java">Java</Select.Option>
+                                <Select.Option value="Python">Python</Select.Option>
+                                <Select.Option value="Mern Stack">Mern Stack</Select.Option>
+                                <Select.Option value="Web App development">Web App development</Select.Option>
+                                <Select.Option value="Operating Systems">Operating Systems</Select.Option>
+                                <Select.Option value="Software Development Life Cycle">Software Development Life Cycle</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -210,9 +231,11 @@ function Enroll() {
                             ]}
                         >
                             <Select placeholder="Select Lecturer">
-                                <Select.Option value="Lecturer1">Lecturer1</Select.Option>
-                                <Select.Option value="Lecturer2">Lecturer2</Select.Option>
-                                <Select.Option value="Lecturer3">Lecturer3</Select.Option>
+                                <Select.Option value="Mr.John mathew">Mr.John mathew</Select.Option>
+                                <Select.Option value="Mrs. Elizabeth Linda">Mrs. Elizabeth Linda</Select.Option>
+                                <Select.Option value="Prof. Gamage">Prof. Gamage</Select.Option>
+                                <Select.Option value="Mr.William David">Mr.William David</Select.Option>
+                                <Select.Option value="Prof.Richard">Prof.Richard</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -235,7 +258,7 @@ function Enroll() {
                                 Submit
                             </Button>
 
-                            <Button htmlType="button" onClick={onReset}  className="resetBtn" >
+                            <Button htmlType="button" onClick={onReset} className="resetBtn" >
                                 Reset
                             </Button>
 
