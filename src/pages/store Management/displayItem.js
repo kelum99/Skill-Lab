@@ -1,20 +1,41 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import { Table, Button, Menu, Dropdown, Space } from 'antd';
 import 'antd/dist/antd.css';
+import UseRequest from '../../services/RequestContext'; 
+import { isMoment } from 'moment';
 
 function DisplayItem(){
 
-    const menu = (
-        <Menu onClick={DisplayItem}>
-          
-        </Menu>
-      );
+  const[data, setData] = useState([]);
+  const[loading, setLoading] = useState([]);
+  const[bankList, setBankList] = useState([]);
+    
+  const fetchProductDetails = async () => {
+    setLoading(true);
+    try {
+      const result = await request.get("store/productDetails");
+      if (result.status === 200) {
+        setData(result.data);
+      }
+      console.log(" Product Deatils list get ", result);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductDetails();
+  }, []);
+
+  const {request} = UseRequest();
+
 
     const columns = [
         {
           title: 'Product ID',
-          dataIndex: 'productID',
-          key: 'productID',
+          dataIndex: 'productId',
+          key: 'productId',
         },
 
         {
@@ -47,39 +68,10 @@ function DisplayItem(){
           },
       ];
 
+      
 
-      const dataSource = [
-        {
-          key: '1',
-          productID: 'Item1',
-          productName: 'Name',
-          category: 'Category1',
-          price: 'Price',
-        },
-        {
-          key: '2',
-          productID: 'Item2',
-          productName: 'Name',
-          category: 'Category2',
-          price: 'Price',
-        },
 
-        {
-            key: '3',
-            productID: 'Item3',
-            productName: 'Name',
-            category: 'Category3',
-            price: 'Price',
-          },
 
-          {
-            key: '4',
-            productID: 'Item4',
-            productName: 'Name',
-            category: 'Category4',
-            price: 'Price',
-          },
-      ];
       
 return(
 
@@ -94,7 +86,7 @@ return(
 
     
 
-<Table columns={columns} dataSource={dataSource} className="addItem-table" />
+<Table columns={columns} dataSource={data} className="addItem-table" />
     
     </div>
     

@@ -124,6 +124,9 @@ function MainRouter() {
         <Route path="/DisplayItem" exact component={DisplayItem}/>
         <Route path="/EditItem" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
+        <Route path="/UserView" exact component={UserView}/>
+        <Route path="/AddCart" exact component={AddCart}/>
+        <Route path="/Cart" exact component={Cart}/>
 
         <Route path="/payment" exact component={Payment} />
         <Route path="/withdraw" exact component={Withdraw} />
