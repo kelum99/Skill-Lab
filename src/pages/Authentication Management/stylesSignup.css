@@ -1,5 +1,5 @@
 .form-common{
-    background: #1282A2;
+    background: #00acfc;
     border-radius: 10px;
     margin: 5%;
     border-radius: 20px;
@@ -8,6 +8,7 @@
     flex-direction: column;
     width: 40%;
     padding: 20px 5%;
+    box-shadow: 0px 0px 50px #00000094;
 }
 
 .main-container-signup{
@@ -20,7 +21,7 @@
 }
 
 .form-common .ant-input {
-    border-radius: 5px;
+    border-radius: 20px;
     width: 80%;
 }
 
@@ -41,13 +42,13 @@
 
 .form-common .ant-btn{
     border-radius: 5px;
-    background: #ffff00;
+    background: #0004ff81;
     outline: none;
     border: none;
 }
 
 .form-common .ant-input-password{
-    border-radius: 5px;
+    border-radius: 20px;
     margin-left: 2px;
     width: 80%;
 }

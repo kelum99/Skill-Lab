@@ -2,6 +2,7 @@ import React from "react";
 import { Form, Input, Button, DatePicker, Radio} from "antd";
 import './stylesSignup.css'
 import 'antd/dist/antd.css';
+import useRequest from "../../services/RequestContext";
 
 function SignupStd() {
 
@@ -16,8 +17,7 @@ function SignupStd() {
     
   };
   
-
-  //Form Vilidation 
+  
   const validateMessages = {
     required: "${label} is required!",
 
@@ -26,10 +26,17 @@ function SignupStd() {
     }
   };
 
-  //on submit - console log
-  const onFinish = values => {
-    const data={...values, role:"Student"};
-    console.log("value",data);
+  const {request} = useRequest();
+
+ 
+  const onFinish = async (values) => {
+    console.log("value",values);
+    try{
+      const result = await request.post('AuthenticationRoute/StudentSignup', values);
+      console.log("api call wallet result ", result);
+} catch(e){
+  console.log("post wallet error ",e);
+}
   };
 
   const [value] = React.useState(1);
@@ -91,8 +98,8 @@ function SignupStd() {
         ]}
       >
       <Radio.Group value={value}>
-      <Radio value={1}>Male</Radio>
-      <Radio value={2}>Female</Radio>
+      <Radio value={"Male"}>Male</Radio>
+      <Radio value={"Female"}>Female</Radio>
       
     </Radio.Group>
   </Form.Item> 

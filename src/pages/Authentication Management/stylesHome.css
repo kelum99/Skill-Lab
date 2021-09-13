@@ -28,6 +28,7 @@
     font-family:Arial black;
     outline: none;
     border: none;
+    box-shadow: 0px 0px 50px #1100ff94;
 }
 
 .main-container-home{
@@ -38,10 +39,7 @@
     background-image: linear-gradient(to bottom, #C8FFF1, #00BACD);
 }
 
-.homeBtn{
 
-    margin-left:1800px;
-}
 
 .hme{
 

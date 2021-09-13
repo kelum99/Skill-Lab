@@ -1,5 +1,5 @@
 .form-areYou{
-    background: #1282A2;
+    background: #bae2f0;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
@@ -11,7 +11,8 @@
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 50px;
-    color: white;
+    color: black;
+    margin-left: 1%;
 }
 
 .main-container-areyou{
@@ -26,5 +27,18 @@
     flex-direction:row;
 }
 
+.login-form-forgot{
+    margin-left: 20px;
+    color: black;
+}
 
+.login-form-forgot:hover{
+    color: white;
+}
+
+
+.img1{
+    box-shadow: 0px 0px 50px #00000094;
+    
+}
 

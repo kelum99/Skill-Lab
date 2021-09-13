@@ -3,6 +3,7 @@ import { Form, Input, Button, DatePicker, Radio,  Popconfirm, message } from "an
 import './stylesProfile.css'
 import 'antd/dist/antd.css';
 
+
 function Lecprofile() {
 
   
@@ -26,7 +27,7 @@ function Lecprofile() {
 }
   
 
-  //Form Vilidation 
+  
   const validateMessages = {
     required: "${label} is required!",
     types: {
@@ -34,12 +35,16 @@ function Lecprofile() {
     }
   };
 
-  //on submit - console log
+  
   const onFinish = values => {
     console.log(values);
   };
 
   const [value] = React.useState(1);
+
+  
+
+
 
   return (
   <>
@@ -97,7 +102,7 @@ function Lecprofile() {
         <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
-            <Popconfirm 
+        <Popconfirm 
               title="   Are you sure to delete your profile?"
               onConfirm={confirm}
               onCancel={cancel}
@@ -108,8 +113,11 @@ function Lecprofile() {
           Delete my Account
         </Button>
             </Popconfirm>
+           
 </Form.Item>
 </Form>
+
+
     
     </div>
     </div>
