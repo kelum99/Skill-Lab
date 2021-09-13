@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState, useEffect, useParams } from "react";
 import image2 from "../../image/mycourse4.jpg";
-import { Form, Input, Button, DatePicker, Select, Radio, InputNumber,message } from 'antd';
+import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
 
 
+
 function UpdateEnroll() {
+
+
+
 
     //alert msg
     const success = () => {
         message.success('Your data Updated Successfully !');
-      };
+    };
 
     //textarea
     const { TextArea } = Input;
@@ -52,12 +56,12 @@ function UpdateEnroll() {
     return (
         <div className="enroll">
 
-            <br/><center><h1 className="Heading">Update Enrollment</h1></center>
+            <br /><center><h1 className="enrolllHeading">Update Enrollment</h1></center>
             <div>
 
-                 {/*Student Details Form */}
+                {/*Student Details Form */}
 
-                <div className="stdEnroll">
+                {/* <div className="stdEnroll">
                     <center><h2>Student Details</h2></center>
                     <Form {...layout} form={form} name="studentEnroll" >
                         <Form.Item
@@ -162,7 +166,7 @@ function UpdateEnroll() {
                         </Form.Item>
 
                     </Form>
-                </div>
+                </div> */}
 
                 {/*Course Details Form */}
 
@@ -172,6 +176,7 @@ function UpdateEnroll() {
                         <Form.Item
                             name="subject"
                             label="Subject"
+
                             rules={[
                                 {
                                     required: true,
@@ -179,9 +184,12 @@ function UpdateEnroll() {
                             ]}
                         >
                             <Select placeholder="Select Subject" >
-                                <Select.Option value="Subject1">Subject1</Select.Option>
-                                <Select.Option value="Subject2">Subject2</Select.Option>
-                                <Select.Option value="Subject3">Subject3</Select.Option>
+                                <Select.Option value="Software Engineering">Software Engineering</Select.Option>
+                                <Select.Option value="E-Commerce">E-Commerce</Select.Option>
+                                <Select.Option value="Object Oriented Programming">Object Oriented Programming</Select.Option>
+                                <Select.Option value="Information Systems">Information Systems</Select.Option>
+                                <Select.Option value="Computer Science">Computer Science</Select.Option>
+                                <Select.Option value="Network and Security<">Network and Security</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -194,9 +202,15 @@ function UpdateEnroll() {
                             ]}
                         >
                             <Select placeholder="Select Course">
-                                <Select.Option value="Subject1">Course1</Select.Option>
-                                <Select.Option value="Subject2">Course2</Select.Option>
-                                <Select.Option value="Subject3">Course3</Select.Option>
+                                <Select.Option value="Database Systems">Database Systems</Select.Option>
+                                <Select.Option value="Numerical Analysis">Numerical Analysis</Select.Option>
+                                <Select.Option value="Programming Languages">Programming Languages</Select.Option>
+                                <Select.Option value="Java">Java</Select.Option>
+                                <Select.Option value="Python">Python</Select.Option>
+                                <Select.Option value="Mern Stack">Mern Stack</Select.Option>
+                                <Select.Option value="Web App development">Web App development</Select.Option>
+                                <Select.Option value="Operating Systems">Operating Systems</Select.Option>
+                                <Select.Option value="Software Development Life Cycle">Software Development Life Cycle</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -209,9 +223,11 @@ function UpdateEnroll() {
                             ]}
                         >
                             <Select placeholder="Select Lecturer">
-                                <Select.Option value="Subject1">Lecturer1</Select.Option>
-                                <Select.Option value="Subject2">Lecturer2</Select.Option>
-                                <Select.Option value="Subject3">Lecturer3</Select.Option>
+                                <Select.Option value="Mr.John mathew">Mr.John mathew</Select.Option>
+                                <Select.Option value="Mrs. Elizabeth Linda">Mrs. Elizabeth Linda</Select.Option>
+                                <Select.Option value="Prof. Gamage">Prof. Gamage</Select.Option>
+                                <Select.Option value="Mr.William David">Mr.William David</Select.Option>
+                                <Select.Option value="Prof.Richard">Prof.Richard</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -234,7 +250,7 @@ function UpdateEnroll() {
                                 Update
                             </Button>
 
-                            <Button htmlType="button" onClick={onReset}  className="resetBtn" >
+                            <Button htmlType="button" onClick={onReset} className="resetBtn" >
                                 Reset
                             </Button>
 
