@@ -18,8 +18,13 @@ import ViewMarks from "./pages/Student Management/ViewMarks";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
+import courseEdit from "./pages/course/courseEdit";
 import courseforlecturer from  "./pages/course/courseforlecturer";
-import coursesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+import coursesesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+import courseContentCreate from "./pages/course/courseContentCreate";
+import courseLessons from "./pages/course/courseLessons";
+import viewACourseLesson from "./pages/course/viewACourseLesson";
+import editc from "./pages/course/editc";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -88,10 +93,20 @@ function MainRouter() {
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
+        <Route path="/courseEdit/:id" exact component={courseEdit} />
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
+
+        <Route path="/coursesesCreatedbyLecturer" exact component={coursesesCreatedbyLecturer} />
+        <Route path="/courseContentCreate" exact component={courseContentCreate} />
+        <Route path="/courseLessons" exact component={courseLessons} />
+        <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
+        <Route path="/editc" exact component={editc} />
+          
+          
+        <Route path="/editR" exact component={editReview}/>
         <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
-       
         <Route path="/editR/:id" exact component={editReview}/>
+          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
