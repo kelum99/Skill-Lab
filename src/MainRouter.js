@@ -7,6 +7,7 @@ import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
 
+
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -89,11 +90,13 @@ function MainRouter() {
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
         <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
        
-        <Route path="/editR" exact component={editReview}/>
+        <Route path="/editR/:id" exact component={editReview}/>
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
+        
+        
 
         <Route path="/askQ" exact component={askQuestion} />
         <Route path="/EditQ" exact component={editQuestion} />
