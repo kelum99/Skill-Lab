@@ -81,7 +81,7 @@ function MainRouter() {
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
-        <Route path="/UpdateEnroll" exact component={UpdateEnroll}/>
+        <Route path="/UpdateEnroll/:id" exact component={UpdateEnroll}/>
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
