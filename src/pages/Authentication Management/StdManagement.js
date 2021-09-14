@@ -2,7 +2,6 @@ import React,{useState,useEffect} from "react";
 import './stylesManagement.css'
 import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { DeleteOutlined,AudioOutlined} from '@ant-design/icons';
-
 import useRequest from "../../services/RequestContext";
 
 function StdManagement() {
@@ -46,11 +45,12 @@ const onDelete = async value =>{
   try{
    
     const result = await request.delete(`AuthenticationRoute/StudentSignup/${value._id}`);
-    if(result.status === 200){
-      await fetchAuthenticationStudent();
-      setData(undefined);
-    }
+    // if(result.status === 200){
+    //   await fetchAuthenticationStudent();
+    //   setData(undefined);
+    // }
     console.log("api call data deleted" , result);
+    window.location.reload(true);
   }catch(e){
     console.log("error",e);
   }

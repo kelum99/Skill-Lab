@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import 'antd/dist/antd.css';
 import { Select, Button, Avatar } from "antd";
 import './courseStyles.css';
 import Resizer from "react-image-file-resizer";
 import create_course from '../../image/create_course.jpg';
+import Eraser from '../../image/Eraser.jpg';
 import { toast } from 'react-toastify';
 import useRequest from "../../services/RequestContext";
-
+  
 //destructure
 const { Option } = Select;
 
@@ -27,27 +28,16 @@ const CourseCreate = () => {
 
   });
 
-
-
   const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
   const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
-
-  const {request} = useRequest();
-  
-  
-
-
-
-
-  
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
 
   };
 
- 
+  const {request} = useRequest();
 
   const handleImage = (e) => {
     let file = e.target.files[0];
@@ -58,7 +48,7 @@ const CourseCreate = () => {
     // resize
     Resizer.imageFileResizer(file, 720, 500, "JPEG", 100, 0, async (uri) => {
       try {
-       let { data } = await request.post("course/uploadImage", {
+       let { data } = await request.post("course/upload-image", {
           image: uri,
         });
         console.log("IMAGE UPLOADED" ,data);
@@ -73,18 +63,9 @@ const CourseCreate = () => {
   };
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      // console.log(values);
-                      
-      const { data } = await request.post("course/coursecreate", {
-        ...values,
-      });
-      toast("Great! Now you can start adding lessons");
-    } catch (err) {
-      toast(err.response.data);
-    }
+    console.log(values);
   };
 
   //price dropdown selection array
@@ -184,7 +165,7 @@ const CourseCreate = () => {
             size="large"
             shape="round"
           >
-            {values.loading ? "Saving..." : "Save & Continue"}
+            {values.loading ? "Saving..." : "Update"}
           </Button>
         </div>
       </div>
@@ -192,15 +173,25 @@ const CourseCreate = () => {
     </form>
   );
 
-  
+  const onFinish =async(values) =>{
+    console.log("value" ,values);
+    try{
+
+      const  { result } = await request.post("course/course", values);
+      console.log("IMAGE UPLOADED" ,result);
+    }catch(e){
+      console.log("POST coursecreate error " ,e);
+    }
+  };
+
 
 
 
   return (
     <div >
 
-      <h1 className="course_h1" >Create  Courses</h1>
-      <img src={create_course} alt="image 1" className="create_course_image" />
+      <h1 className="course_h1" >Edit Course</h1>
+      <img src={Eraser} alt="image 1" className="create_course_image" />
       <div className="course_form"> {courseCreateForm()} </div>
 
 

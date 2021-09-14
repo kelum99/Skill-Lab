@@ -12,13 +12,14 @@ function AllQuestionList() {
   const[data,setData] = useState([]);
   const[loading,setLoading] = useState(true);
   const{request} = useRequest();
+  const [questionList, setQuestionList] = useState([]);
 
   const fetchQuestion = async () => {
     setLoading(true);
     try {
       const result = await request.get("lecturer/question/findAll");
       if (result.status === 200) {
-        setData(result.data);
+        setQuestionList(result.data);
       }
       console.log(" question list get ", result);
       setLoading(false);
@@ -31,7 +32,19 @@ function AllQuestionList() {
     fetchQuestion();
   }, []);
 
-
+  //delete method
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`lecturer/question/${value._id}`);
+      if (result.status === 200) {
+        await fetchQuestion();
+        setData(undefined);
+      }
+      console.log("api call question deleted", result);
+    } catch (e) {
+      console.log("delete question error", e);
+    }
+  };
 
    //Alert mg
    const text = 'Are you sure you want to delete ?';
@@ -79,12 +92,14 @@ function AllQuestionList() {
       title: 'Action',
       dataIndex: 'action',
       key:'action',
-      render: () =>(
+      render: (text, record, index) =>(
+        <React.Fragment key={index}>
         <span>
-        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Popconfirm placement="right" title={text}  onConfirm={() => onDelete(record)} okText="Yes" cancelText="No">
           <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt-table"/>
         </Popconfirm>
         </span>
+        </React.Fragment>
       ),
     },
   ];
@@ -110,7 +125,7 @@ function AllQuestionList() {
             <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ" />
             <h1 className="question_h1">All Questions List</h1>
             <center><img className="questionimg" src={allList1} alt="allQList" height ={400} width ={900}/></center>
-           <div> <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable2" /> </div> 
+           <div> <Table columns={columns} dataSource={questionList} size="middle" pagination={false} className="allQTable2" /> </div> 
         </div>
       
     );
