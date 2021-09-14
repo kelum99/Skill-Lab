@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, DatePicker, Radio,  Popconfirm, message } from "antd";
+import { Form, Input, Button,Popconfirm, message } from "antd";
 import './stylesProfile.css'
 import 'antd/dist/antd.css';
 

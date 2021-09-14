@@ -4,6 +4,7 @@ import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import useRequest from "../../services/RequestContext";
 
+
 function LecManagement() {
 
   const [data,setData] = useState([]);
@@ -23,16 +24,16 @@ function cancel(e) {
 }
 
 
-const fetchAuthenticationStudent = async () => {
+const fetchAuthenticationLecturer = async () => {
   setLoading(true);
 
   try {
     const result = await request.get("AuthenticationRoute/LecturerSignup");
+    
     if (result.status === 200) {
-      console.log(result.data);
       setData(result.data);
     }
-    console.log(" wallet list get ", result);
+    console.log(" lec list get ", result);
     setLoading(false);
   } catch (e) {
     setLoading(false);
@@ -40,15 +41,21 @@ const fetchAuthenticationStudent = async () => {
 };
 
 useEffect(() => {
-  fetchAuthenticationStudent();
+  fetchAuthenticationLecturer();
 }, []);
 
 
-const onDelete = async values =>{
+
+const onDelete = async value =>{
   try{
-    const id = "id";
-    const result = await request.delete('AuthenticationRoute/StudentSignup/${id}' , values);
+   
+    const result = await request.delete(`AuthenticationRoute/LecturerSignup/${value._id}`);
+    // if(result.status === 200){
+    //   await fetchAuthenticationLecturer();
+    //   setData(undefined);
+    // }
     console.log("api call data deleted" , result);
+    window.location.reload(true);
   }catch(e){
     console.log("error",e);
   }
@@ -102,16 +109,17 @@ const columns = [
     title: <b>Action</b>,
     dataIndex: 'action',
     key:'action',
-    render:()=>(
-      <span>
-        <><Button type="primary"icon={<DeleteOutlined />} className="dlt" onClick={onDelete}/>
-        <Popconfirm placement="right"  title="Are you sure to delete this task?"
-                onConfirm={confirm}
+    render:(text, record,index)=>(
+      <React.Fragment key={index}>
+          
+          <Popconfirm placement="right"  title="Are you sure to delete this task?"
+                onConfirm={()=>onDelete(record)}
                 onCancel={cancel}
                 okText="Yes"
-                 cancelText="No" >
-        </Popconfirm></>
-      </span>
+                cancelText="No" >
+                 <Button type="primary"icon={<DeleteOutlined />} className="dlt" />
+        </Popconfirm>
+        </React.Fragment>
     )
   },
       
