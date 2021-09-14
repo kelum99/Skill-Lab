@@ -1,5 +1,5 @@
 import React from "react";
-import { Form,Popover,Button} from 'antd';
+import { Form,Button} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesHome.css'
 import home from '../../Images/home.png';
@@ -14,14 +14,14 @@ return (
 
 <Form>
 
-    <Form.Item > <div className="homeBtn">
-            <Button type="primary" htmlType="submit">
+    <Form.Item > 
+            <Button type="primary" htmlType="submit" className="btnSignin">
             SIGNIN
             </Button>
-            <Button type="primary" htmlType="submit" className="btnCancel">
+            <Button type="primary" htmlType="submit" className="btnReg">
             REGISTER
             </Button>
-            </div>
+           
     </Form.Item>
 
     <Form.Item>

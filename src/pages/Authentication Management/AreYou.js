@@ -1,7 +1,7 @@
 import React from "react";
 import { Form,Button} from 'antd';
 import 'antd/dist/antd.css';
-import './stylesCommon.css'
+import './stylesAreyou.css'
 import lec from '../../Images/lec.png';
 import student from '../../Images/student.png';
 
@@ -18,17 +18,18 @@ return (
       <div className="form-areYou">
 
             <h1>How do you want to continue?</h1>
+            <br></br>
         
       <div className="areYou">
 
       
-      <img id="test"
+      <img className="img1"
             width={350}
             src={lec}  />
       
 
       
-      <img
+      <img className="img1"
             width={350}
             src={student} />
       
@@ -36,7 +37,7 @@ return (
 
     
 <Form>
-        
+        <br></br>
       <a className="login-form-forgot" href="">Already have an account ? </a> 
 
 </Form>

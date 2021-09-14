@@ -1,0 +1,56 @@
+.child{
+    margin-top:80px;
+    margin-left:200px;
+   
+}
+
+.main-container-aboutus{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to bottom, #C8FFF1, #00BACD);
+}
+
+.aboutus{
+    
+    font-size:80px;
+    font-family:"Arial black";
+    color:#0060CC;
+    text-align: center;
+}
+.abouttext-container{
+
+    margin-top:-40px;
+    margin-left:300px;
+    text-align: center;
+    margin-right: 23%;
+}
+
+.abttxt1{
+    font-size:25px;
+    font-family:"Arial";
+    color:#0060CC;
+    margin-top:-20px;
+}
+
+.abttxt2{
+    font-size:25px;
+    font-family:"Arial";
+    color:#0060CC;
+    margin-top:-10px;
+}
+
+.abttxt3{
+    font-size:25px;
+    font-family:"Arial";
+    color:#0060CC;
+    margin-top:-10px;
+}
+
+.abttxt4{
+    font-size:25px;
+    font-family:"Arial";
+    color:#0060CC;
+    margin-top:-10px;
+}
