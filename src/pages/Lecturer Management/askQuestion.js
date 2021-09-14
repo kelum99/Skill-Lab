@@ -1,18 +1,25 @@
 import React from "react";
-import { Form, Input, Button, Select } from 'antd';
+import { Form, Input, Button, Select,message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
-import askQue2 from '../../image/askQue2.png';
+import askQ from '../../image/askQ.jpg';
+import useRequest from "../../services/RequestContext";
 
-    function askQuestion() {
-        const layout = {
-            labelCol: {
-               span: 8,
-            },
-            wrapperCol: {
-               span: 16,
-            },
-        };
+    function AskQuestion() {
+
+      const layout = {
+        labelCol: {
+           span: 8,
+        },
+        wrapperCol: {
+           span: 16,
+        },
+    };
+    
+    //alert mg
+    const success = () => {
+      message.success('Your data Submitted Successfully !');
+    };
 
     //drop down   
     const { Option } = Select;
@@ -24,22 +31,31 @@ import askQue2 from '../../image/askQue2.png';
           email: '${label} is not a valid email!',
         },
       };
+      
 
-      //on submit - console log
-      const onFinish = (values) => {
-        console.log(values);
-      };
+    //on submit - console log
+    const {request} = useRequest();
+
+    const onFinish = async (values) => {
+        console.log("value",values);
+          try{
+              const result = await request.post('lecturer/question', values);
+              console.log("api call question result ", result);
+             } catch(e){
+              console.log("post question error ",e);
+        }
+    };
+
 
       return (
-        <>
-        
+        <>  
         <div className="main-container-askQuestion">
-        <div> <img className="questionimg" src={askQue2} height ={500} width ={600}/> </div>
-        <div className="form-questions">
+        <div> <img className="questionimg" src={askQ} alt="askQuestion" height ={500} width ={700}/> </div>
+        <div className="lecform">
     
             <h1>Ask New Question!!</h1>
         
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        <Form {...layout} name="lecturer management" onFinish={onFinish} validateMessages={validateMessages}>
  
           <Form.Item
             name={['studentName']}
@@ -76,9 +92,9 @@ import askQue2 from '../../image/askQue2.png';
             ]}
           >
           <Select placeholder="Please select course">
-            <Option value="course1">Course 1</Option>
-            <Option value="course2">Course 2</Option>
-            <Option value="course3">Course 3</Option>
+            <Option value="java">java</Option>
+            <Option value="Machine lerning">Machine lerning</Option>
+            <Option value="Data Science">Data Science</Option>
             <Option value="other">Other</Option>
           </Select>
           </Form.Item>
@@ -107,7 +123,7 @@ import askQue2 from '../../image/askQue2.png';
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button type="primary" htmlType="submit">
+            <Button className ="btnQuestion" type="primary" htmlType="submit" onClick={success}>
               ASK
             </Button>
           </Form.Item>
@@ -117,7 +133,5 @@ import askQue2 from '../../image/askQue2.png';
     </>
     
     );
-
-   
     }
-    export default askQuestion;
+    export default AskQuestion;

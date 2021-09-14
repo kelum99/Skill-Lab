@@ -1,7 +1,8 @@
 import React from 'react';
 import { Form, Input, Select, Button } from 'antd';
 import 'antd/dist/antd.css';
-import './styleStore.css'
+import './styleStore.css';
+import UseRequest from '../../services/RequestContext'; 
 
 
 function AddItem(){
@@ -27,8 +28,16 @@ function AddItem(){
         },
       };
 
-      const onFinish = (values) => {
+      const {request} = UseRequest();
+
+      const onFinish = async (values) => {
         console.log(values);
+        try{
+          const result = await request.post('store/productDetails', values);
+          console.log("api call productDetails result", result);
+        }catch(e){
+          console.log("post productDetails error", e);
+        }
       };
 
       const { Option } = Select;

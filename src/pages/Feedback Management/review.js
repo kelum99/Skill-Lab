@@ -1,135 +1,157 @@
 import React from "react";
 import 'antd/dist/antd.css';
-import { Rate,Progress,Space,Input,Form,Button,Comment,  List} from  'antd';
+import { Rate,Progress,Space,Input,Form,Button,Comment,  List,message} from  'antd';
 import avatar  from '../../image/avatar.jpg'
 import './stylesFeedback.css'
+import useRequest from "../../services/RequestContext";
 
 
-function review() {
+function Review() {
 
-    const layout = {
+  //alert msg
+  const success = () => {
+    message.success('Thanks for your comment !!');
+ };  
+  
+  const layout = {
         labelCol: {
-          span: 16,
+          span: 8,
         },
         wrapperCol: {
-          span: 20,
+          span: 14,
         },
       };
 
+    const {request} = useRequest();
+    
+    //on submit - console log
+   const onFinish =  async values => {
+   console.log("value",values);
+   try{
+     const result = await request.post('feedback/review', values);
+     console.log("api call reviews ", result);
+   } catch(e){
+    console.log("post review details error ",e);
+}
+
+ };
+
+
+       
      
 
-      const data = [
-        {
+      // const data = [
+      //   {
           
-          author: 'Han Solo',
+      //     author: 'Han Solo',
           
-          content: (
-            <p>
-              We supply a series of design principles, practical patterns and high quality design
-              resources (Sketch and Axure), to help people create their product prototypes beautifully and
-              efficiently.
-            </p>
-          ),
-          rate: (
-            <Rate disabled allowHalf defaultValue={2} />
+      //     content: (
+      //       <p>
+      //         We supply a series of design principles, practical patterns and high quality design
+      //         resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //         efficiently.
+      //       </p>
+      //     ),
+      //     rate: (
+      //       <Rate disabled allowHalf defaultValue={2} />
 
-            ),
-        },
+      //       ),
+      //   },
 
           
           
-        {
+      //   {
             
-            author: 'Han Solo',
+      //       author: 'Han Solo',
             
-            content: (
-              <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                efficiently.
-              </p>
-            ),
-            rate: (
-              <Rate disabled allowHalf defaultValue={3} />
+      //       content: (
+      //         <p>
+      //           We supply a series of design principles, practical patterns and high quality design
+      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //           efficiently.
+      //         </p>
+      //       ),
+      //       rate: (
+      //         <Rate disabled allowHalf defaultValue={3} />
   
-              ),
+      //         ),
    
-        },
+      //   },
 
 
-        {
+      //   {
             
-            author: 'Han Solo',
+      //       author: 'Han Solo',
                 
-            content: (
-                <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                efficiently.
-                </p>
-            ),
-            rate: (
-              <Rate disabled allowHalf defaultValue={5} />
+      //       content: (
+      //           <p>
+      //           We supply a series of design principles, practical patterns and high quality design
+      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //           efficiently.
+      //           </p>
+      //       ),
+      //       rate: (
+      //         <Rate disabled allowHalf defaultValue={5} />
   
-              ),
+      //         ),
        
-        },
+      //   },
 
-        {
+      //   {
             
-            author: 'Han Solo',
+      //       author: 'Han Solo',
                     
-            content: (
-                <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                efficiently.
-                </p>
-            ),
+      //       content: (
+      //           <p>
+      //           We supply a series of design principles, practical patterns and high quality design
+      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //           efficiently.
+      //           </p>
+      //       ),
             
-            rate: (
-              <Rate disabled allowHalf defaultValue={5} />
+      //       rate: (
+      //         <Rate disabled allowHalf defaultValue={5} />
   
-              ),
-        },
+      //         ),
+      //   },
 
-        {
+      //   {
             
-            author: 'Han Solo',
+      //       author: 'Han Solo',
                         
-            content: (
-                <p>
-                We supply a series of design principles, practical patterns and high quality design
-                resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                efficiently.
-                </p>
-            ),
-            rate: (
-              <Rate disabled allowHalf defaultValue={3} />
+      //       content: (
+      //           <p>
+      //           We supply a series of design principles, practical patterns and high quality design
+      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //           efficiently.
+      //           </p>
+      //       ),
+      //       rate: (
+      //         <Rate disabled allowHalf defaultValue={3} />
   
-              ),
+      //         ),
                
-        },
+      //   },
 
-        {
+      //   {
             
-            author: 'Han Solo',
+      //       author: 'Han Solo',
                             
-            content: (
-                <p>
-                    We supply a series of design principles, practical patterns and high quality design
-                    resources (Sketch and Axure), to help people create their product prototypes beautifully and
-                    efficiently.
-                </p>
-             ),
-             rate: (
-              <Rate disabled allowHalf defaultValue={4} />
+      //       content: (
+      //           <p>
+      //               We supply a series of design principles, practical patterns and high quality design
+      //               resources (Sketch and Axure), to help people create their product prototypes beautifully and
+      //               efficiently.
+      //           </p>
+      //        ),
+      //        rate: (
+      //         <Rate disabled allowHalf defaultValue={4} />
   
-              ),
+      //         ),
                    
-        }
+      //   }
 
-      ]
+      // ]
 
 
     const { TextArea } = Input;
@@ -145,72 +167,73 @@ function review() {
 
         <div>
             <br/>
+            
             <h1>Reviews</h1>
             </div>
-
-            <div> <Space direction="horizontal">
-            <div class="cusRate"><left>
-                <Rate style={{ fontSize: 25 }} disabled allowHalf defaultValue={3.5} />
-                <h3>Customer Rating</h3>
-            </left>
-            </div>
+            <br/>
+           
+ 
             
-            <>
-        <div style={{ width: 800 }} >
-        <Progress
-            strokeColor={{
-              '0%': '#108ee9',
-              '100%': '#87d068',
-            }}
-            percent={99.9}
-          />
-        
-        
-        <Progress percent={70} status="5 Star" />
-        <Progress percent={50} status="4 Star" />
-        <Progress percent={70} status="3 Star" />
-        <Progress percent={20} status="2 Star"/>
-        <Progress percent={5} status="1 Star" />
-        
-        </div>
-  </>,
-
-  </Space>
-
-  </div>   
-       
         <br/><br/>
         
     
     <>
 
-    <div className="reviewFro"> 
-    <Form>  
-    <Space direction="horizontal">
+    <div className="addR"> 
+    
+    <Form {...layout} name="nest-messages" onFinish={onFinish} size={"large"} text-size={"18px"}>
+          <Form.Item
+            name={[ 'stid']}
+            label="Student ID"
+            
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name={[ 'fname']}
+            label="Name"
+            
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name={[ 'course']}
+            label="Course"
+            
+          >
+            <Input />
+          </Form.Item>
 
-    <Form.Item  shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:20}}>
-      <div className='writeC'>
-      <Comment >
-      <TextArea  rows={4} placeholder="Write your review here...." size="large"  />
-      </Comment>
-      </div>
-    </Form.Item>
+            <Form.Item
+            name={['rate']}
+            label="Rate"
+            
+          >
+            <Rate />
+            </Form.Item>
+            
+                  
+          <Form.Item
+            name={[ 'comment']}
+            label="Comment"
+            
+          >
+            <TextArea rows={4} />
+            
+          </Form.Item>
 
-    <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:20}}>
-
-    <Rate style={{ fontSize: 30 }} allowHalf defaultValue={2.5} />
-    <Button type="primary" htmlType="submit">
-            Add Comment
-    </Button>
-    </Form.Item>
-    </Space>
+          <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
+            <Button className="btneditR" type="primary" onClick={success} htmlType="submit">
+                Add Comment
+            </Button>
+            </Form.Item>
     </Form>
     </div>
     </>
     <> 
     <div>
-
-    <List className="comntL"
+      
+    {/* <List className="comntL"
 
     className="comment-list"
     item-Space="20px"
@@ -230,6 +253,7 @@ function review() {
       </li>
     )}
   />,
+   */}
     </div>
     </>
         
@@ -244,4 +268,4 @@ function review() {
 
 };
 
-export default review;
+export default Review;

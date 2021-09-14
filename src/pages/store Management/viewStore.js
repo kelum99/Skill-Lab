@@ -89,7 +89,7 @@ return(
 
 <div class="month">
     <Form.Item name={['month']} label="Month">
-      <Select>
+      <Select placeholder="Month">
       <Option value="january">January</Option>
       <Option value="february"> February</Option>
       <Option value="march">March </Option>

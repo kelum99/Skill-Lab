@@ -1,15 +1,42 @@
-import React from "react";
+import React , { useState, useEffect }from "react";
 import 'antd/dist/antd.css';
-import { Form, Input ,Button ,Rate} from 'antd';
-import './stylesFeedback.css'
+import { Form, Input ,Button ,Rate,message} from 'antd';
+import './stylesFeedback.css';
+import useRequest from "../../services/RequestContext";
 import edit from "../../image/edit.jpg";
+import { useParams } from "react-router-dom";
 
+function EditReview(){
+  //retrieve
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  const { request } = useRequest();
+  const { id } = useParams();
 
+  //fetchReview
+  const fetchReview = async val => {
+    setLoading(true);
+    try {
+      const result = await request.get(`feedback/review/${val}`);
 
+      if (result.status === 200) {
+          const temp ={...result.data, };
+        setData(temp);
+        console.log("test ", temp);
+      }
 
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
+    if (id) {
+      fetchReview(id);
+    }
+  }, [id]);
 
-function editReview(){
     const layout = {
         labelCol: {
           span: 8,
@@ -27,8 +54,14 @@ function editReview(){
       };
 
       //on submit - console log
-      const onFinish = (values) => {
-        console.log(values);
+      const onFinish = async values => {
+        try {
+          const result = await request.put(`feedback/review/${data._id}`,values);
+          console.log("api call review updated", result);
+          window.location.reload(true);
+        } catch (e) {
+          console.log("update error ", e);
+        }
       };
       const { TextArea } = Input;
       
@@ -41,7 +74,7 @@ function editReview(){
        
         <div>
                   <img className="box" src ={edit} height={700} width={500}/>
-            </div> 
+        </div> 
 
 
         <div className= "editRform">
@@ -50,9 +83,9 @@ function editReview(){
         <br/>
        
       
-        <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages}>
+        {data && <Form {...layout} name="update-review" onFinish={onFinish} initialValues={data}     key={data._id} validateMessages={validateMessages}>
           <Form.Item
-            name={[ 'coursename']}
+            name={[ 'course']}
             label="Course"
             rules={[
               {
@@ -60,7 +93,7 @@ function editReview(){
               },
             ]}
           >
-            <Input />
+          <Input />
           </Form.Item>
 
             <Form.Item
@@ -73,7 +106,7 @@ function editReview(){
             
                   
           <Form.Item
-            name={[ 'message']}
+            name={[ 'comment']}
             label="Message"
             
           >
@@ -82,18 +115,20 @@ function editReview(){
           </Form.Item>
 
           <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-            <Button type="primary" htmlType="submit">
+            <Button className="btneditR" type="primary" htmlType="submit">
                 Submit
             </Button>
             </Form.Item>
           
-        </Form>
+        </Form>}
        
         </div>
       </div>
       </>
       );
-    };
-        
+    
+  
 
-    export default editReview;
+}
+        
+        export default EditReview;
