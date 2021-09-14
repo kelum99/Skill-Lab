@@ -21,6 +21,13 @@ function Review() {
           span: 14,
         },
       };
+  
+  
+    //Form Vilidation 
+    const validateMessages = {
+      required:  '${label} is required! ',
+       };
+
 
     const {request} = useRequest();
     
@@ -181,10 +188,15 @@ function Review() {
 
     <div className="addR"> 
     
-    <Form {...layout} name="nest-messages" onFinish={onFinish} size={"large"} text-size={"18px"}>
+    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} size={"large"} text-size={"18px"}>
           <Form.Item
             name={[ 'stid']}
             label="Student ID"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />
@@ -192,6 +204,11 @@ function Review() {
           <Form.Item
             name={[ 'fname']}
             label="Name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />
@@ -199,6 +216,11 @@ function Review() {
           <Form.Item
             name={[ 'course']}
             label="Course"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />
