@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import './stylesAreyou.css'
 import lec from '../../Images/lec.png';
 import student from '../../Images/student.png';
+import {Link} from "react-router-dom";
 
 function AreYou() {
 
@@ -13,7 +14,9 @@ function AreYou() {
 return (
 
 <>
+
       <div className="main-container-areyou">
+      
 
       <div className="form-areYou">
 
@@ -22,23 +25,26 @@ return (
         
       <div className="areYou">
 
-      
+
+<Link to ="/signuplec" >
       <img className="img1"
             width={350}
-            src={lec}  />
+            src={lec} 
+            /></Link>
       
 
-      
+      <Link to ="/signupstd" >    
       <img className="img1"
             width={350}
-            src={student} />
+            src={student} /></Link>
       
       </div>
 
     
 <Form>
         <br></br>
-      <a className="login-form-forgot" href="">Already have an account ? </a> 
+        <Link to ="/signin" >
+      <a className="login-form-forgot" href="">Already have an account ? </a> </Link>
 
 </Form>
         
