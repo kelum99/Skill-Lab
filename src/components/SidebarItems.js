@@ -1,11 +1,12 @@
 import React from 'react'
 import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
+import * as AiIcons from 'react-icons/ai'
 
 export const SidebarItemsLecturer = [
     {
         title: "My Courses",
-        path: "/myCoursesLec",
+        path: "/courseforlecturer",
         icon: <FaIcons.FaBook />,
         className: "nav-text"
     },
@@ -46,6 +47,12 @@ export const SidebarItemsLecturer = [
         className: "nav-text"
     },
     {
+        title: "Withdraw Methods",
+        path: "/updateBank",
+        icon: <AiIcons.AiFillBank />,
+        className: "nav-text"
+    },  
+    {
         title: "Withdraw History",
         path: "/withdrawHistory",
         icon: <FaIcons.FaMoneyCheckAlt />,
@@ -84,6 +91,12 @@ export const SidebarItemsStudent = [
         title: "Reviews",
         path: "/myReview",
         icon: <FaIcons.FaStarHalfAlt />,
+        className: "nav-text"
+    },
+    {
+        title: "Wallet",
+        path: "/updateWallet",
+        icon: <FaIcons.FaCreditCard />,
         className: "nav-text"
     },
     {

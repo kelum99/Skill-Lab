@@ -1,5 +1,18 @@
 /*CourseMain.js*/
 
+.headingscourse{
+color: blue;
+
+}
+
+
+
+.cquote{
+
+color: rgb(101, 109, 101);
+
+}
+
 .eduimg {
   border-radius: 5px;
   border-top: 10px;
@@ -108,7 +121,7 @@
     
 }
 
-.course ant-btn-primary{
+.course_ant-btn-primary{
   background-color: black;
   width:20%;
 }
@@ -139,4 +152,39 @@
   height: 75%;
 }
 
-/**/
+/* coursesesCreatedbyLecturer*/
+
+.primary .ant-btn-primary{ 
+  padding: 5px;
+  color: #3e14a1;
+}
+
+/*coursesCreatedbyLecturer */
+
+.coursetable{
+
+  background: #88BDBC;
+  margin-top: 5%;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5px;
+  border-radius: 20px;
+  width: 75%;
+  
+
+}
+/*course COntent create page */
+
+.abc  {
+  color: #fafafa;
+  margin-left: auto;
+  margin-right: auto;
+  width:300px;
+  margin: 5%;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: #185B8C;;
+  border-color: #185B8C;
+}

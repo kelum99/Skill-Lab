@@ -1,89 +1,144 @@
-import React from "react";
-import { Form, Input, InputNumber, Button} from "antd";
-import 'antd/dist/antd.css';
+import React, { Component, useState, useEffect } from "react";
+import useRequest from "../../services/RequestContext";
+import { Table, Button,Input,Popconfirm, message } from 'antd';
+import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
-
-
-
 
 function DeleteRequest() {
 
-  const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
-  };
-  /* eslint-disable no-template-curly-in-string */
-  
-  const validateMessages = {
-    required: '${label} is required!',
-    types: {
-      email: '${label} is not a valid email!',
-      number: '${label} is not a valid number!',
-    },
-    number: {
-      range: '${label} must be between ${min} and ${max}',
-    },
-  };
-  
-    const onFinish = (values) => {
-      console.log(values);
-    };
+//retrieve
+const [data, setData] = useState([]);
+const [loading, setLoading] = useState(true);
+const { request } = useRequest();
 
-  return (
-    <Form {...layout} name="deleteRequ" onFinish={onFinish} validateMessages={validateMessages}>
-    <Form.Item
-      name={['name']}
-      label="Name"
-      rules={[
-        {
-          required: true,
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={['user', 'email']}
-      label="Email"
-      rules={[
-        {
-          type: 'email',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
-    <Form.Item
-      name={['user', 'age']}
-      label="Age"
-      rules={[
-        {
-          type: 'number',
-          min: 0,
-          max: 99,
-        },
-      ]}
-    >
-      <InputNumber />
-    </Form.Item>
-    <Form.Item name={[ 'website']} label="Website">
-      <Input />
-    </Form.Item>
-    <Form.Item name={['user', 'introduction']} label="Introduction">
-      <Input.TextArea />
-    </Form.Item>
-    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
-  );
-    };
-  
+//fetchMarks
+const fetchCareere = async () => {
+    setLoading(true);
+    try {
+        const result = await request.get("job/applicationview");
+        if (result.status === 200) {
+            setData(result.data);
+        }
+        console.log(" Jobs get ", result);
+        setLoading(false);
+    } catch (e) {
+        setLoading(false);
+    }
+};
+
+useEffect(() => {
+  fetchCareere();
+}, []);
+
+
+//delete method
+const onDelete = async value => {
+  try {
+    const result = await request.delete(`job/deleteapplicant/${value._id}`);
+    if (result.status === 200) {
+      await fetchCareere();
+      setData(undefined);
+    }
+    console.log("api call applicant request deleted", result);
+    window.location.reload(true);
+  } catch (e) {
+    console.log("delete applicant request error", e);
+  }
+};
+
+
+const msg = 'Are you sure you want to delete ?';
+
+function confirm() {
+    message.info('Result Deleted Successfully !');
+}
+//table
+const columns = [
+    {
+        title: 'Position',
+        dataIndex: 'position',
+        key : 'position'
+      },
+    {
+      title: 'First Name',
+      dataIndex: 'firstName',
+      key : 'firstName'
+    },
+    {
+      title: 'Last Name',
+      dataIndex: 'lastName',
+      key : 'lastName'
+    },
+    {
+      title: 'E-mail',
+      dataIndex: 'email',
+      key : 'email'
+    },
+    {
+        title: 'Phone',
+        dataIndex: 'phone',
+        key : 'phone'
+      },
+      {
+        title: 'Address',
+        dataIndex: 'address',
+        key : 'address'
+      },
+      {
+        title: 'NIC',
+        dataIndex: 'nic',
+        key : 'nic'
+      },
+      {
+        title: 'Birth Date',
+        dataIndex: 'birthDate',
+        key : 'birthDate'
+      },
+      {
+        title: 'Employyment Status',
+        dataIndex: 'status',
+        key : 'status'
+      },
+      {
+        title: "Action",
+        dataIndex: "action",
+        key: "action",
+        render: (text, record, index) => (
+          <React.Fragment key={index}>
+            
+            <Popconfirm
+              placement="right"
+              title={msg}
+              onConfirm={() => onDelete(record)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button
+                danger
+                type="primary"
+                icon={<DeleteOutlined />}
+                className="edit-dlt"
+              />
+            </Popconfirm>
+          </React.Fragment>
+  ),
+      },
+  ];
+ 
+
+    return (
+        <div className="myCourses">
+            
+            <br /><br /><h2 className="add-header">Delete Applicant requests</h2>
+            
+
+        
+            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+         
+      
+        
+        </div>
+    );
+}
 
 export default DeleteRequest;

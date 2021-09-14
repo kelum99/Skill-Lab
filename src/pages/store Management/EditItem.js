@@ -1,10 +1,18 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { Form, Input, Select, Button } from 'antd';
+import { useParams } from "react-router-dom";
+import useRequest from "../../services/RequestContext";
 import 'antd/dist/antd.css';
 import './styleStore.css'
 
 
 function EditItem(){
+
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  const { request } = useRequest();
+  const { id } = useParams();
+
 
     const layout = {
         labelCol: {
@@ -27,9 +35,39 @@ function EditItem(){
         },
       };
 
-      const onFinish = (values) => {
-        console.log(values);
+      const fetchProductDetails = async value => {
+        setLoading(true);
+        try {
+          const result = await request.get(`store/product/${value}`);
+    
+          if (result.status === 200) {
+              const tempItem ={...result.data};
+            setData(tempItem);
+            console.log("test ", tempItem);
+          }
+    
+          setLoading(false);
+        } catch (e) {
+          setLoading(false);
+        }
       };
+    
+      useEffect(() => {
+        if (id) {
+          fetchProductDetails(id);
+        }
+      }, [id]);
+
+      const onFinish = async values => {
+        try {
+          const result = await request.put(`store/product/update/${data._id}`,values);
+          console.log("api call product updated", result);
+          window.location.reload(true);
+        } catch (e) {
+          console.log("update error ", e);
+        }
+      };
+    
 
       const { Option } = Select;
 
@@ -41,7 +79,7 @@ function EditItem(){
 
             <h1>Edit Product Details</h1>
 
-        <Form  name="AddItems-Form" onFinish={onFinish} validateMessages={validateMessages} layout="vertical">
+        {data && <Form  name="AddItems-Form" onFinish={onFinish} initialValues={data} key={data._id} validateMessages={validateMessages} layout="vertical">
       <Form.Item
         name={['productId']}
         label="Product ID"
@@ -96,7 +134,7 @@ function EditItem(){
           UPDATE
         </Button>
       </Form.Item>
-    </Form>
+    </Form>}
 
         </div>
         </div>

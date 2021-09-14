@@ -1,5 +1,5 @@
 .form {
-  background: #a6f2e1;
+  background: #bae2f0;
   border-radius: 10px;
   margin: 5%;
   border-radius: 20px;
@@ -14,7 +14,7 @@
   font-family: "Times New Roman", Times, serif;
   font-weight: bold;
   font-size: 36px;
-  color: #fff;
+  color: black;
 }
 .form .ant-input {
   border-radius: 5px;
@@ -45,14 +45,14 @@
   padding: 0px;
 }
 .form .ant-checkbox-wrapper {
-  color: #fff;
+  color: black;
 }
 .form .ant-checkbox-inner {
   left: 15;
 }
 
 .form .ant-form-item-label > label {
-  color: #fff;
+  color: black;
 }
 
 .main-container-payment {
@@ -64,31 +64,41 @@
 }
 
 .withdrawHistory-table {
-  margin: 3%;
+  margin: 5% 3%;
 }
 .main-container-withdrawHistory h1 {
   text-align: center;
+  font-weight: 600;
   margin: 50px;
 }
 
 .withdrawHistory-table .ant-table-content {
-  background: #a6f2e1;
+  background: #bae2f0;
+  font-size: 16px;
 }
-.ant-table-thead .ant-table-cell {
-  background: #a6f2e1;
+.withdrawHistory-table .ant-table-thead .ant-table-cell {
+  background: #07bbd1;
+}
+.paymentHistory-table .ant-table-content {
+  background: #bae2f0;
+  font-size: 16px;
+}
+.paymentHistory-table .ant-table-thead .ant-table-cell {
+  background: #07bbd1;
 }
 
 .paymentHistory-table {
-  margin: 3%;
+  margin: 5% 3%;
 }
 .main-container-paymentHistory h1 {
   text-align: center;
   margin: 50px;
+  font-weight: 600;
 }
 .savedCards {
   width: 400px;
   height: 70vh;
-  background: #a6f2e1;
+  background: #bae2f0;
   border-radius: 6px;
   padding: 10px;
   display: flex;
@@ -107,7 +117,7 @@
 }
 .updateForm {
   width: 50%;
-  background: #a6f2e1;
+  background: #bae2f0;
   border-radius: 6px;
   display: flex;
   justify-content: flex-start;
@@ -128,15 +138,23 @@
   align-items: center;
   margin: 30px;
 }
+.updateForm .ant-form-item .ant-select {
+  width: 80%;
+  text-align: start;
+  padding: 0px;
+}
 .save-card {
-  background: #185b8c;
+  background: #1282A2;
   width: 80%;
   padding: 10px;
+  text-align: center;
   border-radius: 5px;
   margin-top: 30px;
   cursor: pointer;
   color: white;
   font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 1px;
 }
 
 .save-card:hover {
@@ -177,3 +195,21 @@
 .updateBtn {
   margin-right: 150px;
 }
+
+.issue{
+  text-align: right;
+  font-weight: 500;
+  text-decoration: none;
+  margin: 25px;
+  font-size: 15px;
+}
+.addButton{
+position: fixed;
+left: 240px;
+top: 120px;
+}
+.addButtonBank{
+  position: fixed;
+  left: 220px;
+  top: 120px;
+  }

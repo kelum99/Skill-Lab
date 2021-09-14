@@ -1,49 +1,49 @@
-.form-questions{
-    background: rgb(202, 220, 245);
+/*askQuestion,editQuestion,noticeCreate forms */
+.lecform{
+    background: #bae2f0;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
     width: 40%;
 }
-.form-questions h1{
+/*form heading*/
+.lecform h1{
     text-align: center;
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
-    font-size: 36px;
-    
+    font-size: 36px;   
 }
-.form-questions .ant-input{
+/*form inputs*/
+.lecform.ant-input{
     border-radius: 5px;
     width: 85%;
 }
-
-.form-questions .ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
+/*change width of dropdown*/
+.lecform.ant-form-item .ant-select, .ant-form-item .ant-cascader-picker{
     width:85%;
 }
-
-.form-questions .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+/*change border of dropdown*/
+.lecform.ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius:5px;
 }
-
-.form-questions textarea.ant-input{
+/*change hight of textarea*/
+textarea.ant-input{
     min-height: 90px;
 }
-.form-questions .ant-form-item-required {
+/*change form font weight*/
+.lecform .ant-form-item-required {
     font-weight: 500;
 }
-
-.form-questions .ant-btn-primary{
+/*form buttons*/
+.btnQuestion.ant-btn-primary{
     border-radius: 10px;
-    background: #185B8C;
+    background: #07bbd1;
     outline: none;
     border: none;  
+    width: 100px;
 }
 
-.form-questions .ant-btn{
-cursor: pointer;
-width: 100px;
-}
-
+/*containers of forms*/
 .main-container-askQuestion{
     display: flex;
     justify-content: right;
@@ -62,26 +62,48 @@ width: 100px;
     align-items: center;
 }
 
+/*allQuestionList,allQuestions,noticesAll,noticeView tables*/
+/*allQuestions table*/
 .allQTable{
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    
-    
+    margin-bottom: 10px;
 }
-.edit-dlt{
+/*noticeView table*/
+.allQTable1{
+    margin-top: 0%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+/*allQuestionList table*/
+.allQTable2{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+/*noticeAll table*/
+.allQTable3{
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+/*edit and delete buttons*/
+.edit-dlt-table{
     width:50px;
     margin: 5%;
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;
-    border-color: #185B8C;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
 }
-.edit-dlt:hover{
+.edit-dlt-table:hover{
     opacity: 0.5;
 }
-.searchbar{
+/*search bar in allQuestionList & allQuestions*/
+.searchQ{
     margin-top:2%;
     margin-bottom: 0.2%;
     margin-right: 5%;
@@ -89,85 +111,77 @@ width: 100px;
     width:20%;
 }
 
-.ant-table-content{
-    background-color: rgb(202, 220, 245);
+/*ask new question button*/
+.allT .ant-btn-primary{
+    background-color: #07bbd1;
+    border-color: #07bbd1;
 }
-.allQuestions .ant-btn-primary{
-    background-color: #185B8C;
-    border-color: #185B8C;
-}
-
-.Heading{
+/*table description heading*/
+.question_h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
     font-size: 40px;
-    font-weight: 550;
-    font-family: Georgia, serif;
+    margin-top: 5px;    
 }
-
+.notice_h1{
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    font-size: 55px;
+    margin-top: 40px;    
+}
+/*table description subheading*/
 .subHeading{
-    font-size: 15px;
-    font-weight: 550;
-    font-family: Georgia, serif;
-    margin-top: 0%;
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
 }
-
+/*ask new question button*/
 .btnAll{
     width:180px;
     margin: 5%;
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;;
-    border-color: #185B8C;
+    background-color: #07bbd1;;
+    border-color: #07bbd1;
 }
 
 .btnAll:hover{
     opacity: 0.5;
 }
-
-.allQTable1{
-    margin-top: 0%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
+/*add notice button*/
 .btnAllN{
     width:150px;
     margin: 5%;
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;;
-    border-color: #185B8C;
-    margin-left: 15%;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
+    margin-left: 5%;
 
 }
 
 .btnAllN:hover{
     opacity: 0.5;
 }
-
-.allQTable2{
-    margin-top: 0%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.allQTable3{
-    margin-top: 5%;
-    margin-left: 15%;
-    margin-right: 15%;
-}
-
+/*change table width*/
 .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
     padding: 10px;
     width:15px;
 }
-
+/*align text center*/
 .ant-table-row{
     text-align:center;
 }
-
+/*change table heading color & text*/
 .ant-table-thead > tr > th{
     background: lightslategray;
     text-align: center;
+}
+/*change table background*/
+.allT.ant-table-content{
+    background-color: #07bbd1;
 }

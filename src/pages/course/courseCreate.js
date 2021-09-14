@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import 'antd/dist/antd.css';
-import { Select, Button ,Avatar } from "antd";
+import { Select, Button, Avatar } from "antd";
 import './courseStyles.css';
 import Resizer from "react-image-file-resizer";
-import axios from "axios";
 import create_course from '../../image/create_course.jpg';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
+import useRequest from "../../services/RequestContext";
 
 //destructure
 const { Option } = Select;
@@ -21,48 +21,72 @@ const CourseCreate = () => {
     uploading: false,
     paid: false,
     loading: false,
-    category:'',
+    category: '',
     imagePreview: "",
 
+
   });
+
+
+
   const [image, setImage] = useState("");
   const [preview, setPreview] = useState("");
+  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
+
+  const {request} = useRequest();
+  
+  
+
+
+
+
+  
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    
+
   };
+
+ 
 
   const handleImage = (e) => {
     let file = e.target.files[0];
-    setPreview(window.URL.createObjectURL(file)); //preview the image in a side 
+    setPreview(window.URL.createObjectURL(file));
+    setUploadButtonText(file.name);
+    setValues({ ...values, loading: true });
 
-
-    //image resizer before uploading to S3
-    Resizer.imageFileResizer(file,720,500,"JPEG",100,0, async(uri) =>{
-      try{
-        let { data } = await axios.post("/api/course/upload-image",
-         {image: uri, });
-         console.log("IMAGE UPLOADED", data);
+    // resize
+    Resizer.imageFileResizer(file, 720, 500, "JPEG", 100, 0, async (uri) => {
+      try {
+       let { data } = await request.post("course/uploadImage", {
+          image: uri,
+        });
+        console.log("IMAGE UPLOADED" ,data);
         // set image in the state
         setValues({ ...values, loading: false });
-      }catch(error){
-        console.log(error);   
-        setValues({...values,loading:false});
-        toast("Image Upload Failed  ,Try Again Later.")
-       
+      } catch (err) {
+        console.log(err);
+        setValues({ ...values, loading: false });
+        toast("Image upload failed. Try later.");
       }
-    } )
-
-
+    });
   };
 
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(values);
+    try {
+      // console.log(values);
+                      
+      const { data } = await request.post("course/coursecreate", {
+        ...values,
+      });
+      toast("Great! Now you can start adding lessons");
+    } catch (err) {
+      toast(err.response.data);
+    }
   };
- 
+
   //price dropdown selection array
   const priceArray = [];
   for (let i = 9.99; i <= 100.99; i++) {
@@ -75,7 +99,7 @@ const CourseCreate = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <div>
-          <input className ="course_select"
+          <input className="course_select"
             type="text"
             name="name"
             placeholder="Name of the course "
@@ -85,7 +109,7 @@ const CourseCreate = () => {
         </div>
 
         <div >
-          <textarea className ="course_select"
+          <textarea className="course_select"
             name="description"
             placeholder="Course Description"
             cols="7"
@@ -96,22 +120,22 @@ const CourseCreate = () => {
         </div>
 
         <div >
-       
-            <div >
-              <Select className ="course_selector"
 
-                value={values.paid}
-                onChange={(v) => setValues({ ...values, paid: v })}
-              >
-                <Option value={true}>Paid</Option>
-                <Option value={false}>Free</Option>
-              </Select>
-            </div>
-              
+          <div >
+            <Select className="course_selector"
+
+              value={values.paid}
+              onChange={(v) => setValues({ ...values, paid: v })}
+            >
+              <Option value={true}>Paid</Option>
+              <Option value={false}>Free</Option>
+            </Select>
+          </div>
+
           {values.paid && (
             <div className="course_select">
-             <b> Select the course price :</b>
-              <Select className ="course_select"
+              <b> Select the course price :</b>
+              <Select className="course_select"
                 defaultValue="$0.00"
                 style={{ widht: "100%" }}
                 onChange={(v) => setValues({ ...values, price: v })}
@@ -126,7 +150,7 @@ const CourseCreate = () => {
 
 
         <div>
-          <input className ="course_select"
+          <input className="course_select"
             type="text"
             name="category"
             placeholder="Course category"
@@ -135,47 +159,51 @@ const CourseCreate = () => {
           />
         </div>
         <div >
-          
-            <div className="imagehandling" >
-              <label >
-                {values.loading ? "Uploading" : " Upload the relevant course image here "}
-                <input className ="course_select"
-                  type="file"
-                  name="image"
-                  onChange={handleImage}
-                  accept="image/*"
-                  hidden
-                />
-            {preview && <Avatar width={200} src={preview} />}
 
-              </label>
-            </div>
-        </div>
-          <div  >
-            <Button 
-              onClick={handleSubmit}
-              disabled={values.loading || values.uploading}
-              loading={values.loading}
-              type="primary"
-              size="large"
-              shape="round"
-              >
-              {values.loading ? "Saving..." : "Save & Continue"}
-            </Button>
+          <div className="imagehandling" >
+            <label>
+              {values.loading ? "Uploading" : " Upload the relevant course image here "}
+              <input className="course_select"
+                type="file"
+                name="image"
+                onChange={handleImage}
+                accept="image/*"
+                
+              />
+              {preview && <Avatar width={200} src={preview} />}
+
+            </label>
           </div>
         </div>
-      
+        <div  >
+          <Button
+            onClick={handleSubmit}
+            disabled={values.loading || values.uploading}
+            loading={values.loading}
+            type="primary"
+            size="large"
+            shape="round"
+          >
+            {values.loading ? "Saving..." : "Save & Continue"}
+          </Button>
+        </div>
+      </div>
+
     </form>
   );
 
+  
+
+
+
   return (
     <div >
-      
-      <h1 className ="course_h1" >Create  Courses</h1>
-      <img  src={create_course} alt="image 1" className="create_course_image" />
+
+      <h1 className="course_h1" >Create  Courses</h1>
+      <img src={create_course} alt="image 1" className="create_course_image" />
       <div className="course_form"> {courseCreateForm()} </div>
-    
-     
+
+
 
     </div>
   );

@@ -88,8 +88,8 @@ return(
     <div className = "MainContaner-display">
 
 <div class="month">
-    <Form.Item name={['month']} label="Month">
-      <Select>
+    <Form.Item name={['month']} >
+      <Select placeholder="Month">
       <Option value="january">January</Option>
       <Option value="february"> February</Option>
       <Option value="march">March </Option>

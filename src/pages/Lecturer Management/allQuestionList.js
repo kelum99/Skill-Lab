@@ -1,75 +1,110 @@
-import React from "react";
+import React ,{useState,useEffect} from "react";
 import './stylesLecturer.css';
 import 'antd/dist/antd.css';
-import { Table, Button,Input } from 'antd';
+import { Table, Button,Input,message,Popconfirm } from 'antd';
 import {DeleteOutlined,AudioOutlined} from '@ant-design/icons';
-import allList from '../../image/allList.png';
+import allList1 from '../../image/allList1.jpg';
+import useRequest from "../../services/RequestContext";
 
-function allQuestionList() {
+function AllQuestionList() {
 
-//table
-const columns = [
+  // retrive data
+  const[data,setData] = useState([]);
+  const[loading,setLoading] = useState(true);
+  const{request} = useRequest();
+  const [questionList, setQuestionList] = useState([]);
+
+  const fetchQuestion = async () => {
+    setLoading(true);
+    try {
+      const result = await request.get("lecturer/question/findAll");
+      if (result.status === 200) {
+        setQuestionList(result.data);
+      }
+      console.log(" question list get ", result);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuestion();
+  }, []);
+
+  //delete method
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`lecturer/question/${value._id}`);
+      if (result.status === 200) {
+        await fetchQuestion();
+        setData(undefined);
+      }
+      console.log("api call question deleted", result);
+    } catch (e) {
+      console.log("delete question error", e);
+    }
+  };
+
+   //Alert mg
+   const text = 'Are you sure you want to delete ?';
+
+   function confirm() {
+       message.info('Result Deleted Successfully !');
+   }
+
+
+
+   //table
+   const columns = [
     {
         title: '#',
         dataIndex: 'index',
+        key:'index',
+        render:(text,record,index) => index +1,
     },
     {
       title: 'Student Name',
       dataIndex: 'studentName',
+      key:'studentName'
     },
     {
       title: 'Email',
       dataIndex: 'email',
+      key:'email'
     },
     {
         title: 'Course Name',
         dataIndex: 'courseName',
+        key:'courseName'
     },
     {
       title: 'Topic',
       dataIndex: 'topic',
+      key:'topic'
     },
     {
         title: 'Question',
-        dataIndex: 'description',
+        dataIndex: 'question',
+        key:'question'
     },
     {
-        title: 'Action',
-        dataIndex: 'action',
+      title: 'Action',
+      dataIndex: 'action',
+      key:'action',
+      render: (text, record, index) =>(
+        <React.Fragment key={index}>
+        <span>
+        <Popconfirm placement="right" title={text}  onConfirm={() => onDelete(record)} okText="Yes" cancelText="No">
+          <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt-table"/>
+        </Popconfirm>
+        </span>
+        </React.Fragment>
+      ),
     },
   ];
-  const data = [
-    {
-       key: '1',
-       index:'1',
-       studentName: 'name1',
-       email: 'email1',
-       courseName:'course1',
-       topic: 'topic1',
-       description:'Question1',
-       action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
-    },
-    {
-        key: '2',
-        index:'2',
-        studentName: 'name2',
-        email: 'email2',
-        courseName:'course2',
-        topic: 'topic2',
-        description:'Question2',
-        action:<><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></>
-      },
-      {
-        key: '3',
-        index:'3',
-        studentName: 'name3',
-        email: 'email3',
-        courseName:'course3',
-        topic: 'topic3',
-        description:'Question3',
-        action:<><Button type="primary"icon={<DeleteOutlined/>}  className="edit-dlt"/></>
-      },
-  ];
+ 
+
 
   //search box
   const { Search } = Input;
@@ -83,20 +118,17 @@ const columns = [
     />
   );
 
+  
     return (
-        
-        <div className="allQuestions">
-            <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchbar" />
-            
-            <br /><br /><center><h1 className="Heading">All Questions List</h1></center>
 
-            <div> <center><img className="questionimg" src={allList} height ={200} width ={250}/></center> </div>
-            
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable2" />
-            
+        <div className="allT">
+            <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ" />
+            <h1 className="question_h1">All Questions List</h1>
+            <center><img className="questionimg" src={allList1} alt="allQList" height ={400} width ={900}/></center>
+           <div> <Table columns={columns} dataSource={questionList} size="middle" pagination={false} className="allQTable2" /> </div> 
         </div>
-    
+      
     );
 }
 
-export default allQuestionList;
+export default AllQuestionList;
