@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input,Button,DatePicker,message} from "antd";
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
-import addNote1 from '../../image/addNote1.png';
+import editQ from '../../image/editQ.png';
 import {SaveOutlined} from '@ant-design/icons';
 import useRequest from "../../services/RequestContext";
 
@@ -17,11 +17,6 @@ function NoticeCreate() {
       }
     };
 
-
-    //alert mg
-    const success = () => {
-    message.success('Your data Save Successfully !');
-    };
   
 
     //Form Vilidation 
@@ -38,6 +33,7 @@ function NoticeCreate() {
           try{
               const result = await request.post('lecturer/notice', values);
               console.log("api call notice result ", result);
+              message.success('Your data Save Successfully !');
         } catch(e){
           console.log("post notice error ",e);
         }
@@ -47,7 +43,7 @@ function NoticeCreate() {
       <>
       
       <div className="main-container-createNotice"> 
-      <div> <img className="addnoteimg" src={addNote1} alt="createNotice" height ={500} width ={600}/> </div>
+      <div> <img className="addnoteimg" src={editQ} alt="createNotice" height ={500} width ={600}/> </div>
       <div className="lecform">
         
                <h1>Add Notice</h1>
@@ -64,7 +60,7 @@ function NoticeCreate() {
               </Form.Item>
   
               <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-              <Button className="btnQuestion" type="primary"icon={<SaveOutlined />} htmlType="submit"onClick={success}>
+              <Button className="btnQuestion" type="primary"icon={<SaveOutlined />} htmlType="submit">
                   Save
               </Button>
               </Form.Item>

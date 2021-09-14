@@ -15,13 +15,14 @@ function NoticesAll() {
   const[data,setData] = useState([]);
   const[loading,setLoading] = useState(true);
   const{request} = useRequest();
+  const [noticeList, setNoticeList] = useState([]);
 
   const fetchNotice = async () => {
     setLoading(true);
     try {
       const result = await request.get("lecturer/notice/findAll");
       if (result.status === 200) {
-        setData(result.data);
+        setNoticeList(result.data);
       }
       console.log(" notice list get ", result);
       setLoading(false);
@@ -33,6 +34,20 @@ function NoticesAll() {
   useEffect(() => {
     fetchNotice();
   }, []);
+
+ //delete method
+ const onDelete = async value => {
+  try {
+    const result = await request.delete(`lecturer/notice/${value._id}`);
+    if (result.status === 200) {
+      await fetchNotice();
+      setData(undefined);
+    }
+    console.log("api call notice deleted", result);
+  } catch (e) {
+    console.log("delete notice error", e);
+  }
+};
 
   //Alert mg
   const text = 'Are you sure you want to delete ?';
@@ -65,12 +80,14 @@ function NoticesAll() {
       title: 'Action',
       dataIndex: 'action',
       key:'action',
-      render: () =>(
+      render: (text, record, index) =>(
+        <React.Fragment key={index}>
         <span>
-        <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+        <Popconfirm placement="right" title={text}  onConfirm={() => onDelete(record)} okText="Yes" cancelText="No">
           <Button type="primary"icon={<DeleteOutlined />} className="edit-dlt-table"/>
         </Popconfirm>
         </span>
+        </React.Fragment>
      ),
    },
 
@@ -81,7 +98,7 @@ function NoticesAll() {
         <div className="allT">
             
             <h1 className="notice_h1">All Notices</h1>
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable3" />
+            <Table columns={columns} dataSource={noticeList} size="middle" pagination={false} className="allQTable3" />
             <div> <Button type="primary" icon={<PlusCircleOutlined />} className="btnAllN"onClick={() => history.push('./createN')}>Add Notice</Button></div>
 
         </div>

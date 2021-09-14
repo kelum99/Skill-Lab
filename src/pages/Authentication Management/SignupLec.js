@@ -3,6 +3,7 @@ import { Form, Input, Button, DatePicker, Radio,} from "antd";
 import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
+import moment from "moment";
 
 function SignupLec() {
 
@@ -33,12 +34,13 @@ function SignupLec() {
 
   
   const onFinish = async (values) => {
+    values.birthday = moment(values.birthday).format("YYYY-MM-DD")
     console.log("value",values);
     try{
-      const result = await request.post('AuthenticationRoute/LectureSignup', values);
-      console.log("api call wallet result ", result);
+      const result = await request.post('AuthenticationRoute/LecturerSignup', values);
+      console.log("api sinlec result ", result);
 } catch(e){
-  console.log("post wallet error ",e);
+  console.log("post sinlec error ",e);
 }
 
 };

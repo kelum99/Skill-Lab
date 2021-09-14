@@ -41,7 +41,7 @@ export const RequestContextProvider = props => {
     }
     return axios.create({
       baseURL,
-      timeout: 10000
+      timeout: 300000
     });
   }, [baseURL, token]);
   return (

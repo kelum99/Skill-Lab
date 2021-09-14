@@ -70,8 +70,8 @@ function Cart() {
     return (
         <div className="MainContaner-display">
 
-            <Table columns={columns} dataSource={dataSource} />
-
+            <Table columns={columns} dataSource={dataSource}  className="cart-table"/>
+           
 
 
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>

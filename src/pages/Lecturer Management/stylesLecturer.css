@@ -1,6 +1,6 @@
 /*askQuestion,editQuestion,noticeCreate forms */
 .lecform{
-    background: rgb(202, 220, 245);
+    background: #bae2f0;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
@@ -37,7 +37,7 @@ textarea.ant-input{
 /*form buttons*/
 .btnQuestion.ant-btn-primary{
     border-radius: 10px;
-    background: #185B8C;
+    background: #07bbd1;
     outline: none;
     border: none;  
     width: 100px;
@@ -96,8 +96,8 @@ textarea.ant-input{
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;
-    border-color: #185B8C;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
 }
 .edit-dlt-table:hover{
     opacity: 0.5;
@@ -113,8 +113,8 @@ textarea.ant-input{
 
 /*ask new question button*/
 .allT .ant-btn-primary{
-    background-color: #185B8C;
-    border-color: #185B8C;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
 }
 /*table description heading*/
 .question_h1{
@@ -144,8 +144,8 @@ textarea.ant-input{
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;;
-    border-color: #185B8C;
+    background-color: #07bbd1;;
+    border-color: #07bbd1;
 }
 
 .btnAll:hover{
@@ -158,9 +158,9 @@ textarea.ant-input{
     border-radius: 5px;
     font-size: 15px;
     font-weight: 500;
-    background-color: #185B8C;;
-    border-color: #185B8C;
-    margin-left: 15%;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
+    margin-left: 5%;
 
 }
 
@@ -183,5 +183,5 @@ textarea.ant-input{
 }
 /*change table background*/
 .allT.ant-table-content{
-    background-color: rgb(202, 220, 245);
+    background-color: #07bbd1;
 }

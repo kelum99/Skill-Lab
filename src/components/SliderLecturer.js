@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import { SidebarItemsLecturer } from "./SidebarItems";
+import { SidebarItemsStudent } from "./SidebarItems";
 import "./styleSidebar.css";
 import { IconContext } from "react-icons";
 
@@ -24,7 +25,7 @@ function Slider() {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "black" }}>
+      <IconContext.Provider value={{ color: "white" }}>
         <div className="slider" ref={ref}>
           <Link to="#" className="menu-bars">
             {sidebar ? (
@@ -43,7 +44,24 @@ function Slider() {
               className="nev-menu-items"
               onClick={() => setSidebar(oldState => !oldState)}
             >
+            <div className="divider">
+            <span className="dividerName">Lecturer</span> </div>
               {SidebarItemsLecturer.map((item, key) => {
+                return (
+                  <> 
+                  <li key={key} className={item.className}>
+                    <Link to={item.path}>
+                      {item.icon}
+                      <span>{item.title}</span>
+                    </Link>
+                  </li>
+                  </>
+                );
+              })}
+              <div className="divider">
+              <span className="dividerName">Student</span></div>
+
+              {SidebarItemsStudent.map((item, key) => {
                 return (
                   <li key={key} className={item.className}>
                     <Link to={item.path}>
@@ -53,6 +71,7 @@ function Slider() {
                   </li>
                 );
               })}
+
             </ul>
           </nav>
         </div>

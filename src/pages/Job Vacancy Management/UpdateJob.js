@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Input, InputNumber, Button} from "antd";
 import 'antd/dist/antd.css';
 import './jobManagement.css';
 import useRequest from "../../services/RequestContext";
+import { useParams } from "react-router-dom";
 
 
 
 
-function AddJob() {
 
-  const [form] = Form.useForm();
+function UpdateJob() {
+
+
+
+
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(false);
+  const { request } = useRequest();
+  const { id } = useParams();
 
   const layout = {
     labelCol: {
@@ -21,21 +29,29 @@ function AddJob() {
   };
 
 
-  const {request} = useRequest();
+  const fetchJobs = async val => {
+    setLoading(true);
+    try {
+      const result = await request.get(`job/job/${val}`);
 
-  const onFinish = async (values) => {
-    console.log("value",values);
-      try{
-          const result = await request.post('job/job', values);
-          console.log("api call job add result ", result);
-          alert("Sucsessfully added");
-          window.location.reload(true);
-    } catch(e){
-      console.log("post job add error ",e);
+      if (result.status === 200) {
+          const temp ={...result.data};
+        setData(temp);
+        console.log("test ", temp);
+      }
+
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
     }
-  
-    form.resetFields();
   };
+
+  useEffect(() => {
+    if (id) {
+      fetchJobs(id);
+    }
+  }, [id]);
+
 
   /* eslint-disable no-template-curly-in-string */
   
@@ -49,15 +65,25 @@ function AddJob() {
       range: '${label} must be between ${min} and ${max}',
     },
   };
-  
- 
+
+  const onFinish = async values => {
+    try {
+      const result = await request.put(`job/updatejob/${data._id}`,values);
+      console.log("api call job updated", result);
+      alert("Update sucsess");
+      window.location.reload(true);
+      
+    } catch (e) {
+      console.log("update error ", e);
+    }
+  };
 
   return (
 <div>
-<h2 className="add-header">Add a new career opportunity</h2>
+<h2 className="add-header">Update career opportunity</h2>
     <div className="AddForm">
      
-    <Form {...layout} name="deleteRequ" className="job-add-form" onFinish={onFinish} validateMessages={validateMessages}>
+   { data&& <Form {...layout} name="deleteRequ" className="job-add-form" initialValues={data}  key={data._id}onFinish={onFinish} validateMessages={validateMessages}>
 
       <div className="add-form-items">
     <Form.Item
@@ -83,7 +109,7 @@ function AddJob() {
     <Input />
       
     </Form.Item>
-    <Form.Item name={['salary']} 
+    <Form.Item name={[ 'salary']} 
             label="Salary"
             rules={[
                 {
@@ -104,22 +130,18 @@ function AddJob() {
       <Input.TextArea />
     </Form.Item>
     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-
-      <div >
-      <Button className="add-view-btn" type="primary" htmlType="submit">
-        Submit
+      <Button type="primary" htmlType="submit">
+        Update
       </Button>
-     <a href="/updateDelete"> <Button className="add-view-btn" type="primary">
-       View
-      </Button></a>
-      </div>
+      
     </Form.Item>
     </div>
   </Form>
+}
   </div>
   </div>
   );
     };
   
 
-export default AddJob;
+export default UpdateJob;
