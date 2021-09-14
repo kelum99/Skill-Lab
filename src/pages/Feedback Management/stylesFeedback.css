@@ -149,7 +149,7 @@ h4{
     font-size: 30px;
     font-weight: 500;
 
-    background-color:#49c1d1;
+    background-color:#1282A2;
     
     border-color: #49c1d1;
 }
@@ -192,7 +192,7 @@ h4{
 }
 
 .ant-table-thead.ant-table-cell{
-    background: aqua;
+    background: #1282A2;
     text-align: center;
 }
 
@@ -212,7 +212,7 @@ h4{
 
 
 .addR form{
-    background: #1282A2;
+    background: #bae2f0;
     border-color: #000000;
     margin-top: 0%;
     margin-bottom: 10%;

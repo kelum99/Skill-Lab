@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Input, Popconfirm, message, Card } from "antd";
 import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import {useHistory} from 'react-router-dom';
+import {useHistory,Link} from 'react-router-dom';
 import "./stylesStudent.css";
 import useRequest from "../../services/RequestContext";
+import image from "../../image/stdmark.jpg";
 
 function ViewMarks(props) {
   //retrieve
@@ -33,7 +34,7 @@ function ViewMarks(props) {
   }, []);
 
   //confirm alert
-  const text = "Are you sure you want to delete ?";
+  const msg = "Are you sure you want to delete ?";
 
   function confirm() {
     message.info("Result Deleted Successfully !");
@@ -99,10 +100,10 @@ function ViewMarks(props) {
       key: "action",
       render: (text, record, index) => (
         <React.Fragment key={index}>
-          <Button type="primary" onClick={() => history.push(`/UpdateMarks/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+          <Button type="primary" onClick={() => history.push(`/UpdateMarks/${record._id}`)} icon={<EditOutlined />} className="edit-dlt-btn" />
           <Popconfirm
             placement="right"
-            title={text}
+            title={msg}
             onConfirm={() => onDelete(record)}
             okText="Yes"
             cancelText="No"
@@ -111,7 +112,7 @@ function ViewMarks(props) {
               danger
               type="primary"
               icon={<DeleteOutlined />}
-              className="edit-dlt"
+              className="edit-dlt-btn"
             />
           </Popconfirm>
         </React.Fragment>
@@ -135,12 +136,13 @@ function ViewMarks(props) {
       <br />
       <center>
         <h1 className="enrolllHeading">Student Performance</h1>
+        <img src={image}/>
       </center>
-      <a href="./AddMarks">
+      <Link to="/AddMarks">
         <Button type="primary" icon={<PlusOutlined />} className="AddButton">
           Add New Mark
-        </Button>
-      </a>
+        </Button></Link>
+      
       <Table
         columns={columns}
         dataSource={markList}

@@ -1,30 +1,77 @@
-import React, { useState, useEffect, useParams } from "react";
+import React, { useState, useEffect} from "react";
 import image2 from "../../image/mycourse4.jpg";
 import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
+import moment from 'moment';
+import image3 from "../../image/enroll.jpg";
+import { useParams ,useHistory} from "react-router-dom";
+import useRequest from "../../services/RequestContext";
 
 
 
 function UpdateEnroll() {
 
+ //retrieve
+ const [data, setData] = useState();
+ const [loading, setLoading] = useState(false);
+ const { request } = useRequest();
+ const { id } = useParams();
+
+ //fetchMyCourse
+ const fetchMyCourse = async val => {
+    setLoading(true);
+    try {
+      const result = await request.get(`student/mycourses/${val}`);
+
+      if (result.status === 200) {
+          const temp ={...result.data, date: moment(result.data.date)};
+        setData(temp);
+        console.log("test ", temp);
+      }
+
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+
+ useEffect(() => {
+   if (id) {
+    fetchMyCourse(id);
+   }
+ }, [id]);
 
 
 
-    //alert msg
-    const success = () => {
-        message.success('Your data Updated Successfully !');
-    };
+ const onFinish = async values => {
+    try {
+      const result = await request.put(`student/mycourses/${data._id}`,values);
+      console.log("api call mycourse updated", result);
+      message.success('Your data Updated Successfully !');
+      //window.location.reload(true);
+      
+    } catch (e) {
+      console.log("update error ", e);
+    }
+    redirect();
+  };
 
+   //redirect
+   let history = useHistory();
+
+   const redirect = () => {
+     history.push('/MyCourses')
+   }
+
+   
     //textarea
     const { TextArea } = Input;
 
     //form
     const [form] = Form.useForm();
 
-    const onFinish = (values) => {
-        console.log(values);
-    };
+  
 
     const onReset = () => {
         form.resetFields();
@@ -56,9 +103,9 @@ function UpdateEnroll() {
     return (
         <div className="enroll">
 
-            <br /><center><h1 className="enrolllHeading">Update Enrollment</h1></center>
+            
             <div>
-
+            <img src={image3}  className="myenrollImg"/>
                 {/*Student Details Form */}
 
                 {/* <div className="stdEnroll">
@@ -171,8 +218,8 @@ function UpdateEnroll() {
                 {/*Course Details Form */}
 
                 <div className="crsEnroll">
-                    <center><h2>Course Details</h2></center>
-                    <Form {...layout} form={form} name="courseEnroll" onFinish={onFinish}>
+                    <center><h2 className="enrolllHeading">Update Enrollment</h2></center>
+                    {data &&<Form {...layout} form={form} name="courseEnroll" onFinish={onFinish} initialValues={data}  key={data._id}>
                         <Form.Item
                             name="subject"
                             label="Subject"
@@ -189,7 +236,7 @@ function UpdateEnroll() {
                                 <Select.Option value="Object Oriented Programming">Object Oriented Programming</Select.Option>
                                 <Select.Option value="Information Systems">Information Systems</Select.Option>
                                 <Select.Option value="Computer Science">Computer Science</Select.Option>
-                                <Select.Option value="Network and Security<">Network and Security</Select.Option>
+                                <Select.Option value="Network and Security">Network and Security</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -246,16 +293,16 @@ function UpdateEnroll() {
 
 
                         <Form.Item {...tailLayout}>
-                            <Button type="primary" htmlType="submit" onClick={success}>
+                            <div className="updtenrollbtn"><Button type="primary" htmlType="submit" >
                                 Update
-                            </Button>
-
+                            </Button></div>
+{/* 
                             <Button htmlType="button" onClick={onReset} className="resetBtn" >
                                 Reset
-                            </Button>
+                            </Button> */}
 
                         </Form.Item>
-                    </Form>
+                    </Form>}
                 </div>
 
             </div>

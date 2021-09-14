@@ -2,11 +2,14 @@ import React from "react";
 import { Form, Input, InputNumber, Button} from "antd";
 import 'antd/dist/antd.css';
 import './jobManagement.css';
+import useRequest from "../../services/RequestContext";
 
 
 
 
 function AddJob() {
+
+  const [form] = Form.useForm();
 
   const layout = {
     labelCol: {
@@ -16,6 +19,24 @@ function AddJob() {
       span: 16,
     },
   };
+
+
+  const {request} = useRequest();
+
+  const onFinish = async (values) => {
+    console.log("value",values);
+      try{
+          const result = await request.post('job/job', values);
+          console.log("api call job add result ", result);
+          alert("Sucsessfully added");
+          window.location.reload(true);
+    } catch(e){
+      console.log("post job add error ",e);
+    }
+  
+    form.resetFields();
+  };
+
   /* eslint-disable no-template-curly-in-string */
   
   const validateMessages = {
@@ -29,16 +50,18 @@ function AddJob() {
     },
   };
   
-    const onFinish = (values) => {
-      console.log(values);
-    };
+ 
 
   return (
-
+<div>
+<h2 className="add-header">Add a new career opportunity</h2>
     <div className="AddForm">
-    <Form {...layout} name="deleteRequ" onFinish={onFinish} validateMessages={validateMessages}>
+     
+    <Form {...layout} name="deleteRequ" className="job-add-form" onFinish={onFinish} validateMessages={validateMessages}>
+
+      <div className="add-form-items">
     <Form.Item
-      name={['jobID']}
+      name={['jobId']}
       label="Job ID"
       rules={[
         {
@@ -60,7 +83,7 @@ function AddJob() {
     <Input />
       
     </Form.Item>
-    <Form.Item name={[ 'salary']} 
+    <Form.Item name={['salary']} 
             label="Salary"
             rules={[
                 {
@@ -70,7 +93,7 @@ function AddJob() {
             >
       <Input />
     </Form.Item>
-    <Form.Item name={['Description']}
+    <Form.Item name={['description']}
      label="Description"
      rules={[
         {
@@ -81,11 +104,19 @@ function AddJob() {
       <Input.TextArea />
     </Form.Item>
     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-      <Button type="primary" htmlType="submit">
+
+      <div >
+      <Button className="add-view-btn" type="primary" htmlType="submit">
         Submit
       </Button>
+     <a href="/updateDelete"> <Button className="add-view-btn" type="primary">
+       View
+      </Button></a>
+      </div>
     </Form.Item>
+    </div>
   </Form>
+  </div>
   </div>
   );
     };

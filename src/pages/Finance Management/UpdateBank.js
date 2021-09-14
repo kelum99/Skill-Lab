@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import useRequest from "../../services/RequestContext";
-import { Form, Input, Button,Spin, Row, Col, Select } from "antd";
+import { Form, Input, Button,Spin, Row, Select,Popconfirm,message } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
-import moment from "moment";
-
+import { Link } from "react-router-dom";
 
 function UpdateBank() {
   const [data, setData] = useState();
@@ -54,6 +53,7 @@ function UpdateBank() {
     try {
       const result = await request.put(`finance/bank/update/${data._id}`, values);
       console.log("api call bank updated", result);
+      window.location.reload(true);
     } catch (e) {
       console.log("update error ", e);
     }
@@ -81,10 +81,17 @@ function UpdateBank() {
       setData({ ...item });
     }
   };
+  const onSuccess = () => {
+    message.success("Bank Details Updated Successfully !");
+  };
+
 
   return (
     <div className="main-container-updateBank">
-
+     <div className="addButtonBank">
+       <Link to="/withdraw">
+    <Button type="primary">Add New Bank Account</Button> </Link>
+    </div>
       {bankList.length > 0 ? (
         <div className="savedCards">
           <label>My Saved Bank Details</label>
@@ -105,7 +112,7 @@ function UpdateBank() {
       )}
 
       <div className={data !== undefined ? "updateForm" : "afterDelete"}>
-        <h3>Edit Bank Details</h3>
+        <h1>Edit Bank Details</h1>
         {data  && (
           <Form
             name="withdraw-form"
@@ -158,18 +165,22 @@ function UpdateBank() {
               wrapperCol={{ ...layout.wrapperCol, offset: 6 }}
               className="walletUpdate-btn"
             >
-              <Button type="primary" htmlType="submit">
-                Update
-              </Button>
-             
-                </Form.Item>
-              <Button
-              danger
-              type="primary"
-              onClick={() => onDelete(data)}
+           <Button type="primary" htmlType="submit" className="updateBtn" onClick={onSuccess}>
+                  Update
+                </Button>
+              </Form.Item>
+              <Popconfirm
+                title="Are you sure to delete this card?"
+                okText="Yes"
+                okButtonProps={{ danger: true }}
+                cancelText="No"
+                cancelButtonProps={{ type: "primary" }}
+                onConfirm={() => onDelete(data)}
               >
-               Delete
-            </Button>
+                <Button danger type="primary">
+                  Delete
+                </Button>
+              </Popconfirm>
         </Row>
           </Form>
         

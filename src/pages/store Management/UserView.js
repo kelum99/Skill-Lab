@@ -43,22 +43,23 @@ function UserView() {
 
   return (
     <>
+    <div class="st">
     <h1> Store </h1>
+    </div>
       <div className="select-item-filter">
-
-        <Form.Item name={["category"]} label="Category">
-          <Select placeholder="Category" >
+          <Select placeholder="Category">
             <Option value="ebook">e-Book</Option>
             <Option value="web templates"> Web Templates</Option>
             <Option value="sample Projects"> Sample Projects</Option>
             <Option value="web templates"> Web Templates</Option>
           </Select>
-        </Form.Item>
+    
       </div>
     <div className="item-container">
       {itemList.map(item => (
         <div className="one-item" key={item._Id} onClick={() => onSelect(item)}>
-          <h2><Link to={`/AddCart/${item._id}`} >{item.productName} </Link> </h2>
+          {/* <h2><Link to={`/AddCart/${item._id}`} >{item.productName} </Link> </h2> */}
+          <h2>{item.productName} </h2>
           <h4>{item.category}</h4>
           <h4>Price: {item.price}$</h4>
           <img src={productImg} className="product-img"/>
