@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useRequest from "../../services/RequestContext";
+import { Link } from "react-router-dom";
 import {
   Form,
   Input,
@@ -93,6 +94,10 @@ function UpdateWallet() {
 
   return (
     <div className="main-container-updateWallet">
+    <div className="addButton">
+    <Link to="/payment">
+    <Button type="primary">Add New Card</Button> </Link>
+    </div>
       {cardList.length > 0 ? (
         <div className="savedCards">
           <label className="lable">My Saved Cards</label>
@@ -115,7 +120,7 @@ function UpdateWallet() {
         <h1>Update Card Details</h1>
         {data && (
           <Form
-            name="payment-form"
+            name="withdraw-form"
             onFinish={onFinish}
             validateMessages={validateMessages}
             layout="vertical"

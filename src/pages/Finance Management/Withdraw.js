@@ -39,7 +39,7 @@ function Withdraw() {
     <>
       <div className="main-container-payment">
         <div className="form">
-          <h1>Withdraw</h1>
+          <h1>Bank Account Details</h1>
 
           <Form
             name="withdraw-form"
@@ -84,16 +84,16 @@ function Withdraw() {
               <Input autocomplete="off" />
             </Form.Item>
 
-            <Form.Item name="save" valuePropName="checked">
+            {/* <Form.Item name="save" valuePropName="checked">
               <Checkbox>Save my bank details</Checkbox>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               shouldUpdate
               wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
             >
               <Button type="primary" htmlType="submit">
-                Withdraw
+                ADD
               </Button>
             </Form.Item>
           </Form>

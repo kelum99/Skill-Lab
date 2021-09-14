@@ -3,8 +3,7 @@ import useRequest from "../../services/RequestContext";
 import { Form, Input, Button,Spin, Row, Col, Select } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
-import moment from "moment";
-
+import { Link } from "react-router-dom";
 
 function UpdateBank() {
   const [data, setData] = useState();
@@ -84,7 +83,10 @@ function UpdateBank() {
 
   return (
     <div className="main-container-updateBank">
-
+     <div className="addButtonBank">
+       <Link to="/withdraw">
+    <Button type="primary">Add New Bank Account</Button> </Link>
+    </div>
       {bankList.length > 0 ? (
         <div className="savedCards">
           <label>My Saved Bank Details</label>
@@ -105,7 +107,7 @@ function UpdateBank() {
       )}
 
       <div className={data !== undefined ? "updateForm" : "afterDelete"}>
-        <h3>Edit Bank Details</h3>
+        <h1>Edit Bank Details</h1>
         {data  && (
           <Form
             name="withdraw-form"
@@ -158,7 +160,7 @@ function UpdateBank() {
               wrapperCol={{ ...layout.wrapperCol, offset: 6 }}
               className="walletUpdate-btn"
             >
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" className="updateBtn">
                 Update
               </Button>
              

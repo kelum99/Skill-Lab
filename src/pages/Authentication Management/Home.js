@@ -3,6 +3,7 @@ import { Form,Button} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesHome.css'
 import home from '../../Images/home.png';
+import { Link } from "react-router-dom";
 
 
 function Home() {
@@ -42,14 +43,16 @@ return (
     </Form.Item>
 
     <Form.Item>
+            <Link to="/areyou">
             <Button type="primary" htmlType="submit" className="btn1" >
             JOIN WITH US
             </Button>
+            </Link>
     </Form.Item>
 
     <Form.Item>
             <div className="hme">
-            <img width={800} src={home}/>
+            <img width={700} src={home}/>
             </div>
     </Form.Item>
 

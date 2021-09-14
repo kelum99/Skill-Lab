@@ -47,7 +47,7 @@ const {request} = useRequest();
 
       <div className="main-container-payment">
         <div className="form">
-          <h1>Payment</h1>
+          <h1>Add Card Details</h1>
         
           <Form
             name="payment-form"
@@ -92,16 +92,16 @@ const {request} = useRequest();
               <InputNumber maxLength={3} />
             </Form.Item>
 
-            <Form.Item name="save" valuePropName="checked">
-              <Checkbox style={{color:"#fff"}}>Save this card to wallet</Checkbox>
-            </Form.Item>
+            {/* <Form.Item name="save" valuePropName="checked">
+              <Checkbox >Save this card to wallet</Checkbox>
+            </Form.Item> */}
 
             <Form.Item
               shouldUpdate
               wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
             >
               <Button type="primary" htmlType="submit">
-                Pay
+                ADD
               </Button>
             </Form.Item>
           </Form>

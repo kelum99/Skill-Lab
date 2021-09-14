@@ -1,62 +1,64 @@
 import React from "react";
-import { Table } from "antd";
-import './stylesFinance.css';
-import 'antd/dist/antd.css'
+import { Table, Tag } from "antd";
+import "./stylesFinance.css";
+import "antd/dist/antd.css";
+import { Link } from "react-router-dom";
 
 function PaymnetHistory() {
-    
-    const columns = [
-        {
-          title: 'Payment ID',
-          dataIndex: 'paymentID',
-          key: 'paymentID',
-        },
-        {
-          title: 'Reason',
-          dataIndex: 'reason',
-          key: 'reason',
-        },
-        {
-          title: 'Status',
-          dataIndex: 'status',
-          key: 'status',
-        },
-        {
-          title: 'Amount',
-          dataIndex: 'amount',
-          key: 'amount',
-        },
-        {
-          title: 'Date',
-          dataIndex: 'date',
-          key: 'date',
-        },
-      ];
+  const columns = [
+    {
+      title: "Payment ID",
+      dataIndex: "paymentID",
+      key: "paymentID"
+    },
+    {
+      title: "Reason",
+      dataIndex: "reason",
+      key: "reason"
+    },
+    {
+      title: "Status",
+      dataIndex: "status",
+      key: "status"
+    },
+    {
+      title: "Amount",
+      dataIndex: "amount",
+      key: "amount"
+    },
+    {
+      title: "Date",
+      dataIndex: "date",
+      key: "date"
+    }
+  ];
 
-      const data = [
-        {
-          key: '1',
-          paymentID: 'P100',
-          reason: 'Purchase a course',
-          status: 'Completed',
-          amount: '50$',
-          date: '2021-05-12'
-        }
-      ];
+  const data = [
+    {
+      key: "1",
+      paymentID: "P100",
+      reason: "Purchase a course",
+      status: "Completed",
+      amount: "50$",
+      date: "2021-05-12"
+    }
+  ];
 
-    return(
+  return (
+    <div className="main-container-paymentHistory">
+      <h1>My Payment History</h1>
 
-        <div className="main-container-paymentHistory"> 
-            <h1>My Payment History</h1>
+      <div className="paymentHistory-table">
+        <Table dataSource={data} columns={columns} pagination={false} />
+      </div>
 
-            <div className="paymentHistory-table">
+      <div className="issue">
+      <span > Have any issue with your payments ?
+        <Link to="/contactUs"> Contact Us </Link>
+      </span>
+      </div>
+    </div>
+  );
+}
 
-                 <Table dataSource={data} columns={columns}/>
-            
-            </div>
-            
-        </div>
-    );
-};
-
-export default  PaymnetHistory;
+export default PaymnetHistory;
