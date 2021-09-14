@@ -1,7 +1,8 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio,  Popconfirm, message } from "antd";
-import './stylesLecStdprofile.css'
+import './stylesProfile.css'
 import 'antd/dist/antd.css';
+
 
 function Lecprofile() {
 
@@ -26,7 +27,7 @@ function Lecprofile() {
 }
   
 
-  //Form Vilidation 
+  
   const validateMessages = {
     required: "${label} is required!",
     types: {
@@ -34,23 +35,27 @@ function Lecprofile() {
     }
   };
 
-  //on submit - console log
+  
   const onFinish = values => {
     console.log(values);
   };
 
   const [value] = React.useState(1);
 
+  
+
+
+
   return (
   <>
-    <div className="main-container-lecprofile">
+    <div className="main-container-profile">
 
-    <div className="form-common"id="profile">
+    <div className="form-profile">
 
         <h3>Skill Lab</h3>
         <h1>Lecturer</h1>
 
-<Form {...layout} name="lecProfile" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="lecProfile" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}
@@ -90,26 +95,29 @@ function Lecprofile() {
   </Form.Item>
 
 
-<Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} className="btnsLec">
-        <Button type="primary" htmlType="submit">
+<Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }} >
+        <Button type="primary" htmlType="submit" >
           Submit
         </Button>
-        <Button type="primary" htmlType="submit" className="btnCancel">
+        <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
-            <Popconfirm
-              title="Are you sure to delete your profile?"
+        <Popconfirm 
+              title="   Are you sure to delete your profile?"
               onConfirm={confirm}
               onCancel={cancel}
               okText="Yes"
               cancelText="No"
             >
-        <Button type="primary" htmlType="btnDelete">
+        <Button type="primary" htmlType="btnDelete" >
           Delete my Account
         </Button>
             </Popconfirm>
+           
 </Form.Item>
 </Form>
+
+
     
     </div>
     </div>

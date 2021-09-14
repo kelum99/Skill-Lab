@@ -1,9 +1,15 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Form, Input, Button, DatePicker, Radio,Popconfirm, message } from "antd";
-import './stylesLecStdprofile.css'
+import './stylesProfile.css'
 import 'antd/dist/antd.css';
+import useRequest from "../../services/RequestContext";
 
 function Lecprofile() {
+
+  const [data,setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const {request} = useRequest();
+
 
   
   const layout = {
@@ -26,7 +32,7 @@ function cancel(e) {
   message.error('Click on No');
 }
 
-  //Form Vilidation 
+  
   const validateMessages = {
     required: "${label} is required!",
 
@@ -35,26 +41,49 @@ function cancel(e) {
     }
   };
 
-  //on submit - console log
+ 
   const onFinish = values => {
     console.log(values);
   };
 
   const [value] = React.useState(1);
 
+
+
+  const fetchAuthenticationStudent = async () => {
+    setLoading(true);
+  
+    try {
+      const result = await request.get("AuthenticationRoute/StudentSignup");
+      if (result.status === 200) {
+        setData(result.data);
+      }
+      console.log(" std list get ", result);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    fetchAuthenticationStudent();
+  }, []);
+
+
+
  
   
   return (
 
   <>
-    <div className="main-container-lecprofile">
+    <div className="main-container-profile">
 
-    <div className="form-common"id="profile">
+    <div className="form-profile">
 
         <h3>Skill Lab</h3>
         <h1>Student</h1>
 
-<Form {...layout} name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}
@@ -71,6 +100,27 @@ function cancel(e) {
         <Input />
   </Form.Item>
   
+  <Form.Item
+        name={['birthday']}
+        label="Birthday"
+        >
+        <Input />
+  </Form.Item>
+
+  <Form.Item
+        name={['gender']}
+        label="Gender"
+        >
+        <Input />
+  </Form.Item>
+
+  <Form.Item
+        name={['nic']}
+        label="NIC"
+        >
+        <Input />
+  </Form.Item>
+
   <Form.Item
         name={[ 'email']}
         label="Email"
@@ -89,10 +139,10 @@ function cancel(e) {
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
-        <Button type="primary" htmlType="submit" className="btnCancel">
+        <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
-          <Popconfirm
+        <Popconfirm
               title="Are you sure to delete your profile?"
               onConfirm={confirm}
               onCancel={cancel}
@@ -103,9 +153,14 @@ function cancel(e) {
           Delete my Account
         </Button>
           </Popconfirm>
+         
     </Form.Item>
 
 </Form>
+
+
+
+
     
     </div>
     </div>

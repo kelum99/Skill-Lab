@@ -21,24 +21,11 @@
     opacity: 0.5;
 }
 
+
 .tbl{
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-}
-
-.dlt{
-    width:50px;
-    margin: 5%;
-    border-radius: 5px;
-    font-size: 15px;
-    font-weight: 500;
-    background-color: #07bbb1;
-    border-color: #07bbb1;
-}
-
-.dlt:hover{
-    opacity: 0.5;
 }
 
 .searchbar1{
@@ -49,29 +36,30 @@
     width:20%;
 }
 
-.tbl .ant-table-content {
-  background-color: #d3a015;
-}
-.manage .ant-btn-primary{
-    background-color: #00C8CD;
-    
+.Au-manage .ant-btn-primary{
+    background-color: #0004ff81;
+    width:50px;
+    margin: 5%;
+    border: none;
+    outline: none;
 }
 
-.Heading1 {
+.Au-manage h1 {
   font-size: 40px;
-  font-weight: 550;
   font-family: Georgia, serif;
+  text-align: center;
 }
 
-.Heading2{
+.Au-manage h2{
     font-size: 30px;
-    font-weight: 550;
     font-family: Georgia, serif;
-    margin-top:-30px;
+    margin-top:-20px;
+    text-align: center;
 }
 
-.manage{
-    background:#EDFFFA;
+.Au-manage .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button{
+    width: 60px;
+    margin-top: 0.10px;
 }
 
 
