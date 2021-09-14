@@ -10,34 +10,42 @@
     float: left;
 } */
 .crsEnroll{
-    background: #88BDBC;
-    margin-top: 1%;
-    margin-left: 25%;
-    margin-right: 50%;
+    background: #bae2f0;
+    margin-top: 3%;
+    margin-left: 6%;
+    margin-bottom: 8%;
     padding: 40px;
+    padding-left: 10px;
+    padding-right: 120px;
     padding-bottom: 5px;
     border-radius: 20px;
-    width: 50%;
-    height:750px;
+    width: 40%;
+    height:650px;
     float: left;
-}
-.enroll .ant-input{
-    border-radius: 6px;
     
 }
-.markbackgrnd .ant-input{
+
+.enroll .ant-input{
     border-radius: 6px;
+    padding-left: 25px;
+  
+    
+}
+.addMarks .ant-input{
+    border-radius: 6px;
+   
 }
 
 .crsEnroll .ant-btn-primary{
     border-radius: 5px;
-    background-color: #1282A2;
-    border-color: #1282A2;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
     outline: none;
     border: none;
     font-size: 15px;
     font-weight: 500;
-    margin: 5%;
+    margin-top: 10%;
+    margin-left: 10%;
     width: 100px;
     height: 35px;
    
@@ -52,32 +60,50 @@
     border: none;
     font-size: 15px;
     font-weight: 500;
-    margin: 5%;
+    margin-top: 10%;
+    margin-left: 8%;
     width: 100px;
     height: 35px;
 }
 
 .enrollImage{
     width:70%;
-    margin-left: 15%;
+    margin-left: 25%;
     margin-right: 10%;
   
 }
 .enroll .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius: 6px;
-   
+    padding-left: 0px; 
 }
 
-.markbackgrnd .ant-select:not(.ant-select-customize-input) .ant-select-selector{
+.addMarks .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius: 6px;
+    padding-left: 0px;
 }
 
 
 /*My Course Page*/
 .MyCourseImg{
+    width:1000px;
+    height:500px;
+   
+}
+.myenrollImg{
+    margin-top: 3%;
+    margin-left: 6%;
+    margin-bottom: 8%;  
+    border-radius: 6px;
+    width:43%;
+    height:650px;
+    float: left;
+
+    
+}
+.performImg{
+    margin-left: 15%;
     width:50%;
     height:400px;
-   
 }
 
 .crsTable{
@@ -87,14 +113,15 @@
     
     
 }
-.edit-dlt{
-    width:50px;
-    margin: 5%;
+.edit-dlt-btn{
+    width:38px;
+    margin: 3%;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: 500;
-    background-color: #1282A2;
-    border-color: #1282A2;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
+    
 }
 .edit-dlt:hover{
     opacity: 0.5;
@@ -107,31 +134,32 @@
     width:20%;
 }
 .enroll .ant-btn-primary:hover,.ant-btn-primary:focus{
-    background:#1282A2 ;
+    background:#07bbd1 ;
     
 }
 
 .enroll .ant-btn-primary{
-    background-color: #1282A2;
-    border-color: #1282A2;
-    background: #1282A2;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
+    background: #07bbd1;
     
 }
 
 .myCrs .ant-btn-primary:hover,.ant-btn-primary:focus{
-    background:#1282A2 ;
+    background:#07bbd1 ;
     
 }
 
 .myCrs .ant-btn-primary{
-    background-color: #1282A2;
-    border-color: #1282A2;
-    background: #1282A2;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
+    background: #07bbd1;
     
 }
 
 .myCrs .ant-table{
-    background-color:#88BDBC;
+    background-color:#bae2f0;
+    margin-bottom: 4%;
 }
 .myCrs .ant-table-row {
     text-align: center;
@@ -145,6 +173,7 @@
     font-size: 30px;
     font-weight: 550;
     font-family: Georgia, serif;
+    margin-left: 100px;
 }
 
 .myCrs .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
@@ -167,19 +196,32 @@
 
 /*Add Marks*/
 .addMarks{
-    background: #88BDBC;
+    background: #bae2f0;
     margin-top: 6%;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 6%;
     margin-bottom: 6%;
     padding: 40px;
     padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 120px;
     border-radius: 20px;
     width: 40%;
-    height: 60%;
+    height: 40%;
+   
     
+   float: left;
     
 }
+.addmarkImg{ 
+    margin-top: 6%;
+    margin-left: 6%;
+    margin-bottom: 6%;  
+    border-radius: 6px;
+    width:43%;
+    height:585px;
+    float: left;
+}
+
 .myCrs .ant-table-thead .ant-table-cell{
     background: #1282A2;
     text-align: center;
@@ -187,29 +229,40 @@
 }
 .addMarks .ant-btn-primary{
     border-radius: 5px;
-    background-color: #1282A2;
-    border-color: #1282A2;
+    background-color: #07bbd1;
+    border-color: #07bbd1;
     outline: none;
     border: none;
     font-size: 15px;
     font-weight: 500;
-    margin: 5%;
+    margin:6%;
     width: 100px;
     height: 35px;
+    
 }
 .addMarks .ant-btn-primary:hover{
     opacity: 0.5;
 }
+.updtenrollbtn .ant-btn-primary{
+    margin-left: 70px;
+}
 
 /*Add New Button*/
 .AddButton{
-    margin-top: 5px;
+    margin-top: 30px;
     margin-left: 80px;
       
 }
 .AddButton:hover{
     opacity: 0.6;
 }
+
+.addMarks .updtMark{
+    margin-right: 20px;
+    margin-left: 100px;
+}
+
+
 
 
 

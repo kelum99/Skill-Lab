@@ -29,7 +29,7 @@ h1{
    
 }
 
-.editRform .ant-btn-primary{
+.btneditR .ant-btn-primary{
     border-radius: 5px;
     background: #07bbd1;
     border-radius: 10px;
@@ -69,6 +69,7 @@ h1{
     display: flex;
     justify-content:right;
     align-items: center;
+    
 }
 .contactform{
     background: #bae2f0;
@@ -97,6 +98,7 @@ h1{
 }
 .contactform .ant-form-item-required {
     font-weight: 500;
+    
 }
 
 
@@ -133,10 +135,12 @@ h4{
 /* My Review Page */
 .rTable{
     margin-top: 5%;
-    margin-left: 15%;
+    margin-left: 13%;
     margin-right: 10%;
-    width: 1000px;
+    width: 1350px;
     align-content: center;
+    border-color: black;
+
 }
 .edit-dlt{
     width:50px;
@@ -145,7 +149,7 @@ h4{
     font-size: 30px;
     font-weight: 500;
 
-    background-color:#49c1d1;
+    background-color:#1282A2;
     
     border-color: #49c1d1;
 }
@@ -181,14 +185,14 @@ h4{
    
 }
 
-.ant-table-content{
+ .rTable.ant-table-content{
     background-color:#c0ecfa;
     align-content: center;
     margin-top: -2%;
 }
 
 .ant-table-thead.ant-table-cell{
-    background: aqua;
+    background: #1282A2;
     text-align: center;
 }
 
@@ -206,50 +210,40 @@ h4{
 
 /*Review Page*/
 
-.review.cusRate.Rate{
-   color: cadetblue;
 
+.addR form{
+    background: #bae2f0;
+    border-color: #000000;
+    margin-top: 0%;
+    margin-bottom: 10%;
+    padding: 50px;
+    border-radius: 30px;
+    width: 70%;
+    height: 50%;
+    font-size: 20px;
+    margin-left: 5%;
+    align-items: left;
 
 }
+
+.addR.ant-form-item-label{
+    color: black;
+    font-size: 20px
+}
+.review h1{
+    text-align: left;
+    margin-left: 50px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight:normal;
+    font-size: 40px;
+    
+}
+
 
 .review.ant-input{
     border-radius: 5px;
     box-sizing: content-box;
     margin-block-start: 400%;
-}
-.sec1{
-    margin-block-start: 300px;
-}
-
-.main-container-Review{
-    display: flex;
-    justify-content: initial;
-    align-items: initial;
-}
-.main-container-Review.ant-input{
-    width: 300px;
-    margin-left: 100%;
-    margin-right: 0%;
-}
-
-.main-container-Review .ant-btn-primary{
-    border-radius: 5px;
-    background: #07bbd1;
-    border-radius: 10px;
-    width: 50%;
-    outline: none;
-    border: #000000;
     
 }
-
-.writeC.ant-input{
-    width: 200px;
-}
-
-.comntform{
-    margin-left: 20%;
-    margin-right: 50%;
-    width: 500px;
-}
-
 

@@ -45,6 +45,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  
 }
 .button{
     border-radius: 5px;
@@ -55,12 +56,65 @@
     padding: 50px 40px 30px 90%;
 }
 .addItem-table .ant-table-content{
-    background: rgb(94, 139, 35)
+    background: #bae2f0;
+    font-size: 16px;
 }
 .addItem-table .ant-table-thead .ant-table-cell{
-    background: grey 
+    background: #07bbd1 
+}
+.txt{
+    text-align: left;
+    font-size: 20px;
+
+}
+.select-item-filter .ant-form-item .ant-select{
+    width: 50%;
+}
+.select-item-filter{
+    margin: 15px;
+
+
+}
+.item{
+    padding: 90px 40px 30px 3%;
+    
+    display: flex;
 }
 
-
+.one-item{
+    background: lightgrey;
+    width: 400px;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 10px;
+}
+.item-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin: 10px;
+}
+.btn{
+    border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.addItem-table{
+    margin: 40px;
+}
+.product-img{
+    height:100px;
+    width: 130px;
+}
     
     
