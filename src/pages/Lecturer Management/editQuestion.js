@@ -49,11 +49,6 @@ function EditQuestion() {
  }, [id]);
 
     
-
-    //alert mg
-    const success = () => {
-    message.success('Your data Updated Successfully !');
-    };    
         
 
     //drop down
@@ -74,6 +69,7 @@ function EditQuestion() {
       try {
         const result = await request.put(`lecturer/question/${data._id}`,values);
         console.log("api call question updated", result);
+        message.success('Your data Updated Successfully !');
         window.location.reload(true);
       } catch (e) {
         console.log("update error ", e);
@@ -157,7 +153,7 @@ function EditQuestion() {
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button className = "btnQuestion" type="primary"icon={<EditOutlined />} htmlType="submit"onClick={success}>
+            <Button className = "btnQuestion" type="primary"icon={<EditOutlined />} htmlType="submit">
               UPDATE
             </Button>
           </Form.Item>
