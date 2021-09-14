@@ -7,6 +7,9 @@ import num3 from '../../image/num3.jpg';
 import num4 from '../../image/num4.jpg';
 import num5 from '../../image/num5.jpg';
 import num6 from '../../image/num6.jpg';
+import coursemain from '../../image/coursemain.jpg';
+
+
 import './courseStyles.css'
 import { Input, Space } from 'antd';
 
@@ -65,6 +68,13 @@ function courseMain() {
       <br/>
       <h2 className ="cquote">Every expert was once a beginner .Start your first step  with  SKILL Lab  </h2>
     </div>
+
+    <div className="description">
+      <br/>
+      <h2 className ="headingscourse">Latest Courses   </h2>
+      <img className="eduimg" src={coursemain} alt="image 2" height={500} width={1320} />
+    </div>
+
   </div>
 
   );

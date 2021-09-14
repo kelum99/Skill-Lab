@@ -16,7 +16,7 @@ function ViewCourses(props) {
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const result = await request.get("course/coursecreate/findAll");
+      const result = await request.get("course/coursecreate");
       if (result.status === 200) {
         // setData(result.data);
         setCourseList(result.data);
@@ -27,7 +27,7 @@ function ViewCourses(props) {
       setLoading(false);
     }
   };
-
+    
   useEffect(() => {
     fetchCourses();
   }, []);
@@ -126,7 +126,7 @@ function ViewCourses(props) {
   return (
     <div className="myCrs">
       <Search
-        placeholder="Search Mark"
+        placeholder="Search courses"
         onSearch={onSearch}
         enterButton
         className="searchbar"

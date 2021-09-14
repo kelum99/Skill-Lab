@@ -4,8 +4,13 @@ import 'antd/dist/antd.css';
 import './courseStyles.css';
 import addlessons from '../../image/addlessons.jpg';
 import useRequest from "../../services/RequestContext";
+import { useHistory } from 'react-router-dom';
+
+
 
     function CreateCourse() {
+
+      const history = useHistory();
         const layout = {
             labelCol: {
                span: 10,
@@ -110,11 +115,16 @@ import useRequest from "../../services/RequestContext";
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button type="primary" htmlType="submit">
+            <Button className ="abc" type="primary" htmlType="submit">
               Save 
             </Button>
+            
           </Form.Item>
+        
         </Form>
+        <button  className ="abc" type="primary"  onClick={() => history.push('./courseLessons')}>
+            View My Created Lessons
+            </button>
         </div>
     </div>
     </>
