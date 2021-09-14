@@ -36,19 +36,27 @@ function WithdrawHistory() {
   const data = [
     {
       key: "1",
-      withdrawID: "W100",
-      reason: "Purchase a course",
+      withdrawID: "W125667",
+      reason: "Monthy income withdraw",
       status: "Completed",
-      amount: "50$",
-      date: "2021-05-12"
+      amount: "1550$",
+      date: "2021-06-20"
     },
     {
       key: "2",
-      withdrawID: "W100",
-      reason: "Purchase a course",
+      withdrawID: "W925665",
+      reason: "Emergency withdraw",
       status: "Completed",
-      amount: "50$",
-      date: "2021-05-12"
+      amount: "220$",
+      date: "2021-07-18"
+    },   
+    {
+      key: "3",
+      withdrawID: "W948752",
+      reason: "Store product income withdraw",
+      status: "Completed",
+      amount: "697$",
+      date: "2021-08-03 "
     }
   ];
 

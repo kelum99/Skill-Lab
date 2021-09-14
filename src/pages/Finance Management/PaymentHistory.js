@@ -36,11 +36,27 @@ function PaymnetHistory() {
   const data = [
     {
       key: "1",
-      paymentID: "P100",
-      reason: "Purchase a course",
+      paymentID: "P525667",
+      reason: "Purchase a java springboot course",
       status: "Completed",
       amount: "50$",
       date: "2021-05-12"
+    },
+    {
+      key: "2",
+      paymentID: "P725665",
+      reason: "Purchase a ebook about react",
+      status: "Completed",
+      amount: "20$",
+      date: "2021-07-22"
+    },   
+    {
+      key: "3",
+      paymentID: "P848752",
+      reason: "Buy web-template about hotel mangement",
+      status: "Completed",
+      amount: "200$",
+      date: "2021-08-02"
     }
   ];
 

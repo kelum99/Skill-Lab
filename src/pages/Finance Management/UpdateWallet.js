@@ -9,7 +9,7 @@ import {
   DatePicker,
   Spin,
   Row,
-  Col,
+  message,
   Popconfirm
 } from "antd";
 import "./stylesFinance.css";
@@ -29,6 +29,9 @@ function UpdateWallet() {
     wrapperCol: {
       span: 14
     }
+  };
+  const onSuccess = () => {
+    message.success("Card Updated Successfully !");
   };
 
   const validateMessages = {
@@ -170,7 +173,7 @@ function UpdateWallet() {
                 wrapperCol={{ ...layout.wrapperCol, offset: 6 }}
                 className="walletUpdate-btn"
               >
-                <Button type="primary" htmlType="submit" className="updateBtn">
+                <Button type="primary" htmlType="submit" className="updateBtn" onClick={onSuccess}>
                   Update
                 </Button>
               </Form.Item>
