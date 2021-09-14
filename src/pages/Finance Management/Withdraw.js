@@ -1,8 +1,9 @@
-import React from "react";
-import { Form, Input, Button, Select, Checkbox } from "antd";
+import React,{useState} from "react";
+import { Form, Input, Button, Select, Checkbox,message,Row,Space } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
 import useRequest from "../../services/RequestContext";
+import {Link} from "react-router-dom";
 
 function Withdraw() {
   const { Option } = Select;
@@ -16,6 +17,10 @@ function Withdraw() {
     }
   };
 
+  const [size, setSize] = useState('large')
+  const onSuccess = () => {
+    message.success("Bank Added Successfully !");
+  };
   const validateMessages = {
     required: "${label} is required!",
 
@@ -39,7 +44,7 @@ function Withdraw() {
     <>
       <div className="main-container-payment">
         <div className="form">
-          <h1>Withdraw</h1>
+          <h1>Bank Account Details</h1>
 
           <Form
             name="withdraw-form"
@@ -84,17 +89,26 @@ function Withdraw() {
               <Input autocomplete="off" />
             </Form.Item>
 
-            <Form.Item name="save" valuePropName="checked">
+            {/* <Form.Item name="save" valuePropName="checked">
               <Checkbox>Save my bank details</Checkbox>
-            </Form.Item>
+            </Form.Item> */}
 
             <Form.Item
               shouldUpdate
-              wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
+              wrapperCol={{ ...layout.wrapperCol, offset: 6}}
             >
-              <Button type="primary" htmlType="submit">
-                Withdraw
+            <Row>
+            <Space size={size}>
+              <Button type="primary" htmlType="submit" onClick={onSuccess}>
+                ADD
               </Button>
+              <Link to="/updateBank">
+              <Button type="primary">
+                My Bank Details
+              </Button>
+              </Link>
+              </Space>
+              </Row>
             </Form.Item>
           </Form>
           {/* Form end */}

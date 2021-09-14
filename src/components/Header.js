@@ -1,7 +1,7 @@
 import React from "react";
 import "./StylesHeader.css";
 import SliderLecturer from "./SliderLecturer";
-import SliderStudent from "./SliderStudent";
+//import SliderStudent from "./SliderStudent";
 import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 
@@ -11,20 +11,19 @@ function Header() {
       <div className="conatiner">
         <div className="header">
           <SliderLecturer />
-          <SliderStudent />
           <img src={logo} alt="logo" className="logo" />
 
           <ul className="pages">
             <Link to="/">
               <li>Home</li>
             </Link>
-            <Link to="/about">
+            <Link to="/aboutus">
               <li>About</li>
             </Link>
-            <Link to="/courses">
+            <Link to="/courseMain">
               <li>Courses</li>
             </Link>
-            <Link to="/viewStore">
+            <Link to="/UserView">
               <li>Store</li>
             </Link>
             <Link to="/careere">

@@ -1,5 +1,5 @@
 .form-signin{
-    background: #99D3DF;
+    background: #bae2f0;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
@@ -16,7 +16,7 @@
 
 .form-signin .ant-btn-primary{
     border-radius: 5px;
-    background: #0066ff;
+    background: #1890ff;
     outline: none;
     border: none;
     

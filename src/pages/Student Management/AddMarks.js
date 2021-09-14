@@ -2,15 +2,12 @@ import React from "react";
 import { Form, Input, Button, Select, message, DatePicker } from 'antd';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
-import ViewMarks from "./ViewMarks";
+import  { useHistory } from 'react-router-dom'
+import image from "../../image/profmark4.jpg";
 
 
 function AddMarks() {
 
-    //alert msg
-    const success = () => {
-        message.success('Marks Added Successfully !');
-    };
 
     //datepicker
 
@@ -29,12 +26,22 @@ function AddMarks() {
         try {
             const result = await request.post('student/performance', values);
             console.log("api call performance result ", result);
+            message.success('Marks Added Successfully !');
         }
         catch (e) {
             console.log("post performance error ", e);
         }
         form.resetFields();
+        redirect();
+      
     };
+
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push('/ViewMarks')
+    }
 
     const onReset = () => {
         form.resetFields();
@@ -57,10 +64,10 @@ function AddMarks() {
 
     return (
         <div class="markbackgrnd">
-
+           <div ><img src={image} height={585} className="addmarkImg"/></div>
 
             <div className="addMarks">
-                <center><h2 className="enrolllHeading">Add Students' Marks</h2></center>
+                <center><h2 className="enrolllHeading">Add Student Marks</h2></center>
                 <Form {...layout} form={form} name="addmarks" onFinish={onFinish}>
                     <Form.Item
                         name="studentID"
@@ -88,7 +95,7 @@ function AddMarks() {
                             <Select.Option value="Object Oriented Programming">Object Oriented Programming</Select.Option>
                             <Select.Option value="Information Systems">Information Systems</Select.Option>
                             <Select.Option value="Computer Science">Computer Science</Select.Option>
-                            <Select.Option value="Network and Security<">Network and Security</Select.Option>
+                            <Select.Option value="Network and Security">Network and Security</Select.Option>
                         </Select>
                     </Form.Item>
                     <Form.Item
@@ -151,7 +158,7 @@ function AddMarks() {
 
 
                     <Form.Item {...tailLayout}>
-                        <Button type="primary" htmlType="submit" onClick={success}>
+                      <Button type="primary" htmlType="submit">
                             Upload
                         </Button>
 
@@ -162,6 +169,7 @@ function AddMarks() {
                     </Form.Item>
                 </Form>
             </div>
+           
         </div>
 
 

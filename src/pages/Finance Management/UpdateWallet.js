@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useRequest from "../../services/RequestContext";
+import { Link } from "react-router-dom";
 import {
   Form,
   Input,
@@ -8,7 +9,7 @@ import {
   DatePicker,
   Spin,
   Row,
-  Col,
+  message,
   Popconfirm
 } from "antd";
 import "./stylesFinance.css";
@@ -28,6 +29,9 @@ function UpdateWallet() {
     wrapperCol: {
       span: 14
     }
+  };
+  const onSuccess = () => {
+    message.success("Card Updated Successfully !");
   };
 
   const validateMessages = {
@@ -93,6 +97,10 @@ function UpdateWallet() {
 
   return (
     <div className="main-container-updateWallet">
+    <div className="addButton">
+    <Link to="/payment">
+    <Button type="primary">Add New Card</Button> </Link>
+    </div>
       {cardList.length > 0 ? (
         <div className="savedCards">
           <label className="lable">My Saved Cards</label>
@@ -115,7 +123,7 @@ function UpdateWallet() {
         <h1>Update Card Details</h1>
         {data && (
           <Form
-            name="payment-form"
+            name="withdraw-form"
             onFinish={onFinish}
             validateMessages={validateMessages}
             layout="vertical"
@@ -165,7 +173,7 @@ function UpdateWallet() {
                 wrapperCol={{ ...layout.wrapperCol, offset: 6 }}
                 className="walletUpdate-btn"
               >
-                <Button type="primary" htmlType="submit" className="updateBtn">
+                <Button type="primary" htmlType="submit" className="updateBtn" onClick={onSuccess}>
                   Update
                 </Button>
               </Form.Item>
