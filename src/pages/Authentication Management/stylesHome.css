@@ -1,19 +1,34 @@
 
+.btnSignin{
+    background: #0060CC;
+    margin-top: 20px;
+    border-radius: 20px;
+    margin-left: 88%;
+    outline: none;
+    border: none;
+}
 
-
+.btnReg{
+    margin:0 15px;
+    background: #0060CC;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+}
 
 .btn1{
     border-radius: 50px;
     background: #0060CC;
-    text-align: center;
     color:white;
     font-size:30px;
     height: 70px;
 	left: 300px;
-	position: absolute;
 	top: 10px;
-	width: 310px;
+	width: 15%;
     font-family:Arial black;
+    outline: none;
+    border: none;
+    box-shadow: 0px 0px 50px #1100ff94;
 }
 
 .main-container-home{
@@ -24,10 +39,7 @@
     background-image: linear-gradient(to bottom, #C8FFF1, #00BACD);
 }
 
-.homeBtn{
 
-    margin-left:1900px;
-}
 
 .hme{
 
@@ -63,7 +75,6 @@
     margin-top:200px;
     margin-left:300px;
 }
-
 
 .txt1{
     

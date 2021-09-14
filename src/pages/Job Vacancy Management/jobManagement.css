@@ -227,13 +227,13 @@
     font-family: Georgia, serif;
 }
 
-.ant-table-thead .ant-table-cell{
+/* .ant-table-thead .ant-table-cell{
     background-color:#07bbb1;
 }
 
 .ant-table-cell{
     background-color: silver;
-}
+} */
 
 .deleteCard{
     margin-left: 100px;

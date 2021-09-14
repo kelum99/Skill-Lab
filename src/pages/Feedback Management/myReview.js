@@ -1,73 +1,114 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Table, Button, Input, Popconfirm, message, Card } from "antd";
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import {useHistory} from 'react-router-dom';
 import './stylesFeedback.css'
-import { Table, Button,Input, Space } from 'antd';
-import { EditOutlined ,DeleteOutlined} from '@ant-design/icons';
+import useRequest from "../../services/RequestContext";
 
-function myReview(){
-    //table
-const columns = [
-    
-    
+function MyReview(props) {
+  //retrieve
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { request } = useRequest();
+  const [reviewList, setReviewList] = useState([]);
+  const history = useHistory();
+  //fetchReviews
+  const fetchReviews = async () => {
+    setLoading(true);
+    try {
+      const result = await request.get("feedback/review/findAll");
+      if (result.status === 200) {
+        // setData(result.data);
+        setReviewList(result.data);
+      }
+      console.log(" Marks get ", result);
+      setLoading(false);
+    } catch (e) {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  //confirm alert
+  const text = "Are you sure you want to delete ?";
+
+  function confirm() {
+    message.info("Result Deleted Successfully !");
+  }
+
+  //delete method
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`feedback/review/${value._id}`);
+      if (result.status === 200) {
+        await fetchReviews();
+        setData(undefined);
+      }
+      console.log("api call review deleted", result);
+    } catch (e) {
+      console.log("delete review error", e);
+    }
+  };
+
+
+  //table
+
+  const columns = [
     {
-      title: 'Course',
-      dataIndex: 'course',
+      title: "#",
+      dataIndex: "index",
+      key: "index",
+      render: (text, record, index) => index + 1
     },
     {
-      title: 'Comment',
-      dataIndex: 'comment',
-    },
-  
-      {
-        title: 'Option',
-        dataIndex: 'option',
+        title: 'Course',
+        dataIndex: 'course',
+        key:'course'
       },
+      {
+        title: 'Comment',
+        dataIndex: 'comment',
+        key:'comment'
+      },
+      {
+        title: 'No of Stars',
+        dataIndex: 'rate',
+        key:'rate'
+      },
+  
+  
+    {
+      title: "Action",
+      dataIndex: "action",
+      key: "action",
+      render: (text, record, index) => (
+        <React.Fragment key={index}>
+          <Button type="primary" onClick={() => history.push(`/editR/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+          <Popconfirm
+            placement="right"
+            title={text}
+            onConfirm={() => onDelete(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button
+             
+              type="primary"
+              icon={<DeleteOutlined />}
+              className="edit-dlt"
+            />
+          </Popconfirm>
+        </React.Fragment>
+      )
+    }
   ];
 
-
-  const data = [
-    {
-      key: '1',
-      course: 'Course 1',
-      comment: 'Comment',
-      option:<Space direction='horizontal'><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></Space>
-    },
-    {
-        key: '2',
-        course: 'Course 2',
-        comment: 'Comment',
-        option:<Space direction='horizontal'><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></Space>
-        },
-      {
-        key: '3',
-        
-        course: 'Course 3',
-        comment: 'Comment',
-        option:<Space direction='horizontal'><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></Space>
-     
-      },
-
-      {
-        key: '4',
-        
-        course: 'Course 4',
-        comment: 'Comment',
-        option:<Space direction='horizontal'><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></Space>
-    
-      },
-
-      {
-        key: '5',
-        
-        course: 'Course 5',
-        comment: 'Comment',
-        option:<Space direction='horizontal'><Button type="primary"icon={<EditOutlined />} className="edit-dlt"/><Button type="primary"icon={<DeleteOutlined />} className="edit-dlt"/></Space>
-    
-      },
-  ];
-  
-  
-
-  
+  //search box
+  const { Search } = Input;
+  const onSearch = value => console.log(value);
 
   return (
     <div className="myReview">
@@ -75,12 +116,11 @@ const columns = [
         
         <br/><br/>
 
-        <div><h1><left>Edit Review</left></h1></div>
-        <Table columns={columns} dataSource={data} size="middle" pagination={false} className="rTable" />
-    
+        <div><h1><center>Edit Review</center></h1></div>
+        <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="rTable" />
+        
     </div>
-);
+  );
 }
 
-export default myReview;
-
+export default MyReview;

@@ -7,6 +7,7 @@ import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
 
+
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -34,6 +35,7 @@ import allQuestionList from "./pages/Lecturer Management/allQuestionList";
 import noticesAll from "./pages/Lecturer Management/noticesAll";
 import noticeView from "./pages/Lecturer Management/noticeView";
 
+
 import DeleteRequest from "./pages/Job Vacancy Management/DeleteRequest";
 import Careere from "./pages/Job Vacancy Management/Career";
 import Application from "./pages/Job Vacancy Management/Application";
@@ -55,6 +57,7 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import AboutUs from "./pages/Authentication Management/AboutUs";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -77,10 +80,13 @@ function MainRouter() {
   return (
 
   <>
+        <Route path="/" exact component={Home}/>
+        <Route path="/aboutus" exact component={AboutUs}/>
+
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
-        <Route path="/UpdateEnroll" exact component={UpdateEnroll}/>
+        <Route path="/UpdateEnroll/:id" exact component={UpdateEnroll}/>
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
@@ -89,26 +95,33 @@ function MainRouter() {
         <Route path="/courseCreate" exact component={courseCreate} />
         <Route path="/courseEdit/:id" exact component={courseEdit} />
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
+
         <Route path="/coursesesCreatedbyLecturer" exact component={coursesesCreatedbyLecturer} />
         <Route path="/courseContentCreate" exact component={courseContentCreate} />
         <Route path="/courseLessons" exact component={courseLessons} />
         <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
         <Route path="/editc" exact component={editc} />
-        
-        
+          
+          
         <Route path="/editR" exact component={editReview}/>
+        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
+        <Route path="/editR/:id" exact component={editReview}/>
+          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
+        
+        
 
         <Route path="/askQ" exact component={askQuestion} />
-        <Route path="/EditQ" exact component={editQuestion} />
+        <Route path="/EditQ/:id" exact component={editQuestion} />
         <Route path="/createN" exact component={noticeCreate} />
         <Route path="/allQ" exact component={allQuestions} />
         <Route path="/allQL" exact component={allQuestionList} />
         <Route path="/allN" exact component={noticesAll} />
         <Route path="/viewN" exact component={noticeView} />
+        
 
         <Route path="/careere" exact component={Careere} />
         <Route path="/deleteRequest" exact component={DeleteRequest} />
@@ -135,8 +148,11 @@ function MainRouter() {
       
         <Route path="/AddItem" exact component={AddItem} />
         <Route path="/DisplayItem" exact component={DisplayItem}/>
-        <Route path="/EditItem" exact component={EditItem} />
+        <Route path="/EditItem/:id" exact component={EditItem} />
         <Route path="/viewStore" exact component={viewStore}/>
+        <Route path="/UserView" exact component={UserView}/>
+        <Route path="/AddCart/:id" exact component={AddCart}/>
+        <Route path="/Cart" exact component={Cart}/>
 
         <Route path="/payment" exact component={Payment} />
         <Route path="/withdraw" exact component={Withdraw} />

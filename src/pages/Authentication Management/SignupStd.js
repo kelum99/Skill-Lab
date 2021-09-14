@@ -1,7 +1,9 @@
 import React from "react";
 import { Form, Input, Button, DatePicker, Radio} from "antd";
-import './stylesCommon.css'
+import './stylesSignup.css'
 import 'antd/dist/antd.css';
+import useRequest from "../../services/RequestContext";
+import moment from "moment";
 
 function SignupStd() {
 
@@ -16,8 +18,7 @@ function SignupStd() {
     
   };
   
-
-  //Form Vilidation 
+  
   const validateMessages = {
     required: "${label} is required!",
 
@@ -26,10 +27,18 @@ function SignupStd() {
     }
   };
 
-  //on submit - console log
-  const onFinish = values => {
-    const data={...values, role:"Student"};
-    console.log("value",data);
+  const {request} = useRequest();
+
+ 
+  const onFinish = async (values) => {
+    values.birthday = moment(values.birthday).format("YYYY-MM-DD")
+    console.log("value",values);
+    try{
+      const result = await request.post('AuthenticationRoute/StudentSignup', values);
+      console.log("api call wallet result ", result);
+} catch(e){
+  console.log("post signSTD error ",e);
+}
   };
 
   const [value] = React.useState(1);
@@ -39,14 +48,15 @@ function SignupStd() {
  return (
 
   <>
-    <div className="main-container-signupstd">
+    <div className="main-container-signup">
 
-    <div className="form-common"id="signupForm">
+    <div className="form-common">
 
         <h1>Sign Up</h1>
-        <h3>As a Student</h3>
+        <h2>As a Student</h2>
+        
 
-<Form {...layout} name="signupStd" onFinish={onFinish} validateMessages={validateMessages}>
+<Form layout="vertical" name="signupStd" onFinish={onFinish} validateMessages={validateMessages}>
 
   <Form.Item
         name={['name']}
@@ -90,8 +100,8 @@ function SignupStd() {
         ]}
       >
       <Radio.Group value={value}>
-      <Radio value={1}>Male</Radio>
-      <Radio value={2}>Female</Radio>
+      <Radio value={"Male"}>Male</Radio>
+      <Radio value={"Female"}>Female</Radio>
       
     </Radio.Group>
   </Form.Item> 
