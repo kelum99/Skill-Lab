@@ -1,7 +1,7 @@
 import "./App.css";
 import MainRouter from "./MainRouter";
 import Header from "../src/components/Header";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
+import {  BrowserRouter as Router } from "react-router-dom";
 import { RequestContextProvider } from "./services/RequestContext";
 
 function App() {

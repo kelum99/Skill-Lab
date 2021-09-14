@@ -1,18 +1,17 @@
 import React from "react";
 import image from "../../image/enrollment5.jpg";
 import image2 from "../../image/mycourse4.jpg";
+import image3 from "../../image/enroll2.jpg";
 import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message,Row } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
+import  { useHistory } from 'react-router-dom'
 
 
 function Enroll() {
 
-    //alert msg
-    const success = () => {
-        message.success('You Enrolled Successfully to the Course !');
-    };
+    
 
     //textarea
     const { TextArea } = Input;
@@ -23,16 +22,25 @@ function Enroll() {
     //on finish method
     const { request } = useRequest();
 
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push('/MyCourses')
+    }
+
     const onFinish = async (values) => {
         console.log("values", values);
         try {
             const result = await request.post('student/enroll', values);
             console.log("api call enroll result ", result);
+            message.success('You Enrolled Successfully to the Course !');
         }
         catch (e) {
             console.log("post enroll error ", e);
         }
         form.resetFields();
+        redirect();
     };
 
     const onReset = () => {
@@ -67,7 +75,7 @@ function Enroll() {
 
             <center><img src={image} ></img></center>
             <div>
-
+            <div ><img src={image3}  className="myenrollImg"/></div>
                 {/*Student Details Form */}
 
                 {/* <div className="stdEnroll">
@@ -197,7 +205,7 @@ function Enroll() {
                                 <Select.Option value="Object Oriented Programming">Object Oriented Programming</Select.Option>
                                 <Select.Option value="Information Systems">Information Systems</Select.Option>
                                 <Select.Option value="Computer Science">Computer Science</Select.Option>
-                                <Select.Option value="Network and Security<">Network and Security</Select.Option>
+                                <Select.Option value="Network and Security">Network and Security</Select.Option>
                             </Select>
                         </Form.Item>
                         <Form.Item
@@ -255,7 +263,7 @@ function Enroll() {
 
                         <Form.Item {...tailLayout}>
                             <Row>
-                            <Button type="primary" htmlType="submit" onClick={success}>
+                            <Button type="primary" htmlType="submit" >
                                 Submit
                             </Button>
 
