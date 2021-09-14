@@ -96,7 +96,7 @@ const {request} = useRequest();
   
 
   {careerList.map(career => (
-     <div className="one-item" key={career._Id} onClick={() => onSelect(career)}>
+     <div key={career._Id} onClick={() => onSelect(career)}>
        <div className="card">
 <div className="card-body" id="cardBody">
    <div className="card-title"> <h5> {career.title}</h5> </div>

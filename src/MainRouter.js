@@ -27,6 +27,7 @@ import viewACourseLesson from "./pages/course/viewACourseLesson";
 import editc from "./pages/course/editc";
 
 
+
 import askQuestion from './pages/Lecturer Management/askQuestion';
 import editQuestion from "./pages/Lecturer Management/editQuestion";
 import noticeCreate from "./pages/Lecturer Management/noticeCreate";
@@ -103,10 +104,8 @@ function MainRouter() {
         <Route path="/courseLessons" exact component={courseLessons} />
         <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
         <Route path="/editc" exact component={editc} />
-          
-          
+
         <Route path="/editR" exact component={editReview}/>
-        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
         <Route path="/editR/:id" exact component={editReview}/>
           
         <Route path="/review" exact component={review}/>
