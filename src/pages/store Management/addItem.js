@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Input, Select, Button } from 'antd';
+import { Form, Input, Select, Button, message } from 'antd';
 import 'antd/dist/antd.css';
 import './styleStore.css';
 import UseRequest from '../../services/RequestContext'; 
@@ -38,6 +38,9 @@ function AddItem(){
         }catch(e){
           console.log("post productDetails error", e);
         }
+      };
+      const success = () => {
+        message.success("Marks Updated Successfully !");
       };
 
       const { Option } = Select;
@@ -101,7 +104,7 @@ function AddItem(){
       </Form.Item>
 
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" onClick={success}>
           ADD
         </Button>
       </Form.Item>
