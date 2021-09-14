@@ -3,6 +3,7 @@ import useRequest from "../../services/RequestContext";
 import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
+import {useHistory} from 'react-router-dom';
 
 function UpdateJob() {
 
@@ -11,6 +12,7 @@ const [data, setData] = useState([]);
 const [jobList, setJobList] = useState([]);
 const [loading, setLoading] = useState(true);
 const { request } = useRequest();
+const history = useHistory();
 
 //fetchMarks
 const fetchJobs = async () => {
@@ -18,7 +20,7 @@ const fetchJobs = async () => {
     try {
         const result = await request.get("job/jobview");
         if (result.status === 200) {
-            setData(result.data);
+          setJobList(result.data); 
         }
         console.log(" Jobs get ", result);
         setLoading(false);
@@ -30,11 +32,33 @@ const fetchJobs = async () => {
 
 
 
-
 useEffect(() => {
   fetchJobs();
 }, []);
 
+
+
+//delete method
+const onDelete = async value => {
+  try {
+    const result = await request.delete(`job/deletejob/${value._id}`);
+    if (result.status === 200) {
+      await fetchJobs();
+      setData(undefined);
+    }
+    console.log("api call job deleted", result);
+    window.location.reload(true);
+  } catch (e) {
+    console.log("delete job error", e);
+  }
+};
+
+//popconfirm
+const msg = 'Are you sure you want to delete ?';
+
+function confirm() {
+    message.info('Result Deleted Successfully !');
+}
 
 //table
 const columns = [
@@ -65,30 +89,33 @@ const columns = [
         key: 'description'
       },
       {
-        title: 'Action',
-        dataIndex: 'action',
-        key: 'action',
-
-
-
-        render: (text,record,index) => (
-          <><a href={`./update/${data[index]._id}`}>
-
-              <Button type="primary" icon={<EditOutlined />} className="edit-dlt" /></a>
-
-              <Popconfirm placement="right" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
-
-                  <Button type="primary" icon={<DeleteOutlined />} className="edit-dlt" />
-              </Popconfirm></>
+        title: "Action",
+        dataIndex: "action",
+        key: "action",
+        render: (text, record, index) => (
+          <React.Fragment key={index}>
+            <Button type="primary" onClick={() => history.push(`/update/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+           
+            <Popconfirm
+              placement="right"
+              title={msg}
+              onConfirm={() => onDelete(record)}
+              okText="Yes"
+              cancelText="No"
+            >
+              <Button
+                danger
+                type="primary"
+                icon={<DeleteOutlined />}
+                className="edit-dlt"
+              />
+            </Popconfirm>
+          </React.Fragment>
   ),
       },
   ];
 
-  const text = 'Are you sure you want to delete ?';
 
-  function confirm() {
-      message.info('Result Deleted Successfully !');
-  }
 
     return (
 
@@ -99,7 +126,7 @@ const columns = [
             
 
         
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+            <Table columns={columns} dataSource={jobList} size="middle" pagination={false} className="crsTable" />
          
       
         

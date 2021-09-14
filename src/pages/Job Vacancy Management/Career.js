@@ -74,7 +74,7 @@ const {request} = useRequest();
  
  <ul className="ulList" type="none">
  {careerList.map(career => (
- <li key={career._Id} className="" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i>   {career.title}</li>
+ <li key={career._Id} className="available-vacancies" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i>   {career.title}</li>
   
   ))}
   </ul>

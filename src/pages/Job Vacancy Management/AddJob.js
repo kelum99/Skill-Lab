@@ -9,6 +9,8 @@ import useRequest from "../../services/RequestContext";
 
 function AddJob() {
 
+  const [form] = Form.useForm();
+
   const layout = {
     labelCol: {
       span: 8,
@@ -26,10 +28,13 @@ function AddJob() {
       try{
           const result = await request.post('job/job', values);
           console.log("api call job add result ", result);
+          alert("Sucsessfully added");
+          window.location.reload(true);
     } catch(e){
       console.log("post job add error ",e);
     }
   
+    form.resetFields();
   };
 
   /* eslint-disable no-template-curly-in-string */
@@ -99,9 +104,15 @@ function AddJob() {
       <Input.TextArea />
     </Form.Item>
     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-      <Button type="primary" htmlType="submit">
+
+      <div >
+      <Button className="add-view-btn" type="primary" htmlType="submit">
         Submit
       </Button>
+     <a href="/updateDelete"> <Button className="add-view-btn" type="primary">
+       View
+      </Button></a>
+      </div>
     </Form.Item>
     </div>
   </Form>

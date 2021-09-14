@@ -56,7 +56,7 @@ console.log(newJob)
 </div>
     </div>
     <div class="col">
-    <div className="formPosition">
+    <div className="formPosition" id="formPosition">
 <form onSubmit={sendData}>
 
 <div class="form-group" > 

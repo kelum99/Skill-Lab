@@ -26,7 +26,11 @@
 }
 
 .formPosition{
-    margin-top: 105px;
+    margin-top: 100px;
+}
+
+#formPosition{
+    margin-bottom: 100px;
 }
 
 .head{
@@ -121,6 +125,11 @@
 
 #searchbtn{
     background-color: #07bbb1;
+}
+
+.add-view-btn{
+    background-color: #07bbb1;
+    margin-left: 45px;
 }
 
 
@@ -244,7 +253,7 @@
 }
 
 .AddForm{
-    background-color: #07bbb1;
+    background-color: #bae2f0;
     height: auto;
     padding-top: 25px;
     border-radius: 25px;

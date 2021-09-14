@@ -65,6 +65,8 @@ import Withdraw from "../src/pages/Finance Management/Withdraw"
 import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
 import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
 import UpdateWallet from "../src/pages/Finance Management/UpdateWallet"
+import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
+
 
 
 
@@ -77,7 +79,7 @@ function MainRouter() {
         <Route path="/MyPerformance" exact component={MyPerformance}/>
         <Route path="/UpdateEnroll" exact component={UpdateEnroll}/>
         <Route path="/AddMarks" exact component={AddMarks} />
-        <Route path="/UpdateMarks" exact component={UpdateMarks} />
+        <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
 
         <Route path="/courseMain" exact component={courseMain} />
@@ -131,6 +133,7 @@ function MainRouter() {
         <Route path="/paymentHistory" exact component={PaymentHistory} />
         <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
         <Route path="/updateWallet" exact component={UpdateWallet} />
+        <Route path="/updateBank" exact component={UpdateBankt} />
     </>
   );
 }
