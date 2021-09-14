@@ -1,6 +1,6 @@
 /*askQuestion,editQuestion,noticeCreate forms */
 .lecform{
-    background: #bae2f0;
+    background:#bae2f0;
     margin: 5%;
     padding: 50px;
     border-radius: 20px;
@@ -37,7 +37,7 @@ textarea.ant-input{
 /*form buttons*/
 .btnQuestion.ant-btn-primary{
     border-radius: 10px;
-    background: #07bbd1;
+    background: #06a0b4;
     outline: none;
     border: none;  
     width: 100px;
@@ -112,8 +112,8 @@ textarea.ant-input{
 }
 
 /*ask new question button*/
-.allT .ant-btn-primary{
-    background-color: #07bbd1;
+.ant-btn-primary{
+    background-color: #53afab;
     border-color: #07bbd1;
 }
 /*table description heading*/
@@ -178,10 +178,10 @@ textarea.ant-input{
 }
 /*change table heading color & text*/
 .ant-table-thead > tr > th{
-    background: lightslategray;
+    background: #064c55;
     text-align: center;
 }
 /*change table background*/
-.allT.ant-table-content{
-    background-color: #07bbd1;
+.ant-table-content{
+    background-color: #90cde4;
 }
