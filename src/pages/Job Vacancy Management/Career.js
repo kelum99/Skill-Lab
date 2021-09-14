@@ -1,24 +1,65 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import axios from "axios";
-import job from '../../image/job.jpeg';
+import job from '../../image/girl.jpg';
 import mailalert from '../../image/m1.jpg'
 import pay from '../../image/p1.jpg'
 import quick from '../../image/q1.jpg'
 import {Link} from 'react-router-dom';
 import './jobManagement.css';
+import useRequest from "../../services/RequestContext";
 
 
 export default function Careere(){
 
+
+const [data, setData] = useState([]);
+const [careerList, setCareerList] = useState([]);
+const [loading, setLoading] = useState(true);
+
+
+
+const fetchCareers = async () => {
+  setLoading(true);
+  try {
+    const result = await request.get("job/careereview");
+    if (result.status === 200) {
+      setCareerList(result.data);
+    }
+    console.log(" career Deatils list get ", result);
+    setLoading(false);
+  } catch (e) {
+    setLoading(false);
+  }
+};
+
+useEffect(() => {
+  fetchCareers();
+}, []);
+
+
+
+
+
+const onSelect = value => {
+  if (value && value._id) {
+    const career = careerList.find(val => val._id === value._id);
+    console.log("careere Selected ", career);
+    setData({ ...career });
+  }
+};
+
+
+const {request} = useRequest();
+
     return(
 
 
-<div>
+<>
 
 <div className="searchPosition">
 <form className="example"  action="action_page.php">
-  <input type="text" placeholder="Search.." name="search"/>
-  <button type="submit" className="searchbtn" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+  <input className="searchcareere" type="text" placeholder="Search.." name="search"/>
+  <button type="submit" className="searchbtn-btns" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
 </form>
 </div>
 
@@ -27,14 +68,16 @@ export default function Careere(){
       <h2 className="card-title " id="vacancyHead">CAREERS AT SKILL-LAB</h2>
     <img src={job} className="img-fluid" alt="Looking for job?"/>
 
+    
     <div className="vacancies">
   <h4 className="text-secondary">Available Vacancies</h4>
  
  <ul className="ulList" type="none">
-
- <li className="" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i> Intern Ship.</li>
-  </ul>
+ {careerList.map(career => (
+ <li key={career._Id} className="available-vacancies" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i>   {career.title}</li>
   
+  ))}
+  </ul>
 </div>
 
 
@@ -48,27 +91,30 @@ export default function Careere(){
     <div className="">
 
  
-<div className="card">
 
-  <div className="card-body" id="cardBody">
-    <h5 className="card-title">Instructor(IT)</h5>
-    <p className="card-text">Candidates who have completed the BSc (Special) Honors Degree in IT (Field of specialization: Information 
-Technology / Software Engineering / Interactive Media / Information Systems Engineering ) could apply.
-(The GPA at the end of the 4th year should be 2.5 or higher)</p>
-<p>Salary </p>
-<Link to="/application"className="btn btn-primary" id="apply">Apply</Link>
-  </div>
-</div>
 
-<div className="card">
   
-  <div className="card-body" id="cardBody">
-    <h5 className="card-title">INTERN SHIPS</h5>
-    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" className="btn btn-primary" id="apply">Apply</a>
+
+  {careerList.map(career => (
+     <div className="one-item" key={career._Id} onClick={() => onSelect(career)}>
+       <div className="card">
+<div className="card-body" id="cardBody">
+   <div className="card-title"> <h5> {career.title}</h5> </div>
+   <div className="card-text">  <p> {career.description}</p> </div>
+   <div className="card-text">  <p>Basic salary LKR. {career.salary}/=</p></div>
+   <Link to="/application"className="btn btn-primary" id="apply">Apply</Link>
+     </div>
+     </div>
+     </div>
+  ))}
+
+
   </div>
-</div>
-</div>
+
+
+
+
+
     </div>
   
 
@@ -105,7 +151,7 @@ Technology / Software Engineering / Interactive Media / Information Systems Engi
 </div>
 
 </div>
-</div>
+</>
 
 
         

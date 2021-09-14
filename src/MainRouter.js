@@ -43,9 +43,10 @@ import Sucsess from "./pages/Job Vacancy Management/Sucsess";
 import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
-import Delete from "./pages/Job Vacancy Management/Delete";
-import update from "./pages/Job Vacancy Management/Update";
+
+import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
+import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
@@ -73,6 +74,7 @@ import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
 import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
 import UpdateWallet from "../src/pages/Finance Management/UpdateWallet"
 import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
+
 
 
 
@@ -130,10 +132,9 @@ function MainRouter() {
         <Route path="/error" exact component={Failed} />
         <Route path="/print" exact component={Print} />
         <Route path="/addcareere" exact component={AddJob} />
-        <Route path="/deletecareere" exact component={Delete} />
-        <Route path="/updatecareere" exact component={update} />
+        <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
-       
+        <Route path="/update/:id" exact component={UpdateJob} />
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />

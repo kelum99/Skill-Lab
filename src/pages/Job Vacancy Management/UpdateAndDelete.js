@@ -3,21 +3,24 @@ import useRequest from "../../services/RequestContext";
 import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
+import {useHistory} from 'react-router-dom';
 
-function DeleteRequest() {
+function UpdateJob() {
 
 //retrieve
 const [data, setData] = useState([]);
+const [jobList, setJobList] = useState([]);
 const [loading, setLoading] = useState(true);
 const { request } = useRequest();
+const history = useHistory();
 
 //fetchMarks
-const fetchCareere = async () => {
+const fetchJobs = async () => {
     setLoading(true);
     try {
-        const result = await request.get("job/applicationview");
+        const result = await request.get("job/jobview");
         if (result.status === 200) {
-            setData(result.data);
+          setJobList(result.data); 
         }
         console.log(" Jobs get ", result);
         setLoading(false);
@@ -26,78 +29,64 @@ const fetchCareere = async () => {
     }
 };
 
+
+
+
 useEffect(() => {
-  fetchCareere();
+  fetchJobs();
 }, []);
+
 
 
 //delete method
 const onDelete = async value => {
   try {
-    const result = await request.delete(`job/deleteapplicant/${value._id}`);
+    const result = await request.delete(`job/deletejob/${value._id}`);
     if (result.status === 200) {
-      await fetchCareere();
+      await fetchJobs();
       setData(undefined);
     }
-    console.log("api call applicant request deleted", result);
+    console.log("api call job deleted", result);
     window.location.reload(true);
   } catch (e) {
-    console.log("delete applicant request error", e);
+    console.log("delete job error", e);
   }
 };
 
-
+//popconfirm
 const msg = 'Are you sure you want to delete ?';
 
 function confirm() {
     message.info('Result Deleted Successfully !');
 }
+
 //table
 const columns = [
     {
-        title: 'Position',
-        dataIndex: 'position',
-        key : 'position'
+        title: '#',
+        key: 'index',
+        dataIndex: 'index',
+        render: (text,record,index) => index + 1,
       },
     {
-      title: 'First Name',
-      dataIndex: 'firstName',
-      key : 'firstName'
+      title: 'Job ID',
+      dataIndex: 'jobId',
+      key: 'jobId'
     },
     {
-      title: 'Last Name',
-      dataIndex: 'lastName',
-      key : 'lastName'
+      title: 'Title',
+      dataIndex: 'title',
+      key: 'title'
     },
     {
-      title: 'E-mail',
-      dataIndex: 'email',
-      key : 'email'
+      title: 'Salary',
+      dataIndex: 'salary',
+      key: 'salary'
     },
     {
-        title: 'Phone',
-        dataIndex: 'phone',
-        key : 'phone'
-      },
-      {
-        title: 'Address',
-        dataIndex: 'address',
-        key : 'address'
-      },
-      {
-        title: 'NIC',
-        dataIndex: 'nic',
-        key : 'nic'
-      },
-      {
-        title: 'Birth Date',
-        dataIndex: 'birthDate',
-        key : 'birthDate'
-      },
-      {
-        title: 'Employyment Status',
-        dataIndex: 'status',
-        key : 'status'
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description'
       },
       {
         title: "Action",
@@ -105,7 +94,8 @@ const columns = [
         key: "action",
         render: (text, record, index) => (
           <React.Fragment key={index}>
-            
+            <Button type="primary" onClick={() => history.push(`/update/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+           
             <Popconfirm
               placement="right"
               title={msg}
@@ -124,16 +114,19 @@ const columns = [
   ),
       },
   ];
- 
+
+
 
     return (
+
+
         <div className="myCourses">
             
-            <br /><br /><h2 className="add-header">Delete Applicant requests</h2>
+            <br /><br /><h2 className="add-header">Update and Delete vacancies</h2>
             
 
         
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+            <Table columns={columns} dataSource={jobList} size="middle" pagination={false} className="crsTable" />
          
       
         
@@ -141,4 +134,4 @@ const columns = [
     );
 }
 
-export default DeleteRequest;
+export default UpdateJob;
