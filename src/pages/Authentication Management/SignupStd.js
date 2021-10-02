@@ -31,6 +31,7 @@ function SignupStd() {
 
  
   const onFinish = async (values) => {
+    values.role = "Student";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
     console.log("value",values);
     try{

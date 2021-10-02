@@ -84,7 +84,8 @@ function MainRouter() {
   return (
 
   <>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Signin}/>
+        <Route path="/home" exact component={Home}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
@@ -139,7 +140,7 @@ function MainRouter() {
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
-        <Route path="/signin" exact component={Signin} />
+        {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/areyou" exact component={AreYou} />
         <Route path="/lecprofile" exact component={LecProfile} />
         <Route path="/stdprofile" exact component={StdProfile} />
