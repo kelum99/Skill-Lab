@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './stylesSignin.css'
 import logo from '../../Images/logo.png';
+import { Link } from "react-router-dom";
 
 
 
@@ -87,7 +88,8 @@ return (
           <Checkbox>Remember me  |</Checkbox>
       </Form.Item>
 
-        <a href="">Sign up</a>
+      
+        <a href="/areYou">Sign up</a>
         
       </Form.Item>
 

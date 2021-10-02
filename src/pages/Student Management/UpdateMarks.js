@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Button, Select, message, DatePicker } from "antd";
 import "./stylesStudent.css";
 import useRequest from "../../services/RequestContext";
-import { useParams } from "react-router-dom";
+import { useParams,useHistory } from "react-router-dom";
 import moment from 'moment';
+import image from "../../image/profmark2.jpg";
 
 function UpdateMarks() {
   //retrieve
@@ -47,6 +48,13 @@ function UpdateMarks() {
     console.log(date, dateString);
   }
 
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push('/ViewMarks')
+    }
+
   //form
   const [form] = Form.useForm();
 
@@ -54,10 +62,11 @@ function UpdateMarks() {
     try {
       const result = await request.put(`student/performance/${data._id}`,values);
       console.log("api call marks updated", result);
-      window.location.reload(true);
+      //window.location.reload(true);
     } catch (e) {
       console.log("update error ", e);
     }
+    redirect();
   };
 
   const onReset = () => {
@@ -81,7 +90,8 @@ function UpdateMarks() {
   };
 
   return (
-    <div class="markbackgrnd">
+    <div>
+    <img src={image} height={585} className="addmarkImg"/>
       <div className="addMarks">
         <center>
           <h2 className="enrolllHeading">Update Marks</h2>
@@ -123,7 +133,7 @@ function UpdateMarks() {
               <Select.Option value="Computer Science">
                 Computer Science
               </Select.Option>
-              <Select.Option value="Network and Security<">
+              <Select.Option value="Network and Security">
                 Network and Security
               </Select.Option>
             </Select>
@@ -200,17 +210,15 @@ function UpdateMarks() {
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-            <Button type="primary" htmlType="submit" onClick={success}>
+           <Button type="primary" htmlType="submit" onClick={success} className="updtMarkBtn" className="updtMark">
               Update
             </Button>
-
-            <Button htmlType="button" onClick={onReset} className="resetBtn">
-              Reset
-            </Button>
+           
+           
           </Form.Item>
         </Form>}
       </div>
-    </div>
+      </div>
   );
 }
 

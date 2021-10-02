@@ -27,6 +27,13 @@ function ContactUs(){
     //Form Vilidation 
     const validateMessages = {
     required: "${label} is required!",
+
+    
+      type: {
+          email :'Enter valid E-mail !!',
+      }
+     
+  
     };
 
     
@@ -85,11 +92,9 @@ function ContactUs(){
         rules={[
           {
               required: true,
-          },
-          {
               type: 'email',
-              message: 'Enter valid E-mail !!',
           },
+          
       ]}
       >
         <Input />

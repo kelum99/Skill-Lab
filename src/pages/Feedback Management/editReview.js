@@ -6,6 +6,7 @@ import useRequest from "../../services/RequestContext";
 import edit from "../../image/edit.jpg";
 import { useParams } from "react-router-dom";
 
+
 function EditReview(){
   //retrieve
   const [data, setData] = useState();

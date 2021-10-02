@@ -16,10 +16,6 @@ import useRequest from "../../services/RequestContext";
         },
     };
     
-    //alert mg
-    const success = () => {
-      message.success('Your data Submitted Successfully !');
-    };
 
     //drop down   
     const { Option } = Select;
@@ -41,6 +37,7 @@ import useRequest from "../../services/RequestContext";
           try{
               const result = await request.post('lecturer/question', values);
               console.log("api call question result ", result);
+              message.success('Your data Submitted Successfully !');
              } catch(e){
               console.log("post question error ",e);
         }
@@ -123,7 +120,7 @@ import useRequest from "../../services/RequestContext";
           </Form.Item>
 
           <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
-            <Button className ="btnQuestion" type="primary" htmlType="submit" onClick={success}>
+            <Button className ="btnQuestion" type="primary" htmlType="submit" >
               ASK
             </Button>
           </Form.Item>

@@ -18,8 +18,14 @@ import ViewMarks from "./pages/Student Management/ViewMarks";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
+import courseEdit from "./pages/course/courseEdit";
 import courseforlecturer from  "./pages/course/courseforlecturer";
-import coursesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+import coursesesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLecturer";
+import courseContentCreate from "./pages/course/courseContentCreate";
+import courseLessons from "./pages/course/courseLessons";
+import viewACourseLesson from "./pages/course/viewACourseLesson";
+import editc from "./pages/course/editc";
+
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -38,9 +44,10 @@ import Sucsess from "./pages/Job Vacancy Management/Sucsess";
 import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
-import Delete from "./pages/Job Vacancy Management/Delete";
-import update from "./pages/Job Vacancy Management/Update";
+
+import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
+import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
@@ -52,6 +59,7 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import Home2 from "./pages/Authentication Management/Home2";
 import AboutUs from "./pages/Authentication Management/AboutUs";
 
 import AddItem from "../src/pages/store Management/addItem";
@@ -71,27 +79,37 @@ import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
 
 
 
+
 function MainRouter() {
   return (
 
   <>
         <Route path="/" exact component={Home}/>
+        <Route path="/home2" exact component={Home2}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
         <Route path="/MyCourses" exact component={MyCourses}/>
         <Route path="/MyPerformance" exact component={MyPerformance}/>
-        <Route path="/UpdateEnroll" exact component={UpdateEnroll}/>
+        <Route path="/UpdateEnroll/:id" exact component={UpdateEnroll}/>
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
+        <Route path="/courseEdit/:id" exact component={courseEdit} />
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
-        <Route path="/coursesCreatedbyLecturer" exact component={coursesCreatedbyLecturer} />
-       
+
+        <Route path="/coursesesCreatedbyLecturer" exact component={coursesesCreatedbyLecturer} />
+        <Route path="/courseContentCreate" exact component={courseContentCreate} />
+        <Route path="/courseLessons" exact component={courseLessons} />
+        <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
+        <Route path="/editc" exact component={editc} />
+
+        <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
+          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
@@ -115,10 +133,9 @@ function MainRouter() {
         <Route path="/error" exact component={Failed} />
         <Route path="/print" exact component={Print} />
         <Route path="/addcareere" exact component={AddJob} />
-        <Route path="/deletecareere" exact component={Delete} />
-        <Route path="/updatecareere" exact component={update} />
+        <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
-       
+        <Route path="/update/:id" exact component={UpdateJob} />
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />

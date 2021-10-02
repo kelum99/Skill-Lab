@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import moment from "moment";
 import {
   Form,
@@ -7,10 +7,12 @@ import {
   Button,
   DatePicker,
   Checkbox,
+  message,Space,Row
 } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
 import useRequest from "../../services/RequestContext";
+import {Link} from "react-router-dom";
 
 function Payment() {
   const layout = {
@@ -21,6 +23,7 @@ function Payment() {
       span: 14
     }
   };
+  const [size, setSize] = useState('large')
 
   const validateMessages = {
     required: "${label} is required!",
@@ -28,6 +31,9 @@ function Payment() {
     types: {
       number: "${label} is not a valid number!"
     }
+  };
+  const onSuccess = () => {
+    message.success("Card Add To Wallet Successfully !");
   };
 
 const {request} = useRequest();
@@ -47,7 +53,7 @@ const {request} = useRequest();
 
       <div className="main-container-payment">
         <div className="form">
-          <h1>Payment</h1>
+          <h1>Add Card Details</h1>
         
           <Form
             name="payment-form"
@@ -92,17 +98,26 @@ const {request} = useRequest();
               <InputNumber maxLength={3} />
             </Form.Item>
 
-            <Form.Item name="save" valuePropName="checked">
-              <Checkbox style={{color:"#fff"}}>Save this card to wallet</Checkbox>
-            </Form.Item>
+            {/* <Form.Item name="save" valuePropName="checked">
+              <Checkbox >Save this card to wallet</Checkbox>
+            </Form.Item> */}
 
             <Form.Item
               shouldUpdate
               wrapperCol={{ ...layout.wrapperCol, offset: 10 }}
             >
-              <Button type="primary" htmlType="submit">
-                Pay
+            <Row>
+            <Space size={size}>
+              <Button type="primary" htmlType="submit" onClick={onSuccess}>
+                ADD
               </Button>
+              <Link to="/updateWallet">
+              <Button type="primary">
+                My Wallet
+              </Button>
+              </Link>
+              </Space>
+              </Row>
             </Form.Item>
           </Form>
 
