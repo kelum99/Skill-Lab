@@ -34,6 +34,7 @@ function SignupLec() {
 
   
   const onFinish = async (values) => {
+    values.role = "Lecturer";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
     console.log("value",values);
     try{
