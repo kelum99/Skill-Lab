@@ -46,6 +46,7 @@ import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 
+
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
@@ -84,7 +85,8 @@ function MainRouter() {
   return (
 
   <>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Signin}/>
+        <Route path="/home" exact component={Home}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
@@ -136,10 +138,11 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
-        <Route path="/signin" exact component={Signin} />
+        {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/areyou" exact component={AreYou} />
         <Route path="/lecprofile" exact component={LecProfile} />
         <Route path="/stdprofile" exact component={StdProfile} />
