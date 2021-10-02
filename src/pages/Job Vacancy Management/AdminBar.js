@@ -28,13 +28,10 @@ return(
           <a href="#"> <li>Add a new vacancy</li></a>
           <a href="#"> <li>Update vacancy</li></a>
           <a href="#"> <li>Delete a vacancy</li></a>
-          <a href="#"> <li>Delete a vacancy</li></a>
+          <a href="#"> <li>Delete Careere Requests</li></a>
          </ul>
 
-         <h5 className="Adminh">Applicant Details Management</h5>
-         <ul className="Adminul">
-         
-         </ul>
+       
        </div>
     <button className="Admin-sider-Button">Logout</button>
     </div>

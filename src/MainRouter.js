@@ -46,6 +46,8 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 
 
+
+
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
@@ -84,7 +86,8 @@ function MainRouter() {
   return (
 
   <>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Signin}/>
+        <Route path="/home" exact component={Home}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
