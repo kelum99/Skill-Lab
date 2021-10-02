@@ -12,7 +12,6 @@ import { useHistory } from 'react-router-dom';
 function Signin() {
   const {request, updateToken} = useRequest();
   const {decodeToken, user, setUser} = useUser();
-  // const [token, setToken] = useState();
   const history = useHistory();
 
   const layout = {
@@ -31,7 +30,6 @@ function Signin() {
       const result = await request.post('AuthenticationRoute/login', values)
       if(result.status === 200){
        await updateToken(result.data.data.token);
-        // setToken(result.data.data.token);
         decodeToken(result.data.data.token)
         message.success(result.data.message)
         history.push("/")

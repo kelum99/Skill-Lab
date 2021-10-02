@@ -13,7 +13,7 @@ export const UserContextProvider = ({children}) => {
             setUser(userData);
         } else {
             const tokenLocal = localStorage.getItem("token");
-            if(localStorage){
+            if(tokenLocal){
                 console.log("UserID: from local ");
                 decodeToken(tokenLocal);
             }
