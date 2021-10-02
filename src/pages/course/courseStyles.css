@@ -7,13 +7,69 @@ color: blue;
 
 
 
+.btncourse{
+
+  padding: top 25px; 
+}
+
+.one-item1{
+display: flex;
+flex-direction: column;
+justify-content: start;
+padding: 10px;
+border-radius: 30px;
+margin: 10px;
+}
+
+
+#cardBody-course{
+  width: 450px;
+  
+}
+
+#coursemain5{
+  
+  padding: 25px;
+}
+#apply1{
+  
+  float: left;
+  background-color :rgb(56, 102, 189) ;
+}
+.card1{
+
+  padding: 25px;
+}
+.card-body{
+
+  
+
+  padding:10px;
+}
+
+#course-car{
+  width: 450px;
+  margin-top: 25px;
+  
+}
+
+
+.coursesInMain{
+
+  margin-left: 10px;
+  margin-right: 10px;
+  margin: 20px;
+}
+
+
 .cquote{
 
-color: rgb(101, 109, 101);
+color: rgb(30, 3, 94);
 
 }
 
 .eduimg {
+  padding-top: 10px;
   border-radius: 5px;
   border-top: 10px;
    display: block;
@@ -38,7 +94,9 @@ color: rgb(101, 109, 101);
   
    margin-top: 10px;
    margin-bottom: 10px;
-   margin-left: 450px;
+   margin-left: 150%;
+   width: 150%;
+   
    
    
  }
@@ -98,7 +156,7 @@ color: rgb(101, 109, 101);
 
 
 .course_form{
-    background: #a6f2e1;
+    background: #7cc2c1;
     margin: 10px;
     padding: 60px;
     border-radius: 20px;
@@ -117,7 +175,7 @@ color: rgb(101, 109, 101);
     font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 36px;
-    margin-top: 5px;
+    margin-top: 10px;
     
 }
 
@@ -170,7 +228,7 @@ color: rgb(101, 109, 101);
   margin-right: auto;
   padding-bottom: 5px;
   border-radius: 20px;
-  width: 75%;
+  width: 50%;
   
 
 }
@@ -188,3 +246,13 @@ color: rgb(101, 109, 101);
   background-color: #185B8C;;
   border-color: #185B8C;
 }
+
+/*view A course Lesson page */
+.form .ant-input {
+  text-align: justify;
+  color: #000000;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: medium;
+  font-weight: bold;
+}
+

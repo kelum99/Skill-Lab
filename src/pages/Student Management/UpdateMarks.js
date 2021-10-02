@@ -6,6 +6,7 @@ import { useParams,useHistory } from "react-router-dom";
 import moment from 'moment';
 import image from "../../image/profmark2.jpg";
 
+  
 function UpdateMarks() {
   //retrieve
   const [data, setData] = useState();

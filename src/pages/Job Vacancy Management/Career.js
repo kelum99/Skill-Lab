@@ -86,15 +86,7 @@ const {request} = useRequest();
     
     <div className="col-sm" id="jobCards">
 
-
-
     <div className="">
-
- 
-
-
-  
-
   {careerList.map(career => (
      <div key={career._Id} onClick={() => onSelect(career)}>
        <div className="card">
@@ -110,10 +102,6 @@ const {request} = useRequest();
 
 
   </div>
-
-
-
-
 
     </div>
   
