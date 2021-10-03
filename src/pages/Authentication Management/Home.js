@@ -16,7 +16,7 @@ return (
 
     <Form.Item > 
     
-        <Link to ="/signin" >
+        <Link to ="/" >
             <Button type="primary" htmlType="submit" className="btnSignin">
             SIGNIN
             </Button></Link>
@@ -54,7 +54,7 @@ return (
 
     <Form.Item>
             <div className="hme">
-            <img width={700} src={home}/>
+            <img width={900} src={home}/>
             </div>
     </Form.Item>
 

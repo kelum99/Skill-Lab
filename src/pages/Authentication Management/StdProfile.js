@@ -3,12 +3,15 @@ import { Form, Input, Button,Popconfirm, message } from "antd";
 import './stylesProfile.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
 
-function Lecprofile() {
+
+function Stdprofile() {
 
   const [data,setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const {request} = useRequest();
+  const {user} = useUser();
 
 
   
@@ -54,7 +57,7 @@ function cancel(e) {
     setLoading(true);
   
     try {
-      const result = await request.get("AuthenticationRoute/StudentSignup");
+      const result = await request.get(`AuthenticationRoute/CommonSignup/${user._id}`);
       if (result.status === 200) {
         setData(result.data);
       }
@@ -69,11 +72,7 @@ function cancel(e) {
     fetchAuthenticationStudent();
   }, []);
 
-
-
- 
-  
-  return (
+return (
 
   <>
     <div className="main-container-profile">
@@ -81,15 +80,17 @@ function cancel(e) {
     <div className="form-profile">
 
         <h3>Skill Lab</h3>
-        <h1>Student</h1>
+        <h1>User Profile</h1>
 
-<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
+{data && (
+<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}
+initialValues={data}
+key={data._id}>
 
   <Form.Item
         name={['name']}
         label="First Name"
-        
-      >
+        >
         <Input />
   </Form.Item>
 
@@ -100,28 +101,7 @@ function cancel(e) {
         <Input />
   </Form.Item>
   
-  <Form.Item
-        name={['birthday']}
-        label="Birthday"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
-        name={['gender']}
-        label="Gender"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
-        name={['nic']}
-        label="NIC"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
+ <Form.Item
         name={[ 'email']}
         label="Email"
        >
@@ -157,15 +137,11 @@ function cancel(e) {
     </Form.Item>
 
 </Form>
-
-
-
-
-    
+)}
     </div>
     </div>
     </>
   );
 }
 
-export default Lecprofile;
+export default Stdprofile;

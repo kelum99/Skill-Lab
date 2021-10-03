@@ -54,9 +54,9 @@
 }
 
 .hme {
- position: fixed;
- top: 110px;
- right: 100px;
+ 
+ margin-top: -710px;
+ margin-left: 1600px;
 }
 
 .h1 {
@@ -115,4 +115,23 @@
 .text-container {
   margin-top: -40px;
   margin-left: 300px;
+}
+
+.imglog{
+  width: 250px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#apply-form{
+  background-color: #00bacd;
+  margin-left: 50px;
+}
+
+.text-container2 {
+  margin-top: 10px;
+  margin-left: 300px;
+  color: #0060CC;
+  font-size: 30px;
 }

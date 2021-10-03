@@ -1,15 +1,18 @@
-import React from "react";
-import { Form, Input, Button, Checkbox } from 'antd';
+import React, {useState} from "react";
+import { Form, Input, Button, Checkbox, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './stylesSignin.css'
 import logo from '../../Images/logo.png';
-import { Link } from "react-router-dom";
-
-
+import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
+import { Redirect } from 'react-router'
+import { useHistory } from 'react-router-dom';
 
 function Signin() {
-
+  const {request, updateToken} = useRequest();
+  const {decodeToken, user, setUser} = useUser();
+  const history = useHistory();
 
   const layout = {
     labelCol: {
@@ -21,14 +24,29 @@ function Signin() {
     
   };
  
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
     console.log('Received values of form: ', values);
+    try{
+      const result = await request.post('AuthenticationRoute/login', values)
+      if(result.status === 200){
+       await updateToken(result.data.data.token);
+        decodeToken(result.data.data.token)
+        message.success(result.data.message)
+        history.push("/home2")
+      } else {
+        message.error(result.data.message)
+      }
+      console.log("login ruslt ", result);
+    } catch(error){
+      console.log("login error ", error);
+      message.error(error.message)
+    }
   };
 
     const [setValue] = React.useState(1);
 
     const onChange = e => {
-    console.log('radio checked', e.target.value);
+    console.log('radio checkedd', e.target.value);
     setValue(e.target.value);
   };
 
@@ -56,7 +74,7 @@ return (
       onFinish={onFinish}
     >
       <Form.Item
-        name="username"
+        name="email"
         rules={[
           {
             required: true,
@@ -64,7 +82,7 @@ return (
           },
         ]}
       >
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"

@@ -44,8 +44,6 @@ function Slider() {
               className="nev-menu-items"
               onClick={() => setSidebar(oldState => !oldState)}
             >
-            <div className="divider">
-            <span className="dividerName">Lecturer</span> </div>
               {SidebarItemsLecturer.map((item, key) => {
                 return (
                   <> 
@@ -58,20 +56,6 @@ function Slider() {
                   </>
                 );
               })}
-              <div className="divider">
-              <span className="dividerName">Student</span></div>
-
-              {SidebarItemsStudent.map((item, key) => {
-                return (
-                  <li key={key} className={item.className}>
-                    <Link to={item.path}>
-                      {item.icon}
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-
             </ul>
           </nav>
         </div>

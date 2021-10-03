@@ -45,6 +45,7 @@ import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 
+
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
@@ -56,7 +57,7 @@ import AreYou from "../src/pages/Authentication Management/AreYou";
 import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
-import StdManagement from "./pages/Authentication Management/StdManagement";
+// import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
 import Home2 from "./pages/Authentication Management/Home2";
@@ -84,7 +85,8 @@ function MainRouter() {
   return (
 
   <>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Signin}/>
+        <Route path="/home" exact component={Home}/>
         <Route path="/home2" exact component={Home2}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
@@ -136,15 +138,16 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
-        <Route path="/signin" exact component={Signin} />
+        {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/areyou" exact component={AreYou} />
         <Route path="/lecprofile" exact component={LecProfile} />
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
-        <Route path="/stdmanagement" exact component={StdManagement} />
+        {/* <Route path="/stdmanagement" exact component={StdManagement} /> */}
 
 
       
