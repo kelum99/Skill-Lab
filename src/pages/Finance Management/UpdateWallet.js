@@ -15,12 +15,14 @@ import {
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
 import moment from "moment";
+import useUser from "../../services/UserContext";
 
 function UpdateWallet() {
   const [data, setData] = useState();
   const [cardList, setCardList] = useState([]);
   const [loading, setLoading] = useState(true);
   const { request } = useRequest();
+  const {user} = useUser();
 
   const layout = {
     labelCol: {
@@ -45,7 +47,7 @@ function UpdateWallet() {
   const fetchWallet = async () => {
     setLoading(true);
     try {
-      const result = await request.get(`finance/wallet`);
+      const result = await request.get(`finance/wallet/findAll/${user._id}`);
       if (result.status === 200) {
         console.log(result.data);
         setCardList(result.data);

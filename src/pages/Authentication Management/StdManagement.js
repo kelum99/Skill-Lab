@@ -45,10 +45,7 @@ const onDelete = async value =>{
   try{
    
     const result = await request.delete(`AuthenticationRoute/StudentSignup/${value._id}`);
-    // if(result.status === 200){
-    //   await fetchAuthenticationStudent();
-    //   setData(undefined);
-    // }
+    
     console.log("api call data deleted" , result);
     window.location.reload(true);
   }catch(e){
@@ -119,71 +116,25 @@ const columns = [
       
   ];
 
-  // const data = [
-  //   {
-  //     key: '1',
-  //     nic: 'NIC1',
-  //     name: 'Name1',
-  //     email: 'Email1',
-  //     number:'Mobile number1',
-  //     dob:'DOB1',
-  //     action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-  //   {
-  //       key: '2',
-  //       nic: 'NIC2',
-  //       name: 'Name2',
-  //       email: 'Email2',
-  //       number:'Mobile number2',
-  //       dob:'DOB2',
-  //       action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-  //   {
-  //       key: '3',
-  //       nic: 'NIC3',
-  //       name: 'Name3',
-  //       email: 'Email3',
-  //       number:'Mobile number3',
-  //       dob:'DOB3',
-  //       action:<><Popconfirm
-  //                 title=" Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-  // ];
+  
 
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
-  (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
+
+    const onSearch =  (value) => {
+        let result = [];
+        result = data.filter((data) =>{
+            
+            if(value == ""){
+                window.location.reload(true);
+                return data;
+                
+            }else{
+            return data.nic.toLowerCase().search(value) != -1 || data.name.toLowerCase().search(value) != -1 || data.name1.toLowerCase().search(value) != -1  || data.email.toLowerCase().search(value) != -1       
+            }
+        });
+        setData(result);
+    };
 
 return (
         <div className="Au-manage">

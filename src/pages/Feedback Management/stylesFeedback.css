@@ -5,7 +5,7 @@
     margin-bottom: 10%;
     padding: 50px;
     border-radius: 30px;
-    width: 30%;
+    width: 40%;
     height: 50%;
    
     margin-left: 30px;
@@ -20,7 +20,7 @@ h1{
 }
 .editRform.ant-input{
     border-radius: 5px;
-    width: 100%;
+    width: 150%;
     font-size: 30px;
     
 }
@@ -244,6 +244,15 @@ h4{
     border-radius: 5px;
     box-sizing: content-box;
     margin-block-start: 400%;
+    
+}
+.addR .ant-btn-primary{
+    border-radius: 5px;
+    background: #07bbd1;
+    border-radius: 10px;
+    width: 25%;
+    outline: none;
+    border: #000000;
     
 }
 

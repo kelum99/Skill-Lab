@@ -1,6 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import useRequest from "../../services/RequestContext";
-import { Table, Button,Input,Popconfirm, message } from 'antd';
+import { Table, Button,Input,Popconfirm, message,} from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
 
@@ -52,6 +52,26 @@ const msg = 'Are you sure you want to delete ?';
 function confirm() {
     message.info('Result Deleted Successfully !');
 }
+
+//Search method
+const { Search } = Input;
+
+    const onSearch =  (value) => {
+        let result = [];
+        result = data.filter((data) =>{
+            
+            if(value == ""){
+                window.location.reload(true);
+                return data;
+                
+            }else{
+            return data.firstName.toLowerCase().search(value) != -1 || data.lastName.toLowerCase().search(value) != -1 || data.address.toLowerCase().search(value) != -1 || data.nic.toLowerCase().search(value) != -1  ||data.email.toLowerCase().search(value) != -1        
+            }
+        });
+        setData(result);
+      };
+
+
 //table
 const columns = [
     {
@@ -127,8 +147,11 @@ const columns = [
  
 
     return (
+<>
+      <Search placeholder="Search Course" onSearch={onSearch} enterButton className="searchApplicant" />  
         <div className="myCourses">
-            
+          
+         
             <br /><br /><h2 className="add-header">Delete Applicant requests</h2>
             
 
@@ -138,6 +161,7 @@ const columns = [
       
         
         </div>
+        </>
     );
 }
 
