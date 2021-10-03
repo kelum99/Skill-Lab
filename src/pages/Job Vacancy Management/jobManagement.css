@@ -1,16 +1,12 @@
 .positionIMG{
     margin-left: 40px;
-    margin-top: 25px;
+    margin-top: 0px;
 }
-
-
 
 .application-header{
     color: black;
     font-family: verdana;
 }
-
-
 
 .row{
     margin-right:25px; 
@@ -26,11 +22,11 @@
 }
 
 .formPosition{
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 #formPosition{
-    margin-bottom: 100px;
+    margin-bottom: 75px;
 }
 
 .head{
@@ -57,13 +53,9 @@
     margin-left: 1100px;
 }
 
-
-
 .f{
     font-family: verdana;
 }
-
-
 
 #vacancyHead{
     margin-top: -15px;
@@ -119,8 +111,15 @@
     width: 550px;
 }
 
-#apply{
+#apply-btn{
     background-color: #07bbb1;
+    width: 80px;
+    margin-left: 100px;
+}
+
+#apply-btn :hover{
+    background-color: #07aaa2;
+    transition-delay: .8s;
 }
 
 #searchbtn{
@@ -130,6 +129,7 @@
 .add-view-btn{
     background-color: #07bbb1;
     margin-left: 45px;
+    
 }
 
 
@@ -144,12 +144,9 @@
 
 .searchbtn-btns{
     height: 35px;
+    width: 50px;
 
 }
-
-
-
-
 
   .searchPosition{
     margin-top: 20px;
@@ -234,8 +231,6 @@
     color: black;
 }
 
-
-
 .AddForm Form.item{
     width: 450px;
 }
@@ -272,4 +267,44 @@
 .error-Btn{
     width: 100px;
     height: auto;
+}
+
+.notice-In-Application{
+    width: 500px;
+    height: 150px;
+    background-color: rgb(245, 231, 206);
+    margin-top: 50px;
+    margin-left: 50px;
+    border-radius: 15px;
+
+}
+
+.notice-In-Application h6{
+    margin-left: 200px;
+    color: red;
+    font-size: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.notice-In-Application p{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-left: 5.5px;
+}
+
+.notice-In-Application span{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    float: right;
+    margin-top: 20px;
+    margin-right: 5.5px;
+}
+
+.ulList :hover{
+    cursor: pointer;
+}
+
+.searchApplicant{
+    margin-top: 25px;
+    width: 285px;
+    float: right;
+    margin-right: 55px;
 }
