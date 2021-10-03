@@ -6,6 +6,7 @@ import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
+import issues from "./pages/Feedback Management/issues";
 
 
 import AddMarks from "./pages/Student Management/AddMarks";
@@ -24,7 +25,7 @@ import coursesesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLectur
 import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
-import editc from "./pages/course/editc";
+import courseLessonEdit from "./pages/course/courseLessonEdit";
 
 
 
@@ -104,12 +105,14 @@ function MainRouter() {
         <Route path="/courseCreate" exact component={courseCreate} />
         <Route path="/courseEdit/:id" exact component={courseEdit} />
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
-
+        <Route path="/courseLessonEdit" exact component={courseLessonEdit} />
         <Route path="/coursesesCreatedbyLecturer" exact component={coursesesCreatedbyLecturer} />
-        <Route path="/courseContentCreate" exact component={courseContentCreate} />
-        <Route path="/courseLessons" exact component={courseLessons} />
-        <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
-        <Route path="/editc" exact component={editc} />
+        <Route path="/courseContentCreate/:id" exact component={courseContentCreate} />
+        <Route path="/courseLessons/:id" exact component={courseLessons} />
+        <Route path="/viewACourseLesson/:id" exact component={viewACourseLesson} />
+        
+        
+        
 
         <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
@@ -118,6 +121,7 @@ function MainRouter() {
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
+        <Route path="/issues" exact component={issues}/>
         
         
 

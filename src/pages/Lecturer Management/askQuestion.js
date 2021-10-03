@@ -2,12 +2,12 @@ import React from "react";
 import { Form, Input, Button, Select,message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
-import askQ from '../../image/askQ.jpg';
+import allQ from '../../image/allQ.png';
 import useRequest from "../../services/RequestContext";
 
-    function AskQuestion() {
+  function AskQuestion() {
 
-      const layout = {
+    const layout = {
         labelCol: {
            span: 8,
         },
@@ -44,50 +44,25 @@ import useRequest from "../../services/RequestContext";
     };
 
 
-      return (
-        <>  
+    return (
+      <>  
         <div className="main-container-askQuestion">
-        <div> <img className="questionimg" src={askQ} alt="askQuestion" height ={500} width ={700}/> </div>
+        <div> <img className="questionimg" src={allQ} alt="askQuestion" height ={600} width ={650}/> </div>
         <div className="lecform">
     
-            <h1>Ask New Question!!</h1>
-        
+        <h1>Ask New Question!!</h1><br></br><br></br>
+
         <Form {...layout} name="lecturer management" onFinish={onFinish} validateMessages={validateMessages}>
  
-          <Form.Item
-            name={['studentName']}
-            label="Student Name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-          <Input placeholder="Please input your name" />
+          <Form.Item name={['studentName']} label="Student Name" rules={[{ required: true,},]}>
+            <Input placeholder="Please input your name" />
           </Form.Item>
 
-          <Form.Item
-            name={['email']}
-            label="Email"
-            rules={[
-              {
-                type: 'email',
-                required: true,
-              },
-            ]}
-          >
+          <Form.Item name={['email']} label="Email" rules={[{ type: 'email',required: true,},]}>
             <Input placeholder="Please input your email"/>
           </Form.Item>
        
-          <Form.Item
-            name="courseName"
-            label="Course Name"
-            rules={[
-              {
-                  required: true,
-              },
-            ]}
-          >
+          <Form.Item name="courseName" label="Course Name" rules={[{required: true,},]}>
           <Select placeholder="Please select course">
             <Option value="java">java</Option>
             <Option value="Machine lerning">Machine lerning</Option>
@@ -96,26 +71,11 @@ import useRequest from "../../services/RequestContext";
           </Select>
           </Form.Item>
 
-          <Form.Item
-            name={['topic']}
-            label="Topic"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input  maxLength={25} placeholder="Please input topic"/>
+          <Form.Item name={['topic']} label="Topic" rules={[{required: true,},]}>
+            <Input  maxLength={35} placeholder="Please input topic"/>
           </Form.Item>
 
-          <Form.Item name={['question']} 
-          label="Question"
-          rules={[
-            {
-                required: true,
-            },
-          ]}
-          >
+          <Form.Item name={['question']} label="Question" rules={[{required: true,},]}>
             <Input.TextArea placeholder="Please type your question"/>
           </Form.Item>
 
@@ -124,11 +84,11 @@ import useRequest from "../../services/RequestContext";
               ASK
             </Button>
           </Form.Item>
+
         </Form>
         </div>
-    </div>
-    </>
-    
+        </div>
+      </>
     );
-    }
+  }
     export default AskQuestion;

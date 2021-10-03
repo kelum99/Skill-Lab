@@ -13,13 +13,14 @@ function ReviewList(){
 const[data,setData] = useState([]);
 const[loading,setLoading] = useState(true);
 const{request} = useRequest();
+const [reviewList, setReviewList] = useState([]);
 
 const fetchReview = async () => {
   setLoading(true);
   try {
     const result = await request.get("feedback/review/findAll");
     if (result.status === 200) {
-      setData(result.data);
+      setReviewList(result.data);
     }
     console.log(" review list get ", result);
     setLoading(false);
@@ -125,15 +126,27 @@ const columns = [
 
     //search box
     const { Search } = Input;
-    const onSearch = value => console.log(value);
-    const suffix = (
-      <AudioOutlined
-        style={{
-          fontSize: 18,
-          color: '#49c1d1',
-        }}
-      />
-    );
+    const onSearch = (value) => {
+         let result = [];
+      result = reviewList.filter((data) =>{
+       if (value == ""){
+         window.location.reload(true);
+   
+         return data;
+   
+       }else{
+   
+         return data.course.toLowerCase().search(value) != -1 
+   
+       }
+   
+      });
+   
+      setReviewList(result);
+   
+   
+   
+    }
   
     
     return( 
@@ -147,8 +160,8 @@ const columns = [
         </div>
           
         <div>
-        <Search placeholder="Search Course " onSearch={onSearch} enterButton className="searchbar" />
-        <Table columns={columns} dataSource={data} size="middle" pagination={false} className="reviewTable" />
+        <Search placeholder="Search Course " onSearch={onSearch} enterButton  allowClear className="searchbar" />
+        <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="reviewTable" />
         </div>
     </div>
     );
