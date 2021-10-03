@@ -60,6 +60,7 @@ import LecManagement from "./pages/Authentication Management/LecManagement";
 import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import Home2 from "./pages/Authentication Management/Home2";
 import AboutUs from "./pages/Authentication Management/AboutUs";
 
 import AddItem from "../src/pages/store Management/addItem";
@@ -84,8 +85,11 @@ function MainRouter() {
   return (
 
   <>
+
+        <Route path="/home2" exact component={Home2}/>
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
+
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>

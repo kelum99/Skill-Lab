@@ -1,13 +1,26 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+.btnSignin{
+    background: #0060CC;
+    margin-top: 20px;
+    border-radius: 20px;
+    
+    outline: none;
+    border: none;
 }
 .btnSignin {
   background: #0060cc;
   margin-top: 20px;
   border-radius: 20px;
   margin-left: 88%;
+  outline: none;
+  border: none;
+}
+
+.btnLogout {
+  background: #0060cc;
+  margin-top: 20px;
+  border-radius: 20px;
+  margin-left: 95%;
   outline: none;
   border: none;
 }
