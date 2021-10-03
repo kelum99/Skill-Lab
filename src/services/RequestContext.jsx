@@ -13,7 +13,7 @@ export const RequestContextProvider = props => {
   const { children, baseURL } = props;
   const [token, setToken] = useState();
 
-  const updateToken = value => {
+  const updateToken = async value => {
     if (value) {
       setToken(value);
       localStorage.setItem("token", value);
@@ -37,6 +37,12 @@ export const RequestContextProvider = props => {
         baseURL,
         timeout: 10000,
         headers: { Authorization: `Bearer ${token}` }
+      });
+    } else {
+      return axios.create({
+        baseURL,
+        timeout: 10000,
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
       });
     }
     return axios.create({

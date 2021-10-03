@@ -7,6 +7,7 @@ import quick from '../../image/q1.jpg'
 import {Link} from 'react-router-dom';
 import './jobManagement.css';
 import useRequest from "../../services/RequestContext";
+import {Input} from 'antd';
 
 
 export default function Careere(){
@@ -17,7 +18,7 @@ const [careerList, setCareerList] = useState([]);
 const [loading, setLoading] = useState(true);
 
 
-
+//retrieve
 const fetchCareers = async () => {
   setLoading(true);
   try {
@@ -37,9 +38,6 @@ useEffect(() => {
 }, []);
 
 
-
-
-
 const onSelect = value => {
   if (value && value._id) {
     const career = careerList.find(val => val._id === value._id);
@@ -48,8 +46,27 @@ const onSelect = value => {
   }
 };
 
-
 const {request} = useRequest();
+
+
+//Search method
+const { Search } = Input;
+
+    const onSearch =  (value) => {
+        let result = [];
+        result = careerList.filter((data) =>{
+            
+            if(value == ""){
+                window.location.reload(true);
+                return data;
+                
+            }else{
+            return data.title.toLowerCase().search(value) != -1 || data.title.toUpperCase().search(value) != -1 || data.salary.toLowerCase().search(value) != -1 || data.description.toLowerCase().search(value) != -1        
+            }
+        });
+        setCareerList(result);
+      };
+     
 
     return(
 
@@ -57,9 +74,8 @@ const {request} = useRequest();
 <>
 
 <div className="searchPosition">
-<form className="example"  action="action_page.php">
-  <input className="searchcareere" type="text" placeholder="Search.." name="search"/>
-  <button type="submit" className="searchbtn-btns" id="searchbtn"><i class="fa fa-search" aria-hidden="true"></i></button>
+<form className="example"  action="">
+<Search placeholder="Search Course" onSearch={onSearch} enterButton className="searchcareere" />
 </form>
 </div>
 
@@ -69,19 +85,20 @@ const {request} = useRequest();
     <img src={job} className="img-fluid" alt="Looking for job?"/>
 
     
-    <div className="vacancies">
+   <div className="vacancies">
   <h4 className="text-secondary">Available Vacancies</h4>
  
  <ul className="ulList" type="none">
  {careerList.map(career => (
+   <Link to="/application">
  <li key={career._Id} className="available-vacancies" name="vacancies"><i className="far fa-hand-point-right" id="iconHand"> </i>   {career.title}</li>
-  
-  ))}
-  </ul>
-</div>
-
-
+  </Link>
+       ))}
+     </ul>
     </div>
+
+
+  </div>
 
     
     <div className="col-sm" id="jobCards">
@@ -89,10 +106,6 @@ const {request} = useRequest();
 
 
     <div className="">
-
- 
-
-
   
 
   {careerList.map(career => (
@@ -102,7 +115,7 @@ const {request} = useRequest();
    <div className="card-title"> <h5> {career.title}</h5> </div>
    <div className="card-text">  <p> {career.description}</p> </div>
    <div className="card-text">  <p>Basic salary LKR. {career.salary}/=</p></div>
-   <Link to="/application"className="btn btn-primary" id="apply">Apply</Link>
+   <Link to="/application"className="btn btn-primary" id="apply-btn">Apply</Link>
      </div>
      </div>
      </div>
@@ -137,7 +150,7 @@ const {request} = useRequest();
   <div className="card-body">
     <h5 className="card-title">Quick Apply</h5>
     <p className="card-text">Easily apply to multiple jobs with one click! Quick Apply shows you recommended 
-    jobs based off your most recent search and allows you to apply to 25+ jobs in a matter 
+    jobs based off your most recent search and allows you to apply to jobs in a matter 
     of seconds!</p>
   </div>
 </div>
@@ -146,7 +159,8 @@ const {request} = useRequest();
   <div className="head"><img src={mailalert} className="img-fluid" alt="Responsive image"/></div>
   <div className="card-body">
     <h5 className="card-title">Job Alert Emails</h5>
-    <p className="card-text">Keep track of positions that you're interested in by signing up for job alert emails. You'll be notifed via email when new jobs are posted in that search.</p>
+    <p className="card-text">Keep track of positions that you're interested in by signing up for job alert emails. You'll be notifed 
+    via email when new jobs are posted in that search.</p>
   </div>
 </div>
 

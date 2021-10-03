@@ -116,3 +116,15 @@
   margin-top: -40px;
   margin-left: 300px;
 }
+
+.imglog{
+  width: 250px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#apply-form{
+  background-color: #00bacd;
+  margin-left: 50px;
+}
