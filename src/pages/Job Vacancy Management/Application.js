@@ -36,6 +36,7 @@ console.log(newJob)
     axios.post("http://localhost:4000/api/job/apply",newJob).then(()=>{
 
         alert("Application Sended")
+        window.location.reload(true);
         
 
     }).catch((error)=>{
@@ -49,12 +50,19 @@ console.log(newJob)
   <div class="row">
     <div class="col">
     <div className="positionIMG">
-    <h1 className="application-header">Start your careere with us</h1>
-<img src={im} className="applyimage" alt=""/>
+    <h1 className="application-header">Start your career with us</h1>
+<img src={im} className="applyimage" alt="apply"/>
 
-
+<div className="notice-In-Application">
+  <h6>NOTICE !</h6>
+  <p>Please be alert with your email we will sent you some special notices and documents to your email.</p>
+  <span>- SKILL-LAB Management -</span>
 </div>
-    </div>
+
+  </div>
+</div>
+
+
     <div class="col">
     <div className="formPosition" id="formPosition">
 <form onSubmit={sendData}>
@@ -68,12 +76,12 @@ console.log(newJob)
       setPosition(e.target.value);
     }}
     />
-  </div>
+</div>
 
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="firstName">First Name </label>
-      <input type="text" class="form-control" name="firstName" id="firstName" required placeholder="Enter First Name"
+      <input type="text" class="form-control" name="firstName" id="firstName" required  placeholder="Required"
         onChange={(e)=>{
 
           setFirstName(e.target.value);
@@ -81,11 +89,11 @@ console.log(newJob)
       
       />
 
-
     </div>
+
     <div class="form-group col-md-6">
       <label for="lastName">Last Name </label>
-      <input type="text" class="form-control" name="lastName" id="lastName" required placeholder="Enter Last Name"
+      <input type="text" class="form-control" name="lastName" id="lastName" required  placeholder="Required"
       
       onChange={(e)=>{
 
@@ -99,7 +107,7 @@ console.log(newJob)
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">E-mail</label>
-      <input type="text" class="form-control" name=" email" id="email" required placeholder="Enter E-mail"
+      <input type="text" class="form-control" name=" email" id="email" required  placeholder="Required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
       
       onChange={(e)=>{
 
@@ -110,7 +118,7 @@ console.log(newJob)
  
     <div class="form-group col-md-6">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" name="phone" id="phone" required placeholder="Enter phone" 
+      <input type="text" class="form-control" name="phone" id="phone" required   placeholder="Required" pattern ="{0-9}{10}"
       
       onChange={(e)=>{
 
@@ -127,7 +135,7 @@ console.log(newJob)
 
   <div class="form-group">
     <label for="address">Address</label>
-    <input type="text" class="form-control" name="address" id="address" placeholder="222/B, malwatta rd,"
+    <input type="text" class="form-control" name="address" id="address" required placeholder="Required"
     
     onChange={(e)=>{
 
@@ -140,7 +148,7 @@ console.log(newJob)
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="nic">NIC</label>
-      <input type="text" class="form-control" name="nic" id="nic" placeholder="Enter NIC"
+      <input type="text" class="form-control" name="nic" id="nic"  required placeholder="Required"
       
       onChange={(e)=>{
 
@@ -152,7 +160,7 @@ console.log(newJob)
     </div>
     <div class="form-group col-md-6">
       <label for="birthDate">Birth Date</label>
-      <input type="date" class="form-control" name="birthDate" id="birthDate" placeholder="Enter Birth Date" 
+      <input type="date" class="form-control" name="birthDate" id="birthDate"  required placeholder="Required"
       
       onChange={(e)=>{
 
@@ -165,7 +173,7 @@ console.log(newJob)
 
   <div class="form-group">
     <label for="status">Employment Status</label>
-    <input type="text" class="form-control" name="status" id="status" placeholder="eg:-(Student, Self Employed, Unemployed)"
+    <input type="text" class="form-control" name="status" id="status" required placeholder="eg:-(Student, Self Employed, Unemployed)"
     
     onChange={(e)=>{
 
@@ -176,7 +184,7 @@ console.log(newJob)
 
 
   </div>
-  <button type="submit" class="btn btn-primary" id="apply" data-toggle="modal" data-target="#exampleModal">Register Now</button>
+  <button type="submit" class="btn btn-primary" id="apply-form" data-toggle="modal" data-target="#exampleModal">Register Now</button>
 
   
 </form>
@@ -193,3 +201,4 @@ console.log(newJob)
     )
 
 }
+

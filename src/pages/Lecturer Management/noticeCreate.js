@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input,Button,DatePicker,message} from "antd";
 import 'antd/dist/antd.css';
 import './stylesLecturer.css';
-import editQ from '../../image/editQ.png';
+import news from '../../image/news.jpg';
 import {SaveOutlined} from '@ant-design/icons';
 import useRequest from "../../services/RequestContext";
 
@@ -43,16 +43,16 @@ function NoticeCreate() {
       <>
       
       <div className="main-container-createNotice"> 
-      <div> <img className="addnoteimg" src={editQ} alt="createNotice" height ={500} width ={600}/> </div>
+      <center><img className="questionimg" src={news} alt="allQList" height ={400} width ={600}/></center>
       <div className="lecform">
         
-               <h1>Add Notice</h1>
+               <h1>Add Notice</h1><br></br>
   
         {/* Form start */}
         <Form name="lecturer management" onFinish={onFinish} validateMessages={validateMessages} layout="vertical">
          
-              <Form.Item  name={["Date"]} label="Date" rules={[{ required: true }]}>
-                    <DatePicker />
+              <Form.Item  name={["date"]} label="Date" rules={[{ required: true }]}>
+                    <DatePicker picker = 'YYYY-MM-DD' />
               </Form.Item> 
 
               <Form.Item name={['notice']} label="Notice" rules={[{ required: true }]}>
@@ -60,7 +60,7 @@ function NoticeCreate() {
               </Form.Item>
   
               <Form.Item shouldUpdate wrapperCol={{ ...layout.wrapperCol, offset:10 }}>
-              <Button className="btnQuestion" type="primary"icon={<SaveOutlined />} htmlType="submit">
+              <br></br><Button className="btnQuestion" type="primary"icon={<SaveOutlined />} htmlType="submit">
                   Save
               </Button>
               </Form.Item>

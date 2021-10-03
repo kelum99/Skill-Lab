@@ -1,13 +1,26 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+.btnSignin{
+    background: #0060CC;
+    margin-top: 20px;
+    border-radius: 20px;
+    
+    outline: none;
+    border: none;
 }
 .btnSignin {
   background: #0060cc;
   margin-top: 20px;
   border-radius: 20px;
   margin-left: 88%;
+  outline: none;
+  border: none;
+}
+
+.btnLogout {
+  background: #0060cc;
+  margin-top: 20px;
+  border-radius: 20px;
+  margin-left: 95%;
   outline: none;
   border: none;
 }
@@ -102,4 +115,16 @@
 .text-container {
   margin-top: -40px;
   margin-left: 300px;
+}
+
+.imglog{
+  width: 250px;
+  height: 200px;
+  margin-top: 50px;
+  margin-left: 100px;
+}
+
+#apply-form{
+  background-color: #00bacd;
+  margin-left: 50px;
 }
