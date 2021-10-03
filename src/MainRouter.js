@@ -6,6 +6,7 @@ import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
+import issues from "./pages/Feedback Management/issues";
 
 
 import AddMarks from "./pages/Student Management/AddMarks";
@@ -118,6 +119,7 @@ function MainRouter() {
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
+        <Route path="/issues" exact component={issues}/>
         
         
 
