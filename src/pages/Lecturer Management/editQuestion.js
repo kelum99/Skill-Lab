@@ -47,14 +47,11 @@ function EditQuestion() {
      fetchQuestion(id);
    }
  }, [id]);
-
     
-        
 
     //drop down
     const { Option } = Select;
     
-
     //form validation
     const validateMessages = {
         required: '${label} is required!',
@@ -82,45 +79,19 @@ function EditQuestion() {
         <div> <img className="questionimg" src={editQ1} alt="editQuestion" height ={500} width ={500}/> </div>
         <div className="lecform">
     
-            <h1>Edit Question!!</h1>
-          
-        
-       {data&&<Form {...layout} name="lecturer management" onFinish={onFinish} initialValues={data}  key={data._id} validateMessages={validateMessages}>
+        <h1>Edit Question!!</h1>
+
+        {data&&<Form {...layout} name="lecturer management" onFinish={onFinish} initialValues={data}  key={data._id} validateMessages={validateMessages}>
  
-          <Form.Item
-            name={['studentName']}
-            label="Student Name"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
+          <Form.Item name={['studentName']} label="Student Name" rules={[{required: true,},]}>
             <Input placeholder="Please input your name"/>
           </Form.Item>
  
-          <Form.Item
-            name={['email']}
-            label="Email"
-            rules={[
-              {
-                type: 'email',
-                required: true,
-              },
-            ]}
-          >
+          <Form.Item name={['email']} label="Email" rules={[{type: 'email',required: true,},]}>
             <Input  placeholder="Please input your email"/>
           </Form.Item>
           
-          <Form.Item
-            name="courseName"
-            label="Course Name"
-            rules={[
-              {
-                  required: true,
-              },
-            ]}
-          >
+          <Form.Item name="courseName" label="Course Name" rules={[{required: true,},]}>
           <Select placeholder="Please select course">
             <Option value="Java">Java</Option>
             <Option value="Machine lerning">Machine lerning</Option>
@@ -129,26 +100,11 @@ function EditQuestion() {
           </Select>
           </Form.Item>
           
-          <Form.Item
-            name={['topic']}
-            label="Topic"
-            rules={[
-              {
-                required: true,
-              },
-            ]}
-          >
-            <Input  maxLength={25} placeholder="Please input topic"/>
+          <Form.Item name={['topic']} label="Topic" rules={[{required: true,},]}>
+            <Input  maxLength={35} placeholder="Please input topic"/>
           </Form.Item>
 
-          <Form.Item name={['question']} 
-          label="Question"
-          rules={[
-            {
-                required: true,
-            },
-          ]}
-          >
+          <Form.Item name={['question']} label="Question" rules={[{required: true,},]}>
             <Input.TextArea placeholder="edit your question"/>
           </Form.Item>
 
@@ -157,10 +113,11 @@ function EditQuestion() {
               UPDATE
             </Button>
           </Form.Item>
+
         </Form>}
         </div>
-    </div>
-    </>
+        </div>
+        </>
       );
-  }
+}
     export default EditQuestion;
