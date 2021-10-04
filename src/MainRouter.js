@@ -26,7 +26,7 @@ import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
 import courseLessonEdit from "./pages/course/courseLessonEdit";
-
+import analysis from "./pages/course/analysis";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -56,9 +56,9 @@ import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
-import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
-// import LecProfile from "../src/pages/Authentication Management/LecProfile";
+import Signin from "../src/pages/Authentication Management/Signin";
+//import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 // import StdManagement from "./pages/Authentication Management/StdManagement";
@@ -114,7 +114,7 @@ function MainRouter() {
         <Route path="/courseContentCreate/:id" exact component={courseContentCreate} />
         <Route path="/courseLessons/:id" exact component={courseLessons} />
         <Route path="/viewACourseLesson/:id" exact component={viewACourseLesson} />
-        
+        <Route path="/analysis" exact component={analysis} />
         
         
 
@@ -154,6 +154,7 @@ function MainRouter() {
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
         {/* <Route path="/signin" exact component={Signin} /> */}
+        <Route path="/" exact component={Signin}/>
         <Route path="/areyou" exact component={AreYou} />
         {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />

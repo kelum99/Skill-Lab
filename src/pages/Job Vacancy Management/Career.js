@@ -104,6 +104,7 @@ const { Search } = Input;
     <div className="col-sm" id="jobCards">
 
     <div className="">
+  
 
   {careerList.map(career => (
      <div key={career._Id} onClick={() => onSelect(career)}>
