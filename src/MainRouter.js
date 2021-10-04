@@ -25,7 +25,7 @@ import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
 import courseLessonEdit from "./pages/course/courseLessonEdit";
-
+import analysis from "./pages/course/analysis";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -45,14 +45,15 @@ import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 
+
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
-import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
+import Signin from "../src/pages/Authentication Management/Signin";
 import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
@@ -83,7 +84,8 @@ function MainRouter() {
   return (
 
   <>
-        <Route path="/" exact component={Home}/>
+        <Route path="/" exact component={Signin}/>
+        <Route path="/home" exact component={Home}/>
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
@@ -103,7 +105,7 @@ function MainRouter() {
         <Route path="/courseContentCreate/:id" exact component={courseContentCreate} />
         <Route path="/courseLessons/:id" exact component={courseLessons} />
         <Route path="/viewACourseLesson/:id" exact component={viewACourseLesson} />
-        
+        <Route path="/analysis" exact component={analysis} />
         
         
 
@@ -136,10 +138,12 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+       
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
-        <Route path="/signin" exact component={Signin} />
+        {/* <Route path="/signin" exact component={Signin} /> */}
+        <Route path="/" exact component={Signin}/>
         <Route path="/areyou" exact component={AreYou} />
         <Route path="/lecprofile" exact component={LecProfile} />
         <Route path="/stdprofile" exact component={StdProfile} />

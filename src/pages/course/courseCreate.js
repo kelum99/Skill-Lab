@@ -1,6 +1,6 @@
 import { useState } from "react";
 import 'antd/dist/antd.css';
-import { Select, Button, Avatar } from "antd";
+import { Select, Button } from "antd";
 import './courseStyles.css';
 import create_course from '../../image/create_course.jpg';
 import useRequest from "../../services/RequestContext";
@@ -21,16 +21,10 @@ const CourseCreate = () => {
     paid: false,
     loading: false,
     category: '',
-    imagePreview: "",
-    image:"",
+    
 
   });
    
-
-
-  const [image ,setImage] =useState("");
-  const [preview, setPreview] = useState("");
-  const [uploadButtonText, setUploadButtonText] = useState("Upload Image");
   const {request} = useRequest();
   
   const handleChange = (e) => {

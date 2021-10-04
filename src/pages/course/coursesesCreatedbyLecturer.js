@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Input, Popconfirm, message, Card } from "antd";
-import { EditOutlined, DeleteOutlined,PlusCircleOutlined  } from "@ant-design/icons";
-import {useHistory} from 'react-router-dom';
+import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
+import { useHistory } from 'react-router-dom';
 import "./courseStyles.css";
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
+
 
 function ViewCourses(props) {
   //retrieve
@@ -12,11 +14,13 @@ function ViewCourses(props) {
   const { request } = useRequest();
   const [courseList, setCourseList] = useState([]);
   const history = useHistory();
+  const { user } = useUser();
+
   //fetchCourses
   const fetchCourses = async () => {
     setLoading(true);
     try {
-      const result = await request.get("course/coursecreate");
+      const result = await request.get(`course/coursecreate/findAll/${user._id}`);
       if (result.status === 200) {
         // setData(result.data);
         setCourseList(result.data);
@@ -27,7 +31,7 @@ function ViewCourses(props) {
       setLoading(false);
     }
   };
-    
+
   useEffect(() => {
     fetchCourses();
   }, []);
@@ -63,45 +67,45 @@ function ViewCourses(props) {
       key: "index",
       render: (text, record, index) => index + 1
     },
-    
 
- 
+
+
     {
-        title: 'Name',
-        dataIndex: 'name',
-        key:'name'
-      },
-      {
-        title: 'Description',
-        dataIndex: 'description',
-        key: 'description',
-      },
-      {
-          title: 'Price in $ ',
-          dataIndex: 'price',
-          key: 'price',
-      },
-    /*  {
-        title: 'Paid',
-        dataIndex: 'true',
-        key: 'true',
-      },*/
-      {
-          title: 'Category',
-          dataIndex: 'category',
-          key: 'category',
-      },
+      title: 'Course Name',
+      dataIndex: 'name',
+      key: 'name'
+    },
+    {
+      title: 'Description',
+      dataIndex: 'description',
+      key: 'description',
+    },
+    {
+      title: 'Price in $ ',
+      dataIndex: 'price',
+      key: 'price',
+    },
+    /* {
+       title: 'Paid',
+       dataIndex: 'true',
+       key: 'true',
+     },*/
+    {
+      title: 'Category',
+      dataIndex: 'category',
+      key: 'category',
+    },
     {
       title: "Action",
       dataIndex: "action",
       key: "action",
       render: (text, record, index) => (
-        
-            <React.Fragment key={index}>
-          <Button type="primary"   onClick={() => history.push(`/courseEdit/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+
+        <React.Fragment key={index}>
+          <Button type="primary" onClick={() => history.push(`/courseEdit/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
           <Button type="primary" onClick={() => history.push(`./courseContentCreate/${record._id}`)} icon={<PlusCircleOutlined />} className="edit-dlt" />
           <Popconfirm
-            placement="right"
+            placement="left"
             title={text}
             onConfirm={() => onDelete(record)}
             okText="Yes"
@@ -118,30 +122,30 @@ function ViewCourses(props) {
       )
     }
   ];
-  
+
   //search box
   const { Search } = Input;
   const onSearch = (value) => {
     let result = [];
-    result = courseList.filter((data) =>{
-     if (value == ""){
-       window.location.reload(true);
-       return data;
-     }else{
-       return data.name.toLowerCase().search(value) != -1 
-     }
+    result = courseList.filter((data) => {
+      if (value == "") {
+        window.location.reload(true);
+        return data;
+      } else {
+        return data.name.toLowerCase().search(value) != -1
+      }
     });
     setCourseList(result);
   }
- 
+
 
   return (
-    <div className="myCrs">
+    <div className="myCrs1">
       <Search
         placeholder="Search courses"
         onSearch={onSearch}
         allowClear
-        enterButton = "Search"
+        enterButton="Search"
         className="searchbar"
       />
       <br />
@@ -149,7 +153,7 @@ function ViewCourses(props) {
       <center>
         <h1 className="enrolllHeading">All Created Courses </h1>
       </center>
-      
+
       <Table
         columns={columns}
         dataSource={courseList}

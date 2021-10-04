@@ -62,9 +62,9 @@ function EditCourse() {
   return (
     <>
 
-      <div className="main-container-editQuestion">
+      <div >
 
-        <div className="form">
+        <div className="lessonview" >
 
           {data && <Form ClassName="nest-messages" onFinish={onFinish} initialValues={data} key={data._id} validateMessages={validateMessages} >
             <Form.Item className ="lessoncontent"
