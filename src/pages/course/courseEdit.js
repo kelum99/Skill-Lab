@@ -9,7 +9,7 @@ import { useParams, useHistory } from "react-router-dom";
 import useRequest from "../../services/RequestContext";
 
 function EditCourse() {
- 
+
   //retrieve
   const [data, setData] = useState();
   const [loading, setLoading] = useState(false);
@@ -64,7 +64,6 @@ function EditCourse() {
 
   //redirect
   let history = useHistory();
-
   const redirect = () => {
     history.push('/coursesesCreatedbyLecturer')
   }
@@ -84,7 +83,7 @@ function EditCourse() {
 
   return (
     <>
-      <h1 className="course_h1" >Edit Course</h1>
+     <h1 className="course_h1" >Edit Course</h1>
       <div className="main-container-editQuestion">
         <div> <img className="questionimg" src={Eraser} height={500} width={500} /> </div>
         <div className="form">
@@ -94,7 +93,7 @@ function EditCourse() {
 
           {data && <Form {...layout} name="nest-messages" onFinish={onFinish} initialValues={data} key={data._id} validateMessages={validateMessages} >
 
-
+          
 
 
             <Form.Item

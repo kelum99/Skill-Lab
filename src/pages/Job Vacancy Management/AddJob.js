@@ -3,7 +3,9 @@ import { Form, Input, InputNumber, Button} from "antd";
 import 'antd/dist/antd.css';
 import './jobManagement.css';
 import useRequest from "../../services/RequestContext";
-
+import  admin from '../../image/admin.png'
+import './New.css';
+import {Link} from 'react-router-dom';
 
 
 
@@ -53,7 +55,37 @@ function AddJob() {
  
 
   return (
-<div>
+    <>
+    <div className="">
+  <div className="row">
+    
+    <div className="col-4">
+    <h3 className="adminHeader">SKILL LAB</h3>
+
+    <div className="img-topic-admin">
+       <img src={admin} className="adminavatar" alt="Looking for job?"/>
+       <h6 className="AdminTopic">Admin</h6>
+    </div>
+       <div className="Link-Container">
+         <h5 className="Adminh">Job Vacancy Management</h5>
+         <ul className="Adminul">
+         <Link to="/addcareere"> <li>Add a new vacancy</li></Link>
+          <Link to="/updatedelete"> <li>Update and Delete vacancy</li></Link>
+          <Link to="/deleteRequest"> <li>Delete Careere Requests</li></Link>
+          <Link to="/jobreport"> <li>Genarate Report</li></Link>
+         </ul>
+
+       
+       </div>
+       <br/>
+    <button className="Admin-sider-Button">Logout</button><br/><br/>
+    </div>
+
+    <div className="col">
+
+
+    <div>
+      <center>
 <h2 className="add-header">Add a new career opportunity</h2>
     <div className="AddForm">
      
@@ -107,17 +139,25 @@ function AddJob() {
 
       <div >
       <Button className="add-view-btn" type="primary" htmlType="submit">
-        Submit
+        Add vacancy
       </Button>
-     <a href="/updateDelete"> <Button className="add-view-btn" type="primary">
-       View
-      </Button></a>
+   
       </div>
     </Form.Item>
     </div>
   </Form>
   </div>
+  </center>
   </div>
+
+
+    </div>
+
+      </div>
+  </div>
+    
+    </>
+
   );
     };
   
