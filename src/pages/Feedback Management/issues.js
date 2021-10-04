@@ -1,17 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Input, Popconfirm, message, Card } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import {useHistory} from 'react-router-dom';
-import './stylesFeedback.css'
+
+import { Table, Button, Input, message } from 'antd';
+import { PrinterOutlined} from '@ant-design/icons';
+import '../Student Management/stylesStudent.css';
+import { useHistory, Link } from 'react-router-dom';
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
+import { jsPDF } from "jspdf";
+import  admin from '../../image/admin.png';
+import '../Job Vacancy Management/New.css';
+
+
 
 function Issues(props) {
-  //retrieve
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const { request } = useRequest();
-  const [reviewList, setReviewList] = useState([]);
-  const history = useHistory();
+   //retrieve
+   const [data, setData] = useState([]);
+   const [loading, setLoading] = useState(true);
+   const { request } = useRequest();
+   const [reviewList, setReviewList] = useState([]);
+   const history = useHistory();
+   const { user } = useUser();
+   let doc;
 
   //fetchReviews
   const fetchContact = async () => {
@@ -90,45 +99,80 @@ function Issues(props) {
         key:'message'
       },
   
-  
-    {
-      title: "Action",
-      dataIndex: "action",
-      key: "action",
-      render: (text, record, index) => (
-        <React.Fragment key={index}>
-         
-          <Popconfirm
-            placement="right"
-            title={text}
-            onConfirm={() => onDelete(record)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-             
-              type="primary"
-              icon={<DeleteOutlined />}
-              className="edit-dlt"
-            />
-          </Popconfirm>
-        </React.Fragment>
-      )
-    }
   ];
+
+  //print report as a pdf 
+  const downloadPDF = () => {
+    // doc = new jsPDF("p", "pt", [1000, 600]);
+     doc = new jsPDF({
+       orientation : "landscape",
+       unit :"pt",
+       format : [1700,1000]
+     })    
+     doc.html(document.getElementById("course_analysis"), {
+       callback: function (pdf) {
+         pdf.save("Analysis.pdf");
+       },
+     });
+   }
 
   
 
   return (
+    
+    <>
+    <div className="">
+    <div className="row">
+    
+    <div className="col-4">
+    <h3 className="adminHeader">SKILL LAB</h3>
+
+    <div className="img-topic-admin">
+          <img src={admin} className="adminavatar" alt="Looking for job?"/>
+          <h6 className="AdminTopic">Admin</h6>
+    </div>
+
+       <div className="Link-Container">
+           <h5 className="Adminh">Feedback Management</h5>
+
+           <ul className="Adminul">
+           <Link to="/issues"> <li>Customer Complaints</li></Link>
+           </ul>
+
+           <ul className="Adminul">
+         
+          </ul>
+       </div>
+
+
+       <br/><br/><br/>
+
+    <button className="Admin-sider-Button">Logout</button>
+    </div>
+
+    <div className="col-9">
+     
     <div className="issues">
           
         
-        <br/><br/>
+          <br/><br/>
+  
+          <div><h1><center> Monthly Complaints Report</center></h1></div>
+          <Button type="primary"  icon={<PrinterOutlined />} className="printR" onClick ={downloadPDF}>
+                  print
+          </Button>
+          <br/><br/>
+          <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="iTable" id="course_analysis" />
+          
+          </div>
 
-        <div><h1><center>Customer Complaints</center></h1></div>
-        <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="rTable" />
-        
+
     </div>
+
+    </div>
+    </div>
+
+</>
   );
 }
 

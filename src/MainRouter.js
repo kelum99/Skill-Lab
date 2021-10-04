@@ -96,6 +96,7 @@ function MainRouter() {
 
   <>
 
+
         <Route path="/home2" exact component={Home2}/>
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
@@ -126,7 +127,6 @@ function MainRouter() {
 
         <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
-          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
