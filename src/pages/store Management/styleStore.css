@@ -128,5 +128,11 @@
 .select-item-filter .ant-select {
     width: 30%;
 }
+#addCartBtn{
+    margin: 8px 0px 8px 35%;
+}
+.item-search{
+    margin: 30px;
+}
     
     

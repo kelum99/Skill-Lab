@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from "react";
 import './stylesManagement.css'
 import { Table, Button,Input,Popconfirm, message } from 'antd';
-import { DeleteOutlined,AudioOutlined} from '@ant-design/icons';
+import { DeleteOutlined} from '@ant-design/icons';
 import useRequest from "../../services/RequestContext";
 
 
@@ -10,6 +10,7 @@ function LecManagement() {
   const [data,setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const {request} = useRequest();
+  
 
 
 
@@ -28,7 +29,7 @@ const fetchAuthenticationLecturer = async () => {
   setLoading(true);
 
   try {
-    const result = await request.get("AuthenticationRoute/LecturerSignup");
+    const result = await request.get("AuthenticationRoute/CommonSignup");
     
     if (result.status === 200) {
       setData(result.data);
@@ -49,11 +50,8 @@ useEffect(() => {
 const onDelete = async value =>{
   try{
    
-    const result = await request.delete(`AuthenticationRoute/LecturerSignup/${value._id}`);
-    // if(result.status === 200){
-    //   await fetchAuthenticationLecturer();
-    //   setData(undefined);
-    // }
+    const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
+   
     console.log("api call data deleted" , result);
     window.location.reload(true);
   }catch(e){
@@ -100,10 +98,12 @@ const columns = [
     dataIndex: 'number',
     key:'number',
   },
+  
+  
   {
-    title: <b>Qualifications</b>,
-    dataIndex: 'qualification',
-    key:'qualification',
+    title: <b>Role</b>,
+    dataIndex: 'role',
+    key:'role',
   },
   {
     title: <b>Action</b>,
@@ -125,80 +125,34 @@ const columns = [
       
   ];
   
-  // const data = [
-  //   {
-  //     key: '1',
-  //     nic: 'NIC1',
-  //     name: 'Name1',
-  //     email: 'Email1',
-  //     number:'Mobile number1',
-  //     quali:'Qualification1',
-  //     action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-
-  //   {
-  //       key: '2',
-  //       nic: 'NIC2',
-  //       name: 'Name2',
-  //       email: 'Email2',
-  //       number:'Mobile number2',
-  //       quali:'Qualification1',
-  //       action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-
-  //   {
-  //       key: '3',
-  //       nic: 'NIC3',
-  //       name: 'Name3',
-  //       email: 'Email3',
-  //       number:'Mobile number3',
-  //       quali:'Qualification1',
-  //       action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-  // ];
-
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
-  (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
+
+    const onSearch =  (value) => {
+        let result = [];
+        result = data.filter((data) =>{
+            
+            if(value == ""){
+                window.location.reload(true);
+                return data;
+                
+            }else{
+            return data.nic.toLowerCase().search(value) != -1 || data.name.toLowerCase().search(value) != -1 
+            || data.name1.toLowerCase().search(value) != -1  || data.email.toLowerCase().search(value) != -1  
+            || data.role.toLowerCase().search(value) != -1       
+            }
+        });
+        setData(result);
+    };
+  
+ 
 
   return (
         <div className="Au-manage">
-            <Search placeholder="Search Lecturer" onSearch={onSearch} enterButton className="searchbar" />
+            <Search placeholder="Search Here" onSearch={onSearch} enterButton className="searchbar" />
 
               <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
-              <center><h2 className="Heading2">Lecturer Management</h2></center>
+              
            
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />
          

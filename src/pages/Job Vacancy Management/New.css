@@ -1,7 +1,7 @@
 .col-4{
     background-color:#001529;
     max-width: 350px;
-    height: 720px;
+    height: fit-content;
     color:white;
 }
 
