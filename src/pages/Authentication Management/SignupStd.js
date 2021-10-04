@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Input, Button, DatePicker, Radio} from "antd";
+import { Form, Input, Button, DatePicker, Radio, message} from "antd";
 import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
@@ -34,6 +34,7 @@ function SignupStd() {
   const onFinish = async (values) => {
     values.role = "Student";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
+    
     console.log("value",values);
     try{
       const result = await request.post('AuthenticationRoute/CommonSignup', values);
@@ -114,7 +115,12 @@ function SignupStd() {
         rules={[
           {
             required: true,
+            
           },
+          {
+            max:12,
+            message:'NIC number cannot be exceed than 12 charactors',
+          }
         ]}
       >
         <Input />
@@ -123,9 +129,15 @@ function SignupStd() {
   <Form.Item
         name={[ 'email']}
         label="Email"
+        
         rules={[
           {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
             required: true,
+            message: 'Please input your E-mail!',
           },
         ]}
       >
@@ -139,6 +151,10 @@ function SignupStd() {
           {
             required: true,
           },
+          {
+            max:10,
+            message:'Phone number cannot be exceed than 10 charactors',
+          }
         ]}
       >
         <Input />
@@ -146,7 +162,7 @@ function SignupStd() {
 
 
 
-  <Form.Item name={[ 'inputpw']} label="Create a Password"
+  <Form.Item name={['inputpw']} label="Create a Password"
           rules={[
           {
             required: true,
@@ -154,6 +170,35 @@ function SignupStd() {
         ]}>
     <Input.Password  />
   </Form.Item>
+
+
+  <Form.Item
+        name="confirm"
+        label="Confirm Password"
+        dependencies={['password']}
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('inputpw') === value) {
+                return Promise.resolve();
+              }
+
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          }),
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+
+
+
 
   <hr></hr>
   By signing up you agree to SkillLab's <a href="/terms">Terms of Service and Privacy Policy</a>

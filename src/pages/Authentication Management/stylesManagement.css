@@ -61,7 +61,48 @@
     margin-top: 0.10px;
 }
 
+.Au-manage .btnReport{
+    border-radius: 5px;
+    background-color: #1890ff;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5%;
+    width: auto;
+    height: 35px;
+    margin-bottom: -50px;
+    margin-top: -50px;
+    float: right;
+}
+
+
+/* report logo css*/
+
+.aut-report-Head{
+
+    float: right;
+
+    margin-right: 120px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
 
 
 
+.logoAut{
 
+    width: 110px;
+margin-right: 100px;
+    height: 75px;
+
+}
+
+#autReport{
+    margin-top: 100px;
+}
+
+.autcenter{
+    margin-left: 350px;
+}

@@ -114,6 +114,7 @@ return (
         rules={[
           {
             required: true,
+            max:12
           },
         ]}>
         <Input />
@@ -124,7 +125,12 @@ return (
         label="Email"
         rules={[
           {
+            type: 'email',
+            message: 'The input is not valid E-mail!',
+          },
+          {
             required: true,
+            message: 'Please input your E-mail!',
           },
         ]}>
         <Input />
@@ -136,6 +142,7 @@ return (
         rules={[
           {
             required: true,
+            max:10
           },
         ]} >
       <Input />
@@ -149,6 +156,33 @@ return (
         ]}>
         <Input.Password  />
   </Form.Item>
+
+  <Form.Item
+        name="confirm"
+        label="Confirm Password"
+        dependencies={['password']}
+        hasFeedback
+        rules={[
+          {
+            required: true,
+            message: 'Please confirm your password!',
+          },
+          ({ getFieldValue }) => ({
+            validator(_, value) {
+              if (!value || getFieldValue('inputpw') === value) {
+                return Promise.resolve();
+              }
+
+              return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+          }),
+        ]}
+      >
+        <Input.Password />
+      </Form.Item>
+
+
+
 
   <hr></hr>
   By signing up you agree to SkillLab's <a href="/terms">Terms of Service and Privacy Policy</a>

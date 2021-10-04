@@ -4,7 +4,7 @@ import './stylesProfile.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
-import { Alert } from 'antd';
+
 
 
 function Stdprofile() {
@@ -164,9 +164,7 @@ key={data._id}>
         <Button type="primary" htmlType="submit" onClick={onSuccess}>
           Update
         </Button>
-        <Button type="primary" htmlType="submit" >
-          Cancel
-        </Button>
+       
         <Popconfirm
               title="Are you sure to delete your profile?"
               onConfirm={() => onDelete(data)}

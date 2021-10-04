@@ -55,7 +55,7 @@ import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
 import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
-// import LecProfile from "../src/pages/Authentication Management/LecProfile";
+import AuthenticationReport from "../src/pages/Authentication Management/AuthenticationReport";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 // import StdManagement from "./pages/Authentication Management/StdManagement";
@@ -154,6 +154,7 @@ function MainRouter() {
         {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
+        <Route path="/authenticationreport" exact component={AuthenticationReport} />
         {/* <Route path="/stdmanagement" exact component={StdManagement} /> */}
         <Route path="/terms" exact component={Terms} />
 
