@@ -4,6 +4,7 @@ import './stylesProfile.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
+import { Alert } from 'antd';
 
 
 function Stdprofile() {
@@ -25,6 +26,10 @@ function Stdprofile() {
     
   };
   
+  const onSuccess = () => {
+    message.success("User details Updated Successfully !");
+  };
+
   function confirm(e) {
   console.log(e);
   message.success('Click on Yes');
@@ -45,15 +50,12 @@ function cancel(e) {
   };
 
  
-  const onFinish = values => {
-    console.log(values);
-  };
+  
 
   const [value] = React.useState(1);
 
 
-
-  const fetchAuthenticationStudent = async () => {
+const fetchAuthenticationStudent = async () => {
     setLoading(true);
   
     try {
@@ -69,8 +71,40 @@ function cancel(e) {
   };
   
   useEffect(() => {
+    if(user && user._id){
     fetchAuthenticationStudent();
-  }, []);
+    }
+  }, [user]);
+
+
+  const onFinish = async values => {
+    try {
+      const result = await request.put(
+        `AuthenticationRoute/CommonSignup/update/${data._id}`,
+        values
+      );
+      
+      console.log("api user details updated", result);
+      window.location.reload(true);
+    } catch (e) {
+      console.log("update error ", e);
+    }
+  };
+
+
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
+      if (result.status === 200) {
+        await fetchAuthenticationStudent();
+        setData(undefined);
+      }
+      console.log("api call profile deleted", result);
+    } catch (e) {
+      console.log(" error ", e);
+    }
+  };
+
 
 return (
 
@@ -82,49 +116,60 @@ return (
         <h3>Skill Lab</h3>
         <h1>User Profile</h1>
 
+
+        
+
 {data && (
-<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}
+<Form layout="vertical" name="StdProfile"
+onFinish={onFinish} 
+validateMessages={validateMessages}
+
 initialValues={data}
 key={data._id}>
 
+
+
+
   <Form.Item
-        name={['name']}
+        name={["name"]}
         label="First Name"
         >
-        <Input />
+        <Input  />
   </Form.Item>
 
   <Form.Item
-        name={['name1']}
+        name={["name1"]}
         label="Last Name"
         >
         <Input />
   </Form.Item>
   
  <Form.Item
-        name={[ 'email']}
+        name={["email"]}
         label="Email"
        >
         <Input />
   </Form.Item>
 
   <Form.Item
-        name={[ 'number']}
+        name={["number"]}
         label="Mobile Number"
        >
         <Input />
   </Form.Item>
 
+ 
+
   <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Button type="primary" htmlType="submit" onClick={onSuccess}>
+          Update
         </Button>
         <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
         <Popconfirm
               title="Are you sure to delete your profile?"
-              onConfirm={confirm}
+              onConfirm={() => onDelete(data)}
               onCancel={cancel}
               okText="Yes"
               cancelText="No"

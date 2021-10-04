@@ -18,7 +18,7 @@ return (
 
     <Form.Item>
             <div className="about-container">
-            <div className="aboutus">ABOUT US</div>
+            <div className="aboutus"><b>ABOUT US</b></div><hr></hr>
            
             </div>              
     </Form.Item>
@@ -30,6 +30,7 @@ return (
             the kind of creative inquisition that furthers expression, learnedness and play.
             <br></br>
             <hr></hr>
+            
             SkillLab is an online literacy community with classes for Information technology. <br></br>
             On SkillLab, millions of members come together to find anguish and take the succeeding step in their creative trek. 
             <hr></hr>

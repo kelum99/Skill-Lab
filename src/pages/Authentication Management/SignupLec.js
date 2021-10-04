@@ -141,9 +141,7 @@ return (
       <Input />
   </Form.Item>
 
- 
-
-  <Form.Item name={['inputpw']} label="Create a Password"
+ <Form.Item name={['inputpw']} label="Create a Password"
           rules={[
           {
             required: true,
@@ -152,14 +150,19 @@ return (
         <Input.Password  />
   </Form.Item>
 
-  
-
+  <hr></hr>
+  By signing up you agree to SkillLab's <a href="/terms">Terms of Service and Privacy Policy</a>
+  <hr></hr>
 
  <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
   </Form.Item>
+
+
+  
+
 
   </Form>
       
