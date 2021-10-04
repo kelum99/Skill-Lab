@@ -6,8 +6,7 @@ import create_course from '../../image/create_course.jpg';
 import useRequest from "../../services/RequestContext";
 import { useHistory } from "react-router-dom";
 
-//destructure
-const { Option } = Select;
+
 
 const CourseCreate = () => {
 
@@ -17,14 +16,14 @@ const CourseCreate = () => {
     name: "",
     description: "",
     price: "0.00",
-    uploading: false,
     paid: false,
     loading: false,
     category: '',
     
 
   });
-   
+  //destructure
+  const { Option } = Select; 
   const {request} = useRequest();
   
   const handleChange = (e) => {
@@ -33,7 +32,7 @@ const CourseCreate = () => {
   };
 
 
-
+// redirect
   let history = useHistory();
 
   const redirect = () => {
@@ -45,7 +44,7 @@ const CourseCreate = () => {
     e.preventDefault();
     try {
       // console.log(values);
-      alert("Congratulations!!  you have created a new ");               
+      alert("Congratulations!!  you have created a new ");                
       const { data } = await request.post("course/coursecreate", {
         ...values,
       });
@@ -73,6 +72,7 @@ const CourseCreate = () => {
             name="name"
             placeholder="Name of the course "
             value={values.name}
+            required
             onChange={handleChange}
           />
         </div>
@@ -83,6 +83,7 @@ const CourseCreate = () => {
             placeholder="Course Description"
             cols="7"
             rows="7"
+            required
             value={values.description}
             onChange={handleChange}
           ></textarea>
@@ -123,15 +124,15 @@ const CourseCreate = () => {
             type="text"
             name="category"
             placeholder="Course category"
+            required
             value={values.category}
             onChange={handleChange}
           />
         </div>
-        
+        <br /><br />
         <div  >
           <Button className="btncourse"
             onClick={handleSubmit}
-            disabled={values.loading || values.uploading}
             loading={values.loading}
             type="primary"
             size="large"

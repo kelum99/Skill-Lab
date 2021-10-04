@@ -7,7 +7,7 @@ import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
 
 
-function ViewCourses(props) {
+function ViewCourses() {
   //retrieve
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -50,10 +50,11 @@ function ViewCourses(props) {
       if (result.status === 200) {
         await fetchCourses();
         setData(undefined);
+        alert("Course deleted !");
       }
-      console.log("api call course deleted", result);
+      console.log(" course deleted", result);
     } catch (e) {
-      console.log("delete mark error", e);
+      console.log("delete course error", e);
     }
   };
 
@@ -67,9 +68,6 @@ function ViewCourses(props) {
       key: "index",
       render: (text, record, index) => index + 1
     },
-
-
-
     {
       title: 'Course Name',
       dataIndex: 'name',
@@ -85,13 +83,9 @@ function ViewCourses(props) {
       dataIndex: 'price',
       key: 'price',
     },
-    /* {
-       title: 'Paid',
-       dataIndex: 'true',
-       key: 'true',
-     },*/
+    
     {
-      title: 'Category',
+      title: 'Course Category',
       dataIndex: 'category',
       key: 'category',
     },
