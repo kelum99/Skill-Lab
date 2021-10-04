@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import UseRequest from "../../services/RequestContext";
 import { useHistory, Link } from "react-router-dom";
+import useUser from "../../services/UserContext";
 
 function DisplayItem() {
   const [data, setData] = useState([]);
@@ -11,11 +12,12 @@ function DisplayItem() {
   const [itemList, setItemList] = useState([]);
   const history = useHistory();
   const { request } = UseRequest();
+  const {user} = useUser();
 
   const fetchProductDetails = async () => {
     setLoading(true);
     try {
-      const result = await request.get("store/productDetails");
+      const result = await request.get(`store/product/findAll/${user._id}`);
       if (result.status === 200) {
         setItemList(result.data);
       }
