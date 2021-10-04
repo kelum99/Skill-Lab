@@ -1,33 +1,30 @@
-
-
-
-.form-common .ant-input{
+.form-common .ant-input {
     border-radius: 6px;
 }
 
 .form-common .ant-btn-primary {
-  border-radius: 5px;
-  background-color: #1890ff;
-  outline: none;
-  border: none;
-  font-size: 15px;
-  font-weight: 500;
-  margin: 5%;
-  width: 100px;
-  height: 35px;
+    border-radius: 5px;
+    background-color: #1890ff;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    margin: 5%;
+    width: 100px;
+    height: 35px;
 }
-.form-common .ant-btn-primary:hover{
+
+.form-common .ant-btn-primary:hover {
     opacity: 0.5;
 }
 
-
-.tbl{
+.tbl {
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
 }
 
-.searchbar1{
+.searchbar1 {
     margin-top:2%;
     margin-bottom: 0.2%;
     margin-right: 5%;
@@ -35,7 +32,7 @@
     width:20%;
 }
 
-.Au-manage .ant-btn-primary{
+.Au-manage .ant-btn-primary {
     background-color: #0004ff81;
     width:50px;
     margin: 5%;
@@ -44,24 +41,24 @@
 }
 
 .Au-manage h1 {
-  font-size: 40px;
-  font-family: Georgia, serif;
-  text-align: center;
+    font-size: 40px;
+    font-family: Georgia, serif;
+    text-align: center;
 }
 
-.Au-manage h2{
+.Au-manage h2 {
     font-size: 30px;
     font-family: Georgia, serif;
     margin-top:-20px;
     text-align: center;
 }
 
-.Au-manage .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button{
+.Au-manage .ant-input-search > .ant-input-group > .ant-input-group-addon:last-child .ant-input-search-button {
     width: 60px;
     margin-top: 0.10px;
 }
 
-.Au-manage .btnReport{
+.Au-manage .btnReport {
     border-radius: 5px;
     background-color: #1890ff;
     outline: none;
@@ -76,33 +73,24 @@
     float: right;
 }
 
-
 /* report logo css*/
 
-.aut-report-Head{
-
+.aut-report-Head {
     float: right;
-
     margin-right: 120px;
-
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-
 }
 
-
-
-.logoAut{
-
+.logoAut {
     width: 110px;
-margin-right: 100px;
+    margin-right: 100px;
     height: 75px;
-
 }
 
-#autReport{
+#autReport {
     margin-top: 100px;
 }
 
-.autcenter{
+.autcenter {
     margin-left: 350px;
 }

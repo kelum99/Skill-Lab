@@ -1,12 +1,11 @@
-
 .btnSignin{
     background: #0060CC;
     margin-top: 20px;
     border-radius: 20px;
-    
     outline: none;
     border: none;
 }
+
 .btnSignin {
   background: #0060cc;
   margin-top: 20px;
@@ -54,9 +53,8 @@
 }
 
 .hme {
- 
- margin-top: -610px;
- margin-left: 1600px;
+  margin-top: -610px;
+  margin-left: 1600px;
 }
 
 .h1 {

@@ -1,43 +1,39 @@
-.child{
+.child {
     margin-top:80px;
     align-items:center;
    
-}.main-container-aboutus{
-
+}.main-container-aboutus {
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(to bottom, #C8FFF1, #00BACD);
 }
 
-.aboutus{
-    
+.aboutus {
     font-size:60px;
     font-family:"Roboto";
     color:#0060CC;
     text-align: center;
 }
-.abouttext-container{
 
+.abouttext-container {
     margin-top:-40px;
-   
     text-align: center;
-    
     color: #0060CC;
     font-size: 25px;
 }
 
-.A1{
- text-align: left;
- margin-top: 20px;
+.A1 {
+    text-align: left;
+    margin-top: 20px;
 }
 
-.A2{
+.A2 {
     text-align: center;
     margin-top: -150px;
    }
 
-.A3{
+.A3 {
     text-align: right;
     margin-top: -160px;
    }
