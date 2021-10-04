@@ -33,7 +33,7 @@ function Signin() {
        await updateToken(result.data.data.token);
         decodeToken(result.data.data.token)
         message.success(result.data.message)
-        history.push("/")
+        history.push("/home2")
       } else {
         message.error(result.data.message)
       }
@@ -83,7 +83,7 @@ return (
           },
         ]}
       >
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"

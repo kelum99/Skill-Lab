@@ -54,7 +54,7 @@ return (
 
     <Form.Item>
             <div className="hme">
-            <img width={700} src={home}/>
+            <img width={900} src={home}/>
             </div>
     </Form.Item>
 

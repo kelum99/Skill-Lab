@@ -29,7 +29,7 @@ const fetchAuthenticationLecturer = async () => {
   setLoading(true);
 
   try {
-    const result = await request.get("AuthenticationRoute/LecturerSignup");
+    const result = await request.get("AuthenticationRoute/CommonSignup");
     
     if (result.status === 200) {
       setData(result.data);
@@ -50,7 +50,7 @@ useEffect(() => {
 const onDelete = async value =>{
   try{
    
-    const result = await request.delete(`AuthenticationRoute/LecturerSignup/${value._id}`);
+    const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
    
     console.log("api call data deleted" , result);
     window.location.reload(true);
@@ -98,10 +98,12 @@ const columns = [
     dataIndex: 'number',
     key:'number',
   },
+  
+  
   {
-    title: <b>Qualifications</b>,
-    dataIndex: 'qualification',
-    key:'qualification',
+    title: <b>Role</b>,
+    dataIndex: 'role',
+    key:'role',
   },
   {
     title: <b>Action</b>,
@@ -135,7 +137,9 @@ const columns = [
                 return data;
                 
             }else{
-            return data.nic.toLowerCase().search(value) != -1 || data.name.toLowerCase().search(value) != -1 || data.name1.toLowerCase().search(value) != -1  || data.email.toLowerCase().search(value) != -1        
+            return data.nic.toLowerCase().search(value) != -1 || data.name.toLowerCase().search(value) != -1 
+            || data.name1.toLowerCase().search(value) != -1  || data.email.toLowerCase().search(value) != -1  
+            || data.role.toLowerCase().search(value) != -1       
             }
         });
         setData(result);
@@ -145,10 +149,10 @@ const columns = [
 
   return (
         <div className="Au-manage">
-            <Search placeholder="Search Lecturer" onSearch={onSearch} enterButton className="searchbar" />
+            <Search placeholder="Search Here" onSearch={onSearch} enterButton className="searchbar" />
 
               <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
-              <center><h2 className="Heading2">Lecturer Management</h2></center>
+              
            
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />
          

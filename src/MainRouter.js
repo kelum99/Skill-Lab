@@ -55,14 +55,15 @@ import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
 import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
-import LecProfile from "../src/pages/Authentication Management/LecProfile";
+// import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
-import StdManagement from "./pages/Authentication Management/StdManagement";
+// import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
 import Home2 from "./pages/Authentication Management/Home2";
 import AboutUs from "./pages/Authentication Management/AboutUs";
+import Terms from "./pages/Authentication Management/Terms";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -150,11 +151,11 @@ function MainRouter() {
         <Route path="/signupstd" exact component={SignupStd} />
         {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/areyou" exact component={AreYou} />
-        <Route path="/lecprofile" exact component={LecProfile} />
+        {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
-        <Route path="/stdmanagement" exact component={StdManagement} />
-
+        {/* <Route path="/stdmanagement" exact component={StdManagement} /> */}
+        <Route path="/terms" exact component={Terms} />
 
       
         <Route path="/AddItem" exact component={AddItem} />

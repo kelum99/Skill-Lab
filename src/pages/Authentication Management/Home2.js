@@ -1,11 +1,12 @@
 import React from "react";
 import { Form,Button} from 'antd';
+import { Popconfirm} from 'antd';
 import 'antd/dist/antd.css';
 import './stylesHome.css'
 import home from '../../Images/home.png';
 
 
-function Home() {
+function Home2() {
 
 return (
 
@@ -16,10 +17,14 @@ return (
 
     <Form.Item > 
     
-        
+    <Popconfirm placement="right"  title="Are you sure to Logout?"
+                  
+                  okText="Yes"
+                  cancelText="No" >
             <Button type="primary" htmlType="submit" className="btnLogout">
             LOGOUT
             </Button>
+            </Popconfirm>
         
         
     </Form.Item>
@@ -33,11 +38,10 @@ return (
     </Form.Item>
 
     <Form.Item>
-            <div className="text-container">
-            <div className="txt1">Skill Lab was established with the aim of giving a</div>
-            <div className="txt2">new aspect to online learning. Within such a</div>
-            <div className="txt3">short span of a time we've been able to acquire a</div>
-            <div className="txt4">huge user satisfaction and reputation</div>
+            <div className="text-container2">
+                At SkillLab, we ’ve seen again and again how the presumably simple act of creating can be<br></br>
+                a force for growth, change, and discovery in people ’s lives. We want to inspire and multiply<br></br>
+                the kind of creative inquisition that furthers expression, learnedness and play.<br></br>
             </div>              
     </Form.Item>
 
@@ -45,7 +49,7 @@ return (
 
     <Form.Item>
             <div className="hme">
-            <img width={700} src={home}/>
+            <img width={900} src={home}/>
             </div>
     </Form.Item>
 
@@ -58,4 +62,4 @@ return (
   );
 }
 
-export default Home;
+export default Home2;

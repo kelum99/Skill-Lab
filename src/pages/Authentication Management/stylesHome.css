@@ -54,9 +54,9 @@
 }
 
 .hme {
- position: fixed;
- top: 110px;
- right: 100px;
+ 
+ margin-top: -610px;
+ margin-left: 1600px;
 }
 
 .h1 {
@@ -127,4 +127,11 @@
 #apply-form{
   background-color: #00bacd;
   margin-left: 50px;
+}
+
+.text-container2 {
+  margin-top: 10px;
+  margin-left: 300px;
+  color: #0060CC;
+  font-size: 30px;
 }
