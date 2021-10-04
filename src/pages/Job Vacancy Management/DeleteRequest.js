@@ -3,6 +3,7 @@ import useRequest from "../../services/RequestContext";
 import { Table, Button,Input,Popconfirm, message,} from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
+import moment from "moment";
 
 function DeleteRequest() {
 
@@ -17,7 +18,8 @@ const fetchCareere = async () => {
     try {
         const result = await request.get("job/applicationview");
         if (result.status === 200) {
-            setData(result.data);
+            //setData(result.data);
+            setData(result.data.map(vl => ({...vl, birthDate: moment(vl.birthDate).local().format("DD-MM-YYYY")})));
         }
         console.log(" Jobs get ", result);
         setLoading(false);
@@ -156,7 +158,7 @@ const columns = [
             
 
         
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+            <Table columns={columns} dataSource={data} size="large" pagination={false} className="crsTable" />
             <br/>
             <br/>
          

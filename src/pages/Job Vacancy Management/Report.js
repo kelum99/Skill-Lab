@@ -5,6 +5,7 @@ import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
 import { jsPDF } from "jspdf";
 import logo from "../../image/logo11.png";
+import moment from "moment";
 
 
 function DeleteRequest() {
@@ -22,7 +23,8 @@ const fetchCareere = async () => {
     try {
         const result = await request.get("job/applicationview");
         if (result.status === 200) {
-            setData(result.data);
+            //setData(result.data);
+            setData(result.data.map(vl => ({...vl, birthDate: moment(vl.birthDate).local().format("DD-MM-YYYY")})));
         }
         console.log(" Jobs get ", result);
         setLoading(false);
@@ -178,7 +180,7 @@ const columns = [
     <p>Tel:- 011-2548741<br/>
     e-mail:- skilllab.edu@gmail.com</p>
 </div>
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
+            <Table columns={columns} dataSource={data} size="large" pagination={false} className="crsTable" />
         </div>
             
             <button className="fa fa-download" id="download-job-pdf" onClick={downloadPDF} > Download Pdf </button><br/><br/>

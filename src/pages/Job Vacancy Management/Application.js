@@ -4,6 +4,7 @@ import axios from "axios";
 import im from '../../image/jb.jpeg';
 import './jobManagement.css';
 import { Form, Input, InputNumber, Button, message} from "antd";
+import moment from "moment";
 
 export default function JobApply(){
 
