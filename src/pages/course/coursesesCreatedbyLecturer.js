@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Table, Button, Input, Popconfirm, message, Card } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined ,PlusCircleOutlined  } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined,PlusCircleOutlined  } from "@ant-design/icons";
 import {useHistory} from 'react-router-dom';
 import "./courseStyles.css";
 import useRequest from "../../services/RequestContext";
@@ -65,7 +65,7 @@ function ViewCourses(props) {
     },
     
 
-
+ 
     {
         title: 'Name',
         dataIndex: 'name',
@@ -77,15 +77,15 @@ function ViewCourses(props) {
         key: 'description',
       },
       {
-          title: 'Price',
+          title: 'Price in $ ',
           dataIndex: 'price',
           key: 'price',
       },
-      {
+    /*  {
         title: 'Paid',
         dataIndex: 'true',
         key: 'true',
-      },
+      },*/
       {
           title: 'Category',
           dataIndex: 'category',
@@ -98,8 +98,8 @@ function ViewCourses(props) {
       render: (text, record, index) => (
         
             <React.Fragment key={index}>
-          <Button type="primary" onClick={() => history.push(`/courseEdit/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
-          <Button type="primary" onClick={() => history.push('./courseContentCreate')} icon={<PlusCircleOutlined />} className="edit-dlt" />
+          <Button type="primary"   onClick={() => history.push(`/courseEdit/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+          <Button type="primary" onClick={() => history.push(`./courseContentCreate/${record._id}`)} icon={<PlusCircleOutlined />} className="edit-dlt" />
           <Popconfirm
             placement="right"
             title={text}
@@ -118,17 +118,30 @@ function ViewCourses(props) {
       )
     }
   ];
-
+  
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
+  const onSearch = (value) => {
+    let result = [];
+    result = courseList.filter((data) =>{
+     if (value == ""){
+       window.location.reload(true);
+       return data;
+     }else{
+       return data.name.toLowerCase().search(value) != -1 
+     }
+    });
+    setCourseList(result);
+  }
+ 
 
   return (
     <div className="myCrs">
       <Search
         placeholder="Search courses"
         onSearch={onSearch}
-        enterButton
+        allowClear
+        enterButton = "Search"
         className="searchbar"
       />
       <br />
