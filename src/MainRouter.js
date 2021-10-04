@@ -9,6 +9,7 @@ import reviewList from "./pages/Feedback Management/reviewList";
 import issues from "./pages/Feedback Management/issues";
 
 
+
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -85,6 +86,7 @@ function MainRouter() {
   return (
 
   <>
+        
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
         <Route path="/aboutus" exact component={AboutUs}/>
@@ -110,7 +112,6 @@ function MainRouter() {
 
         <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
-          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />

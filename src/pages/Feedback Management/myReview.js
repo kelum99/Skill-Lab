@@ -4,6 +4,7 @@ import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import {useHistory} from 'react-router-dom';
 import './stylesFeedback.css'
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
 
 function MyReview(props) {
   //retrieve
@@ -12,11 +13,12 @@ function MyReview(props) {
   const { request } = useRequest();
   const [reviewList, setReviewList] = useState([]);
   const history = useHistory();
+  const { user } = useUser();
   //fetchReviews
   const fetchReviews = async () => {
     setLoading(true);
     try {
-      const result = await request.get("feedback/review/findAll");
+      const result = await request.get(`feedback/review/findAll/${user._id}`);
       if (result.status === 200) {
         // setData(result.data);
         setReviewList(result.data);

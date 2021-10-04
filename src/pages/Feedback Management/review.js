@@ -4,13 +4,14 @@ import { Rate,Progress,Space,Input,Form,Button,Comment,  List,message} from  'an
 import avatar  from '../../image/avatar.jpg'
 import './stylesFeedback.css'
 import useRequest from "../../services/RequestContext";
+import { useHistory } from "react-router-dom";
 
 
 function Review() {
 
   //alert msg
   const success = () => {
-    message.success('Thanks for your comment !!');
+    
  };  
   
   const layout = {
@@ -26,10 +27,23 @@ function Review() {
     //Form Vilidation 
     const validateMessages = {
       required:  '${label} is required! ',
+      String: {
+
+        range: "${label} must be ${min} charactors",
+        range: '${label} must be ${max} ',
+  
+      },
        };
 
 
     const {request} = useRequest();
+
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push('/myReview')
+    }
     
     //on submit - console log
    const onFinish =  async values => {
@@ -37,9 +51,11 @@ function Review() {
    try{
      const result = await request.post('feedback/review', values);
      console.log("api call reviews ", result);
+     message.success('Thanks for your comment !!');
    } catch(e){
     console.log("post review details error ",e);
 }
+redirect();
 
  };
 
@@ -83,6 +99,7 @@ function Review() {
             rules={[
               {
                 required: true,
+                type:'string',max:10,
               },
             ]}
             
@@ -95,6 +112,7 @@ function Review() {
             rules={[
               {
                 required: true,
+                type:'string',min: 5,
               },
             ]}
             
@@ -107,6 +125,7 @@ function Review() {
             rules={[
               {
                 required: true,
+                type:'string',max: 50,
               },
             ]}
             
@@ -117,6 +136,11 @@ function Review() {
             <Form.Item
             name={['rate']}
             label="Rate"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Rate />
@@ -126,6 +150,12 @@ function Review() {
           <Form.Item
             name={[ 'comment']}
             label="Comment"
+            rules={[
+              {
+                required: true,
+                type:'string',max: 500,
+              },
+            ]}
             
           >
             <TextArea rows={4} />

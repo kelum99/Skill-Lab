@@ -162,28 +162,34 @@ h4{
 
 
 
+
 /*Review List Page*/
 
 
-.reviewTable{
-    margin-top: 5%;
-    margin-left: 12%;
+.reviewLTable{
+    margin-top: 3%;
+    margin-left: 6%;
     margin-right: 20%;
     align-self: center;
-    width: 1300px;
+    width: 1500px;
+    
     
     
 }
 
-.searchbar{
-    margin-top: 0%;
+.searchbarList{
+    margin-top:0%;
     margin-bottom: 0.2%;
     margin-right: 10%;
-    margin-left: 68%;
+    margin-left: 75%;
     width:20%;
-    
-   
+    height: 25px;;
 }
+.enroll .ant-btn-primary:hover,.ant-btn-primary:focus{
+    background:#07bbd1 ;
+    
+}
+
 
  .rTable.ant-table-content{
     background-color:#c0ecfa;
@@ -255,4 +261,27 @@ h4{
     border: #000000;
     
 }
+
+
+
+/*Issues page*/
+.printR.ant-btn-primary{
+    
+    background: #07bbd1;
+    border-radius: 5px;
+    width: 200px;
+    height: 40px;
+    outline: none;
+    border: #000000;
+    margin-left: 10px;
+    margin-top: 50px;
+}
+
+.iTable.ant-table-content{
+        background-color:#c0ecfa;
+        align-content: center;
+        margin-top: 100%;
+        margin-left: 20%;
+        width: 700px;
+    }
 
