@@ -48,7 +48,7 @@ function viewStore(){
       const dataSource = [
         {
           key: '1',
-          productID: 'productID1',
+          productID: 'PD100',
           productName: 'Name',
           category: 'Category1',
           numberofSells: 'xx',
@@ -56,7 +56,7 @@ function viewStore(){
         },
         {
           key: '2',
-          productID: 'productID2',
+          productID: 'PD101',
           productName: 'Name',
           category: 'Category2',
           numberofSells: 'xx',
@@ -65,7 +65,7 @@ function viewStore(){
 
         {
             key: '3',
-            productID: 'productID3',
+            productID: 'PD102',
             productName: 'Name',
             category: 'Category3',
             numberofSells: 'xx',
@@ -73,7 +73,23 @@ function viewStore(){
           },
 
           {
-            productID: 'productID4',
+            productID: 'PD103',
+            productName: 'Name',
+            category: 'Category4',
+            numberofSells: 'xx',
+            total:'xxxx.xx',
+          },
+
+          {
+            productID: 'PD104',
+            productName: 'Name',
+            category: 'Category4',
+            numberofSells: 'xx',
+            total:'xxxx.xx',
+          },
+
+          {
+            productID: 'PD105',
             productName: 'Name',
             category: 'Category4',
             numberofSells: 'xx',

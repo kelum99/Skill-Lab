@@ -97,9 +97,10 @@ function NoticesAll() {
         
         <div className="allT">
             
-            <h1 className="notice_h1">All Notices</h1>
-            <Table columns={columns} dataSource={noticeList} size="middle" pagination={false} className="allQTable3" />
+            <h1 className="notice_h1">All news and <br></br> announcements</h1>
             <div> <Button type="primary" icon={<PlusCircleOutlined />} className="btnAllN"onClick={() => history.push('./createN')}>Add Notice</Button></div>
+            <Table columns={columns} dataSource={noticeList} size="middle" pagination={false} className="allQTable3" />
+            
 
         </div>
     

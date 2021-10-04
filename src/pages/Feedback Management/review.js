@@ -21,6 +21,13 @@ function Review() {
           span: 14,
         },
       };
+  
+  
+    //Form Vilidation 
+    const validateMessages = {
+      required:  '${label} is required! ',
+       };
+
 
     const {request} = useRequest();
     
@@ -39,119 +46,7 @@ function Review() {
 
        
      
-
-      // const data = [
-      //   {
-          
-      //     author: 'Han Solo',
-          
-      //     content: (
-      //       <p>
-      //         We supply a series of design principles, practical patterns and high quality design
-      //         resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //         efficiently.
-      //       </p>
-      //     ),
-      //     rate: (
-      //       <Rate disabled allowHalf defaultValue={2} />
-
-      //       ),
-      //   },
-
-          
-          
-      //   {
-            
-      //       author: 'Han Solo',
-            
-      //       content: (
-      //         <p>
-      //           We supply a series of design principles, practical patterns and high quality design
-      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //           efficiently.
-      //         </p>
-      //       ),
-      //       rate: (
-      //         <Rate disabled allowHalf defaultValue={3} />
-  
-      //         ),
-   
-      //   },
-
-
-      //   {
-            
-      //       author: 'Han Solo',
-                
-      //       content: (
-      //           <p>
-      //           We supply a series of design principles, practical patterns and high quality design
-      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //           efficiently.
-      //           </p>
-      //       ),
-      //       rate: (
-      //         <Rate disabled allowHalf defaultValue={5} />
-  
-      //         ),
-       
-      //   },
-
-      //   {
-            
-      //       author: 'Han Solo',
-                    
-      //       content: (
-      //           <p>
-      //           We supply a series of design principles, practical patterns and high quality design
-      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //           efficiently.
-      //           </p>
-      //       ),
-            
-      //       rate: (
-      //         <Rate disabled allowHalf defaultValue={5} />
-  
-      //         ),
-      //   },
-
-      //   {
-            
-      //       author: 'Han Solo',
-                        
-      //       content: (
-      //           <p>
-      //           We supply a series of design principles, practical patterns and high quality design
-      //           resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //           efficiently.
-      //           </p>
-      //       ),
-      //       rate: (
-      //         <Rate disabled allowHalf defaultValue={3} />
-  
-      //         ),
-               
-      //   },
-
-      //   {
-            
-      //       author: 'Han Solo',
-                            
-      //       content: (
-      //           <p>
-      //               We supply a series of design principles, practical patterns and high quality design
-      //               resources (Sketch and Axure), to help people create their product prototypes beautifully and
-      //               efficiently.
-      //           </p>
-      //        ),
-      //        rate: (
-      //         <Rate disabled allowHalf defaultValue={4} />
-  
-      //         ),
-                   
-      //   }
-
-      // ]
+ 
 
 
     const { TextArea } = Input;
@@ -181,10 +76,15 @@ function Review() {
 
     <div className="addR"> 
     
-    <Form {...layout} name="nest-messages" onFinish={onFinish} size={"large"} text-size={"18px"}>
+    <Form {...layout} name="nest-messages" onFinish={onFinish} validateMessages={validateMessages} size={"large"} text-size={"18px"}>
           <Form.Item
             name={[ 'stid']}
             label="Student ID"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />
@@ -192,6 +92,11 @@ function Review() {
           <Form.Item
             name={[ 'fname']}
             label="Name"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />
@@ -199,6 +104,11 @@ function Review() {
           <Form.Item
             name={[ 'course']}
             label="Course"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Input />

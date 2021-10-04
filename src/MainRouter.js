@@ -6,6 +6,7 @@ import review from './pages/Feedback Management/review';
 import contactUs from "./pages/Feedback Management/contactUs";
 import myReview from "./pages/Feedback Management/myReview";
 import reviewList from "./pages/Feedback Management/reviewList";
+import issues from "./pages/Feedback Management/issues";
 
 
 import AddMarks from "./pages/Student Management/AddMarks";
@@ -57,10 +58,12 @@ import Signin from "../src/pages/Authentication Management/Signin";
 import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
-import StdManagement from "./pages/Authentication Management/StdManagement";
+// import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import Home2 from "./pages/Authentication Management/Home2";
 import AboutUs from "./pages/Authentication Management/AboutUs";
+import Terms from "./pages/Authentication Management/Terms";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -84,8 +87,11 @@ function MainRouter() {
   return (
 
   <>
+
+        <Route path="/home2" exact component={Home2}/>
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
+
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
@@ -116,6 +122,7 @@ function MainRouter() {
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
         <Route path="/reviewList" exact component={reviewList}/>
+        <Route path="/issues" exact component={issues}/>
         
         
 
@@ -145,11 +152,11 @@ function MainRouter() {
         {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/" exact component={Signin}/>
         <Route path="/areyou" exact component={AreYou} />
-        <Route path="/lecprofile" exact component={LecProfile} />
+        {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
-        <Route path="/stdmanagement" exact component={StdManagement} />
-
+        {/* <Route path="/stdmanagement" exact component={StdManagement} /> */}
+        <Route path="/terms" exact component={Terms} />
 
       
         <Route path="/AddItem" exact component={AddItem} />

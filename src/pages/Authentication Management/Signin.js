@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './stylesSignin.css'
 import logo from '../../Images/logo.png';
+import { Link } from "react-router-dom";
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
 import { Redirect } from 'react-router'
@@ -32,7 +33,7 @@ function Signin() {
        await updateToken(result.data.data.token);
         decodeToken(result.data.data.token)
         message.success(result.data.message)
-        history.push("/")
+        history.push("/home2")
       } else {
         message.error(result.data.message)
       }
@@ -82,7 +83,7 @@ return (
           },
         ]}
       >
-      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
+      <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"
@@ -106,7 +107,8 @@ return (
           <Checkbox>Remember me  |</Checkbox>
       </Form.Item>
 
-        <a href="">Sign up</a>
+      
+        <a href="/areYou">Sign up</a>
         
       </Form.Item>
 

@@ -1,8 +1,8 @@
 import React,{useState,useEffect} from "react";
 import './stylesLecturer.css';
 import 'antd/dist/antd.css';
-import { Table } from 'antd';
-import viewNote1 from '../../image/viewNote1.png';
+import { Table,Input } from 'antd';
+import viewNote1 from '../../image/viewNote1.jpg';
 import useRequest from "../../services/RequestContext";
 
 function NoticeView() {
@@ -11,13 +11,15 @@ function NoticeView() {
   const[data,setData] = useState([]);
   const[loading,setLoading] = useState(true);
   const{request} = useRequest();
+  const [noticeList, setNoticeList] = useState([]);
 
   const fetchNotice = async () => {
     setLoading(true);
     try {
       const result = await request.get("lecturer/notice/findAll");
       if (result.status === 200) {
-        setData(result.data);
+        //setData(result.data);
+        setNoticeList(result.data);
       }
       console.log(" notice list get ", result);
       setLoading(false);
@@ -50,19 +52,30 @@ function NoticeView() {
       key:'notice'
     },
   ];
-  
+   
+  //search box
+  const { Search } = Input;
+  const onSearch = (value) => {
+    let result = [];
+    result = noticeList.filter((data) =>{
 
-    return (
-        
-        <div className="allT">
-            
+     if (value == ""){
+       window.location.reload(true);
+       return data;
+     }else{
+       return data.notice.toLowerCase().search(value) != -1 
+     }
+    });
+    setNoticeList(result);
+  }
+
+  return (
+        <div className="allT"> 
+            <Search placeholder="Search Notice" onSearch={onSearch} enterButton className="searchQ"/>
             <h1 className="notice_h1">News and Announcements</h1>
-            <h2 className="subHeading">For the attention of all students!!</h2>
-            <div> <center><img className="questionimg" src={viewNote1} alt="viewNotice" height ={200} width ={250}/></center> </div>
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="allQTable1" />
-            
+            <div> <center><img className="questionimg" src={viewNote1} alt="viewNotice" height ={450} width ={1350}/></center> </div>
+            <Table columns={columns} dataSource={noticeList} size="middle" pagination={false} className="allQTable1" /> 
         </div>
-        
     );  
 }
 
