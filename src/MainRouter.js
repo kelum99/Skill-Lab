@@ -35,6 +35,7 @@ import allQuestions from "./pages/Lecturer Management/allQuestions";
 import allQuestionList from "./pages/Lecturer Management/allQuestionList";
 import noticesAll from "./pages/Lecturer Management/noticesAll";
 import noticeView from "./pages/Lecturer Management/noticeView";
+import lecReport from "./pages/Lecturer Management/lecReport";
 
 
 import DeleteRequest from "./pages/Job Vacancy Management/DeleteRequest";
@@ -124,6 +125,7 @@ function MainRouter() {
         <Route path="/allQL" exact component={allQuestionList} />
         <Route path="/allN" exact component={noticesAll} />
         <Route path="/viewN" exact component={noticeView} />
+        <Route path="/lecReport" exact component={lecReport} />
         
 
         <Route path="/careere" exact component={Careere} />
