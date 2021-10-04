@@ -36,7 +36,7 @@ return(
     <button className="Admin-sider-Button">Logout</button>
     </div>
 
-    <div className="col-6">
+    <div className="col">
 
 
         Content

@@ -3,6 +3,7 @@ import React,{useState} from "react";
 import axios from "axios";
 import im from '../../image/jb.jpeg';
 import './jobManagement.css';
+import { Form, Input, InputNumber, Button, message} from "antd";
 
 export default function JobApply(){
 
@@ -35,12 +36,12 @@ console.log(newJob)
 
     axios.post("http://localhost:4000/api/job/apply",newJob).then(()=>{
 
-        alert("Application Sended")
+        message.success("Application submit Sucsessfully");
         window.location.reload(true);
         
 
     }).catch((error)=>{
-      alert("Not Sent");
+      message.error("Submission Failed");
       
     })
   }
@@ -107,7 +108,7 @@ console.log(newJob)
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="email">E-mail</label>
-      <input type="text" class="form-control" name=" email" id="email" required  placeholder="Required" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+      <input type="text" class="form-control" name=" email" id="email" required  placeholder="Required" type="email"
       
       onChange={(e)=>{
 
@@ -118,7 +119,7 @@ console.log(newJob)
  
     <div class="form-group col-md-6">
       <label for="phone">Phone</label>
-      <input type="text" class="form-control" name="phone" id="phone" required   placeholder="Required" pattern ="{0-9}{10}"
+      <input type="text" class="form-control" name="phone" id="phone" required   placeholder="Required" 
       
       onChange={(e)=>{
 

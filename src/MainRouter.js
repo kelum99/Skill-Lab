@@ -44,6 +44,7 @@ import Sucsess from "./pages/Job Vacancy Management/Sucsess";
 import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
+import Report from "./pages/Job Vacancy Management/Report";
 
 
 
@@ -138,11 +139,12 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+        <Route path="/jobreport" exact component={Report} />
        
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
-        <Route path="/signin" exact component={Signin} />
+        {/* <Route path="/signin" exact component={Signin} /> */}
         <Route path="/areyou" exact component={AreYou} />
         <Route path="/lecprofile" exact component={LecProfile} />
         <Route path="/stdprofile" exact component={StdProfile} />

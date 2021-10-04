@@ -3,6 +3,9 @@ import useRequest from "../../services/RequestContext";
 import { Table, Button,Input,Popconfirm, message,} from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
+import { jsPDF } from "jspdf";
+import logo from "../../image/logo11.png";
+
 
 function DeleteRequest() {
 
@@ -11,7 +14,9 @@ const [data, setData] = useState([]);
 const [loading, setLoading] = useState(true);
 const { request } = useRequest();
 
-//fetchMarks
+let doc;
+
+//fetch
 const fetchCareere = async () => {
     setLoading(true);
     try {
@@ -72,6 +77,8 @@ const { Search } = Input;
       };
 
 
+
+
 //table
 const columns = [
     {
@@ -119,50 +126,65 @@ const columns = [
         dataIndex: 'status',
         key : 'status'
       },
-      {
-        title: "Action",
-        dataIndex: "action",
-        key: "action",
-        render: (text, record, index) => (
-          <React.Fragment key={index}>
-            
-            <Popconfirm
-              placement="right"
-              title={msg}
-              onConfirm={() => onDelete(record)}
-              okText="Yes"
-              cancelText="No"
-            >
-              <Button
-                danger
-                type="primary"
-                icon={<DeleteOutlined />}
-                className="edit-dlt"
-              />
-            </Popconfirm>
-          </React.Fragment>
-  ),
-      },
+     
   ];
+
+
+
+  //report genarate
+
+  const downloadPDF = () => {
+
+    // doc = new jsPDF("p", "pt", [1000, 600]);
+   
+     doc = new jsPDF({
+   
+       orientation : "landscape",
+   
+       unit :"pt",
+   
+       format : [1700,1000]
+   
+     })
+   
+     doc.html(document.getElementById("jobtbl"), {
+   
+       callback: function (pdf) {
+   
+         pdf.save("job.pdf");
+   
+       },
+   
+     });
+   
+   };
  
 
     return (
 <>
-      <Search placeholder="Search Course" onSearch={onSearch} enterButton className="searchApplicant" />  
+       
         <div className="myCourses">
           
-         
-            <br /><br /><center><h2 className="add-header">Delete Applicant requests</h2></center>
-            
+        <div id="jobtbl">
 
-        
+            
+            <br /><br /><center><h2 className="add-header">SKILL-LAB Applicant Report</h2></center>
+<div className="job-report-Head">
+<center>
+    <img src={logo} alt="logo" className="logoforreport" />
+</center>
+    <h5>SKILL-LAB</h5>
+
+    <p>Tel:- 011-2548741<br/>
+    e-mail:- skilllab.edu@gmail.com</p>
+</div>
             <Table columns={columns} dataSource={data} size="middle" pagination={false} className="crsTable" />
-            <br/>
-            <br/>
-         
-      
-        
         </div>
+            
+            <button className="fa fa-download" id="download-job-pdf" onClick={downloadPDF} > Download Pdf </button><br/><br/>
+            
+         </div>
+         
         </>
     );
 }
