@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Select, Button } from "antd";
+import { Form, Input, Select, Button, Space } from "antd";
 import "antd/dist/antd.css";
 import "./styleStore.css";
 import UseRequest from "../../services/RequestContext";
@@ -40,13 +40,43 @@ function UserView() {
       setData({ ...item });
     }
   };
+  //search box
+ const { Search } = Input;
+ const onSearch = (value) => {
+   let result = [];
+   result =itemList.filter((data) =>{
+    if (value == ""){
+      window.location.reload(true);
+      return data;
+    }else{
+      return data.productName.toLowerCase().search(value) != -1 
+    }
+   });
+   setItemList(result);
+
+ }
 
   return (
     <>
-    <div class="st">
+        <div class="st">
     <h1> Store </h1>
     </div>
-      <div className="select-item-filter">
+
+    <div>
+      <Space direction="vertical" >
+        <Search
+          className="item-search"
+          placeholder="Search your item here "
+          allowClear
+          enterButton="Search SkillLab item"
+          size="large"
+          onSearch={onSearch}
+        />
+
+      </Space>
+    </div>
+
+      {/* <div className="select-item-filter">
           <Select placeholder="Category">
             <Option value="ebook">e-Book</Option>
             <Option value="web templates"> Web Templates</Option>
@@ -54,8 +84,10 @@ function UserView() {
             <Option value="web templates"> Web Templates</Option>
           </Select>
     
-      </div>
+      </div> */}
     <div className="item-container">
+   
+    
       {itemList.map(item => (
         <div className="one-item" key={item._Id} onClick={() => onSelect(item)}>
           {/* <h2><Link to={`/AddCart/${item._id}`} >{item.productName} </Link> </h2> */}
@@ -63,8 +95,14 @@ function UserView() {
           <h4>{item.category}</h4>
           <h4>Price: {item.price}$</h4>
           <img src={productImg} className="product-img"/>
+          <Link to="#" >
+          <Button type="primary" id="addCartBtn">
+            Add to Cart
+            </Button></Link>
         </div>
-      ))}
+      )
+      )}
+      
       </div>
     </>
   );

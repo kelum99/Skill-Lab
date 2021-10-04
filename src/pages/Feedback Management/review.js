@@ -28,10 +28,8 @@ function Review() {
     const validateMessages = {
       required:  '${label} is required! ',
       String: {
-
         range: "${label} must be ${min} charactors",
         range: '${label} must be ${max} ',
-  
       },
        };
 
@@ -99,7 +97,9 @@ redirect();
             rules={[
               {
                 required: true,
+
                 type:'string',max:10,
+
               },
             ]}
             
@@ -112,7 +112,9 @@ redirect();
             rules={[
               {
                 required: true,
+
                 type:'string',min: 5,
+
               },
             ]}
             
@@ -125,7 +127,9 @@ redirect();
             rules={[
               {
                 required: true,
+
                 type:'string',max: 50,
+
               },
             ]}
             

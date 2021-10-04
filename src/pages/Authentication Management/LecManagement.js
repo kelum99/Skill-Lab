@@ -1,209 +1,167 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './stylesManagement.css'
-import { Table, Button,Input,Popconfirm, message } from 'antd';
-import { DeleteOutlined,AudioOutlined} from '@ant-design/icons';
+import { Table, Button, Input, Popconfirm, message } from 'antd';
+import { DeleteOutlined, PrinterOutlined } from '@ant-design/icons';
 import useRequest from "../../services/RequestContext";
+import moment from "moment";
+import { Link } from "react-router-dom";
 
 
 function LecManagement() {
 
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const {request} = useRequest();
+  const { request } = useRequest();
 
 
 
-function confirm(e) {
-  console.log(e);
-  message.success('Click on Yes');
-}
 
-function cancel(e) {
-  console.log(e);
-  message.error('Click on No');
-}
+  function confirm(e) {
+    console.log(e);
+    message.success('Click on Yes');
+  }
 
+  function cancel(e) {
+    console.log(e);
+    message.error('Click on No');
+  }
 
-const fetchAuthenticationLecturer = async () => {
-  setLoading(true);
+  const fetchAuthenticationLecturer = async () => {
+    setLoading(true);
 
-  try {
-    const result = await request.get("AuthenticationRoute/LecturerSignup");
-    
-    if (result.status === 200) {
-      setData(result.data);
+    try {
+      const result = await request.get("AuthenticationRoute/CommonSignup");
+
+      if (result.status === 200) {
+        
+        setData(result.data.map(vl => ({ ...vl, birthday: moment(vl.birthday).local().format("YYYY-MM-DD") })));
+      }
+      console.log(" lec list get ", result);
+      setLoading(false);
+
+    } catch (e) {
+      setLoading(false);
     }
-    console.log(" lec list get ", result);
-    setLoading(false);
-  } catch (e) {
-    setLoading(false);
-  }
-};
+  };
 
-useEffect(() => {
-  fetchAuthenticationLecturer();
-}, []);
+  useEffect(() => {
+    fetchAuthenticationLecturer();
+  }, []);
 
+  const onDelete = async value => {
+    try {
 
+      const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
 
-const onDelete = async value =>{
-  try{
-   
-    const result = await request.delete(`AuthenticationRoute/LecturerSignup/${value._id}`);
-    // if(result.status === 200){
-    //   await fetchAuthenticationLecturer();
-    //   setData(undefined);
-    // }
-    console.log("api call data deleted" , result);
-    window.location.reload(true);
-  }catch(e){
-    console.log("error",e);
-  }
-};
+      console.log("api call data deleted", result);
+      window.location.reload(true);
 
-//table
+    } catch (e) {
+      console.log("error", e);
+    }
+  };
 
-const columns = [
-   
-  {
-    title: <b>First Name</b>,
-    dataIndex: 'name',
-    key:'name',
-  },
-  {
-    title: <b>Last Name</b>,
-    dataIndex: 'name1',
-    key:'name1',
-  },
-  {
-    title: <b>Birthday</b>,
-    dataIndex: 'birthday',
-    key:'birthday',
-  },
-  {
-    title: <b>Gender</b>,
-    dataIndex: 'gender',
-    key:'gender',
-  },
-  {
-    title: <b>NIC</b>,
-    dataIndex: 'nic',
-    key:'nic',
-  },
-  {
-    title: <b>Email</b>,
-    dataIndex: 'email',
-    key:'email',
-  },
-  {
-    title: <b>Mobile No.</b>,
-    dataIndex: 'number',
-    key:'number',
-  },
-  {
-    title: <b>Qualifications</b>,
-    dataIndex: 'qualification',
-    key:'qualification',
-  },
-  {
-    title: <b>Action</b>,
-    dataIndex: 'action',
-    key:'action',
-    render:(text, record,index)=>(
-      <React.Fragment key={index}>
-          
-          <Popconfirm placement="right"  title="Are you sure to delete this task?"
-                onConfirm={()=>onDelete(record)}
-                onCancel={cancel}
-                okText="Yes"
-                cancelText="No" >
-                 <Button type="primary"icon={<DeleteOutlined />} className="dlt" />
-        </Popconfirm>
+  //table
+
+  const columns = [
+
+    {
+      title: <b>First Name</b>,
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: <b>Last Name</b>,
+      dataIndex: 'name1',
+      key: 'name1',
+    },
+    {
+      title: <b>Birthday</b>,
+      dataIndex: 'birthday',
+      key: 'birthday',
+    },
+    {
+      title: <b>Gender</b>,
+      dataIndex: 'gender',
+      key: 'gender',
+    },
+    {
+      title: <b>NIC</b>,
+      dataIndex: 'nic',
+      key: 'nic',
+    },
+    {
+      title: <b>Email</b>,
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
+      title: <b>Mobile No.</b>,
+      dataIndex: 'number',
+      key: 'number',
+    },
+    {
+      title: <b>Role</b>,
+      dataIndex: 'role',
+      key: 'role',
+    },
+    {
+      title: <b>Action</b>,
+      dataIndex: 'action',
+      key: 'action',
+      render: (text, record, index) => (
+        <React.Fragment key={index}>
+
+          <Popconfirm placement="right" title="Are you sure to delete this task?"
+            onConfirm={() => onDelete(record)}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No" >
+            <Button type="primary" icon={<DeleteOutlined />} className="dlt" />
+          </Popconfirm>
+
         </React.Fragment>
-    )
-  },
-      
+
+      )
+    },
+
   ];
-  
-  // const data = [
-  //   {
-  //     key: '1',
-  //     nic: 'NIC1',
-  //     name: 'Name1',
-  //     email: 'Email1',
-  //     number:'Mobile number1',
-  //     quali:'Qualification1',
-  //     action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-
-  //   {
-  //       key: '2',
-  //       nic: 'NIC2',
-  //       name: 'Name2',
-  //       email: 'Email2',
-  //       number:'Mobile number2',
-  //       quali:'Qualification1',
-  //       action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-
-  //   {
-  //       key: '3',
-  //       nic: 'NIC3',
-  //       name: 'Name3',
-  //       email: 'Email3',
-  //       number:'Mobile number3',
-  //       quali:'Qualification1',
-  //       action:<><Popconfirm
-  //                 title="Are you sure to delete this task?"
-  //                 onConfirm={confirm}
-  //                 onCancel={cancel}
-  //                 okText="Yes"
-  //                 cancelText="No"
-  //               >
-  //               <Button type="primary"icon={<DeleteOutlined />} className="dlt"/>
-  //               </Popconfirm></>
-  //   },
-  // ];
 
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
-  (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '#1890ff',
-      }}
-    />
-  );
+
+  const onSearch = (value) => {
+    let result = [];
+    result = data.filter((data) => {
+
+      if (value == "") {
+        window.location.reload(true);
+        return data;
+
+      } else {
+        return data.nic.toLowerCase().search(value) != -1 || data.name.toLowerCase().search(value) != -1
+          || data.name1.toLowerCase().search(value) != -1 || data.email.toLowerCase().search(value) != -1
+          || data.role.toLowerCase().search(value) != -1
+      }
+    });
+    setData(result);
+  };
 
   return (
-        <div className="Au-manage">
-            <Search placeholder="Search Lecturer" onSearch={onSearch} enterButton className="searchbar" />
+    <div className="Au-manage">
+      <Search placeholder="Search Here" onSearch={onSearch} enterButton className="searchbar" />
 
-              <br /><br /><center><h1 className="Heading1">Authentication Administrator</h1></center>
-              <center><h2 className="Heading2">Lecturer Management</h2></center>
-           
-            <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />
-         
-        </div>
-    );
+      <br /><br /><h1 className="Heading1">Authentication Administrator</h1>
+
+      <Link to="/authenticationreport">
+         <Button type="primary" className="btnReport" icon={<PrinterOutlined />}> Get Report </Button>
+      </Link>
+
+      <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />
+
+    </div>
+  );
 }
 
 export default LecManagement;
+

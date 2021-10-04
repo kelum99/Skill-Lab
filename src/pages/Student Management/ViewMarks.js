@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Input, Popconfirm, message, Card } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
-import {useHistory,Link} from 'react-router-dom';
+import { Table, Button, Input, Popconfirm, message } from "antd";
+import { EditOutlined, DeleteOutlined, PlusOutlined, LineChartOutlined } from "@ant-design/icons";
+import { useHistory, Link } from 'react-router-dom';
 import "./stylesStudent.css";
 import useRequest from "../../services/RequestContext";
 import image from "../../image/stdmark.jpg";
+import useUser from "../../services/UserContext";
+import moment from 'moment';
 
-function ViewMarks(props) {
+function ViewMarks() {
   //retrieve
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { request } = useRequest();
   const [markList, setMarkList] = useState([]);
   const history = useHistory();
+  const { user } = useUser();
+
   //fetchMarks
   const fetchMarks = async () => {
     setLoading(true);
     try {
-      const result = await request.get("student/performance");
+      const result = await request.get(`student/performance/${user._id}`);
       if (result.status === 200) {
-        // setData(result.data);
-        setMarkList(result.data);
+        setMarkList(result.data.map(vl => ({...vl, uploadDate: moment(vl.uploadDate).local().format("DD-MM-YYYY")})));
       }
       console.log(" Marks get ", result);
       setLoading(false);
@@ -30,15 +33,14 @@ function ViewMarks(props) {
   };
 
   useEffect(() => {
-    fetchMarks();
-  }, []);
+    if (user && user._id) {
+      fetchMarks();
+    }
+
+  }, [user]);
 
   //confirm alert
   const msg = "Are you sure you want to delete ?";
-
-  function confirm() {
-    message.info("Result Deleted Successfully !");
-  }
 
   //delete method
   const onDelete = async value => {
@@ -47,6 +49,7 @@ function ViewMarks(props) {
       if (result.status === 200) {
         await fetchMarks();
         setData(undefined);
+        message.info("Result Deleted Successfully !");
       }
       console.log("api call mark deleted", result);
     } catch (e) {
@@ -54,9 +57,7 @@ function ViewMarks(props) {
     }
   };
 
-
   //table
-
   const columns = [
     {
       title: "#",
@@ -65,9 +66,9 @@ function ViewMarks(props) {
       render: (text, record, index) => index + 1
     },
     {
-      title: "Student ID",
-      dataIndex: "studentID",
-      key: "studentID"
+      title: "Student NIC",
+      dataIndex: "stdNIC",
+      key: "stdNIC"
     },
     {
       title: "Subject",
@@ -122,7 +123,23 @@ function ViewMarks(props) {
 
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
+
+  const onSearch = (value) => {
+    let result = [];
+    result = markList.filter((data) => {
+
+      if (value == "") {
+        window.location.reload(true);
+        return data;
+
+      } else {
+        return data.subject.toLowerCase().search(value) != -1 || data.course.toLowerCase().search(value) != -1
+          || data.assignmentCode.toLowerCase().search(value) != -1 || data.stdNIC.toLowerCase().search(value) != -1
+          || data.uploadDate.toLowerCase().search(value) != -1
+      }
+    });
+    setMarkList(result);
+  };
 
   return (
     <div className="myCrs">
@@ -136,20 +153,23 @@ function ViewMarks(props) {
       <br />
       <center>
         <h1 className="enrolllHeading">Student Performance</h1>
-        <img src={image}/>
+        <img src={image} />
       </center>
       <Link to="/AddMarks">
         <Button type="primary" icon={<PlusOutlined />} className="AddButton">
           Add New Mark
         </Button></Link>
-      
-      <Table
+      <Link to="/ReportPerform">
+        <Button type="primary" icon={<LineChartOutlined />} className="AddButton">
+          Reports
+        </Button></Link>
+      <div id="printTable"><Table
         columns={columns}
         dataSource={markList}
         size="middle"
         pagination={false}
         className="crsTable"
-      />
+      /></div>
     </div>
   );
 }

@@ -1,14 +1,4 @@
 /*Enroll Page*/
-/* .stdEnroll{
-    background: #88BDBC;
-    margin-top: 1%;
-    margin-left: 6%;
-    padding: 40px;
-    border-radius: 20px;
-    width: 40%;
-    height:680px;
-    float: left;
-} */
 .crsEnroll{
     background: #bae2f0;
     margin-top: 3%;
@@ -21,21 +11,15 @@
     border-radius: 20px;
     width: 40%;
     height:650px;
-    float: left;
-    
+    float: left;  
 }
-
 .enroll .ant-input{
     border-radius: 6px;
-    padding-left: 25px;
-  
-    
+    padding-left: 25px;   
 }
 .addMarks .ant-input{
     border-radius: 6px;
-   
 }
-
 .crsEnroll .ant-btn-primary{
     border-radius: 5px;
     background-color: #07bbd1;
@@ -47,9 +31,7 @@
     margin-top: 10%;
     margin-left: 10%;
     width: 100px;
-    height: 35px;
-   
-    
+    height: 35px;   
 }
 .crsEnroll .ant-btn-primary:hover{
     opacity: 0.5;
@@ -64,30 +46,28 @@
     margin-left: 8%;
     width: 100px;
     height: 35px;
+    background-color: #07bbd1;
+    color: white;
 }
-
 .enrollImage{
     width:70%;
     margin-left: 25%;
-    margin-right: 10%;
-  
+    margin-right: 10%; 
 }
 .enroll .ant-select:not(.ant-select-customize-input) .ant-select-selector{
-    border-radius: 6px;
-    padding-left: 0px; 
+    border-radius: 6px;  
 }
 
 .addMarks .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     border-radius: 6px;
-    padding-left: 0px;
+    padding-left: 0px;   
 }
 
 
 /*My Course Page*/
 .MyCourseImg{
     width:1000px;
-    height:500px;
-   
+    height:500px; 
 }
 .myenrollImg{
     margin-top: 3%;
@@ -96,22 +76,19 @@
     border-radius: 6px;
     width:43%;
     height:650px;
-    float: left;
-
-    
+    float: left;   
 }
 .performImg{
     margin-left: 15%;
     width:50%;
     height:400px;
 }
-
 .crsTable{
-    margin-top: 3%;
+
+    margin-top: 5px;
     margin-left: 5%;
-    margin-right: 5%;
-    
-    
+    margin-right: 5%;   
+
 }
 .edit-dlt-btn{
     width:38px;
@@ -120,8 +97,7 @@
     font-size: 18px;
     font-weight: 500;
     background-color: #07bbd1;
-    border-color: #07bbd1;
-    
+    border-color: #07bbd1; 
 }
 .edit-dlt:hover{
     opacity: 0.5;
@@ -134,39 +110,31 @@
     width:20%;
 }
 .enroll .ant-btn-primary:hover,.ant-btn-primary:focus{
-    background:#07bbd1 ;
-    
+    background:#07bbd1 ; 
 }
-
 .enroll .ant-btn-primary{
     background-color: #07bbd1;
     border-color: #07bbd1;
-    background: #07bbd1;
-    
+    background: #07bbd1; 
 }
-
 .myCrs .ant-btn-primary:hover,.ant-btn-primary:focus{
     background:#07bbd1 ;
-    
 }
-
 .myCrs .ant-btn-primary{
     background-color: #07bbd1;
     border-color: #07bbd1;
-    background: #07bbd1;
-    
+    background: #07bbd1; 
 }
-
 .myCrs .ant-table{
     background-color:#bae2f0;
     margin-bottom: 4%;
+    margin-top: 0px;
 }
 .myCrs .ant-table-row {
     text-align: center;
 }
 .myCrs .ant-table-row:hover{
-    opacity: 0.7;
-    
+    opacity: 0.7;  
 }
 .enrolllHeading{
     text-align: center;
@@ -178,8 +146,7 @@
 
 .myCrs .ant-table.ant-table-middle .ant-table-title, .ant-table.ant-table-middle .ant-table-footer, .ant-table.ant-table-middle .ant-table-thead > tr > th, .ant-table.ant-table-middle .ant-table-tbody > tr > td, .ant-table.ant-table-middle tfoot > tr > th, .ant-table.ant-table-middle tfoot > tr > td{
     padding: 12px ;
-    width: 20px;
-       
+    width: 20px;   
 }
 
 /*Performance Table*/
@@ -207,10 +174,7 @@
     border-radius: 20px;
     width: 40%;
     height: 40%;
-   
-    
-   float: left;
-    
+    float: left; 
 }
 .addmarkImg{ 
     margin-top: 6%;
@@ -221,11 +185,9 @@
     height:585px;
     float: left;
 }
-
 .myCrs .ant-table-thead .ant-table-cell{
-    background: #1282A2;
-    text-align: center;
-    
+    background: #07bbd1;
+    text-align: center; 
 }
 .addMarks .ant-btn-primary{
     border-radius: 5px;
@@ -238,7 +200,6 @@
     margin:6%;
     width: 100px;
     height: 35px;
-    
 }
 .addMarks .ant-btn-primary:hover{
     opacity: 0.5;
@@ -251,18 +212,23 @@
 .AddButton{
     margin-top: 30px;
     margin-left: 80px;
-      
 }
 .AddButton:hover{
     opacity: 0.6;
 }
-
 .addMarks .updtMark{
     margin-right: 20px;
     margin-left: 100px;
 }
-
-
+.perform-report-Head{
+    float: right;
+    margin-right: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.performlogoprint{
+    width: 110px;
+    height: 75px;
+}
 
 
 

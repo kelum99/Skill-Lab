@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Button, Select, message, DatePicker } from "antd";
+import { Form, Input, Button, Select, message, DatePicker,InputNumber } from "antd";
 import "./stylesStudent.css";
 import useRequest from "../../services/RequestContext";
-import { useParams,useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import moment from 'moment';
 import image from "../../image/profmark2.jpg";
 
+  
 function UpdateMarks() {
   //retrieve
   const [data, setData] = useState();
@@ -17,10 +18,10 @@ function UpdateMarks() {
   const fetchMark = async val => {
     setLoading(true);
     try {
-      const result = await request.get(`student/performance/${val}`);
+      const result = await request.get(`student/perform/${val}`);
 
       if (result.status === 200) {
-          const temp ={...result.data, uploadDate: moment(result.data.uploadDate)};
+        const temp = { ...result.data, uploadDate: moment(result.data.uploadDate) };
         setData(temp);
         console.log("test ", temp);
       }
@@ -37,44 +38,37 @@ function UpdateMarks() {
     }
   }, [id]);
 
-  //alert msg
-  const success = () => {
-    message.success("Marks Updated Successfully !");
-  };
+  //redirect
+  let history = useHistory();
 
-  //datepicker
-
-  function onChange(date, dateString) {
-    console.log(date, dateString);
+  const redirect = () => {
+    history.push('/ViewMarks')
   }
-
-    //redirect
-    let history = useHistory();
-
-    const redirect = () => {
-      history.push('/ViewMarks')
-    }
 
   //form
   const [form] = Form.useForm();
 
   const onFinish = async values => {
     try {
-      const result = await request.put(`student/performance/${data._id}`,values);
+      const result = await request.put(`student/performance/${data._id}`, values);
       console.log("api call marks updated", result);
       //window.location.reload(true);
+      message.success("Marks Updated Successfully !");
     } catch (e) {
       console.log("update error ", e);
     }
     redirect();
   };
 
-  const onReset = () => {
-    form.resetFields();
-    // setData(undefined);
+  //validate messages
+  const validateMessages = {
+    required: "'${label}' is required!",
+   String:{
+       Range:'${label} must be between ${min} and ${max}',
+   },
   };
 
- const layout = {
+  const layout = {
     labelCol: {
       span: 8
     },
@@ -91,24 +85,27 @@ function UpdateMarks() {
 
   return (
     <div>
-    <img src={image} height={585} className="addmarkImg"/>
+      <img src={image} height={585} className="addmarkImg" />
       <div className="addMarks">
         <center>
           <h2 className="enrolllHeading">Update Marks</h2>
         </center>
 
-       {data &&  <Form {...layout} name="updatemarks" onFinish={onFinish} initialValues={data}   form={form}   key={data._id}>
+        {data && <Form {...layout} name="updatemarks" onFinish={onFinish} initialValues={data} form={form} key={data._id} validateMessages={validateMessages}>
           <Form.Item
-            name="studentID"
-            label="Student ID"
+            name="stdNIC"
+            label="Student NIC"
             rules={[
               {
-                required: true
+                required: true,
+                type: 'string',
+                min: 10,
+                max: 12,
               }
             ]}
-         
+
           >
-            <Input  placeholder="Student ID" />
+            <Input placeholder="Student NIC" minLength={10} maxLength={12}/>
           </Form.Item>
           <Form.Item
             name="subject"
@@ -181,7 +178,6 @@ function UpdateMarks() {
             ]}
           >
             <DatePicker
-            //   onChange={onChange}
               className="ant-input"
               placeholder="Select Date"
             />
@@ -191,11 +187,14 @@ function UpdateMarks() {
             label="Assignment Code"
             rules={[
               {
-                required: true
+                required: true,
+                type: 'string',
+                min: 6,
+                max: 6,
               }
             ]}
           >
-            <Input placeholder="Assignment Code" />
+            <Input placeholder="Assignment Code" minLength={6} maxLength={6}/>
           </Form.Item>
           <Form.Item
             name="result"
@@ -206,19 +205,18 @@ function UpdateMarks() {
               }
             ]}
           >
-            <Input placeholder="Result" />
+             <InputNumber min={0} max={100} placeholder="reuslt"/>
           </Form.Item>
 
           <Form.Item {...tailLayout}>
-           <Button type="primary" htmlType="submit" onClick={success} className="updtMarkBtn" className="updtMark">
+            <Button type="primary" htmlType="submit" className="updtMarkBtn" className="updtMark">
               Update
             </Button>
-           
-           
+
           </Form.Item>
         </Form>}
       </div>
-      </div>
+    </div>
   );
 }
 

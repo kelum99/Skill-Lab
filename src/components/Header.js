@@ -43,7 +43,7 @@ function Header() {
         </div>
       </>
     );
-  } else if(user.role == "student"){
+  } else if(user.role == "Student"){
   return (
     <>
       <div className="conatiner">
@@ -81,6 +81,7 @@ function Header() {
       <div className="conatiner">
         <div className="header">
           <SliderLecturer />
+          
           <img src={logo} alt="logo" className="logo" />
 
           <ul className="pages">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import { Table, Button, Input, message } from 'antd';
 import { PrinterOutlined} from '@ant-design/icons';
 import '../Student Management/stylesStudent.css';
@@ -21,7 +22,6 @@ function Issues(props) {
    const { user } = useUser();
    let doc;
 
-
   //fetchReviews
   const fetchContact = async () => {
     setLoading(true);
@@ -42,10 +42,30 @@ function Issues(props) {
     fetchContact();
   }, []);
 
- 
+  //confirm alert
+  const text = "Are you sure you want to delete ?";
+
+  function confirm() {
+    message.info("Result Deleted Successfully !");
+  }
+
+  //delete method
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`feedback/contact/${value._id}`);
+      if (result.status === 200) {
+        await fetchContact();
+        setData(undefined);
+      }
+      console.log("api call review deleted", result);
+    } catch (e) {
+      console.log("delete review error", e);
+    }
+  };
 
 
   //table
+
   const columns = [
     {
       title: "#",
@@ -79,8 +99,6 @@ function Issues(props) {
         key:'message'
       },
   
-  
-    
   ];
 
   //print report as a pdf 

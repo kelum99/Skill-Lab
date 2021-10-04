@@ -1,81 +1,66 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import image2 from "../../image/mycourse4.jpg";
-import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message } from 'antd';
+import { Form, Button, DatePicker, Select, message } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
 import moment from 'moment';
 import image3 from "../../image/enroll.jpg";
-import { useParams ,useHistory} from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import useRequest from "../../services/RequestContext";
-
-
 
 function UpdateEnroll() {
 
- //retrieve
- const [data, setData] = useState();
- const [loading, setLoading] = useState(false);
- const { request } = useRequest();
- const { id } = useParams();
+    //retrieve
+    const [data, setData] = useState();
+    const [loading, setLoading] = useState(false);
+    const { request } = useRequest();
+    const { id } = useParams();
 
- //fetchMyCourse
- const fetchMyCourse = async val => {
-    setLoading(true);
-    try {
-      const result = await request.get(`student/mycourses/${val}`);
+    //fetchMyCourse
+    const fetchMyCourse = async val => {
+        setLoading(true);
+        try {
+            const result = await request.get(`student/mycoursesupdate/${val}`);
 
-      if (result.status === 200) {
-          const temp ={...result.data, date: moment(result.data.date)};
-        setData(temp);
-        console.log("test ", temp);
-      }
+            if (result.status === 200) {
+                const temp = { ...result.data, date: moment(result.data.date) };
+                setData(temp);
+                console.log("test ", temp);
+            }
+            setLoading(false);
+        } catch (e) {
+            setLoading(false);
+        }
+    };
 
-      setLoading(false);
-    } catch (e) {
-      setLoading(false);
+    useEffect(() => {
+        if (id) {
+            fetchMyCourse(id);
+        }
+    }, [id]);
+
+    const onFinish = async values => {
+        try {
+            const result = await request.put(`student/mycourses/${data._id}`, values);
+            console.log("api call mycourse updated", result);
+            message.success('Your data Updated Successfully !');
+            //window.location.reload(true);
+
+        } catch (e) {
+            console.log("update error ", e);
+        }
+        redirect();
+    };
+
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+        history.push('/MyCourses')
     }
-  };
-
- useEffect(() => {
-   if (id) {
-    fetchMyCourse(id);
-   }
- }, [id]);
-
-
-
- const onFinish = async values => {
-    try {
-      const result = await request.put(`student/mycourses/${data._id}`,values);
-      console.log("api call mycourse updated", result);
-      message.success('Your data Updated Successfully !');
-      //window.location.reload(true);
-      
-    } catch (e) {
-      console.log("update error ", e);
-    }
-    redirect();
-  };
-
-   //redirect
-   let history = useHistory();
-
-   const redirect = () => {
-     history.push('/MyCourses')
-   }
-
-   
-    //textarea
-    const { TextArea } = Input;
 
     //form
     const [form] = Form.useForm();
-
-  
-
-    const onReset = () => {
-        form.resetFields();
-    };
 
     const layout = {
         labelCol: {
@@ -93,137 +78,22 @@ function UpdateEnroll() {
     };
 
     //datepicker
-
     function onChange(date, dateString) {
         console.log(date, dateString);
     }
 
-
-
     return (
         <div className="enroll">
-
-            
             <div>
-            <img src={image3}  className="myenrollImg"/>
-                {/*Student Details Form */}
-
-                {/* <div className="stdEnroll">
-                    <center><h2>Student Details</h2></center>
-                    <Form {...layout} form={form} name="studentEnroll" >
-                        <Form.Item
-                            name="StudentID"
-                            label="Student ID"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="StudentName"
-                            label="Student Name"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="NIC"
-                            label="NIC"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="Gender"
-                            label="Gender"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Radio.Group>
-                                <Radio value="male">Male</Radio>
-                                <Radio value="female">Female</Radio>
-                            </Radio.Group>
-                        </Form.Item>
-                        <Form.Item
-                            name="Age"
-                            label="Age"
-                            rules={[
-                                {
-                                    required: true,
-                                    type: 'number',
-                                    min: 0,
-                                    max: 99,
-                                },
-                            ]}
-                        >
-                            <InputNumber className="ant-input" />
-                        </Form.Item>
-                        <Form.Item
-                            name="Address"
-                            label="Address"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <TextArea rows={4} showCount maxLength={100} />
-                        </Form.Item>
-                        <Form.Item
-                            name="phone"
-                            label="Phone Number"
-                            rules={[
-                                {
-                                    required: true,
-
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="Email"
-                            label="Email"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                                {
-                                    type: 'email',
-                                    message: 'The input is not valid E-mail!',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-
-                    </Form>
-                </div> */}
+                <img src={image3} className="myenrollImg" />
 
                 {/*Course Details Form */}
-
                 <div className="crsEnroll">
                     <center><h2 className="enrolllHeading">Update Enrollment</h2></center>
-                    {data &&<Form {...layout} form={form} name="courseEnroll" onFinish={onFinish} initialValues={data}  key={data._id}>
+                    {data && <Form {...layout} form={form} name="courseEnroll" onFinish={onFinish} initialValues={data} key={data._id}>
                         <Form.Item
                             name="subject"
                             label="Subject"
-
                             rules={[
                                 {
                                     required: true,
@@ -288,26 +158,17 @@ function UpdateEnroll() {
                         >
                             <DatePicker onChange={onChange} className="ant-input" placeholder="Select Date" />
                         </Form.Item>
-
                         <center><img src={image2} className="enrollImage"></img></center>
-
-
                         <Form.Item {...tailLayout}>
                             <div className="updtenrollbtn"><Button type="primary" htmlType="submit" >
                                 Update
                             </Button></div>
-{/* 
-                            <Button htmlType="button" onClick={onReset} className="resetBtn" >
-                                Reset
-                            </Button> */}
-
                         </Form.Item>
                     </Form>}
                 </div>
 
             </div>
         </div>
-
     );
 }
 

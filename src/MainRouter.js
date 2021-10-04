@@ -9,7 +9,6 @@ import reviewList from "./pages/Feedback Management/reviewList";
 import issues from "./pages/Feedback Management/issues";
 
 
-
 import AddMarks from "./pages/Student Management/AddMarks";
 import Enroll from "./pages/Student Management/Enroll";
 import MyCourses from "./pages/Student Management/MyCourses";
@@ -17,6 +16,7 @@ import MyPerformance from "./pages/Student Management/MyPerformance";
 import UpdateEnroll from "./pages/Student Management/UpdateEnroll";
 import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
+import ReportPerform from "./pages/Student Management/ReportPerform";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
@@ -26,8 +26,8 @@ import coursesesCreatedbyLecturer from  "./pages/course/coursesesCreatedbyLectur
 import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
-import editc from "./pages/course/editc";
-
+import courseLessonEdit from "./pages/course/courseLessonEdit";
+import analysis from "./pages/course/analysis";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -46,6 +46,9 @@ import Sucsess from "./pages/Job Vacancy Management/Sucsess";
 import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
+import Report from "./pages/Job Vacancy Management/Report";
+
+
 
 
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
@@ -54,15 +57,21 @@ import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
-import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
-import LecProfile from "../src/pages/Authentication Management/LecProfile";
+
+import AuthenticationReport from "../src/pages/Authentication Management/AuthenticationReport";
+
+import Signin from "../src/pages/Authentication Management/Signin";
+//import LecProfile from "../src/pages/Authentication Management/LecProfile";
+
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
-import StdManagement from "./pages/Authentication Management/StdManagement";
+// import StdManagement from "./pages/Authentication Management/StdManagement";
 
 import Home from "./pages/Authentication Management/Home";
+import Home2 from "./pages/Authentication Management/Home2";
 import AboutUs from "./pages/Authentication Management/AboutUs";
+import Terms from "./pages/Authentication Management/Terms";
 
 import AddItem from "../src/pages/store Management/addItem";
 import DisplayItem from "../src/pages/store Management/displayItem";
@@ -86,9 +95,12 @@ function MainRouter() {
   return (
 
   <>
-        
+
+
+        <Route path="/home2" exact component={Home2}/>
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
+
         <Route path="/aboutus" exact component={AboutUs}/>
 
         <Route path="/enroll" exact component={Enroll}/>
@@ -98,17 +110,20 @@ function MainRouter() {
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
+        <Route path="/ReportPerform" exact component={ReportPerform} />
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
         <Route path="/courseEdit/:id" exact component={courseEdit} />
         <Route path="/courseforlecturer" exact component={courseforlecturer} />
-
+        <Route path="/courseLessonEdit" exact component={courseLessonEdit} />
         <Route path="/coursesesCreatedbyLecturer" exact component={coursesesCreatedbyLecturer} />
-        <Route path="/courseContentCreate" exact component={courseContentCreate} />
-        <Route path="/courseLessons" exact component={courseLessons} />
-        <Route path="/viewACourseLesson" exact component={viewACourseLesson} />
-        <Route path="/editc" exact component={editc} />
+        <Route path="/courseContentCreate/:id" exact component={courseContentCreate} />
+        <Route path="/courseLessons/:id" exact component={courseLessons} />
+        <Route path="/viewACourseLesson/:id" exact component={viewACourseLesson} />
+        <Route path="/analysis" exact component={analysis} />
+        
+        
 
         <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
@@ -139,17 +154,20 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+        <Route path="/jobreport" exact component={Report} />
        
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
         {/* <Route path="/signin" exact component={Signin} /> */}
+        <Route path="/" exact component={Signin}/>
         <Route path="/areyou" exact component={AreYou} />
-        <Route path="/lecprofile" exact component={LecProfile} />
+        {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />
         <Route path="/lecmanagement" exact component={LecManagement} />
-        <Route path="/stdmanagement" exact component={StdManagement} />
-
+        <Route path="/authenticationreport" exact component={AuthenticationReport} />
+        {/* <Route path="/stdmanagement" exact component={StdManagement} /> */}
+        <Route path="/terms" exact component={Terms} />
 
       
         <Route path="/AddItem" exact component={AddItem} />
