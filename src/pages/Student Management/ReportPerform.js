@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Input, Popconfirm, message } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined, LineChartOutlined } from "@ant-design/icons";
-import { useHistory, Link } from 'react-router-dom';
+import { Table, Button, Input } from "antd";
+import { DownloadOutlined } from "@ant-design/icons";
 import "./stylesStudent.css";
 import useRequest from "../../services/RequestContext";
-import image from "../../image/stdmark.jpg";
 import useUser from "../../services/UserContext";
+import { jsPDF } from "jspdf";
+import logoprint from "../../image/log.png";
 import moment from 'moment';
 
-function ViewMarks() {
+function ReportPerform() {
   //retrieve
-  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const { request } = useRequest();
   const [markList, setMarkList] = useState([]);
-  const history = useHistory();
   const { user } = useUser();
+  let doc;
 
   //fetchMarks
   const fetchMarks = async () => {
@@ -23,7 +22,7 @@ function ViewMarks() {
     try {
       const result = await request.get(`student/performance/${user._id}`);
       if (result.status === 200) {
-        setMarkList(result.data.map(vl => ({...vl, uploadDate: moment(vl.uploadDate).local().format("DD-MM-YYYY")})));
+        setMarkList(result.data.map(vl => ({ ...vl, uploadDate: moment(vl.uploadDate).local().format("DD-MM-YYYY") })));
       }
       console.log(" Marks get ", result);
       setLoading(false);
@@ -38,24 +37,6 @@ function ViewMarks() {
     }
 
   }, [user]);
-
-  //confirm alert
-  const msg = "Are you sure you want to delete ?";
-
-  //delete method
-  const onDelete = async value => {
-    try {
-      const result = await request.delete(`student/performance/${value._id}`);
-      if (result.status === 200) {
-        await fetchMarks();
-        setData(undefined);
-        message.info("Result Deleted Successfully !");
-      }
-      console.log("api call mark deleted", result);
-    } catch (e) {
-      console.log("delete mark error", e);
-    }
-  };
 
   //table
   const columns = [
@@ -95,30 +76,7 @@ function ViewMarks() {
       dataIndex: "result",
       key: "result"
     },
-    {
-      title: "Action",
-      dataIndex: "action",
-      key: "action",
-      render: (text, record, index) => (
-        <React.Fragment key={index}>
-          <Button type="primary" onClick={() => history.push(`/UpdateMarks/${record._id}`)} icon={<EditOutlined />} className="edit-dlt-btn" />
-          <Popconfirm
-            placement="right"
-            title={msg}
-            onConfirm={() => onDelete(record)}
-            okText="Yes"
-            cancelText="No"
-          >
-            <Button
-              danger
-              type="primary"
-              icon={<DeleteOutlined />}
-              className="edit-dlt-btn"
-            />
-          </Popconfirm>
-        </React.Fragment>
-      )
-    }
+
   ];
 
   //search box
@@ -141,6 +99,20 @@ function ViewMarks() {
     setMarkList(result);
   };
 
+  //Report Generate
+  const downloadPDF = () => {
+    doc = new jsPDF({
+      orientation: "landscape",
+      unit: "pt",
+      format: [1700, 1000]
+    })
+    doc.html(document.getElementById("printTable"), {
+      callback: function (pdf) {
+        pdf.save("PerformanceReport.pdf");
+      },
+    });
+  };
+
   return (
     <div className="myCrs">
       <Search
@@ -152,26 +124,31 @@ function ViewMarks() {
       <br />
       <br />
       <center>
-        <h1 className="enrolllHeading">Student Performance</h1>
-        <img src={image} />
+        <h1 className="enrolllHeading">Performance Reports</h1>
       </center>
-      <Link to="/AddMarks">
-        <Button type="primary" icon={<PlusOutlined />} className="AddButton">
-          Add New Mark
-        </Button></Link>
-      <Link to="/ReportPerform">
-        <Button type="primary" icon={<LineChartOutlined />} className="AddButton">
-          Reports
-        </Button></Link>
-      <div id="printTable"><Table
-        columns={columns}
-        dataSource={markList}
-        size="middle"
-        pagination={false}
-        className="crsTable"
-      /></div>
+
+      <Button type="primary" className="AddButton" icon={<DownloadOutlined />} onClick={downloadPDF}>
+        Download Report
+      </Button>
+      <div id="printTable">
+        <div className="perform-report-Head">
+          <center>
+            <img src={logoprint} alt="logo" className="performlogoprint" />
+
+            <h5>SKILL-LAB</h5>
+            <p>Tel:- 011-2548741<br />
+              e-mail:- skilllab.edu@gmail.com</p>
+          </center>
+        </div>
+        <Table
+          columns={columns}
+          dataSource={markList}
+          size="middle"
+          pagination={false}
+          className="crsTable"
+        /></div>
     </div>
   );
 }
 
-export default ViewMarks;
+export default ReportPerform;

@@ -15,6 +15,7 @@ import MyPerformance from "./pages/Student Management/MyPerformance";
 import UpdateEnroll from "./pages/Student Management/UpdateEnroll";
 import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
+import ReportPerform from "./pages/Student Management/ReportPerform";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
@@ -95,6 +96,7 @@ function MainRouter() {
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
+        <Route path="/ReportPerform" exact component={ReportPerform} />
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />

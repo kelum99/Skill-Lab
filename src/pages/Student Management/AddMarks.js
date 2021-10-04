@@ -1,16 +1,20 @@
 import React from "react";
-import { Form, Input, Button, Select, message, DatePicker } from 'antd';
+import { Form, Input, Button, Select, message, DatePicker, InputNumber } from 'antd';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
-import  { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import image from "../../image/profmark4.jpg";
 
-
 function AddMarks() {
-
+    //validate messages
+    const validateMessages = {
+        required: "'${label}' is required!",
+        String: {
+            Range: '${label} must be between ${min} and ${max}',
+        },
+    };
 
     //datepicker
-
     function onChange(date, dateString) {
         console.log(date, dateString);
     }
@@ -33,14 +37,13 @@ function AddMarks() {
         }
         form.resetFields();
         redirect();
-      
     };
 
     //redirect
     let history = useHistory();
 
     const redirect = () => {
-      history.push('/ViewMarks')
+        history.push('/ViewMarks')
     }
 
     const onReset = () => {
@@ -64,21 +67,25 @@ function AddMarks() {
 
     return (
         <div class="markbackgrnd">
-           <div ><img src={image} height={585} className="addmarkImg"/></div>
+            <div ><img src={image} height={585} className="addmarkImg" /></div>
 
             <div className="addMarks">
                 <center><h2 className="enrolllHeading">Add Student Marks</h2></center>
-                <Form {...layout} form={form} name="addmarks" onFinish={onFinish}>
+                <Form {...layout} form={form} name="addmarks" onFinish={onFinish} validateMessages={validateMessages}
+                >
                     <Form.Item
-                        name="studentID"
-                        label="Student ID"
+                        name="stdNIC"
+                        label="Student NIC"
                         rules={[
                             {
                                 required: true,
+                                type: 'string',
+                                min: 10,
+                                max: 12,
                             },
                         ]}
                     >
-                        <Input placeholder="Student ID" />
+                        <Input placeholder="Student NIC" minLength={10} maxLength={12} />
                     </Form.Item>
                     <Form.Item
                         name="subject"
@@ -129,7 +136,6 @@ function AddMarks() {
                         ]}
                     >
                         <DatePicker onChange={onChange} className="ant-input" placeholder="Select Date" />
-
                     </Form.Item>
                     <Form.Item
                         name="assignmentCode"
@@ -137,10 +143,13 @@ function AddMarks() {
                         rules={[
                             {
                                 required: true,
+                                type: 'string',
+                                min: 6,
+                                max: 6,
                             },
                         ]}
                     >
-                        <Input placeholder="Assignment Code" />
+                        <Input placeholder="Assignment Code" minLength={6} maxLength={6} />
                     </Form.Item>
                     <Form.Item
                         name="result"
@@ -151,14 +160,11 @@ function AddMarks() {
                             },
                         ]}
                     >
-                        <Input placeholder="Result" />
+                        <InputNumber min={0} max={100} placeholder="reuslt" />
                     </Form.Item>
 
-
-
-
                     <Form.Item {...tailLayout}>
-                      <Button type="primary" htmlType="submit">
+                        <Button type="primary" htmlType="submit">
                             Upload
                         </Button>
 
@@ -169,10 +175,8 @@ function AddMarks() {
                     </Form.Item>
                 </Form>
             </div>
-           
+
         </div>
-
-
     );
 }
 
