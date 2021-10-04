@@ -49,14 +49,14 @@
 }
 
 .main-container-home {
-  min-height: 100vh;
+  min-height: 90vh;
   background-image: linear-gradient(to bottom, #c8fff1, #00bacd);
 }
 
 .hme {
  position: fixed;
- top: 110px;
- right: 100px;
+ top:190px;
+ right: 10px;
 }
 
 .h1 {
@@ -81,6 +81,10 @@
 
 .heading-container {
   margin-top: 200px;
+  margin-left: 70px;
+}
+.heading-container2 {
+  margin-top: 100px;
   margin-left: 300px;
 }
 
@@ -127,4 +131,11 @@
 #apply-form{
   background-color: #00bacd;
   margin-left: 50px;
+}
+
+.text-container2 {
+  margin-top: 10px;
+  margin-left: 70px;
+  color: #0060CC;
+  font-size: 30px;
 }

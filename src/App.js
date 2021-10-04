@@ -7,14 +7,16 @@ import { UserContextProvider } from "./services/UserContext";
 
 function App() {
   return (
+    <>
     <RequestContextProvider baseURL={"http://localhost:4000/api/"}>
     <UserContextProvider>
       <Router>
         <Header />
-        <MainRouter />
+        <MainRouter /> 
       </Router>
       </UserContextProvider>
     </RequestContextProvider>
+</>
   );
 }
 export default App;

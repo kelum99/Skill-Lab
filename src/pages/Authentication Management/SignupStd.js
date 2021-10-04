@@ -4,6 +4,7 @@ import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 function SignupStd() {
 
@@ -35,7 +36,7 @@ function SignupStd() {
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
     console.log("value",values);
     try{
-      const result = await request.post('AuthenticationRoute/StudentSignup', values);
+      const result = await request.post('AuthenticationRoute/CommonSignup', values);
       console.log("api call wallet result ", result);
 } catch(e){
   console.log("post signSTD error ",e);
@@ -143,28 +144,28 @@ function SignupStd() {
         <Input />
   </Form.Item>
 
-  <Form.Item name={[ 'inputpw']} label="Input Password"
+
+
+  <Form.Item name={[ 'inputpw']} label="Create a Password"
           rules={[
           {
             required: true,
           },
         ]}>
-    <Input.Password placeholder="input password" />
+    <Input.Password  />
   </Form.Item>
 
-  <Form.Item name={['reenterpw']} label="Re-enter Password"
-          rules={[
-          {
-            required: true,
-          },
-        ]}>
-    <Input.Password placeholder="Re-enter password" />
-  </Form.Item>
+  <hr></hr>
+  By signing up you agree to SkillLab's <a href="/terms">Terms of Service and Privacy Policy</a>
+  <hr></hr>
+
 
   <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+  {/* <Link to ="/home2" > */}
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
+        {/* </Link> */}
   </Form.Item>
 
   </Form>

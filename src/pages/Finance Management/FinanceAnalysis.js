@@ -34,7 +34,6 @@ function Analysis() {
   const year = month.getFullYear();
   let doc;
 
-
   const showModal = () => {
     setIsModalVisible(true);
   };
@@ -97,15 +96,14 @@ function Analysis() {
   };
 
   const downloadPDF = () => {
-    // doc = new jsPDF("p", "pt", [1000, 600]);
-     doc = new jsPDF({
-       orientation : "landscape",
-       unit :"px",
-       format : [1920,1080]
-     })
-
+    doc = new jsPDF({
+      orientation : "landscape",
+      unit :"pt",
+      format : [1700,1000]
+    })
      doc.html(document.getElementById('printTable'), {
        callback: function (pdf) {
+         pdf.setFontSize(26);
          pdf.save("Income&Expenses.pdf");
        },
      });
@@ -130,24 +128,22 @@ function Analysis() {
       title: "Reason",
       dataIndex: "reason",
       key: "reason"
+      
     },
     {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      filters: [
-        {
-          text: 'Current Month',
-          value: `${year}-${monthVal}`
-        }
-      ],
-      onFilter: (value, record) => record.date.indexOf(value) === 0,
+      // filters: [
+      //   {
+      //     text: 'Current Month',
+      //     value: `${year}-${monthVal}`
+      //   }
+      // ],
+      // onFilter: (value, record) => record.date.indexOf(value) === 0,
     }
   ];
-   
-  // const onChange = (filters) => {
-  //   onFilter();
-  // }
+
     return(
         <>
       <Button type="primary" onClick={showModal} className="addIEbtn">
@@ -234,7 +230,7 @@ function Analysis() {
 
       <div className="paymentHistory-table" id="printTable">
         <Table 
-        bordered
+        bordered={true}
         dataSource={dataList}
         columns={columns}
         pagination={false} 
@@ -259,7 +255,7 @@ function Analysis() {
         />
       </div>
 
-        <Button type="primary" className="AddButton"  icon={<DownloadOutlined />} onClick={downloadPDF}>
+        <Button type="primary" className="dowloadBtn"  icon={<DownloadOutlined />} onClick={downloadPDF}>
           Download Report
         </Button>
         </>

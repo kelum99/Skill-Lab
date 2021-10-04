@@ -81,7 +81,7 @@
 }
 .paymentHistory-table .ant-table-content {
   background: #bae2f0;
-  font-size: 16px;
+  font-size: 18px;
 }
 .paymentHistory-table .ant-table-thead .ant-table-cell {
   background: #07bbd1;
@@ -92,7 +92,8 @@
 }
 
 .paymentHistory-table {
-  margin: 5% 3%;
+  margin: 2% 7%;
+  width: 85%
 }
 .main-container-paymentHistory h1 {
   text-align: center;
@@ -223,7 +224,7 @@ top: 120px;
   margin: 8px 0px 13px 0px;
 }
 .addIEbtn{
-  margin: 30px 63px;
+  margin: 30px 0px 10px 63px;
   font-size: 16px;
   height: 100%;
 }
@@ -241,3 +242,27 @@ top: 120px;
 .search-span{
   margin-top: 12px;
 }
+.dowloadBtn{
+  position: relative;
+  left: 30px;
+  font-size: 16px;
+  height: 100%;
+  margin: -10px 0px 15px 10px;
+}
+.site-card-border-less-wrapper{
+ 
+  background: #ececec;
+  min-height: 88vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.crdImg1{
+  width: 400px;
+  margin: 0 20px;
+}
+.crdImg{
+  width: 480px;
+  margin: 0 30px;
+}
+

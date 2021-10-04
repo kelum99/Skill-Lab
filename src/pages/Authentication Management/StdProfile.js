@@ -3,12 +3,18 @@ import { Form, Input, Button,Popconfirm, message } from "antd";
 import './stylesProfile.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
+import { Alert } from 'antd';
+import { useHistory} from "react-router-dom";
 
-function Lecprofile() {
+
+function Stdprofile() {
 
   const [data,setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const {request} = useRequest();
+  const {user} = useUser();
+  const history = useHistory();
 
 
   
@@ -22,6 +28,10 @@ function Lecprofile() {
     
   };
   
+  const onSuccess = () => {
+    message.success("User details Updated Successfully !");
+  };
+
   function confirm(e) {
   console.log(e);
   message.success('Click on Yes');
@@ -42,19 +52,16 @@ function cancel(e) {
   };
 
  
-  const onFinish = values => {
-    console.log(values);
-  };
+  
 
   const [value] = React.useState(1);
 
 
-
-  const fetchAuthenticationStudent = async () => {
+const fetchAuthenticationStudent = async () => {
     setLoading(true);
   
     try {
-      const result = await request.get("AuthenticationRoute/StudentSignup");
+      const result = await request.get(`AuthenticationRoute/CommonSignup/${user._id}`);
       if (result.status === 200) {
         setData(result.data);
       }
@@ -66,14 +73,45 @@ function cancel(e) {
   };
   
   useEffect(() => {
+    if(user && user._id){
     fetchAuthenticationStudent();
-  }, []);
+    }
+  }, [user]);
 
 
+  const onFinish = async values => {
+    try {
+      const result = await request.put(
+        `AuthenticationRoute/CommonSignup/update/${data._id}`,
+        values
+      );
+      
+      console.log("api user details updated", result);
+      window.location.reload(true);
+    } catch (e) {
+      console.log("update error ", e);
+    }
+  };
 
- 
-  
-  return (
+  const redirect = () => {
+    history.push('/home')
+  }
+  const onDelete = async value => {
+    try {
+      const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
+      if (result.status === 200) {
+        await fetchAuthenticationStudent();
+        setData(undefined);
+        redirect();
+      }
+      console.log("api call profile deleted", result);
+    } catch (e) {
+      console.log(" error ", e);
+    }
+  };
+
+
+return (
 
   <>
     <div className="main-container-profile">
@@ -81,70 +119,62 @@ function cancel(e) {
     <div className="form-profile">
 
         <h3>Skill Lab</h3>
-        <h1>Student</h1>
+        <h1>User Profile</h1>
 
-<Form layout="vertical" name="StdProfile" onFinish={onFinish} validateMessages={validateMessages}>
+
+        
+
+{data && (
+<Form layout="vertical" name="StdProfile"
+onFinish={onFinish} 
+validateMessages={validateMessages}
+
+initialValues={data}
+key={data._id}>
+
+
+
 
   <Form.Item
-        name={['name']}
+        name={["name"]}
         label="First Name"
-        
-      >
-        <Input />
+        >
+        <Input  />
   </Form.Item>
 
   <Form.Item
-        name={['name1']}
+        name={["name1"]}
         label="Last Name"
         >
         <Input />
   </Form.Item>
   
-  <Form.Item
-        name={['birthday']}
-        label="Birthday"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
-        name={['gender']}
-        label="Gender"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
-        name={['nic']}
-        label="NIC"
-        >
-        <Input />
-  </Form.Item>
-
-  <Form.Item
-        name={[ 'email']}
+ <Form.Item
+        name={["email"]}
         label="Email"
        >
         <Input />
   </Form.Item>
 
   <Form.Item
-        name={[ 'number']}
+        name={["number"]}
         label="Mobile Number"
        >
         <Input />
   </Form.Item>
 
+ 
+
   <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button type="primary" htmlType="submit">
-          Submit
+        <Button type="primary" htmlType="submit" onClick={onSuccess}>
+          Update
         </Button>
         <Button type="primary" htmlType="submit" >
           Cancel
         </Button>
         <Popconfirm
               title="Are you sure to delete your profile?"
-              onConfirm={confirm}
+              onConfirm={() => onDelete(data)}
               onCancel={cancel}
               okText="Yes"
               cancelText="No"
@@ -157,15 +187,11 @@ function cancel(e) {
     </Form.Item>
 
 </Form>
-
-
-
-
-    
+)}
     </div>
     </div>
     </>
   );
 }
 
-export default Lecprofile;
+export default Stdprofile;

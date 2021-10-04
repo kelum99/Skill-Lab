@@ -5,7 +5,6 @@ import useRequest from "../../services/RequestContext";
 import 'antd/dist/antd.css';
 import './styleStore.css'
 
-
 function EditItem(){
 
   const [data, setData] = useState();
@@ -38,7 +37,7 @@ function EditItem(){
       const fetchProductDetails = async value => {
         setLoading(true);
         try {
-          const result = await request.get(`store/product/${value}`);
+          const result = await request.get(`store/product/${id}`);
     
           if (result.status === 200) {
               const tempItem ={...result.data};

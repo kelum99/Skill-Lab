@@ -5,6 +5,12 @@ import * as AiIcons from 'react-icons/ai'
 
 export const SidebarItemsLecturer = [
     {
+        title: "My Profile",
+        path: "/stdprofile",
+        icon: <FaIcons.FaUserCircle />,
+        className: "nav-text"
+    },
+    {
         title: "My Courses",
         path: "/courseforlecturer",
         icon: <FaIcons.FaBook />,
@@ -61,8 +67,13 @@ export const SidebarItemsLecturer = [
     
 ];
 
-
 export const SidebarItemsStudent = [
+    {
+        title: "My Profile",
+        path: "/stdprofile",
+        icon: <FaIcons.FaUserCircle />,
+        className: "nav-text"
+    },
     {
         title: "My Courses",
         path: "/MyCourses",
@@ -107,3 +118,6 @@ export const SidebarItemsStudent = [
     }
     
 ];
+
+
+

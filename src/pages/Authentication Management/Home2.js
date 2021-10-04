@@ -1,61 +1,65 @@
 import React from "react";
-import { Form,Button} from 'antd';
-import 'antd/dist/antd.css';
-import './stylesHome.css'
-import home from '../../Images/home.png';
+import { Form, Button } from "antd";
+import { Popconfirm } from "antd";
+import "antd/dist/antd.css";
+import "./stylesHome.css";
+import home from "../../Images/home.png";
+import { useHistory} from 'react-router-dom';
+import useRequest from '../../services/RequestContext';
+import useUser from '../../services/UserContext';
+
+function Home2() {
+  const { updateToken } = useRequest();
+  const {setUser} = useUser();
 
 
-function Home() {
+  const history = useHistory();
+  const logout = async() => {
+         await updateToken();
+         setUser({});
+         history.push('/signin')
 
-return (
-
-<>
+  };
+  return (
+    <>
       <div className="main-container-home">
+        <Form>
+          <Form.Item>
+          
+              <Button type="primary" htmlType="submit" className="btnLogout" onClick={logout}>
+                LOGOUT
+              </Button>
+            
+          </Form.Item>
 
-<Form>
-
-    <Form.Item > 
-    
-        
-            <Button type="primary" htmlType="submit" className="btnLogout">
-            LOGOUT
-            </Button>
-        
-        
-    </Form.Item>
-
-    <Form.Item>
+          <Form.Item>
             <div className="heading-container">
-            <div className="h1">WE OFFER YOU</div>
-            <div className="h2">A BETTER</div>
-            <div className="h3">FUTURE !</div>
-            </div>              
-    </Form.Item>
-
-    <Form.Item>
-            <div className="text-container">
-            <div className="txt1">Skill Lab was established with the aim of giving a</div>
-            <div className="txt2">new aspect to online learning. Within such a</div>
-            <div className="txt3">short span of a time we've been able to acquire a</div>
-            <div className="txt4">huge user satisfaction and reputation</div>
-            </div>              
-    </Form.Item>
-
-    
-
-    <Form.Item>
-            <div className="hme">
-            <img width={700} src={home}/>
+              <div className="h1">WE OFFER YOU</div>
+              <div className="h2">A BETTER</div>
+              <div className="h3">FUTURE !</div>
             </div>
-    </Form.Item>
+          </Form.Item>
 
-</Form>
-        
-  
-    </div>
+          <Form.Item>
+            <div className="text-container2">
+              At SkillLab, we ’ve seen again and again how the presumably simple
+              act of creating can be<br></br>a force for growth, change, and
+              discovery in people ’s lives. We want to inspire and multiply
+              <br></br>
+              the kind of creative inquisition that furthers expression,
+              learnedness and play.<br></br>
+            </div>
+          </Form.Item>
+
+          <Form.Item>
+            <div className="hme">
+              <img width={600} src={home} />
+            </div>
+          </Form.Item>
+        </Form>
+      </div>
     </>
-      
   );
 }
 
-export default Home;
+export default Home2;
