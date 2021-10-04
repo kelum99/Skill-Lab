@@ -32,6 +32,7 @@ function UpdateBank() {
   };
 
   const fetchBank = async () => {
+    console.log("fetch bank ", user)
     setLoading(true);
     try {
       const result = await request.get(`finance/bank/findAll/${user._id}`);
@@ -47,8 +48,10 @@ function UpdateBank() {
   };
 
   useEffect(() => {
-    fetchBank();
-  }, []);
+   if(user._id){
+    fetchBank(); 
+   }
+  }, [user]);
 
   const onFinish = async (values) => {
     if(data !== undefined){
@@ -96,13 +99,14 @@ function UpdateBank() {
     </div>
       {bankList.length > 0 ? (
         <div className="savedCards">
-          <label>My Saved Bank Details</label>
+          <label className="lable">My Saved Bank Details</label>
           {bankList.map(bank => (
             <div className="save-card"
               onClick={() => onCardSelect(bank)}
               key={bank._id}
-              accountNumber = {bank.accountNumber}
+            
               >
+              <h5>{bank.bankName}</h5>
               <span>{bank.accountNumber}</span>
             </div> 
               

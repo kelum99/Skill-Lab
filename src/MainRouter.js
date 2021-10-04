@@ -79,7 +79,8 @@ import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory
 import UpdateWallet from "../src/pages/Finance Management/UpdateWallet"
 import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
 
-
+import Checkout from "../src/pages/Finance Management/checkoutPayment"
+import FinanceAnalysis from "../src/pages/Finance Management/FinanceAnalysis"
 
 
 function MainRouter() {
@@ -171,6 +172,8 @@ function MainRouter() {
         <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
         <Route path="/updateWallet" exact component={UpdateWallet} />
         <Route path="/updateBank" exact component={UpdateBankt} />
+        <Route path="/checkout" exact component={Checkout} />
+        <Route path="/financeanalysis" exact component={ FinanceAnalysis } />
     </>
   );
 }

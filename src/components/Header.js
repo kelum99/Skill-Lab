@@ -43,7 +43,7 @@ function Header() {
         </div>
       </>
     );
-  } else if(user.role == "Student"){
+  } else if(user.role == "student"){
   return (
     <>
       <div className="conatiner">
