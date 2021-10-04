@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Table, Button, Input, Popconfirm, message, Card } from "antd";
-import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
+import { Table, Button, Input, Popconfirm, message } from "antd";
+import { EditOutlined, DeleteOutlined, PlusCircleOutlined } from "@ant-design/icons";
 import {useHistory} from 'react-router-dom';
 import './stylesLecturer.css';
+import faq from '../../image/faq.jpg';
 import useRequest from "../../services/RequestContext";
 
 
@@ -13,6 +14,7 @@ function AllQuestion(props) {
   const { request } = useRequest();
   const [questionList, setQuestionList] = useState([]);
   const history = useHistory();
+  
   //fetchQuestion
   const fetchQuestion = async () => {
     setLoading(true);
@@ -95,7 +97,7 @@ function AllQuestion(props) {
       key: "action",
       render: (text, record, index) => (
         <React.Fragment key={index}>
-          <Button type="primary" onClick={() => history.push(`/editQ/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
+          <Button type="primary" onClick={() => history.push(`/editQ/${record._id}`)} icon={<EditOutlined />} className="edit-dlt-table" />
           <Popconfirm
             placement="right"
             title={text}
@@ -107,7 +109,7 @@ function AllQuestion(props) {
               danger
               type="primary"
               icon={<DeleteOutlined />}
-              className="edit-dlt"
+              className="edit-dlt-table"
             />
           </Popconfirm>
         </React.Fragment>
@@ -117,34 +119,34 @@ function AllQuestion(props) {
 
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
+  const onSearch = (value) => {
+    let result = [];
+    result = questionList.filter((data) =>{
+
+     if (value == ""){
+       window.location.reload(true);
+       return data;
+     }else{
+       return data.question.toLowerCase().search(value) != -1 || data.email.toLowerCase().search(value) != -1 || data.courseName.toLowerCase().search(value) != -1
+     }
+    });
+    setQuestionList(result);
+  }
+  
+
 
   return (
     <div className="allT">
-      <Search
-        placeholder="Search Question"
-        onSearch={onSearch}
-        enterButton
-        className="searchbar"
-      />
-      <br/>
-      <br />
-      <center>
-            <h1 className="question_h1">Frequently Asked Questions</h1>
-            <h2 className="subHeading">Any Questions? Feel free to ask!!</h2>
-      </center>
+      <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ"/>
+      <br/><br /><center><h1 className="question_h1">Frequently Asked Questions</h1>
+      <h2 className="subHeading">Any Questions? Feel free to ask!!</h2> </center>
+      <center><img className="questionimg" src={faq} alt="allQList" height ={400} width ={1100}/></center>
       <a href="./askQ">
-        <Button type="primary" icon={<PlusOutlined />} className="AddButton">
-          Add New Question
+        <Button type="primary" icon={<PlusCircleOutlined />} className="btnAll">
+          Ask New Question
         </Button>
       </a>
-      <Table
-        columns={columns}
-        dataSource={questionList}
-        size="middle"
-        pagination={false}
-        className="allQTable"
-      />
+      <Table columns={columns} dataSource={questionList} size="middle" pagination={false} className="allQTable"/>
     </div>
   );
 }

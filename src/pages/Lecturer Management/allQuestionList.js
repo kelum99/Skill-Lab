@@ -3,7 +3,7 @@ import './stylesLecturer.css';
 import 'antd/dist/antd.css';
 import { Table, Button,Input,message,Popconfirm } from 'antd';
 import {DeleteOutlined,AudioOutlined} from '@ant-design/icons';
-import allList1 from '../../image/allList1.jpg';
+import allList2 from '../../image/allList2.jpg';
 import useRequest from "../../services/RequestContext";
 
 function AllQuestionList() {
@@ -108,15 +108,19 @@ function AllQuestionList() {
 
   //search box
   const { Search } = Input;
-  const onSearch = value => console.log(value);
-  const suffix = (
-    <AudioOutlined
-      style={{
-        fontSize: 16,
-        color: '185B8C',
-      }}
-    />
-  );
+  const onSearch = (value) => {
+       let result = [];
+       result = questionList.filter((data) =>{
+
+        if (value == ""){
+          window.location.reload(true);
+          return data;
+        }else{
+          return data.question.toLowerCase().search(value) != -1 || data.email.toLowerCase().search(value) != -1 || data.courseName.toLowerCase().search(value) != -1
+        }
+       });
+       setQuestionList(result);
+  }
 
   
     return (
@@ -124,7 +128,7 @@ function AllQuestionList() {
         <div className="allT">
             <Search placeholder="Search Question" onSearch={onSearch} enterButton className="searchQ" />
             <h1 className="question_h1">All Questions List</h1>
-            <center><img className="questionimg" src={allList1} alt="allQList" height ={400} width ={900}/></center>
+            <center><img className="questionimg" src={allList2} alt="allQList" height ={400} width ={1400}/></center>
            <div> <Table columns={columns} dataSource={questionList} size="middle" pagination={false} className="allQTable2" /> </div> 
         </div>
       
