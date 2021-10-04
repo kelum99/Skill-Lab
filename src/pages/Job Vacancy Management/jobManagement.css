@@ -128,8 +128,7 @@
 
 .add-view-btn{
     background-color: #07bbb1;
-    margin-left: 45px;
-    
+    margin-left: 45px;  
 }
 
 
@@ -145,9 +144,7 @@
 .searchbtn-btns{
     height: 35px;
     width: 50px;
-
 }
-
   .searchPosition{
     margin-top: 20px;
      margin-right: 20px; 
@@ -156,8 +153,6 @@
   #iconHand{
       color: rgba(12, 174, 238, 0.678);
   }
-
-
 
 .tableDiv{
     width: 800px;
@@ -177,8 +172,7 @@
 
 #printtable{
     border-style: none;
-    column-gap: 5rem;
-    
+    column-gap: 5rem;    
 }
 
 .AddForm{
@@ -188,15 +182,11 @@
     margin-left: 400px;
 }
 
-
-
-
 .crsTable{
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    
-    
+        
 }
 .edit-dlt{
     width:50px;
@@ -210,7 +200,6 @@
 .edit-dlt:hover{
     opacity: 0.5;
 }
-
 
 .myCourses .ant-btn-primary{
     background-color: #07bbb1;
@@ -237,7 +226,7 @@
 
 .add-header{
     margin-top: 25px;
-    margin-left: 500px;
+    
     font-family: Georgia, serif;
 }
 
@@ -252,7 +241,8 @@
     padding-top: 25px;
     border-radius: 25px;
     margin-top: 25px;
-    
+    margin-left: 10px;
+   
 }
 
 .job-add-form Form.Item{
@@ -307,4 +297,36 @@
     width: 285px;
     float: right;
     margin-right: 55px;
+}
+
+.updatetable{
+    width: fit-content;
+}
+.updatevacancy{
+    margin-right:100 ;
+}
+
+#download-job-pdf{
+    background-color: #07bbd1;
+    outline: #07aaa2;
+    color: white;
+    font-size: 16px;
+    width: 140px;
+    height: 45px;
+    float: right;
+    margin-top: 10px;
+    margin-right: 80px;
+    border-radius: 5px;
+}
+
+
+.job-report-Head{
+    float: right;
+    margin-right: 80px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.logoforreport{
+    width: 110px;
+    height: 75px;
 }

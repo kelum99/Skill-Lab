@@ -81,6 +81,7 @@ function Header() {
       <div className="conatiner">
         <div className="header">
           <SliderLecturer />
+          
           <img src={logo} alt="logo" className="logo" />
 
           <ul className="pages">
