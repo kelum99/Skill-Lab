@@ -55,7 +55,7 @@ import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
 import AreYou from "../src/pages/Authentication Management/AreYou";
 import Signin from "../src/pages/Authentication Management/Signin";
-import LecProfile from "../src/pages/Authentication Management/LecProfile";
+//import LecProfile from "../src/pages/Authentication Management/LecProfile";
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 // import StdManagement from "./pages/Authentication Management/StdManagement";
