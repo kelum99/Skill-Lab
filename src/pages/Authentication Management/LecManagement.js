@@ -13,9 +13,6 @@ function LecManagement() {
   const [loading, setLoading] = useState(true);
   const { request } = useRequest();
 
-
-
-
   function confirm(e) {
     console.log(e);
     message.success('Click on Yes');
@@ -33,7 +30,7 @@ function LecManagement() {
       const result = await request.get("AuthenticationRoute/CommonSignup");
 
       if (result.status === 200) {
-        
+
         setData(result.data.map(vl => ({ ...vl, birthday: moment(vl.birthday).local().format("YYYY-MM-DD") })));
       }
       console.log(" lec list get ", result);
@@ -154,7 +151,7 @@ function LecManagement() {
       <br /><br /><h1 className="Heading1">Authentication Administrator</h1>
 
       <Link to="/authenticationreport">
-         <Button type="primary" className="btnReport" icon={<PrinterOutlined />}> Get Report </Button>
+        <Button type="primary" className="btnReport" icon={<PrinterOutlined />}> Get Report </Button>
       </Link>
 
       <Table columns={columns} dataSource={data} size="middle" pagination={false} className="tbl" />

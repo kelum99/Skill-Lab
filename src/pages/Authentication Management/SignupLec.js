@@ -64,7 +64,7 @@ function SignupLec() {
                   required: true,
                 },
               ]}>
-              <Input />
+              <Input placeholder="Enter First Name " />
             </Form.Item>
 
             <Form.Item
@@ -75,7 +75,7 @@ function SignupLec() {
                   required: true,
                 },
               ]}>
-              <Input />
+              <Input placeholder="Enter Last Name " />
             </Form.Item>
 
             <Form.Item
@@ -114,7 +114,7 @@ function SignupLec() {
                   message: 'NIC is not valid',
                 }
               ]}>
-              <Input />
+              <Input placeholder="Enter NIC" />
             </Form.Item>
 
             <Form.Item
@@ -127,10 +127,10 @@ function SignupLec() {
                 },
                 {
                   required: true,
-                  message: 'Please input your E-mail!',
+                  
                 },
               ]}>
-              <Input />
+              <Input placeholder="example@mail.com"/>
             </Form.Item>
 
             <Form.Item
@@ -146,7 +146,7 @@ function SignupLec() {
                   message: 'Invalid phone number',
                 }
               ]} >
-              <Input />
+              <Input placeholder="07XXXXXXXX"/>
             </Form.Item>
 
             <Form.Item name={['inputpw']} label="Create a Password"
@@ -159,7 +159,7 @@ function SignupLec() {
                   message: 'Enter more than 5 characters',
                 }
               ]}>
-              <Input.Password />
+              <Input.Password placeholder="Enter New Password"/>
             </Form.Item>
 
             <Form.Item
@@ -184,7 +184,7 @@ function SignupLec() {
                 }),
               ]}
             >
-              <Input.Password />
+              <Input.Password placeholder="Confirm your Password"/>
             </Form.Item>
 
             <hr></hr>

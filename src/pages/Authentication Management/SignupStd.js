@@ -4,7 +4,6 @@ import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import moment from "moment";
-import { Link } from "react-router-dom";
 
 function SignupStd() {
 
@@ -61,9 +60,11 @@ function SignupStd() {
                 {
                   required: true,
                 },
+                
               ]}
             >
-              <Input />
+              <Input placeholder="Enter First Name " />
+              
             </Form.Item>
 
             <Form.Item
@@ -75,7 +76,7 @@ function SignupStd() {
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="Enter Last Name " />
             </Form.Item>
 
             <Form.Item
@@ -115,7 +116,7 @@ function SignupStd() {
                 }
               ]}
             >
-              <Input />
+              <Input placeholder="Enter NIC" />
             </Form.Item>
 
             <Form.Item
@@ -129,11 +130,11 @@ function SignupStd() {
                 },
                 {
                   required: true,
-                  message: 'Please input your E-mail!',
+                  
                 },
               ]}
             >
-              <Input />
+              <Input placeholder="example@mail.com"/>
             </Form.Item>
 
             <Form.Item
@@ -150,7 +151,7 @@ function SignupStd() {
                 }
               ]}
             >
-              <Input />
+              <Input placeholder="07XXXXXXXX"/>
             </Form.Item>
 
             <Form.Item name={['inputpw']} label="Create a Password"
@@ -163,7 +164,7 @@ function SignupStd() {
                   message: 'Enter more than 5 characters',
                 }
               ]}>
-              <Input.Password />
+              <Input.Password placeholder="Enter New Password"/>
             </Form.Item>
   
             <Form.Item
@@ -186,7 +187,7 @@ function SignupStd() {
                 }),
               ]}
             >
-              <Input.Password />
+              <Input.Password placeholder="Confirm your Password"/>
             </Form.Item>
 
             <hr></hr>
@@ -195,7 +196,7 @@ function SignupStd() {
 
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
               {/* <Link to ="/home2" > */}
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" htmlType="submit" onClick={"/home2"}>
                 Submit
               </Button>
               {/* </Link> */}
