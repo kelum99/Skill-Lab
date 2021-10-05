@@ -5,6 +5,12 @@ import * as AiIcons from 'react-icons/ai'
 
 export const SidebarItemsLecturer = [
     {
+        title: "My Profile",
+        path: "/stdprofile",
+        icon: <FaIcons.FaUserCircle />,
+        className: "nav-text"
+    },
+    {
         title: "My Courses",
         path: "/courseforlecturer",
         icon: <FaIcons.FaBook />,
@@ -61,8 +67,13 @@ export const SidebarItemsLecturer = [
     
 ];
 
-
 export const SidebarItemsStudent = [
+    {
+        title: "My Profile",
+        path: "/stdprofile",
+        icon: <FaIcons.FaUserCircle />,
+        className: "nav-text"
+    },
     {
         title: "My Courses",
         path: "/MyCourses",
@@ -107,3 +118,60 @@ export const SidebarItemsStudent = [
     }
     
 ];
+
+export const SidebarItemsAdmin = [
+    {
+        title: "Job Vacancy Management",
+        className: "nav-text2",
+        path:"#"
+    },
+    {
+        title: "Add a new vacancy",
+        path: "/addcareere",
+        icon: <FaIcons.FaArrowAltCircleRight />,
+        className: "nav-text"
+    },
+    {
+        title: "Update & Delete vacancy",
+        path: "/updatedelete",
+        icon: <FaIcons.FaArrowAltCircleRight />,
+        className: "nav-text"
+    },
+    {
+        title: "Delete Career Requests",
+        path: "/deleteRequest",
+        icon: <FaIcons.FaArrowAltCircleRight />,
+        className: "nav-text"
+    },
+    {
+        title: "Genarate Report",
+        path: "/jobreport",
+        icon: <FaIcons.FaArrowAltCircleRight />,
+        className: "nav-text"
+    },
+    {
+        title: "Authentication Management",
+        path: "/lecmanagement",
+        className: "nav-text2"
+    },
+
+    {
+        title: "Finance Management",
+        path: "/financeanalysis",
+        className: "nav-text2"
+    },
+
+    {
+        title: "Feedback Management",
+        path: "",
+        className: "nav-text2"
+    },
+    {
+        title: "Store Management",
+        path: "/DisplayItem",
+        className: "nav-text2"
+    }
+];
+
+
+

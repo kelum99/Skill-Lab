@@ -11,11 +11,12 @@ import "./styleStore.css";
 import { Carousel } from 'antd';
 import UseRequest from "../../services/RequestContext";
 import productImg from '../../Images/logo.png';
-import {  Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
 
 function UserView() {
   const { Option } = Select;
-  const { Meta } = Card;
+  const history = useHistory();
   const [data, setData] = useState();
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState([]);
@@ -138,8 +139,8 @@ function UserView() {
           <Rate allowHalf defaultValue={4.5} />
           <div>
           <Link to="#" >
-          <Button type="primary" id="addCartBtn">
-            Buy Now
+          <Button type="primary" id="addCartBtn" onClick={() => history.push(`/checkout/${item._id}`)}>
+                Buy Now
             </Button></Link>
             </div>
             </Card>

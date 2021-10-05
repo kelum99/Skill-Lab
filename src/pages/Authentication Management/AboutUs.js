@@ -1,5 +1,5 @@
 import React from "react";
-import { Form} from 'antd';
+import { Form } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesAboutus.css'
 import children from '../../Images/children.png';
@@ -7,46 +7,72 @@ import children from '../../Images/children.png';
 
 function AboutUs() {
 
-return (
+        return (
 
-<>
-      <div className="main-container-aboutus">
+                <>
+                        <div className="main-container-aboutus">
 
-<Form>
+                                <Form>
 
-    
 
-    <Form.Item>
-            <div className="about-container">
-            <div className="aboutus">ABOUT US</div>
-           
-            </div>              
-    </Form.Item>
 
-    <Form.Item>
-            <div className="abouttext-container">
-            <div className="abttxt1">Skill Lab was established with the aim of giving a</div>
-            <div className="abttxt2">new aspect to online learning. Within such a</div>
-            <div className="abttxt3">short span of a time we've been able to acquire a</div>
-            <div className="abttxt4">huge user satisfaction and reputation</div>
-            </div>              
-    </Form.Item>
+                                        <Form.Item>
+                                                <div className="about-container">
+                                                        <div className="aboutus"><b>ABOUT US</b></div>
+                                                        <hr></hr>
+                                                </div>
+                                        </Form.Item>
 
-   
+                                        <Form.Item>
+                                                <div className="abouttext-container">
+                                                        At SkillLab, we ’ve seen again and again how the presumably simple act of creating can be <br></br>
+                                                        a force for growth, change, and discovery in people ’s lives. We want to inspire and multiply <br></br>
+                                                        the kind of creative inquisition that furthers expression, learnedness and play. <br></br>
+                                                        <hr></hr>
+                                                        SkillLab is an online literacy community with classes for Information technology. <br></br>
+                                                        On SkillLab, millions of members come together to find anguish and take the succeeding step in their creative trek.
+                                                        <hr></hr>
 
-    <Form.Item>
-            <div className="child">
-            <img width={1000} src={children}/>
-            </div>
-    </Form.Item>
+                                                        <b>At SkilLab, We Empower:</b>
 
-</Form>
-        
-  
-    </div>
-    </>
-      
-  );
+                                                        <div className="A1">
+                                                                <b>Members to</b><br></br>
+                                                                Get inspired.<br></br>
+                                                                Learn new skills.<br></br>
+                                                                Make discoveries.
+                                                        </div>
+
+                                                        <div className="A2">
+                                                                <b>Teachers to</b><br></br>
+                                                                Share expertise.<br></br>
+                                                                Earn money.<br></br>
+                                                                Give back.
+                                                        </div>
+
+                                                        <div className="A3">
+                                                                <b>Employees to</b><br></br>
+                                                                Be curious.<br></br>
+                                                                Make an impact.<br></br>
+                                                                Live a full life.
+                                                        </div>
+
+
+                                                </div>
+                                        </Form.Item>
+
+                                        <Form.Item>
+                                                <div className="child">
+                                                        <img width={1250} src={children}/>
+                                                </div>
+                                        </Form.Item>
+
+                                </Form>
+
+
+                        </div>
+                </>
+
+        );
 }
 
 export default AboutUs;

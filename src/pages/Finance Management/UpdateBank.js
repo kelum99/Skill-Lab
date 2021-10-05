@@ -4,6 +4,7 @@ import { Form, Input, Button,Spin, Row, Select,Popconfirm,message } from "antd";
 import "./stylesFinance.css";
 import "antd/dist/antd.css";
 import { Link } from "react-router-dom";
+import useUser from "../../services/UserContext";
 
 function UpdateBank() {
   const [data, setData] = useState();
@@ -11,6 +12,7 @@ function UpdateBank() {
   const [loading, setLoading] = useState(true);
   const { request } = useRequest();
   const { Option } = Select;
+  const {user} = useUser();
 
   const layout = {
     labelCol: {
@@ -30,9 +32,10 @@ function UpdateBank() {
   };
 
   const fetchBank = async () => {
+    console.log("fetch bank ", user)
     setLoading(true);
     try {
-      const result = await request.get(`finance/bank`);
+      const result = await request.get(`finance/bank/findAll/${user._id}`);
       if (result.status === 200) {
         console.log(result.data);
         setBankList(result.data);
@@ -45,8 +48,10 @@ function UpdateBank() {
   };
 
   useEffect(() => {
-    fetchBank();
-  }, []);
+   if(user._id){
+    fetchBank(); 
+   }
+  }, [user]);
 
   const onFinish = async (values) => {
     if(data !== undefined){
@@ -94,13 +99,14 @@ function UpdateBank() {
     </div>
       {bankList.length > 0 ? (
         <div className="savedCards">
-          <label>My Saved Bank Details</label>
+          <label className="lable">My Saved Bank Details</label>
           {bankList.map(bank => (
             <div className="save-card"
               onClick={() => onCardSelect(bank)}
               key={bank._id}
-              accountNumber = {bank.accountNumber}
+            
               >
+              <h5>{bank.bankName}</h5>
               <span>{bank.accountNumber}</span>
             </div> 
               

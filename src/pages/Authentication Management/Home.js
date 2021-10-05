@@ -1,5 +1,5 @@
 import React from "react";
-import { Form,Button} from 'antd';
+import { Form, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesHome.css'
 import home from '../../Images/home.png';
@@ -28,7 +28,7 @@ return (
     </Form.Item>
 
     <Form.Item>
-            <div className="heading-container">
+            <div className="heading-container2">
             <div className="h1">WE OFFER YOU</div>
             <div className="h2">A BETTER</div>
             <div className="h3">FUTURE !</div>
@@ -54,7 +54,7 @@ return (
 
     <Form.Item>
             <div className="hme">
-            <img width={700} src={home}/>
+            <img width={600} src={home}/>
             </div>
     </Form.Item>
 

@@ -2,20 +2,13 @@ import React from "react";
 import image from "../../image/enrollment5.jpg";
 import image2 from "../../image/mycourse4.jpg";
 import image3 from "../../image/enroll2.jpg";
-import { Form, Input, Button, DatePicker, Select, Radio, InputNumber, message,Row } from 'antd';
+import { Form, Button, DatePicker, Select, message, Row } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesStudent.css';
 import useRequest from "../../services/RequestContext";
-import  { useHistory } from 'react-router-dom'
-
+import { useHistory } from 'react-router-dom'
 
 function Enroll() {
-
-    
-
-    //textarea
-    const { TextArea } = Input;
-
     //form
     const [form] = Form.useForm();
 
@@ -26,7 +19,7 @@ function Enroll() {
     let history = useHistory();
 
     const redirect = () => {
-      history.push('/MyCourses')
+        history.push('/MyCourses')
     }
 
     const onFinish = async (values) => {
@@ -63,130 +56,18 @@ function Enroll() {
     };
 
     //datepicker
-
     function onChange(date, dateString) {
         console.log(date, dateString);
     }
-
-
 
     return (
         <div className="enroll">
 
             <center><img src={image} ></img></center>
             <div>
-            <div ><img src={image3}  className="myenrollImg"/></div>
-                {/*Student Details Form */}
-
-                {/* <div className="stdEnroll">
-                    <center><h2>Student Details</h2></center>
-                    <Form {...layout} form={form} name="studentEnroll" >
-                        <Form.Item
-                            name="StudentID"
-                            label="Student ID"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="StudentName"
-                            label="Student Name"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="NIC"
-                            label="NIC"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="Gender"
-                            label="Gender"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <Radio.Group>
-                                <Radio value="male">Male</Radio>
-                                <Radio value="female">Female</Radio>
-                            </Radio.Group>
-                        </Form.Item>
-                        <Form.Item
-                            name="Age"
-                            label="Age"
-                            rules={[
-                                {
-                                    required: true,
-                                    type: 'number',
-                                    min: 0,
-                                    max: 99,
-                                },
-                            ]}
-                        >
-                            <InputNumber className="ant-input" />
-                        </Form.Item>
-                        <Form.Item
-                            name="Address"
-                            label="Address"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                            ]}
-                        >
-                            <TextArea rows={4} showCount maxLength={100} />
-                        </Form.Item>
-                        <Form.Item
-                            name="phone"
-                            label="Phone Number"
-                            rules={[
-                                {
-                                    required: true,
-
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                        <Form.Item
-                            name="Email"
-                            label="Email"
-                            rules={[
-                                {
-                                    required: true,
-                                },
-                                {
-                                    type: 'email',
-                                    message: 'The input is not valid E-mail!',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-
-                    </Form>
-                </div> */}
+                <div ><img src={image3} className="myenrollImg" /></div>
 
                 {/*Course Details Form */}
-
                 <div className="crsEnroll">
                     <center><h2 className="enrolllHeading">Course Details</h2></center>
                     <Form {...layout} form={form} name="courseEnroll" onFinish={onFinish}>
@@ -257,21 +138,16 @@ function Enroll() {
                         >
                             <DatePicker onChange={onChange} className="ant-input" placeholder="Select Date" />
                         </Form.Item>
-
                         <center><img src={image2} className="enrollImage"></img></center>
-
-
                         <Form.Item {...tailLayout}>
                             <Row>
-                            <Button type="primary" htmlType="submit" >
-                                Submit
-                            </Button>
-
-                            <Button htmlType="button" onClick={onReset} className="resetBtn" >
-                                Reset
-                            </Button>
+                                <Button type="primary" htmlType="submit" >
+                                    Submit
+                                </Button>
+                                <Button htmlType="button" onClick={onReset} className="resetBtn" >
+                                    Reset
+                                </Button>
                             </Row>
-
                         </Form.Item>
                     </Form>
                 </div>

@@ -59,9 +59,12 @@ function UpdateWallet() {
     }
   };
 
+
   useEffect(() => {
-    fetchWallet();
-  }, []);
+   if(user && user._id){
+    fetchWallet(); 
+   }
+  }, [user]);
 
   const onFinish = async values => {
     try {
@@ -71,7 +74,7 @@ function UpdateWallet() {
       );
       values.expireDate = moment(values.expireDate).format("YYYY-MM");
       console.log("api call wallet updated", result);
-      window.location.reload(true);
+      window.location.reload();
     } catch (e) {
       console.log("update error ", e);
     }
@@ -113,6 +116,7 @@ function UpdateWallet() {
               key={card._id}
               cardNumber={card.cardNumber}
             >
+              <h5>{card.nickName}</h5>
               <span>{card.cardNumber}</span>
             </div>
           ))}

@@ -5,12 +5,17 @@ import './stylesFeedback.css'
 import contact from "../../image/contact.jpg";
 import useRequest from "../../services/RequestContext";
 
+import { useHistory } from "react-router-dom";
+
+
+
+
 
 function ContactUs(){
 
     //alert msg
     const success = () => {
-       message.success('Thanks for getting in touch !!!  We have recieved your issue..');
+       
     };
 
 
@@ -26,14 +31,25 @@ function ContactUs(){
     
     //Form Vilidation 
     const validateMessages = {
-    required: '${label} is required!',
-    type :{
-      email :'${label} not a valid email !',
-    },
+      required: "${label} is required!" ,
+      types: {
+        email: "${label} is not a valid email!"
+      },
+      String: {
+        range: "${label} must be ${min} charactors",
+        range: '${label} must be ${max} '
+      },
     };
 
     
     const {request} = useRequest();
+
+// // shebc ehe 
+//     let history = useHistory();
+//     const redirect = () => {
+//     history.push('/review')
+
+//   }
     
      //on submit - console log
     const onFinish =  async values => {
@@ -41,10 +57,13 @@ function ContactUs(){
     try{
       const result = await request.post('feedback/contact', values);
       console.log("api call contact details", result);
+      message.success('Thanks for getting in touch !!!  We have recieved your issue..');
     } catch(e){
       console.log("post contact details error ",e);
       }
-
+    
+      // //n sxhee
+      // redirect();
   };
 
     const onChange= values =>{
@@ -77,10 +96,14 @@ function ContactUs(){
         rules={[
           {
             required: true,
+            type:'string',min: 5,
+
+
+
           },
         ]}
       >
-        <Input />
+        <Input  minLength={5}/>
       </Form.Item>
       <Form.Item
         name={[ 'email']}
@@ -88,8 +111,8 @@ function ContactUs(){
         rules={[
 
           {
-              type: 'email',
               required:true,
+              type:'email',
           },
       ]}
       >
@@ -123,10 +146,11 @@ function ContactUs(){
         rules={[
           {
             required: true,
+            type:'string',max: 50,
           },
         ]}
       >
-        <Input />
+        <Input  />
       </Form.Item>
 
 
@@ -136,6 +160,7 @@ function ContactUs(){
         rules={[
             {
               required: true,
+              type:'string',max: 500,
             },
           ]}
         
@@ -148,6 +173,7 @@ function ContactUs(){
         <Button type="primary" htmlType="submit" onClick={success}>
             Submit
         </Button>
+        
         </Form.Item>
       
     </Form>
