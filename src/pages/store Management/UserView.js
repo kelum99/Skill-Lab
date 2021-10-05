@@ -4,11 +4,12 @@ import "antd/dist/antd.css";
 import "./styleStore.css";
 import UseRequest from "../../services/RequestContext";
 import productImg from '../../Images/logo.png';
-import {  Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+
 
 function UserView() {
   const { Option } = Select;
-
+  const history = useHistory();
   const [data, setData] = useState();
   const [itemList, setItemList] = useState([]);
   const [loading, setLoading] = useState([]);
@@ -96,7 +97,7 @@ function UserView() {
           <h4>Price: {item.price}$</h4>
           <img src={productImg} className="product-img"/>
           <Link to="#" >
-          <Button type="primary" id="addCartBtn">
+          <Button type="primary" id="addCartBtn" onClick={() => history.push(`/checkout/${item._id}`)}>
             Add to Cart
             </Button></Link>
         </div>

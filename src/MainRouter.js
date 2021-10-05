@@ -48,9 +48,6 @@ import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
 import Report from "./pages/Job Vacancy Management/Report";
 
-
-
-
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
 import AdminBar from "./pages/Job Vacancy Management/AdminBar";
 import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
@@ -87,8 +84,9 @@ import PaymentHistory from "../src/pages/Finance Management/PaymentHistory"
 import WithdrawalHistory from "../src/pages/Finance Management/WithdrawalHistory"
 import UpdateWallet from "../src/pages/Finance Management/UpdateWallet"
 import UpdateBankt from "../src/pages/Finance Management/UpdateBank"
-
-
+import Checkout from "../src/pages/Finance Management/checkoutPayment"
+import FinanceAnalysis from "../src/pages/Finance Management/FinanceAnalysis"
+import PaymentSuccess from "../src/pages/Finance Management/PaymentSuccess"
 
 
 function MainRouter() {
@@ -98,8 +96,8 @@ function MainRouter() {
 
 
         <Route path="/home2" exact component={Home2}/>
-        <Route path="/" exact component={Signin}/>
-        <Route path="/home" exact component={Home}/>
+        <Route path="/signin" exact component={Signin}/>
+        <Route path="/" exact component={Home}/>
 
         <Route path="/aboutus" exact component={AboutUs}/>
 
@@ -184,6 +182,9 @@ function MainRouter() {
         <Route path="/withdrawHistory" exact component={WithdrawalHistory} />
         <Route path="/updateWallet" exact component={UpdateWallet} />
         <Route path="/updateBank" exact component={UpdateBankt} />
+        <Route path="/checkout/:id" exact component={Checkout} />
+        <Route path="/financeanalysis" exact component={ FinanceAnalysis } />
+        <Route path="/paymentsuccess" exact component={ PaymentSuccess } />
     </>
   );
 }

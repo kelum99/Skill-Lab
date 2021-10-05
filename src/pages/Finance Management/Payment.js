@@ -62,6 +62,14 @@ const {request} = useRequest();
             layout="vertical"
           >
             <Form.Item
+              name={["nickName"]}
+              label="Nickname for Card"
+              rules={[{ required: true }]}
+            >
+              <Input autocomplete="off" />
+            </Form.Item>
+
+            <Form.Item
               name={["name"]}
               label="Cardholder's Name"
               rules={[{ required: true }]}

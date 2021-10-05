@@ -4,16 +4,17 @@ import './stylesProfile.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
-
+import { Alert } from 'antd';
+import { useHistory} from "react-router-dom";
 
 
 function Stdprofile() {
 
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { request } = useRequest();
-  const { user } = useUser();
-
+  const {request} = useRequest();
+  const {user} = useUser();
+  const history = useHistory();
 
 
   const layout = {
@@ -85,13 +86,16 @@ function Stdprofile() {
     }
   };
 
-
+  const redirect = () => {
+    history.push('/home')
+  }
   const onDelete = async value => {
     try {
       const result = await request.delete(`AuthenticationRoute/CommonSignup/${value._id}`);
       if (result.status === 200) {
         await fetchAuthenticationStudent();
         setData(undefined);
+        redirect();
       }
       console.log("api call profile deleted", result);
     } catch (e) {
