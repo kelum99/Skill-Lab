@@ -2,7 +2,8 @@ import React from 'react';
 import { Form, Input, Select, Button, message } from 'antd';
 import 'antd/dist/antd.css';
 import './styleStore.css';
-import UseRequest from '../../services/RequestContext'; 
+import UseRequest from '../../services/RequestContext';
+ 
 
 
 function AddItem(){
@@ -30,6 +31,7 @@ function AddItem(){
 
       const {request} = UseRequest();
 
+      
       const onFinish = async (values) => {
         console.log(values);
         try{
@@ -40,7 +42,7 @@ function AddItem(){
         }
       };
       const success = () => {
-        message.success("Marks Updated Successfully !");
+        message.success("Item Details Uploaded Successfully !");
       };
 
       const { Option } = Select;
@@ -102,6 +104,8 @@ function AddItem(){
       <Option value="web templates"> Web Templates</Option>
       </Select>
       </Form.Item>
+
+     
 
       <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 6 }}>
         <Button type="primary" htmlType="submit" onClick={success}>

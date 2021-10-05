@@ -1,15 +1,23 @@
-import React from 'react';
-import { Table, Menu,  Space, Form, Select, Option } from 'antd';
+import React, { useState, useEffect } from "react";
+import { Table, Menu,  Space, Form, Select, Option,Button } from 'antd';
 import 'antd/dist/antd.css';
+import { jsPDF } from "jspdf";
+import {  DownloadOutlined } from "@ant-design/icons";
+import { useHistory} from 'react-router-dom';
+import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
 
-function viewStore(){
+function ViewStore(){
 
-    const menu = (
-        <Menu onClick={viewStore}>
-          
-        </Menu>
-      );
+   
+   const [loading, setLoading] = useState(true);
+   const { request } = useRequest();
+   const [markList, setMarkList] = useState([]);
+   const history = useHistory();
+   const { user } = useUser();
+   let doc;
 
+  
     const columns = [
         {
           title: 'Product ID',
@@ -49,58 +57,73 @@ function viewStore(){
         {
           key: '1',
           productID: 'PD100',
-          productName: 'Name',
-          category: 'Category1',
-          numberofSells: 'xx',
-          total:'xxxx.xx',
+          productName: 'Retail Apoocalypse',
+          category: 'e-book',
+          numberofSells: '02',
+          total:'$24',
         },
         {
           key: '2',
           productID: 'PD101',
-          productName: 'Name',
-          category: 'Category2',
-          numberofSells: 'xx',
-          total:'xxxx.xx',
+          productName: 'Information Technology Law',
+          category: 'e-book',
+          numberofSells: '07',
+          total:'$21',
         },
 
         {
             key: '3',
             productID: 'PD102',
-            productName: 'Name',
-            category: 'Category3',
-            numberofSells: 'xx',
-            total:'xxxx.xx',
+            productName: 'KnightOne',
+            category: 'web templete',
+            numberofSells: '05',
+            total:'$35',
           },
 
           {
             productID: 'PD103',
-            productName: 'Name',
-            category: 'Category4',
-            numberofSells: 'xx',
-            total:'xxxx.xx',
+            productName: 'JavaScript',
+            category: 'web template',
+            numberofSells: '06',
+            total:'$36',
           },
 
           {
             productID: 'PD104',
-            productName: 'Name',
-            category: 'Category4',
-            numberofSells: 'xx',
-            total:'xxxx.xx',
+            productName: 'Appland',
+            category: 'web template',
+            numberofSells: '10',
+            total:'$120',
           },
 
           {
             productID: 'PD105',
-            productName: 'Name',
-            category: 'Category4',
-            numberofSells: 'xx',
-            total:'xxxx.xx',
+            productName: 'Softland',
+            category: 'web template',
+            numberofSells: '02',
+            total:'$16',
           },
       ];
 
       const { Option } = Select;
+
+      //Report Generate
+  const downloadPDF = () => {
+    // doc = new jsPDF("p", "pt", [1000, 600]);
+     doc = new jsPDF({
+       orientation : "landscape",
+       unit :"pt",
+       format : [1700,1000]
+     })
+     doc.html(document.getElementById("printTable"), {
+       callback: function (pdf) {
+         pdf.save("StoreReport.pdf");
+       },
+     });
+   };
       
 return(
-
+<>
     <div className = "MainContaner-display">
 
 <div class="month">
@@ -120,11 +143,20 @@ return(
 
     </div>
 
-<Table columns={columns} dataSource={dataSource} />
+<Table columns={columns}
+ dataSource={dataSource}
+ id="printTable" 
+ size="middle"
+ pagination={false}/>
     
     </div>
-    
+
+<Button type="primary" className="AddButton"  icon={<DownloadOutlined />} onClick={downloadPDF}>
+Download Report
+</Button>
+
+</>    
 ); 
 }
 
- export default viewStore;
+ export default ViewStore;
