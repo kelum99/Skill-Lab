@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Table, Button, Popconfirm, message } from "antd";
-import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
+import { EditOutlined, DeleteOutlined, PlusOutlined } from "@ant-design/icons";
 import "antd/dist/antd.css";
 import UseRequest from "../../services/RequestContext";
 import { useHistory, Link } from "react-router-dom";
 import useUser from "../../services/UserContext";
+import image from "../../image/book5.jpg";
 
 function DisplayItem() {
   const [data, setData] = useState([]);
@@ -98,12 +99,24 @@ function DisplayItem() {
   ];
 
   return (
+
+   
+
     <div className="MainContaner-Diaplay">
-      <div class="button">
+
+     <center>
+        <h1 className="itemheading">Skill Lab Study Matetials</h1>
+        <img class="displatimg" src={image}/>
+        </center>
+      
       <Link to="/AddItem" >
-        <Button>Add Product</Button>
+        <Button type="primary" icon={<PlusOutlined />} className="addProduct">
+        Add Product
+        </Button>
         </Link>
-      </div>
+        
+        
+      
 
       <Table
         columns={columns}
@@ -111,6 +124,7 @@ function DisplayItem() {
         className="addItem-table"
         pagination= {false}
       />
+      
     </div>
   );
 }

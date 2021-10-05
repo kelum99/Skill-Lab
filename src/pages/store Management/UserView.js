@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Select, Button, Space } from "antd";
+import { Form, Input, Select, Button, Space,Card,Rate} from "antd";
+import book5 from '../../image/book5.jpg';
+import book14 from '../../image/book14.jpg';
+import book1 from '../../image/book1.jpg';
+import book4 from '../../image/book4.jpg';
+import book12 from '../../image/book12.jpg';
+import book13 from '../../image/book13.jpg';
 import "antd/dist/antd.css";
 import "./styleStore.css";
+import { Carousel } from 'antd';
 import UseRequest from "../../services/RequestContext";
 import productImg from '../../Images/logo.png';
 import { useHistory, Link } from "react-router-dom";
@@ -41,7 +48,7 @@ function UserView() {
       setData({ ...item });
     }
   };
-  //search box
+ 
  const { Search } = Input;
  const onSearch = (value) => {
    let result = [];
@@ -59,9 +66,34 @@ function UserView() {
 
   return (
     <>
-        <div class="st">
-    <h1> Store </h1>
+    <div >
+      <Carousel autoplay>
+        <div>
+          <img className="book" src={book5} alt="image 1" height={500} width={1200} />
+        </div>
+        <div>
+          <img className="book" src={book14} alt="image 2"  height={500} width={1200} />
+        </div>
+        <div>
+          <img className="book" src={book1} alt="image 2"  height={500} width={1200}/>
+        </div>
+        <div>
+          <img className="book" src={book4} alt="image 2" height={500} width={1200} />
+        </div>
+        <div>
+          <img className="book" src={book12} alt="image 2"  height={500} width={1200}/>
+        </div>
+        <div>
+          <img className="book" src={book13} alt="image 2" height={500} width={1200} />
+        </div>
+      </Carousel>
     </div>
+
+<div className="description">
+<br/>
+<h1 className ="cc">WELCOME TO SKILL LAB STORE.  </h1>
+</div>
+    
 
     <div>
       <Space direction="vertical" >
@@ -86,26 +118,37 @@ function UserView() {
           </Select>
     
       </div> */}
-    <div className="item-container">
-   
-    
+
+      <div className="item-container">
+      
       {itemList.map(item => (
-        <div className="one-item" key={item._Id} onClick={() => onSelect(item)}>
-          {/* <h2><Link to={`/AddCart/${item._id}`} >{item.productName} </Link> </h2> */}
-          <h2>{item.productName} </h2>
-          <h4>{item.category}</h4>
-          <h4>Price: {item.price}$</h4>
-          <img src={productImg} className="product-img"/>
+        <div  key={item._Id} onClick={() => onSelect(item)}>
+
+      <Card title={item.productName}
+       style={{ width: 350 , backgroundColor:"#bae2f0", margin:12 , fontSize:"16px" }}
+        hoverable 
+        cover={
+          <img
+            alt="example"
+            src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          />}
+          className="cardView"
+        >
+          <p>{item.category}</p>
+          <h5>Price: {item.price}$</h5>
+          <Rate allowHalf defaultValue={4.5} />
+          <div>
           <Link to="#" >
           <Button type="primary" id="addCartBtn" onClick={() => history.push(`/checkout/${item._id}`)}>
-            Add to Cart
+                Buy Now
             </Button></Link>
-        </div>
-      )
-      )}
-      
+            </div>
+            </Card>
+        </div>    
+      ))}
       </div>
-    </>
+        
+      </>
   );
 }
 
