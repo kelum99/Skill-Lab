@@ -4,6 +4,9 @@ import { Table, Button,Input,Popconfirm, message } from 'antd';
 import { EditOutlined ,DeleteOutlined,AudioOutlined} from '@ant-design/icons';
 import './jobManagement.css';
 import {useHistory} from 'react-router-dom';
+import  admin from '../../image/admin.png'
+import './New.css';
+import {Link} from 'react-router-dom';
 
 function UpdateJob() {
 
@@ -118,19 +121,56 @@ const columns = [
 
 
     return (
+      <>
+      <div className="">
+  <div className="row">
+    
+    <div className="col-4">
+    <h3 className="adminHeader">SKILL LAB</h3>
 
-
-        <div className="myCourses">
-            
-            <br /><br /><h2 className="add-header">Update and Delete vacancies</h2>
-            
+    <div className="img-topic-admin">
+       <img src={admin} className="adminavatar" alt="Looking for job?"/>
+       <h6 className="AdminTopic">Admin</h6>
+    </div>
+       <div className="Link-Container">
+         <h5 className="Adminh">Job Vacancy Management</h5>
+         <ul className="Adminul">
+         <Link to="/addcareere"> <li>Add a new vacancy</li></Link>
+          <Link to="/updatedelete"> <li>Update and Delete vacancy</li></Link>
+          <Link to="/deleteRequest"> <li>Delete Careere Requests</li></Link>
+          <Link to="/jobreport"> <li>Genarate Report</li></Link>
+         </ul>
 
         
-            <Table columns={columns} dataSource={jobList} size="middle" pagination={false} className="crsTable" />
+       </div>
+       <br/>
+    <button className="Admin-sider-Button">Logout</button><br/><br/>
+    </div>
+
+    <div className="col">
+
+
+        <div className="updatevacancy">
+            
+            <br /><br /> <center><h2 className="">Update and Delete vacancies</h2>
+            
+        
+        
+           <Table columns={columns} dataSource={jobList} size="maximum" pagination={false} className="updatetable" /></center>
          
-      
+        
         
         </div>
+
+
+    </div>
+
+      </div>
+  </div>
+      
+      </>
+
+        
     );
 }
 

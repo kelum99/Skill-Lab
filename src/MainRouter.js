@@ -16,6 +16,7 @@ import MyPerformance from "./pages/Student Management/MyPerformance";
 import UpdateEnroll from "./pages/Student Management/UpdateEnroll";
 import UpdateMarks from "./pages/Student Management/UpdateMarks";
 import ViewMarks from "./pages/Student Management/ViewMarks";
+import ReportPerform from "./pages/Student Management/ReportPerform";
 
 import courseMain from  "../src/pages/course/courseMain.js";
 import courseCreate from "./pages/course/courseCreate";
@@ -26,7 +27,7 @@ import courseContentCreate from "./pages/course/courseContentCreate";
 import courseLessons from "./pages/course/courseLessons";
 import viewACourseLesson from "./pages/course/viewACourseLesson";
 import courseLessonEdit from "./pages/course/courseLessonEdit";
-
+import analysis from "./pages/course/analysis";
 
 
 import askQuestion from './pages/Lecturer Management/askQuestion';
@@ -45,6 +46,9 @@ import Sucsess from "./pages/Job Vacancy Management/Sucsess";
 import Failed from "./pages/Job Vacancy Management/Failed";
 import Print from "./pages/Job Vacancy Management/Print";
 import AddJob from "./pages/Job Vacancy Management/AddJob";
+import Report from "./pages/Job Vacancy Management/Report";
+
+
 
 
 import UpdateAndDelete from "./pages/Job Vacancy Management/UpdateAndDelete";
@@ -53,9 +57,13 @@ import UpdateJob from "./pages/Job Vacancy Management/UpdateJob";
 
 import SignupLec from "../src/pages/Authentication Management/SignupLec";
 import SignupStd from "../src/pages/Authentication Management/SignupStd";
-import Signin from "../src/pages/Authentication Management/Signin";
 import AreYou from "../src/pages/Authentication Management/AreYou";
+
 import AuthenticationReport from "../src/pages/Authentication Management/AuthenticationReport";
+
+import Signin from "../src/pages/Authentication Management/Signin";
+//import LecProfile from "../src/pages/Authentication Management/LecProfile";
+
 import StdProfile from "../src/pages/Authentication Management/StdProfile";
 import LecManagement from "./pages/Authentication Management/LecManagement";
 // import StdManagement from "./pages/Authentication Management/StdManagement";
@@ -88,6 +96,7 @@ function MainRouter() {
 
   <>
 
+
         <Route path="/home2" exact component={Home2}/>
         <Route path="/" exact component={Signin}/>
         <Route path="/home" exact component={Home}/>
@@ -101,6 +110,7 @@ function MainRouter() {
         <Route path="/AddMarks" exact component={AddMarks} />
         <Route path="/UpdateMarks/:id" exact component={UpdateMarks} />
         <Route path="/ViewMarks" exact component={ViewMarks} />
+        <Route path="/ReportPerform" exact component={ReportPerform} />
 
         <Route path="/courseMain" exact component={courseMain} />
         <Route path="/courseCreate" exact component={courseCreate} />
@@ -111,13 +121,12 @@ function MainRouter() {
         <Route path="/courseContentCreate/:id" exact component={courseContentCreate} />
         <Route path="/courseLessons/:id" exact component={courseLessons} />
         <Route path="/viewACourseLesson/:id" exact component={viewACourseLesson} />
-        
+        <Route path="/analysis" exact component={analysis} />
         
         
 
         <Route path="/editR" exact component={editReview}/>
         <Route path="/editR/:id" exact component={editReview}/>
-          
         <Route path="/review" exact component={review}/>
         <Route path="/contactUs" exact component={contactUs}/>
         <Route path="/myReview" exact component={myReview} />
@@ -145,11 +154,13 @@ function MainRouter() {
         <Route path="/updateDelete" exact component={UpdateAndDelete} />
         <Route path="/admin" exact component={AdminBar} />
         <Route path="/update/:id" exact component={UpdateJob} />
+        <Route path="/jobreport" exact component={Report} />
        
         
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
         {/* <Route path="/signin" exact component={Signin} /> */}
+        <Route path="/" exact component={Signin}/>
         <Route path="/areyou" exact component={AreYou} />
         {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />

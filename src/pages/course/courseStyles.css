@@ -65,6 +65,10 @@ margin: 10px;
 .cquote{
 
 color: rgb(30, 3, 94);
+text-decoration:cornflowerblue;
+text-shadow: cyan;
+font-weight: bolder;
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
 
@@ -191,7 +195,6 @@ color: rgb(30, 3, 94);
   margin-left: 30px;
   border-radius: 10px;
   width: 25%;
-  background-color: #fafafa;
   color :#3e14a1;
   border: 2px solid #4c77af; 
   font-family: 'Times New Roman', Times, serif;
@@ -240,6 +243,7 @@ color: rgb(30, 3, 94);
   margin-right: auto;
   width:300px;
   margin: 5%;
+  padding: 2px;
   border-radius: 5px;
   font-size: 15px;
   font-weight: 500;
@@ -248,11 +252,36 @@ color: rgb(30, 3, 94);
 }
 
 /*view A course Lesson page */
-.form .ant-input {
-  text-align: justify;
-  color: #000000;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: medium;
-  font-weight: bold;
+
+.lessonview{
+  background-color: #2c8180;
+  color:black;
+  font-weight:bold;
+  font-size: larger;
+  font-size: 25 px;
+ 
 }
 
+
+
+.btnlesson{
+  background-color: rgb(117, 192, 41);
+  border-radius: 10px;
+  margin-right:30px;
+  margin-left: 85%;
+  margin-bottom: 25px;
+}
+
+.myCrs1{
+
+  background-image: linear-gradient(to bottom, #C8FFF1, #00BACD);
+}
+
+.AddButton1{
+  border-radius: 10px;
+  width: 15%;
+  font-weight: bold;
+  font-size: 15px;
+  margin-left: 25px;
+  
+}

@@ -105,7 +105,7 @@ function CreateCourse() {
             <Form.Item
               name="lessoname"
               className="course_select"
-              //  label="Name of the lesson "
+             //   label="Name of the lesson "
               rules={[
                 {
                   required: true,
@@ -118,7 +118,7 @@ function CreateCourse() {
 
 
             <Form.Item name={['lesson']}
-              //  label="Question"
+             // label="Lesson"
               className="course_select"
               rules={[
                 {
@@ -126,20 +126,20 @@ function CreateCourse() {
                 },
               ]}
             >
-              <Input.TextArea placeholder="Add the Lessons " />
+              <Input.TextArea placeholder="Add the Lessons "  />
             </Form.Item>
 
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 12 }}>
               <Button className="abc" type="primary" htmlType="submit">
                 Save
               </Button>
-
             </Form.Item>
-
-          </Form>
-          <button className="abc" type="primary" onClick={() => history.push(`../courseLessons/${id}`)}>
+            <button className="abc" type="primary" onClick={() => history.push(`../courseLessons/${id}`)}>
             View My Created Lessons
           </button>
+
+          </Form>
+          
         </div>
       </div>
     </>
