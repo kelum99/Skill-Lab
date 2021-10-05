@@ -85,36 +85,8 @@ function UpdateJob() {
   return (
     
     <>
-    <div className="">
-<div className="row">
-  
-  <div className="col-4">
-  <h3 className="adminHeader">SKILL LAB</h3>
-
-  <div className="img-topic-admin">
-     <img src={admin} className="adminavatar" alt="Looking for job?"/>
-     <h6 className="AdminTopic">Admin</h6>
-  </div>
-     <div className="Link-Container">
-       <h5 className="Adminh">Job Vacancy Management</h5>
-       <ul className="Adminul">
-       <Link to="/addcareere"> <li>Add a new vacancy</li></Link>
-          <Link to="/updatedelete"> <li>Update and Delete vacancy</li></Link>
-          <Link to="/deleteRequest"> <li>Delete Careere Requests</li></Link>
-          <Link to="/jobreport"> <li>Genarate Report</li></Link>
-       </ul>
-
      
-     </div>
-     <br/>
-    <button className="Admin-sider-Button">Logout</button><br/><br/>
-  </div>
-
-  <div className="col">
-
-
-      
-<div>
+     <div>
   <center>
 <h2 className="add-header">Update career opportunity</h2>
     <div className="AddForm">
@@ -178,12 +150,6 @@ function UpdateJob() {
   </center>
   </div>
 
-
-  </div>
-
-    </div>
-  
-</div>
     
     </>
 
