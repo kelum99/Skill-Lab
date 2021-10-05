@@ -1,5 +1,5 @@
 import React from "react";
-import { Form,Button} from 'antd';
+import { Form, Button } from 'antd';
 import 'antd/dist/antd.css';
 import './stylesHome.css'
 import home from '../../Images/home.png';

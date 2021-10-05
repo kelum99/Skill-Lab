@@ -1,28 +1,24 @@
-.child{
+.child {
     margin-top:80px;
     align-items:center;
-   
-}.main-container-terms{
+}
 
+.main-container-terms {
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .terms{
-    
     font-size:60px;
     font-family:"Roboto";
     color:#0060CC;
     text-align: center;
 }
-.termstext-container{
 
+.termstext-container{
     margin-top:-40px;
-   
-   margin-left: 10px;
-    
+    margin-left: 10px;
     color: #000000;
     font-size: 25px;
 }

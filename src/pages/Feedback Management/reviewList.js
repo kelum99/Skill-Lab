@@ -160,8 +160,10 @@ const columns = [
         </div>
           
         <div>
-        <Search placeholder="Search Course " onSearch={onSearch} enterButton  allowClear className="searchbar" />
-        <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="reviewTable" />
+
+        <Search placeholder="Search Course " onSearch={onSearch} enterButton  allowClear className="searchbarList" />
+        <Table columns={columns} dataSource={reviewList} size="middle" pagination={false} className="reviewLTable" />
+
         </div>
     </div>
     );

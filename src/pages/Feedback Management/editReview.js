@@ -4,7 +4,7 @@ import { Form, Input ,Button ,Rate,message} from 'antd';
 import './stylesFeedback.css';
 import useRequest from "../../services/RequestContext";
 import edit from "../../image/edit.jpg";
-import { useParams } from "react-router-dom";
+import { useParams,useHistory  } from "react-router-dom";
 
 
 function EditReview(){
@@ -38,6 +38,12 @@ function EditReview(){
     }
   }, [id]);
 
+  //alert msg
+  const success = () => {
+    
+  };
+
+
     const layout = {
         labelCol: {
           span: 8,
@@ -51,8 +57,22 @@ function EditReview(){
     //form validaations 
     const validateMessages = {
         required: 'Course Name is required!',
+        String: {
+
+          range: "${label} must be ${min} charactors",
+          range: '${label} must be ${max} ',
+    
+        },
         
       };
+
+      
+    //redirect
+    let history = useHistory();
+
+    const redirect = () => {
+      history.push('/myReview')
+    }
 
       //on submit - console log
       const onFinish = async values => {
@@ -60,9 +80,12 @@ function EditReview(){
           const result = await request.put(`feedback/review/${data._id}`,values);
           console.log("api call review updated", result);
           window.location.reload(true);
+          message.success("Review Updated Successfully !");
         } catch (e) {
           console.log("update error ", e);
         }
+        redirect();
+
       };
       const { TextArea } = Input;
       
@@ -91,6 +114,7 @@ function EditReview(){
             rules={[
               {
                 required: true,
+                type:'string',max: 50,
               },
             ]}
           >
@@ -100,6 +124,11 @@ function EditReview(){
             <Form.Item
             name={['rate']}
             label="Rate"
+            rules={[
+              {
+                required: true,
+              },
+            ]}
             
           >
             <Rate />
@@ -109,6 +138,12 @@ function EditReview(){
           <Form.Item
             name={[ 'comment']}
             label="Message"
+            rules={[
+              {
+                required: true,
+                type:'string',max: 500,
+              },
+            ]}
             
           >
             <TextArea rows={4} />

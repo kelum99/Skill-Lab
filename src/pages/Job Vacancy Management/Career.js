@@ -104,6 +104,7 @@ const { Search } = Input;
     <div className="col-sm" id="jobCards">
 
     <div className="">
+  
 
   {careerList.map(career => (
      <div key={career._Id} onClick={() => onSelect(career)}>
@@ -111,7 +112,7 @@ const { Search } = Input;
 <div className="card-body" id="cardBody">
    <div className="card-title"> <h5> {career.title}</h5> </div>
    <div className="card-text">  <p> {career.description}</p> </div>
-   <div className="card-text">  <p>Basic salary LKR. {career.salary}/=</p></div>
+   <div className="card-text">  <p>Basic salary.  USD {career.salary}$</p></div>
    <Link to="/application"className="btn btn-primary" id="apply-btn">Apply</Link>
      </div>
      </div>

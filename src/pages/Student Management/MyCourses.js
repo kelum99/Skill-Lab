@@ -3,11 +3,12 @@ import image from "../../image/MyCourses2.jpg";
 import { Table, Button, Input, Popconfirm, message } from 'antd';
 import { EditOutlined, DeleteOutlined, PlusOutlined } from '@ant-design/icons';
 import './stylesStudent.css';
-import {useHistory,Link} from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import useRequest from "../../services/RequestContext";
+import useUser from "../../services/UserContext";
+import moment from 'moment';
 
 function MyCourses() {
-
 
     //retrieve
     const [data, setData] = useState([]);
@@ -15,14 +16,15 @@ function MyCourses() {
     const { request } = useRequest();
     const [myCourseList, setMyCourseList] = useState([]);
     const history = useHistory();
+    const { user } = useUser();
 
     //fetch MyCourses
     const fetchMyCourses = async () => {
         setLoading(true);
         try {
-            const result = await request.get("student/mycourses");
+            const result = await request.get(`student/mycourses/${user._id}`);
             if (result.status === 200) {
-                setMyCourseList(result.data);
+                setMyCourseList(result.data.map(vl => ({...vl, date: moment(vl.date).local().format("YYYY-MM-DD")})));
             }
             console.log(" My Courses get ", result);
             setLoading(false);
@@ -32,8 +34,10 @@ function MyCourses() {
     };
 
     useEffect(() => {
-        fetchMyCourses();
-    }, []);
+        if (user && user._id) {
+            fetchMyCourses();
+        }
+    }, [user]);
 
 
     //delete method
@@ -43,6 +47,7 @@ function MyCourses() {
             if (result.status === 200) {
                 await fetchMyCourses();
                 setData(undefined);
+                message.info('Unenrolled Successfully !');
             }
             console.log("api call mycourse deleted", result);
         } catch (e) {
@@ -50,13 +55,8 @@ function MyCourses() {
         }
     };
 
-
     //confirm alert
     const msg = 'Are you sure you want to unenroll from the course?';
-
-    function confirm() {
-        message.info('Unenrolled Successfully !');
-    }
 
     //table
     const columns = [
@@ -94,7 +94,7 @@ function MyCourses() {
             render: (text, record, index) => (
                 <React.Fragment key={index}>
                     <Button type="primary" onClick={() => history.push(`/UpdateEnroll/${record._id}`)} icon={<EditOutlined />} className="edit-dlt" />
-                    <Popconfirm placement="right" title={msg}  onConfirm={() => onDelete(record)} okText="Yes" cancelText="No">
+                    <Popconfirm placement="right" title={msg} onConfirm={() => onDelete(record)} okText="Yes" cancelText="No">
                         <Button type="primary" danger icon={<DeleteOutlined />} className="edit-dlt" />
                     </Popconfirm>
                 </React.Fragment>
@@ -102,11 +102,24 @@ function MyCourses() {
         },
     ];
 
-
     //search box
     const { Search } = Input;
-    const onSearch = value => console.log(value);
 
+    const onSearch = (value) => {
+        let result = [];
+        result = myCourseList.filter((data) => {
+
+            if (value == "") {
+                window.location.reload(true);
+                return data;
+
+            } else {
+                return data.subject.toLowerCase().search(value) != -1 || data.lecturer.toLowerCase().search(value) != -1
+                    || data.course.toLowerCase().search(value) != -1 || data.date.toLowerCase().search(value) != -1
+            }
+        });
+        setMyCourseList(result);
+    };
 
     return (
         <div className="myCrs">
