@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 
 
 
+
 function ContactUs(){
 
     //alert msg
@@ -30,14 +31,14 @@ function ContactUs(){
     
     //Form Vilidation 
     const validateMessages = {
-      required: "${label} is required!" 
+      required: "${label} is required!" ,
       types: {
         email: "${label} is not a valid email!"
       },
       String: {
         range: "${label} must be ${min} charactors",
         range: '${label} must be ${max} '
-      }
+      },
     };
 
     
