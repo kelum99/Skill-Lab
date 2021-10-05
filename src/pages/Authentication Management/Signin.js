@@ -61,7 +61,7 @@ function Signin() {
 
           <div className="form-container">
             <img
-              width={400}
+              width={300}
               src={logo} alt="Logo"
             />
 

@@ -2,7 +2,7 @@ import React from "react";
 import "./StylesHeader.css";
 import SliderLecturer from "./SliderLecturer";
 import SliderStudent from "./SliderStudent";
-import AdminSlider from "../pages/Job Vacancy Management/AdminBar";
+import AdminSlider from "./SliderAdmin";
 import logo from "../Images/logo.png";
 import { Link } from "react-router-dom";
 import useUser from "../services/UserContext";
@@ -111,7 +111,7 @@ function Header() {
       <>
         <div className="conatiner">
           <div className="header">
-            
+            <AdminSlider />
             <img src={logo} alt="logo" className="logo" />
 
             <ul className="pages">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
 import {
   Form,
   Input,
@@ -11,10 +10,9 @@ import {
 } from "antd";
 import "./stylesFinance.css";
 import payment from '../../image/payment.svg';
-import payment1 from '../../image/payment1.svg';
 import payment2 from '../../image/payment2.svg';
 import "antd/dist/antd.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import useRequest from "../../services/RequestContext";
 import useUser from "../../services/UserContext";
 
@@ -26,6 +24,7 @@ function CheckOut() {
     const [item, setItem] = useState();
     const [loading, setLoading] = useState(true);
     const { request } = useRequest();
+    const  history  = useHistory();
     const { id } = useParams();
     
     const fetchWallet = async () => {
@@ -70,6 +69,10 @@ function CheckOut() {
           fetchItem(id);
         }
       }, [id]);
+
+      const onFinish = () => {
+        history.push('/paymentsuccess');
+      };
      
     return(
 
@@ -82,6 +85,7 @@ function CheckOut() {
         <Form
         name="checkout-form"
         layout="vertical"
+        onFinish ={onFinish}
         >
         {item && (
 
@@ -122,7 +126,7 @@ function CheckOut() {
 
             </Form.Item>
 
-                <Button type="primary" htmlType="submit" className="updateBtn" >
+                <Button type="primary" htmlType="submit" className="updateBtn">
                   Pay Now
                 </Button>
 
