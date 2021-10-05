@@ -4,6 +4,7 @@ import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 function SignupStd() {
 
@@ -26,6 +27,13 @@ function SignupStd() {
 
   const { request } = useRequest();
 
+  // redirect
+
+  let history = useHistory();
+  const redirect = () => {
+    history.push('/home2')
+  }
+
   const onFinish = async (values) => {
     values.role = "Student";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
@@ -37,6 +45,9 @@ function SignupStd() {
     } catch (e) {
       console.log("post signSTD error ", e);
     }
+
+    redirect();
+
   };
 
   const [value] = React.useState(1);
@@ -195,11 +206,11 @@ function SignupStd() {
             <hr></hr>
 
             <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-              {/* <Link to ="/home2" > */}
+              
               <Button type="primary" htmlType="submit" onClick={"/home2"}>
                 Submit
               </Button>
-              {/* </Link> */}
+              
             </Form.Item>
 
           </Form>

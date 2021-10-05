@@ -4,6 +4,7 @@ import './stylesSignup.css'
 import 'antd/dist/antd.css';
 import useRequest from "../../services/RequestContext";
 import moment from "moment";
+import { useHistory } from "react-router-dom";
 
 function SignupLec() {
 
@@ -27,6 +28,13 @@ function SignupLec() {
 
   const { request } = useRequest();
 
+  // redirect
+
+  let history = useHistory();
+  const redirect = () => {
+    history.push('/home2')
+  }
+
   const onFinish = async (values) => {
     values.role = "Lecturer";
     values.birthday = moment(values.birthday).format("YYYY-MM-DD")
@@ -37,6 +45,8 @@ function SignupLec() {
     } catch (e) {
       console.log("post sinlec error ", e);
     }
+
+    redirect();    
 
   };
 

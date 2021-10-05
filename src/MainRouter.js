@@ -160,7 +160,7 @@ function MainRouter() {
         <Route path="/signuplec" exact component={SignupLec} />
         <Route path="/signupstd" exact component={SignupStd} />
         {/* <Route path="/signin" exact component={Signin} /> */}
-        <Route path="/" exact component={Signin}/>
+        {/* <Route path="/" exact component={Signin}/> */}
         <Route path="/areyou" exact component={AreYou} />
         {/* <Route path="/lecprofile" exact component={LecProfile} /> */}
         <Route path="/stdprofile" exact component={StdProfile} />

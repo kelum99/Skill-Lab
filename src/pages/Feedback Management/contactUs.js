@@ -30,7 +30,7 @@ function ContactUs(){
     
     //Form Vilidation 
     const validateMessages = {
-      required: "${label} is required!" 
+      required: "${label} is required!" ,
       types: {
         email: "${label} is not a valid email!"
       },
