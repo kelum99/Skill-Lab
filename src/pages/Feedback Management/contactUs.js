@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 
 
 
+
 function ContactUs(){
 
     //alert msg
@@ -37,7 +38,7 @@ function ContactUs(){
       String: {
         range: "${label} must be ${min} charactors",
         range: '${label} must be ${max} '
-      }
+      },
     };
 
     
